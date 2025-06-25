@@ -10,8 +10,6 @@ INSERT INTO prisioneiro (
 ('1986-04-20', 'André Luiz de Souza', 'Maria das Dores Souza', '123.456.789-00', 'SP', 'Heterossexual', 'Masculino', 'Masculino', 'Pardo', 'Brasileira', 'Solteiro', 'Ensino Médio Completo'),
 ('1991-07-11', 'Bruna Karla Mendes', 'Luciana Karla Mendes', '987.654.321-00', 'RJ', 'Homossexual', 'Feminino', 'Feminino', 'Branca', 'Brasileira', 'Casada', 'Ensino Superior Completo'),
 ('1973-12-05', 'João Marcos Lima', 'Sebastiana Lima', '321.987.654-00', 'MG', 'Bissexual', 'Masculino', 'Masculino', 'Negra', 'Brasileira', 'Divorciado', 'Fundamental Incompleto');
-📋 Tabela atendimento
-Considerando os IDs existentes dos atendentes (1–3) e prisioneiros (1–3).
 
 INSERT INTO atendimento (
   id_atendente, id_prisioneiro, data_hora, data_entrada_unidade, is_transferencia, procedencia
