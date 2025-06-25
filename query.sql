@@ -10,8 +10,8 @@ create table atendente (
 CREATE TABLE prisioneiro (
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   data_nascimento DATE NOT NULL,
-  nome VARCHAR(255),
-  cpf VARCHAR(255),
+  nome VARCHAR(255) NOT NULL,
+  cpf VARCHAR(255) NOT NULL,
   uf VARCHAR(255) NOT NULL,
   orientacao VARCHAR(255) NOT NULL,
   genero VARCHAR(255) NOT NULL,
