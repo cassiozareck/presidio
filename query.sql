@@ -7,19 +7,10 @@ create table atendente (
   nome varchar(255) not null
 );
 
-create table atendimento (
-  id int not null primary key auto_increment,
-  id_atendente int not null,
-  data_hora datetime not null,
-  data_entrada_unidade date not null,
-  is_transferencia bool not null,
-  procedencia varchar(255) not null,
-  constraint id_atendente_fk foreign key (id) references atendente(id)
-);
-
 CREATE TABLE prisioneiro (
-  id_prisioneiro INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
   data_nascimento DATE NOT NULL,
+  nome VARCHAR(255),
   cpf VARCHAR(255),
   uf VARCHAR(255) NOT NULL,
   orientacao VARCHAR(255) NOT NULL,
@@ -30,3 +21,16 @@ CREATE TABLE prisioneiro (
   estado_civil VARCHAR(255) NOT NULL,
   escolaridade VARCHAR(255) NOT NULL
 );
+
+create table atendimento (
+  id int not null primary key auto_increment,
+  id_atendente int not null,
+  id_prisioneiro int not null,
+  data_hora datetime not null,
+  data_entrada_unidade date not null,
+  is_transferencia bool not null,
+  procedencia varchar(255) not null,
+  constraint id_atendente_fk foreign key (id_atendente) references atendente(id),
+  constraint id_prisioneiro_fk foreign key (id_prisioneiro) references prisioneiro(id)
+);
+
