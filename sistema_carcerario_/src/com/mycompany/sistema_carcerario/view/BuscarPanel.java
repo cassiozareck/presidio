@@ -41,8 +41,8 @@ public class BuscarPanel extends javax.swing.JPanel {
                 p.getId(),
                 p.getNome(),
                 p.getCpf(),
-                p.getDataNascimento(), 
-                "Claúdia" 
+                p.calcularIdade(), 
+                p.getNomeMae()
             };
             model.addRow(row);
         }

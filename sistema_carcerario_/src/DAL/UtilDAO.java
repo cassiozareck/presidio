@@ -22,13 +22,13 @@ public class UtilDAO {
             ps.setString(1, prisioneiro.getNome());
             ps.setDate(2, java.sql.Date.valueOf(prisioneiro.getDataNascimento()));
             ps.setString(3, prisioneiro.getCpf());
-            ps.setInt(4, prisioneiro.getIdOrientacao());
-            ps.setInt(5, prisioneiro.getIdGenero());
-            ps.setInt(6, prisioneiro.getIdSexo());
-            ps.setInt(7, prisioneiro.getIdRaca());
-            ps.setInt(8, prisioneiro.getIdNacionalidade());
-            ps.setInt(9, prisioneiro.getIdEstadoCivil());
-            ps.setInt(10, prisioneiro.getIdEscolaridade());
+            ps.setString(4, prisioneiro.getOrientacao());
+            ps.setString(5, prisioneiro.getGenero());
+            ps.setString(6, prisioneiro.getSexo());
+            ps.setString(7, prisioneiro.getRaca());
+            ps.setString(8, prisioneiro.getNacionalidade());
+            ps.setString(9, prisioneiro.getEstadoCivil());
+            ps.setString(10, prisioneiro.getEscolaridade());
             ps.executeUpdate();
      
         }catch(Exception ex){

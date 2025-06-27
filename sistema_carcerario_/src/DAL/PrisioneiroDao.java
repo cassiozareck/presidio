@@ -26,8 +26,7 @@ public class PrisioneiroDao {
         
         List<Prisioneiro> prisioneiros = new ArrayList<>();
 
-        String sql = "SELECT id, nome, data_nascimento, cpf, orientacao, genero, sexo, " +
-                     "raca, nacionalidade, estado_civil, escolaridade FROM prisioneiro";
+        String sql = "SELECT * FROM prisioneiro";
 
         try (PreparedStatement ps = conexao.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
@@ -36,21 +35,22 @@ public class PrisioneiroDao {
                 Prisioneiro p = new Prisioneiro();
                 p.setId(rs.getInt("id"));
                 p.setNome(rs.getString("nome"));
+                p.setNomeMae(rs.getString("nome_mae"));
                 p.setDataNascimento(rs.getDate("data_nascimento").toLocalDate());
                 p.setCpf(rs.getString("cpf"));
-                p.setIdOrientacao(rs.getInt("orientacao"));
-                p.setIdGenero(rs.getInt("genero"));
-                p.setIdSexo(rs.getInt("sexo"));
-                p.setIdRaca(rs.getInt("raca"));
-                p.setIdNacionalidade(rs.getInt("nacionalidade"));
-                p.setIdEstadoCivil(rs.getInt("estado_civil"));
-                p.setIdEscolaridade(rs.getInt("escolaridade"));
+                p.setOrientacao(rs.getString("orientacao"));
+                p.setGenero(rs.getString("genero"));
+                p.setSexo(rs.getString("sexo"));
+                p.setRaca(rs.getString("raca"));
+                p.setNacionalidade(rs.getString("nacionalidade"));
+                p.setEstadoCivil(rs.getString("estado_civil"));
+                p.setEscolaridade(rs.getString("escolaridade"));
 
                 prisioneiros.add(p);
             }
 
         } catch (SQLException e) {
-            e.printStackTrace(); // Ou jogue uma exceção personalizada
+            e.printStackTrace(); 
             System.out.println("erro");
         }
 
@@ -68,16 +68,16 @@ public class PrisioneiroDao {
             ps.setString(1, prisioneiro.getNome());
             ps.setDate(2, java.sql.Date.valueOf(prisioneiro.getDataNascimento()));
             ps.setString(3, prisioneiro.getCpf());
-            ps.setInt(4, prisioneiro.getIdOrientacao());
-            ps.setInt(5, prisioneiro.getIdGenero());
-            ps.setInt(6, prisioneiro.getIdSexo());
-            ps.setInt(7, prisioneiro.getIdRaca());
-            ps.setInt(8, prisioneiro.getIdNacionalidade());
-            ps.setInt(9, prisioneiro.getIdEstadoCivil());
-            ps.setInt(10, prisioneiro.getIdEscolaridade());
+            ps.setString(4, prisioneiro.getOrientacao());
+            ps.setString(5, prisioneiro.getGenero());
+            ps.setString(6, prisioneiro.getSexo());
+            ps.setString(7, prisioneiro.getRaca());
+            ps.setString(8, prisioneiro.getNacionalidade());
+            ps.setString(9, prisioneiro.getEstadoCivil());
+            ps.setString(10, prisioneiro.getEscolaridade());
             ps.executeUpdate();
      
-        }catch(Exception ex){
+        }catch(SQLException ex){
             ex.printStackTrace();
         }
     }
