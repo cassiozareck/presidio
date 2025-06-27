@@ -7,9 +7,9 @@ import java.sql.DriverManager;
 //classe de metodos estáticos
 public final class ConexaoBanco {
     private static final String driver = "com.mysql.cj.jdbc.Driver";
-    private static final String url = "jdbc:mysql://10.17.9.29/" + "sistema_carcerario"; //usamos banco compartilhado em rede lan
-    private static final String usuario = "gabe";
-    private static final String senha = "123123";//aqui no lab, "" (VAZIO)
+    private static final String url = "jdbc:mysql://localhost/" + "sistema_carcerario"; //usamos banco compartilhado em rede lan
+    private static final String usuario = "root";
+    private static final String senha = "";//aqui no lab, "" (VAZIO)
     private Connection conexao;
     
     //esta classe retorna um Connection, tipo da conexao com o banco de dados, vem de java.sql
