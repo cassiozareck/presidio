@@ -26,12 +26,12 @@ public class BuscarPanel extends javax.swing.JPanel {
         initComponents();
         this.parent = parent;
         
-        populateTablePrisioneiros();
+        populateTablePrisioneiros("");
     }
 
     
-    private void populateTablePrisioneiros() {
-        List<Prisioneiro> prisioneiroList = prisioneiroDao.listarPrisioneiros();
+    private void populateTablePrisioneiros(String filter) {
+        List<Prisioneiro> prisioneiroList = prisioneiroDao.listarPrisioneiros(filter);
         
         String[] headers = {"ID", "Nome", "CPF", "Idade", "Nome da Mãe"};
         DefaultTableModel model = new DefaultTableModel(headers, 0);
@@ -60,144 +60,12 @@ public class BuscarPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jFrame1 = new javax.swing.JFrame();
-        jLabel1 = new javax.swing.JLabel();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        tabla_prisioneiros = new javax.swing.JTable();
+        lb_nome = new javax.swing.JLabel();
         tf_nome = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
         btn_cadastrar = new javax.swing.JButton();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        table_info = new javax.swing.JTable();
-        jFrame2 = new javax.swing.JFrame();
-        jLabel2 = new javax.swing.JLabel();
-        tf_nome1 = new javax.swing.JTextField();
-        btn_buscar1 = new javax.swing.JButton();
-        btn_cadastrar1 = new javax.swing.JButton();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        table_info1 = new javax.swing.JTable();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tabla_prisioneiros = new javax.swing.JTable();
-        jLabel3 = new javax.swing.JLabel();
-        tf_nome2 = new javax.swing.JTextField();
-        btn_buscar2 = new javax.swing.JButton();
-        btn_cadastrar2 = new javax.swing.JButton();
-
-        jFrame1.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel1.setText("Nome:");
-
-        btn_buscar.setText("Buscar");
-
-        btn_cadastrar.setText("Cadastrar");
-        btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cadastrarActionPerformed(evt);
-            }
-        });
-
-        table_info.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nome", "CPF", "Idade", "Title 5"
-            }
-        ));
-        jScrollPane1.setViewportView(table_info);
-
-        javax.swing.GroupLayout jFrame1Layout = new javax.swing.GroupLayout(jFrame1.getContentPane());
-        jFrame1.getContentPane().setLayout(jFrame1Layout);
-        jFrame1Layout.setHorizontalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
-                    .addGroup(jFrame1Layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(tf_nome)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_buscar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_cadastrar)))
-                .addContainerGap())
-        );
-        jFrame1Layout.setVerticalGroup(
-            jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tf_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_buscar)
-                        .addComponent(btn_cadastrar))
-                    .addComponent(jLabel1))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
-
-        jFrame2.setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jLabel2.setText("Nome:");
-
-        btn_buscar1.setText("Buscar");
-
-        btn_cadastrar1.setText("Cadastrar");
-        btn_cadastrar1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cadastrar1ActionPerformed(evt);
-            }
-        });
-
-        table_info1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null},
-                {null, null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nome", "CPF", "Idade", "Title 5"
-            }
-        ));
-        jScrollPane2.setViewportView(table_info1);
-
-        javax.swing.GroupLayout jFrame2Layout = new javax.swing.GroupLayout(jFrame2.getContentPane());
-        jFrame2.getContentPane().setLayout(jFrame2Layout);
-        jFrame2Layout.setHorizontalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 603, Short.MAX_VALUE)
-                    .addGroup(jFrame2Layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(tf_nome1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_buscar1)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_cadastrar1)))
-                .addContainerGap())
-        );
-        jFrame2Layout.setVerticalGroup(
-            jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jFrame2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(tf_nome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(btn_buscar1)
-                        .addComponent(btn_cadastrar1))
-                    .addComponent(jLabel2))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-        );
 
         tabla_prisioneiros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -212,14 +80,19 @@ public class BuscarPanel extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(tabla_prisioneiros);
 
-        jLabel3.setText("Nome:");
+        lb_nome.setText("Nome:");
 
-        btn_buscar2.setText("Buscar");
-
-        btn_cadastrar2.setText("Cadastrar");
-        btn_cadastrar2.addActionListener(new java.awt.event.ActionListener() {
+        btn_buscar.setText("Buscar");
+        btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_cadastrar2ActionPerformed(evt);
+                btn_buscarActionPerformed(evt);
+            }
+        });
+
+        btn_cadastrar.setText("Cadastrar");
+        btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_cadastrarActionPerformed(evt);
             }
         });
 
@@ -232,13 +105,13 @@ public class BuscarPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
+                        .addComponent(lb_nome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_nome2)
+                        .addComponent(tf_nome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btn_buscar2)
+                        .addComponent(btn_buscar)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_cadastrar2)))
+                        .addComponent(btn_cadastrar)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -246,49 +119,33 @@ public class BuscarPanel extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_nome2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_buscar2)
-                    .addComponent(btn_cadastrar2)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 329, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btn_buscar)
+                    .addComponent(btn_cadastrar)
+                    .addComponent(lb_nome))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
-        // TODO add your handling code here:
+        parent.showPanel("atendimentoPanel");
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
-    private void btn_cadastrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrar1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_cadastrar1ActionPerformed
-
-    private void btn_cadastrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrar2ActionPerformed
-        parent.showPanel("atendimentoPanel");
-    }//GEN-LAST:event_btn_cadastrar2ActionPerformed
+    private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
+        String filter =  tf_nome.getText();
+        
+        populateTablePrisioneiros(filter);
+    }//GEN-LAST:event_btn_buscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_buscar;
-    private javax.swing.JButton btn_buscar1;
-    private javax.swing.JButton btn_buscar2;
     private javax.swing.JButton btn_cadastrar;
-    private javax.swing.JButton btn_cadastrar1;
-    private javax.swing.JButton btn_cadastrar2;
-    private javax.swing.JFrame jFrame1;
-    private javax.swing.JFrame jFrame2;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel lb_nome;
     private javax.swing.JTable tabla_prisioneiros;
-    private javax.swing.JTable table_info;
-    private javax.swing.JTable table_info1;
     private javax.swing.JTextField tf_nome;
-    private javax.swing.JTextField tf_nome1;
-    private javax.swing.JTextField tf_nome2;
     // End of variables declaration//GEN-END:variables
 }

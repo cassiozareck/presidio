@@ -20,17 +20,19 @@ import java.util.List;
 public class PrisioneiroDao {
     
     
-    public List<Prisioneiro> listarPrisioneiros() {
+    public List<Prisioneiro> listarPrisioneiros(String filter) {
+    List<Prisioneiro> prisioneiros = new ArrayList<>();
+    String sql = "SELECT * FROM prisioneiro WHERE nome LIKE ?";
+
+    try (Connection conexao = ConexaoBanco.conectar();
+         PreparedStatement ps = conexao.prepareStatement(sql)) {
+
         
-        Connection conexao = ConexaoBanco.conectar();
-        
-        List<Prisioneiro> prisioneiros = new ArrayList<>();
+        // Vai fazer um LIke para pegar todos que contenham pelo menos um pedaço
+        // do que foi passado como filtro
+        ps.setString(1, "%" + filter + "%"); 
 
-        String sql = "SELECT * FROM prisioneiro";
-
-        try (PreparedStatement ps = conexao.prepareStatement(sql);
-             ResultSet rs = ps.executeQuery()) {
-
+        try (ResultSet rs = ps.executeQuery()) {
             while (rs.next()) {
                 Prisioneiro p = new Prisioneiro();
                 p.setId(rs.getInt("id"));
@@ -48,14 +50,16 @@ public class PrisioneiroDao {
 
                 prisioneiros.add(p);
             }
-
-        } catch (SQLException e) {
-            e.printStackTrace(); 
-            System.out.println("erro");
         }
 
-        return prisioneiros;
+    } catch (SQLException e) {
+        e.printStackTrace();
+        System.out.println("Erro ao listar prisioneiros com filtro");
     }
+
+    return prisioneiros;
+}
+
     
     public static void insertPrisioneiro(Prisioneiro prisioneiro, Atendimento atendimento){
         try{
