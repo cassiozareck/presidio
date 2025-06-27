@@ -1,69 +1,34 @@
 package com.mycompany.sistema_carcerario.model;
 
 import java.time.LocalDate;
+import java.time.Period;
 
 public class Prisioneiro {
-    private int id;
-    private String nome;
-    private LocalDate dataNascimento;
-    private String cpf;
-    private int idOrientacao;
-    private int idGenero;
-    private int idSexo;
-    private int idRaca;
-    private int idNacionalidade;
-    private int idEstadoCivil;
-    private int idEscolaridade;
 
-    // Construtor completo
-    public Prisioneiro(int idPrisioneiro, LocalDate dataNascimento, String nome, String cpf,
-                       int idOrientacao, int idGenero, int idSexo, int idRaca,
-                       int idNacionalidade, int idEstadoCivil, int idEscolaridade) {
-        this.id = idPrisioneiro;
-        this.dataNascimento = dataNascimento;
-        this.nome = nome;
-        this.cpf = cpf;
-        this.idOrientacao = idOrientacao;
-        this.idGenero = idGenero;
-        this.idSexo = idSexo;
-        this.idRaca = idRaca;
-        this.idNacionalidade = idNacionalidade;
-        this.idEstadoCivil = idEstadoCivil;
-        this.idEscolaridade = idEscolaridade;
+    private int id;
+    private LocalDate dataNascimento;
+    private String nome;
+    private String nomeMae;
+    private String cpf;
+    private String uf;
+    private String orientacao;
+    private String genero;
+    private String sexo;
+    private String raca;
+    private String nacionalidade;
+    private String estadoCivil;
+    private String escolaridade;
+
+    public Prisioneiro() {
     }
 
-    // Construtor vazio (padrão)
-
+    // Getters e Setters
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    
-    
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-    
-    
-    
-    public Prisioneiro() {
-    }
-
-    // Getters e Setters
-    public int getIdPrisioneiro() {
-        return id;
-    }
-
-    public void setIdPrisioneiro(int idPrisioneiro) {
-        this.id = idPrisioneiro;
     }
 
     public LocalDate getDataNascimento() {
@@ -74,6 +39,22 @@ public class Prisioneiro {
         this.dataNascimento = dataNascimento;
     }
 
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNomeMae() {
+        return nomeMae;
+    }
+
+    public void setNomeMae(String nomeMae) {
+        this.nomeMae = nomeMae;
+    }
+
     public String getCpf() {
         return cpf;
     }
@@ -82,75 +63,87 @@ public class Prisioneiro {
         this.cpf = cpf;
     }
 
-    public int getIdOrientacao() {
-        return idOrientacao;
+    public String getUf() {
+        return uf;
     }
 
-    public void setIdOrientacao(int idOrientacao) {
-        this.idOrientacao = idOrientacao;
+    public void setUf(String uf) {
+        this.uf = uf;
     }
 
-    public int getIdGenero() {
-        return idGenero;
+    public String getOrientacao() {
+        return orientacao;
     }
 
-    public void setIdGenero(int idGenero) {
-        this.idGenero = idGenero;
+    public void setOrientacao(String orientacao) {
+        this.orientacao = orientacao;
     }
 
-    public int getIdSexo() {
-        return idSexo;
+    public String getGenero() {
+        return genero;
     }
 
-    public void setIdSexo(int idSexo) {
-        this.idSexo = idSexo;
+    public void setGenero(String genero) {
+        this.genero = genero;
     }
 
-    public int getIdRaca() {
-        return idRaca;
+    public String getSexo() {
+        return sexo;
     }
 
-    public void setIdRaca(int idRaca) {
-        this.idRaca = idRaca;
+    public void setSexo(String sexo) {
+        this.sexo = sexo;
     }
 
-    public int getIdNacionalidade() {
-        return idNacionalidade;
+    public String getRaca() {
+        return raca;
     }
 
-    public void setIdNacionalidade(int idNacionalidade) {
-        this.idNacionalidade = idNacionalidade;
+    public void setRaca(String raca) {
+        this.raca = raca;
     }
 
-    public int getIdEstadoCivil() {
-        return idEstadoCivil;
+    public String getNacionalidade() {
+        return nacionalidade;
     }
 
-    public void setIdEstadoCivil(int idEstadoCivil) {
-        this.idEstadoCivil = idEstadoCivil;
+    public void setNacionalidade(String nacionalidade) {
+        this.nacionalidade = nacionalidade;
     }
 
-    public int getIdEscolaridade() {
-        return idEscolaridade;
+    public String getEstadoCivil() {
+        return estadoCivil;
     }
 
-    public void setIdEscolaridade(int idEscolaridade) {
-        this.idEscolaridade = idEscolaridade;
+    public void setEstadoCivil(String estadoCivil) {
+        this.estadoCivil = estadoCivil;
     }
 
-    @Override
-    public String toString() {
-        return "Prisioneiro{" +
-                "idPrisioneiro=" + id +
-                ", dataNascimento=" + dataNascimento +
-                ", cpf='" + cpf + '\'' +
-                ", idOrientacao=" + idOrientacao +
-                ", idGenero=" + idGenero +
-                ", idSexo=" + idSexo +
-                ", idRaca=" + idRaca +
-                ", idNacionalidade=" + idNacionalidade +
-                ", idEstadoCivil=" + idEstadoCivil +
-                ", idEscolaridade=" + idEscolaridade +
-                '}';
+    public String getEscolaridade() {
+        return escolaridade;
     }
+
+    public void setEscolaridade(String escolaridade) {
+        this.escolaridade = escolaridade;
+    }
+
+    public int calcularIdade() {
+        return Period.between(dataNascimento, LocalDate.now()).getYears();
+    }
+
+//    @Override
+//    public String toString() {
+//        return "Prisioneiro{" +
+//                "idPrisioneiro=" + id +
+//                ", dataNascimento=" + dataNascimento +
+//                ", cpf='" + cpf + '\'' +
+//                ", idOrientacao=" + idOrientacao +
+//                ", idGenero=" + idGenero +
+//                ", idSexo=" + idSexo +
+//                ", idRaca=" + idRaca +
+//                ", idNacionalidade=" + idNacionalidade +
+//                ", idEstadoCivil=" + idEstadoCivil +
+//                ", idEscolaridade=" + idEscolaridade +
+//                '}';
+//    }
 }
