@@ -4,11 +4,14 @@
  */
 package com.mycompany.sistema_carcerario.view;
 
+import DAL.AtendenteDao;
 import DAL.PrisioneiroDao;
 import DAL.AtendimentoDao;
+import com.mycompany.sistema_carcerario.model.Atendente;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import com.mycompany.sistema_carcerario.model.Atendimento;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 
 /**
  *
@@ -19,12 +22,14 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
     private final AtendimentoDao atendimentoDao = new AtendimentoDao();
     private Prisioneiro prisioneiroAtual;
+    private final AtendenteDao atendenteDao = new AtendenteDao();
     /**
      * Creates new form AtendimentoPanel2
      */
     public AtendimentoPanel(MainFrame parent) {
         initComponents();
         this.parent = parent;
+        setComboBoxResponsavel();
     }
 
     // Função responsável por carregar um prisioneiro existente pelo ID
@@ -47,6 +52,14 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             setComboBoxValue(cb_identidade_genero, prisioneiroAtual.getGenero());
             setComboBoxValue(cb_orientacao_sexual, prisioneiroAtual.getOrientacao());
             setComboBoxValue(jComboBox1, prisioneiroAtual.getRaca());
+        }
+    }
+    
+    private void setComboBoxResponsavel(){
+        jComboBoxResponsavel.removeAllItems();
+        ArrayList <Atendente> atendentes = atendenteDao.getAtendentes();
+        for(Atendente atendente : atendentes){
+            jComboBoxResponsavel.addItem(atendente.getNome());
         }
     }
     
@@ -166,12 +179,12 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         btn_salvar = new javax.swing.JButton();
         atendimento_panel = new javax.swing.JPanel();
         jRadioButton1 = new javax.swing.JRadioButton();
-        jTextField2 = new javax.swing.JTextField();
         jRadioButton2 = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
+        jComboBoxResponsavel = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         tf_nome = new javax.swing.JTextField();
@@ -242,6 +255,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel6.setText("Transferência");
 
+        jComboBoxResponsavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
         javax.swing.GroupLayout atendimento_panelLayout = new javax.swing.GroupLayout(atendimento_panel);
         atendimento_panel.setLayout(atendimento_panelLayout);
         atendimento_panelLayout.setHorizontalGroup(
@@ -250,20 +265,20 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(atendimento_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(atendimento_panelLayout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.DEFAULT_SIZE, 567, Short.MAX_VALUE))
-                    .addGroup(atendimento_panelLayout.createSequentialGroup()
                         .addComponent(jLabel6)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButton1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jRadioButton2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3))
+                        .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE))
                     .addGroup(atendimento_panelLayout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(atendimento_panelLayout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)
+                        .addComponent(jComboBoxResponsavel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         atendimento_panelLayout.setVerticalGroup(
@@ -272,7 +287,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(atendimento_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
@@ -302,15 +317,15 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel14.setText("Sexo Biológico:");
 
-        cb_sexo_biologico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Intersexo" }));
+        cb_sexo_biologico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel15.setText("Identidade de Gênero:");
 
-        cb_identidade_genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Não-binário", "Transgênero" }));
+        cb_identidade_genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jLabel16.setText("Orientação Sexual:");
 
-        cb_orientacao_sexual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Heterossexual", "Homossexual", "Bissexual", "Pansexual", "Assexual" }));
+        cb_orientacao_sexual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -475,11 +490,11 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 // Criar e inserir o atendimento
                 Atendimento atendimento = new Atendimento();
                 atendimento.setIdPrisioneiro(idPrisioneiro);
-                atendimento.setIdAtendente(1); // ID padrão do atendente
+                atendimento.setIdAtendente(atendenteDao.getIdAtendenteByName(jComboBoxResponsavel.getSelectedItem().toString())); // ID padrão do atendente
                 atendimento.setDataHora(LocalDateTime.now());
                 atendimento.setDataEntradaNaUnidade(LocalDateTime.now());
                 atendimento.setTransferencia(jRadioButton1.isSelected()); // Se o radio button "Sim" estiver selecionado
-                atendimento.setProcedencia(jTextField2.getText().trim().isEmpty() ? "Não informado" : jTextField2.getText().trim());
+                atendimento.setProcedencia(jTextField3.getText().trim().isEmpty() ? "Não informado" : jTextField3.getText().trim());
                 
                 boolean atendimentoSucesso = atendimentoDao.insertAtendimento(atendimento);
                 
@@ -510,6 +525,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboBoxResponsavel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -530,7 +546,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField tf_cpf;
     private javax.swing.JTextField tf_data_nascimento;
