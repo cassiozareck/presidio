@@ -13,7 +13,7 @@ public class MainFrame extends JFrame {
     private static final String ATENDIMENTO_PANEL = "atendimentoPanel";
     private static final String BUSCA_PANEL = "buscaPanel";
     
-    // Store references to panels
+    // Refêrencias aos painéis
     private AtendimentoPanel atendimentoPanel;
     private BuscarPanel buscaPanel;
     
@@ -40,6 +40,11 @@ public class MainFrame extends JFrame {
     
     void showAtendimentoPanel(int prisioneiroId) {
         atendimentoPanel.carregarPrisioneiro(prisioneiroId);
+        showPanel(ATENDIMENTO_PANEL);
+    }
+    
+    void showAtendimentoPanelParaNovo() {
+        atendimentoPanel.prepararParaNovoPrisioneiro();
         showPanel(ATENDIMENTO_PANEL);
     }
     

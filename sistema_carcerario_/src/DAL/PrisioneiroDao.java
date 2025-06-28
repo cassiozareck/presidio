@@ -96,6 +96,37 @@ public Prisioneiro buscarPrisioneiroPorId(int id) {
     return null;
 }
 
+public boolean updatePrisioneiro(Prisioneiro prisioneiro) {
+    String sql = "UPDATE prisioneiro SET nome = ?, nome_mae = ?, data_nascimento = ?, cpf = ?, " +
+                 "orientacao = ?, genero = ?, sexo = ?, raca = ?, nacionalidade = ?, " +
+                 "estado_civil = ?, escolaridade = ? WHERE id = ?";
+    
+    try (Connection conexao = ConexaoBanco.conectar();
+         PreparedStatement ps = conexao.prepareStatement(sql)) {
+        
+        ps.setString(1, prisioneiro.getNome());
+        ps.setString(2, prisioneiro.getNomeMae());
+        ps.setDate(3, java.sql.Date.valueOf(prisioneiro.getDataNascimento()));
+        ps.setString(4, prisioneiro.getCpf());
+        ps.setString(5, prisioneiro.getOrientacao());
+        ps.setString(6, prisioneiro.getGenero());
+        ps.setString(7, prisioneiro.getSexo());
+        ps.setString(8, prisioneiro.getRaca());
+        ps.setString(9, prisioneiro.getNacionalidade());
+        ps.setString(10, prisioneiro.getEstadoCivil());
+        ps.setString(11, prisioneiro.getEscolaridade());
+        ps.setInt(12, prisioneiro.getId());
+        
+        int rowsAffected = ps.executeUpdate();
+        return rowsAffected > 0;
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+        System.out.println("Erro ao atualizar prisioneiro");
+        return false;
+    }
+}
+
     
     public static void insertPrisioneiro(Prisioneiro prisioneiro, Atendimento atendimento){
         try{

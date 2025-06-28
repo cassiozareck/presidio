@@ -14,6 +14,7 @@ import com.mycompany.sistema_carcerario.model.Prisioneiro;
 public class AtendimentoPanel extends javax.swing.JPanel {
     final MainFrame parent;
     private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
+    private Prisioneiro prisioneiroAtual;
     /**
      * Creates new form AtendimentoPanel2
      */
@@ -22,22 +23,26 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         this.parent = parent;
     }
 
+    // Função responsável por carregar um prisioneiro existente pelo ID
+    // Vai chamar query no DAO e preencher UI
     public void carregarPrisioneiro(int idPrisioneiro) {
-        Prisioneiro prisioneiro = prisioneiroDao.buscarPrisioneiroPorId(idPrisioneiro);
+        prisioneiroAtual = prisioneiroDao.buscarPrisioneiroPorId(idPrisioneiro);
         
-        if (prisioneiro != null) {
-            tf_nome.setText(prisioneiro.getNome());
-            tf_nome_social.setText(prisioneiro.getNome()); // Assuming nome social is the same as nome for now
-            tf_data_nascimento.setText(prisioneiro.getDataNascimento().toString());
-            tf_cpf.setText(prisioneiro.getCpf());
-            tf_idade.setText(String.valueOf(prisioneiro.calcularIdade()));
-            tf_etinia.setText(prisioneiro.getRaca());
+        if (prisioneiroAtual != null) {
+            // Esconde painel quando carrega novo prisioneiro
+            atendimento_panel.setVisible(false);
             
-            // Set combo box values if they match
-            setComboBoxValue(cb_sexo_biologico, prisioneiro.getSexo());
-            setComboBoxValue(cb_identidade_genero, prisioneiro.getGenero());
-            setComboBoxValue(cb_orientacao_sexual, prisioneiro.getOrientacao());
-            setComboBoxValue(jComboBox1, prisioneiro.getRaca());
+            tf_nome.setText(prisioneiroAtual.getNome());
+            tf_nome_social.setText(prisioneiroAtual.getNome()); // Assuming nome social is the same as nome for now
+            tf_data_nascimento.setText(prisioneiroAtual.getDataNascimento().toString());
+            tf_cpf.setText(prisioneiroAtual.getCpf());
+            tf_idade.setText(String.valueOf(prisioneiroAtual.calcularIdade()));
+            tf_etinia.setText(prisioneiroAtual.getRaca());
+            
+            setComboBoxValue(cb_sexo_biologico, prisioneiroAtual.getSexo());
+            setComboBoxValue(cb_identidade_genero, prisioneiroAtual.getGenero());
+            setComboBoxValue(cb_orientacao_sexual, prisioneiroAtual.getOrientacao());
+            setComboBoxValue(jComboBox1, prisioneiroAtual.getRaca());
         }
     }
     
@@ -48,6 +53,78 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 break;
             }
         }
+    }
+    
+    public void prepararParaNovoPrisioneiro() {
+        // Limpa para um novo prisioneiro
+        prisioneiroAtual = null;
+        
+        atendimento_panel.setVisible(true);
+        
+        // Limpa todos os campos
+        tf_nome.setText("");
+        tf_nome_social.setText("");
+        tf_data_nascimento.setText("");
+        tf_cpf.setText("");
+        tf_idade.setText("");
+        tf_etinia.setText("");
+        
+        // Reseta os combo boxes
+        cb_sexo_biologico.setSelectedIndex(0);
+        cb_identidade_genero.setSelectedIndex(0);
+        cb_orientacao_sexual.setSelectedIndex(0);
+        jComboBox1.setSelectedIndex(0);
+    }
+    
+    private Prisioneiro coletarDadosFormulario() {
+        Prisioneiro prisioneiro = new Prisioneiro();
+        
+        // Se tiver editando um prisioneiro conhecido
+        if (prisioneiroAtual != null) {
+            prisioneiro.setId(prisioneiroAtual.getId());
+        }
+        
+        // Colete dados
+        prisioneiro.setNome(tf_nome.getText());
+        prisioneiro.setNomeMae(tf_nome_social.getText()); 
+        prisioneiro.setCpf(tf_cpf.getText());
+        prisioneiro.setRaca(tf_etinia.getText());
+        
+        try {
+            prisioneiro.setDataNascimento(java.time.LocalDate.parse(tf_data_nascimento.getText()));
+        } catch (Exception e) {
+            System.out.println("Erro ao parsear data de nascimento");
+            return null;
+        }
+        
+        // Valores das combo boxes
+        prisioneiro.setSexo((String) cb_sexo_biologico.getSelectedItem());
+        prisioneiro.setGenero((String) cb_identidade_genero.getSelectedItem());
+        prisioneiro.setOrientacao((String) cb_orientacao_sexual.getSelectedItem());
+        prisioneiro.setRaca((String) jComboBox1.getSelectedItem());
+        
+        // Parte 2
+        prisioneiro.setNacionalidade("Brasileira");
+        prisioneiro.setEstadoCivil("Solteiro");
+        prisioneiro.setEscolaridade("Fundamental");
+        
+        return prisioneiro;
+    }
+    
+    private boolean validarFormulario() {
+        if (tf_nome.getText().trim().isEmpty()) {
+            System.out.println("Nome é obrigatório");
+            return false;
+        }
+        if (tf_cpf.getText().trim().isEmpty()) {
+            System.out.println("CPF é obrigatório");
+            return false;
+        }
+        if (tf_data_nascimento.getText().trim().isEmpty()) {
+            System.out.println("Data de nascimento é obrigatória");
+            return false;
+        }
+        return true;
     }
 
     /**
@@ -346,7 +423,34 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-        parent.showPanel("atendimentoPanel");
+
+        if (!validarFormulario()) {
+            return;
+        }
+        
+        Prisioneiro prisioneiro = coletarDadosFormulario();
+        
+        if (prisioneiro == null) {
+            System.out.println("Erro ao coletar dados do formulário");
+            return;
+        }
+        
+        // Vai fazer um update e retornar, caso de sucesso voltará a tela de busca
+        boolean sucesso = false;
+        
+        if (prisioneiroAtual != null) {
+      
+            sucesso = prisioneiroDao.updatePrisioneiro(prisioneiro);
+            if (sucesso) {
+                System.out.println("Prisioneiro atualizado com sucesso!");
+            } else {
+                System.out.println("Erro ao atualizar prisioneiro");
+            }
+        } 
+        
+        if (sucesso) {
+            parent.showPanel("buscaPanel");
+        }
     }//GEN-LAST:event_btn_salvarActionPerformed
 
 

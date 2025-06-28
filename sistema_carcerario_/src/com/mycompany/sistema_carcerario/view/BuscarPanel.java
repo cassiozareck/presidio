@@ -30,8 +30,9 @@ public class BuscarPanel extends javax.swing.JPanel {
         
         populateTablePrisioneiros("");
         
+        // Quando clicar valor na tabela irá ir para o prisioneiro na tela de atendimento
         tabela_prisioneiros.addMouseListener(new MouseAdapter() {
-        @Override
+        @Override 
         public void mouseClicked(MouseEvent e) {
             int row = tabela_prisioneiros.getSelectedRow();
             if (row >= 0) {
@@ -143,7 +144,7 @@ public class BuscarPanel extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_cadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cadastrarActionPerformed
-        parent.showPanel("atendimentoPanel");
+        parent.showAtendimentoPanelParaNovo();
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
