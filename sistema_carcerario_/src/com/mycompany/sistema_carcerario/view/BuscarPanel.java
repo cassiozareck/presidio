@@ -6,6 +6,8 @@ package com.mycompany.sistema_carcerario.view;
 
 import DAL.PrisioneiroDao;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -27,6 +29,17 @@ public class BuscarPanel extends javax.swing.JPanel {
         this.parent = parent;
         
         populateTablePrisioneiros("");
+        
+        tabela_prisioneiros.addMouseListener(new MouseAdapter() {
+        @Override
+        public void mouseClicked(MouseEvent e) {
+            int row = tabela_prisioneiros.getSelectedRow();
+            if (row >= 0) {
+                int idPrisioneiro = (int) tabela_prisioneiros.getValueAt(row, 0);
+                parent.showAtendimentoPanel(idPrisioneiro);
+            }
+        }
+    });
     }
 
     
@@ -47,7 +60,7 @@ public class BuscarPanel extends javax.swing.JPanel {
             model.addRow(row);
         }
 
-        tabla_prisioneiros.setModel(model);
+        tabela_prisioneiros.setModel(model);
 
         
     }
@@ -61,13 +74,13 @@ public class BuscarPanel extends javax.swing.JPanel {
     private void initComponents() {
 
         jScrollPane3 = new javax.swing.JScrollPane();
-        tabla_prisioneiros = new javax.swing.JTable();
+        tabela_prisioneiros = new javax.swing.JTable();
         lb_nome = new javax.swing.JLabel();
         tf_nome = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
         btn_cadastrar = new javax.swing.JButton();
 
-        tabla_prisioneiros.setModel(new javax.swing.table.DefaultTableModel(
+        tabela_prisioneiros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
                 {null, null, null, null, null},
@@ -78,7 +91,7 @@ public class BuscarPanel extends javax.swing.JPanel {
                 "ID", "Nome", "CPF", "Idade", "Title 5"
             }
         ));
-        jScrollPane3.setViewportView(tabla_prisioneiros);
+        jScrollPane3.setViewportView(tabela_prisioneiros);
 
         lb_nome.setText("Nome:");
 
@@ -145,7 +158,7 @@ public class BuscarPanel extends javax.swing.JPanel {
     private javax.swing.JButton btn_cadastrar;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lb_nome;
-    private javax.swing.JTable tabla_prisioneiros;
+    private javax.swing.JTable tabela_prisioneiros;
     private javax.swing.JTextField tf_nome;
     // End of variables declaration//GEN-END:variables
 }

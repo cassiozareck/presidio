@@ -4,18 +4,50 @@
  */
 package com.mycompany.sistema_carcerario.view;
 
+import DAL.PrisioneiroDao;
+import com.mycompany.sistema_carcerario.model.Prisioneiro;
+
 /**
  *
  * @author m138824
  */
 public class AtendimentoPanel extends javax.swing.JPanel {
     final MainFrame parent;
+    private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
     /**
      * Creates new form AtendimentoPanel2
      */
     public AtendimentoPanel(MainFrame parent) {
         initComponents();
         this.parent = parent;
+    }
+
+    public void carregarPrisioneiro(int idPrisioneiro) {
+        Prisioneiro prisioneiro = prisioneiroDao.buscarPrisioneiroPorId(idPrisioneiro);
+        
+        if (prisioneiro != null) {
+            tf_nome.setText(prisioneiro.getNome());
+            tf_nome_social.setText(prisioneiro.getNome()); // Assuming nome social is the same as nome for now
+            tf_data_nascimento.setText(prisioneiro.getDataNascimento().toString());
+            tf_cpf.setText(prisioneiro.getCpf());
+            tf_idade.setText(String.valueOf(prisioneiro.calcularIdade()));
+            tf_etinia.setText(prisioneiro.getRaca());
+            
+            // Set combo box values if they match
+            setComboBoxValue(cb_sexo_biologico, prisioneiro.getSexo());
+            setComboBoxValue(cb_identidade_genero, prisioneiro.getGenero());
+            setComboBoxValue(cb_orientacao_sexual, prisioneiro.getOrientacao());
+            setComboBoxValue(jComboBox1, prisioneiro.getRaca());
+        }
+    }
+    
+    private void setComboBoxValue(javax.swing.JComboBox<String> comboBox, String value) {
+        for (int i = 0; i < comboBox.getItemCount(); i++) {
+            if (comboBox.getItemAt(i).equalsIgnoreCase(value)) {
+                comboBox.setSelectedIndex(i);
+                break;
+            }
+        }
     }
 
     /**

@@ -60,6 +60,42 @@ public class PrisioneiroDao {
     return prisioneiros;
 }
 
+public Prisioneiro buscarPrisioneiroPorId(int id) {
+    String sql = "SELECT * FROM prisioneiro WHERE id = ?";
+    
+    try (Connection conexao = ConexaoBanco.conectar();
+         PreparedStatement ps = conexao.prepareStatement(sql)) {
+        
+        ps.setInt(1, id);
+        
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                Prisioneiro p = new Prisioneiro();
+                p.setId(rs.getInt("id"));
+                p.setNome(rs.getString("nome"));
+                p.setNomeMae(rs.getString("nome_mae"));
+                p.setDataNascimento(rs.getDate("data_nascimento").toLocalDate());
+                p.setCpf(rs.getString("cpf"));
+                p.setOrientacao(rs.getString("orientacao"));
+                p.setGenero(rs.getString("genero"));
+                p.setSexo(rs.getString("sexo"));
+                p.setRaca(rs.getString("raca"));
+                p.setNacionalidade(rs.getString("nacionalidade"));
+                p.setEstadoCivil(rs.getString("estado_civil"));
+                p.setEscolaridade(rs.getString("escolaridade"));
+                
+                return p;
+            }
+        }
+        
+    } catch (SQLException e) {
+        e.printStackTrace();
+        System.out.println("Erro ao buscar prisioneiro por ID");
+    }
+    
+    return null;
+}
+
     
     public static void insertPrisioneiro(Prisioneiro prisioneiro, Atendimento atendimento){
         try{
