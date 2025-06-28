@@ -5,17 +5,19 @@ import java.time.LocalDateTime;
 public class Atendimento {
     private int id;
     private int idAtendente;
+    private int idPrisioneiro;
     private LocalDateTime dataHora;
     private LocalDateTime dataEntradaNaUnidade;
     private boolean isTransferencia;
     private String procedencia;
 
     // Construtor completo
-    public Atendimento(int idAtendimento, int idAtendente, LocalDateTime dataHora,
+    public Atendimento(int idAtendimento, int idAtendente, int idPrisioneiro, LocalDateTime dataHora,
                        LocalDateTime dataEntradaNaUnidade, boolean isTransferencia,
                        String procedencia) {
         this.id = idAtendimento;
         this.idAtendente = idAtendente;
+        this.idPrisioneiro = idPrisioneiro;
         this.dataHora = dataHora;
         this.dataEntradaNaUnidade = dataEntradaNaUnidade;
         this.isTransferencia = isTransferencia;
@@ -41,6 +43,14 @@ public class Atendimento {
 
     public void setIdAtendente(int idAtendente) {
         this.idAtendente = idAtendente;
+    }
+
+    public int getIdPrisioneiro() {
+        return idPrisioneiro;
+    }
+
+    public void setIdPrisioneiro(int idPrisioneiro) {
+        this.idPrisioneiro = idPrisioneiro;
     }
 
     public LocalDateTime getDataHora() {
@@ -80,6 +90,7 @@ public class Atendimento {
         return "Atendimento{" +
                 "idAtendimento=" + id +
                 ", idAtendente=" + idAtendente +
+                ", idPrisioneiro=" + idPrisioneiro +
                 ", dataHora=" + dataHora +
                 ", dataEntradaNaUnidade=" + dataEntradaNaUnidade +
                 ", isTransferencia=" + isTransferencia +

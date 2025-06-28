@@ -47,6 +47,7 @@ public class PrisioneiroDao {
                 p.setNacionalidade(rs.getString("nacionalidade"));
                 p.setEstadoCivil(rs.getString("estado_civil"));
                 p.setEscolaridade(rs.getString("escolaridade"));
+                p.setUf(rs.getString("uf"));
 
                 prisioneiros.add(p);
             }
@@ -83,6 +84,7 @@ public Prisioneiro buscarPrisioneiroPorId(int id) {
                 p.setNacionalidade(rs.getString("nacionalidade"));
                 p.setEstadoCivil(rs.getString("estado_civil"));
                 p.setEscolaridade(rs.getString("escolaridade"));
+                p.setUf(rs.getString("uf"));
                 
                 return p;
             }
@@ -99,7 +101,7 @@ public Prisioneiro buscarPrisioneiroPorId(int id) {
 public boolean updatePrisioneiro(Prisioneiro prisioneiro) {
     String sql = "UPDATE prisioneiro SET nome = ?, nome_mae = ?, data_nascimento = ?, cpf = ?, " +
                  "orientacao = ?, genero = ?, sexo = ?, raca = ?, nacionalidade = ?, " +
-                 "estado_civil = ?, escolaridade = ? WHERE id = ?";
+                 "estado_civil = ?, escolaridade = ?, uf = ? WHERE id = ?";
     
     try (Connection conexao = ConexaoBanco.conectar();
          PreparedStatement ps = conexao.prepareStatement(sql)) {
@@ -115,7 +117,8 @@ public boolean updatePrisioneiro(Prisioneiro prisioneiro) {
         ps.setString(9, prisioneiro.getNacionalidade());
         ps.setString(10, prisioneiro.getEstadoCivil());
         ps.setString(11, prisioneiro.getEscolaridade());
-        ps.setInt(12, prisioneiro.getId());
+        ps.setString(12, prisioneiro.getUf());
+        ps.setInt(13, prisioneiro.getId());
         
         int rowsAffected = ps.executeUpdate();
         return rowsAffected > 0;
@@ -153,4 +156,42 @@ public boolean updatePrisioneiro(Prisioneiro prisioneiro) {
         }
     }
     
+    public int insertPrisioneiro(Prisioneiro prisioneiro) {
+        String sql = "INSERT INTO prisioneiro (nome, nome_mae, data_nascimento, cpf, " +
+                     "orientacao, genero, sexo, raca, nacionalidade, estado_civil, escolaridade, uf) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        
+        try (Connection conexao = ConexaoBanco.conectar();
+             PreparedStatement ps = conexao.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS)) {
+            
+            ps.setString(1, prisioneiro.getNome());
+            ps.setString(2, prisioneiro.getNomeMae());
+            ps.setDate(3, java.sql.Date.valueOf(prisioneiro.getDataNascimento()));
+            ps.setString(4, prisioneiro.getCpf());
+            ps.setString(5, prisioneiro.getOrientacao());
+            ps.setString(6, prisioneiro.getGenero());
+            ps.setString(7, prisioneiro.getSexo());
+            ps.setString(8, prisioneiro.getRaca());
+            ps.setString(9, prisioneiro.getNacionalidade());
+            ps.setString(10, prisioneiro.getEstadoCivil());
+            ps.setString(11, prisioneiro.getEscolaridade());
+            ps.setString(12, prisioneiro.getUf());
+            
+            int rowsAffected = ps.executeUpdate();
+            
+            if (rowsAffected > 0) {
+                try (ResultSet rs = ps.getGeneratedKeys()) {
+                    if (rs.next()) {
+                        return rs.getInt(1);
+                    }
+                }
+            }
+            
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao inserir prisioneiro");
+        }
+        
+        return -1; // Retorna -1 se houver erro
+    }
 }

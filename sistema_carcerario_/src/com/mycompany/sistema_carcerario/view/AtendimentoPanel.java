@@ -5,7 +5,10 @@
 package com.mycompany.sistema_carcerario.view;
 
 import DAL.PrisioneiroDao;
+import DAL.AtendimentoDao;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
+import com.mycompany.sistema_carcerario.model.Atendimento;
+import java.time.LocalDateTime;
 
 /**
  *
@@ -14,6 +17,7 @@ import com.mycompany.sistema_carcerario.model.Prisioneiro;
 public class AtendimentoPanel extends javax.swing.JPanel {
     final MainFrame parent;
     private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
+    private final AtendimentoDao atendimentoDao = new AtendimentoDao();
     private Prisioneiro prisioneiroAtual;
     /**
      * Creates new form AtendimentoPanel2
@@ -88,12 +92,27 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         prisioneiro.setNome(tf_nome.getText());
         prisioneiro.setNomeMae(tf_nome_social.getText()); 
         prisioneiro.setCpf(tf_cpf.getText());
-        prisioneiro.setRaca(tf_etinia.getText());
         
         try {
-            prisioneiro.setDataNascimento(java.time.LocalDate.parse(tf_data_nascimento.getText()));
+            String dataTexto = tf_data_nascimento.getText().trim();
+            java.time.LocalDate dataNascimento;
+            
+            // Tenta diferentes formatos de data
+            if (dataTexto.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                // Formato YYYY-MM-DD
+                dataNascimento = java.time.LocalDate.parse(dataTexto);
+            } else if (dataTexto.matches("\\d{2}/\\d{2}/\\d{4}")) {
+                // Formato DD/MM/YYYY
+                java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                dataNascimento = java.time.LocalDate.parse(dataTexto, formatter);
+            } else {
+                System.out.println("Formato de data inválido. Use DD/MM/YYYY ou YYYY-MM-DD");
+                return null;
+            }
+            
+            prisioneiro.setDataNascimento(dataNascimento);
         } catch (Exception e) {
-            System.out.println("Erro ao parsear data de nascimento");
+            System.out.println("Erro ao parsear data de nascimento: " + e.getMessage());
             return null;
         }
         
@@ -103,10 +122,11 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         prisioneiro.setOrientacao((String) cb_orientacao_sexual.getSelectedItem());
         prisioneiro.setRaca((String) jComboBox1.getSelectedItem());
         
-        // Parte 2
+        // Valores padrão para campos obrigatórios
         prisioneiro.setNacionalidade("Brasileira");
         prisioneiro.setEstadoCivil("Solteiro");
         prisioneiro.setEscolaridade("Fundamental");
+        prisioneiro.setUf("SP"); // Valor padrão para UF
         
         return prisioneiro;
     }
@@ -282,15 +302,15 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel14.setText("Sexo Biológico:");
 
-        cb_sexo_biologico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_sexo_biologico.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Intersexo" }));
 
         jLabel15.setText("Identidade de Gênero:");
 
-        cb_identidade_genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_identidade_genero.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Masculino", "Feminino", "Não-binário", "Transgênero" }));
 
         jLabel16.setText("Orientação Sexual:");
 
-        cb_orientacao_sexual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cb_orientacao_sexual.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Heterossexual", "Homossexual", "Bissexual", "Pansexual", "Assexual" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -435,18 +455,44 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             return;
         }
         
-        // Vai fazer um update e retornar, caso de sucesso voltará a tela de busca
         boolean sucesso = false;
         
         if (prisioneiroAtual != null) {
-      
+            // Editando prisioneiro existente
             sucesso = prisioneiroDao.updatePrisioneiro(prisioneiro);
             if (sucesso) {
                 System.out.println("Prisioneiro atualizado com sucesso!");
             } else {
                 System.out.println("Erro ao atualizar prisioneiro");
             }
-        } 
+        } else {
+            // Novo cadastro - inserir prisioneiro e atendimento
+            int idPrisioneiro = prisioneiroDao.insertPrisioneiro(prisioneiro);
+            
+            if (idPrisioneiro > 0) {
+                System.out.println("Prisioneiro inserido com sucesso! ID: " + idPrisioneiro);
+                
+                // Criar e inserir o atendimento
+                Atendimento atendimento = new Atendimento();
+                atendimento.setIdPrisioneiro(idPrisioneiro);
+                atendimento.setIdAtendente(1); // ID padrão do atendente
+                atendimento.setDataHora(LocalDateTime.now());
+                atendimento.setDataEntradaNaUnidade(LocalDateTime.now());
+                atendimento.setTransferencia(jRadioButton1.isSelected()); // Se o radio button "Sim" estiver selecionado
+                atendimento.setProcedencia(jTextField2.getText().trim().isEmpty() ? "Não informado" : jTextField2.getText().trim());
+                
+                boolean atendimentoSucesso = atendimentoDao.insertAtendimento(atendimento);
+                
+                if (atendimentoSucesso) {
+                    System.out.println("Atendimento inserido com sucesso!");
+                    sucesso = true;
+                } else {
+                    System.out.println("Erro ao inserir atendimento");
+                }
+            } else {
+                System.out.println("Erro ao inserir prisioneiro");
+            }
+        }
         
         if (sucesso) {
             parent.showPanel("buscaPanel");
