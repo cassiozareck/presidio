@@ -10,7 +10,9 @@ import DAL.AtendimentoDao;
 import com.mycompany.sistema_carcerario.model.Atendente;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import com.mycompany.sistema_carcerario.model.Atendimento;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 /**
@@ -30,8 +32,18 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         initComponents();
         this.parent = parent;
         setComboBoxResponsavel();
+        //Setando a data atual 
+        jLabelData.setText(getDataAtual());
+        
     }
-
+    
+    // Retorna uma String contendo a data atual no formato "dd/MM/yyyy"
+    public String getDataAtual(){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataFormatada = LocalDate.now().format(formatter);
+        return dataFormatada;
+    }
+    
     // Função responsável por carregar um prisioneiro existente pelo ID
     // Vai chamar query no DAO e preencher UI
     public void carregarPrisioneiro(int idPrisioneiro) {
@@ -185,6 +197,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jTextField3 = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jComboBoxResponsavel = new javax.swing.JComboBox<>();
+        jLabelData = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         tf_nome = new javax.swing.JTextField();
@@ -257,6 +270,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jComboBoxResponsavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        jLabelData.setText("jLabel17");
+
         javax.swing.GroupLayout atendimento_panelLayout = new javax.swing.GroupLayout(atendimento_panel);
         atendimento_panel.setLayout(atendimento_panelLayout);
         atendimento_panelLayout.setHorizontalGroup(
@@ -274,6 +289,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                         .addComponent(jTextField3, javax.swing.GroupLayout.DEFAULT_SIZE, 468, Short.MAX_VALUE))
                     .addGroup(atendimento_panelLayout.createSequentialGroup()
                         .addComponent(jLabel4)
+                        .addGap(18, 18, 18)
+                        .addComponent(jLabelData)
                         .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(atendimento_panelLayout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -289,7 +306,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jComboBoxResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addGroup(atendimento_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jLabelData))
                 .addGap(18, 18, 18)
                 .addGroup(atendimento_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jRadioButton1)
@@ -542,6 +561,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelData;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioButton1;
     private javax.swing.JRadioButton jRadioButton2;
