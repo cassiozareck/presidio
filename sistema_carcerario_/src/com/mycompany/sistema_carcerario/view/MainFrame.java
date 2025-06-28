@@ -3,6 +3,7 @@ package com.mycompany.sistema_carcerario.view;
 import java.awt.CardLayout;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 
 public class MainFrame extends JFrame {
     //CardLayout é O CardLayout funciona como um baralho de painéis (JPanels) 
@@ -19,13 +20,21 @@ public class MainFrame extends JFrame {
     
     public MainFrame(){
         super("Painel principal");
-        this.setSize(500,400);
+        this.setSize(800,500);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
         atendimentoPanel = new AtendimentoPanel(this);
         buscaPanel = new BuscarPanel(this);
         
-        cardPanel.add(atendimentoPanel, ATENDIMENTO_PANEL);
+        // Painel de rolagem
+        JScrollPane scrollAtendimento = new JScrollPane(atendimentoPanel);
+        // Condições em que a rolagem será disponibilizada
+        scrollAtendimento.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollAtendimento.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        
+        // Adicionando scollAtendimento ao cardPanel e associando seu nome a ATENDIMENTO_PANEL
+        cardPanel.add(scrollAtendimento, ATENDIMENTO_PANEL);
+        // Adicionando buscaPanel ao cardPanel e associando seu nome a BUSCA_PANEL
         cardPanel.add(buscaPanel, BUSCA_PANEL);
         
         this.add(cardPanel);
