@@ -27,7 +27,7 @@ CREATE TABLE prisioneiro (
   quantos_filhos VARCHAR(255) NOT NULL,
   idade INT NOT NULL,
   possui_dependentes BOOL NOT NULL,
-  quantos_dependentes INT(255) NOT NULL,
+  quantos_dependentes INT NOT NULL,
   ofertar_neeja BOOL NOT NULL,
   ofertar_assistencia_social BOOL NOT NULL,
   possui_deficiencia INT NOT NULL, --Atenção ao tipo
@@ -43,7 +43,7 @@ CREATE TABLE prisioneiro (
   hiv BOOL,
   autoimune BOOL, 
   outras_doencas_cronicas VARCHAR(255) NOT NULL,
-  nao_sabe_responder_condicoes_cronicas BOOL NOT NULL, --Atenção 
+  nao_sabe_responder_condicoes_cronicas BOOL NOT NULL,
   observacao_condicoes_cronicas VARCHAR(255) NOT NULL,
   
   --Historico doenças infecciosas
@@ -53,11 +53,11 @@ CREATE TABLE prisioneiro (
   hepatite_b BOOL,
   hepatite_c BOOL,
   outras_doencas_infecciosas VARCHAR(255) NOT NULL,
-  nao_sabe_responder_doencas_infecciosas BOOL NOT NULL, --Atenção 
+  nao_sabe_responder_doencas_infecciosas BOOL NOT NULL,
   observacao_historico_doencas_infecciosas VARCHAR(255) NOT NULL,
   
   --Possui doença de pele
-  doenca_pele BOOL, --Atenção ao tipo
+  doenca_pele BOOL,
   quais_doencas_pele VARCHAR(255) NOT NULL,
   nao_sabe_responder_doencas_pele BOOL NOT NULL, --Atenção 
   observacao_historico_doencas_pele VARCHAR(255) NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE prisioneiro (
   esquizofrenia BOOL,
   autismo BOOL,
   outra_saude_mental VARCHAR(255),
-  nao_sabe_responder_saude_mental BOOL NOT NULL
+  nao_sabe_responder_saude_mental BOOL NOT NULL,
   
   medicamento_controlado BOOL,
   qual_medicamento_controlado VARCHAR(255),
@@ -126,11 +126,11 @@ CREATE TABLE prisioneiro (
   outra_vacina VARCHAR(255),
   ofertar_carteira_vacinacao BOOL NOT NULL,
   
-  encaminhamento_final VARCHAR(255) NOT NULL,
+  encaminhamentos_finais VARCHAR(255) NOT NULL
 );
 
 CREATE TABLE saude_mulher(
-	id INT NOT NULL PRIMARY KEY auto_increment,
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	id_prisioneiro INT NOT NULL,
 	gestacao INT NOT NULL,
 	idade_gestacional INT,
@@ -139,7 +139,7 @@ CREATE TABLE saude_mulher(
 	diu_implante BOOL NOT NULL,
 	anticoncepcional_injetavel BOOL NOT NULL,
 	ligadura_trompas BOOL NOT NULL,
-	histerectomia BOOL NOT NULL
+	histerectomia BOOL NOT NULL,
 	
 	exame_preventivo_papanicolau BOOL NOT NULL,
 	exame_preventivo_papanicolau_ano INT,
@@ -148,11 +148,11 @@ CREATE TABLE saude_mulher(
 	ofertar_continuidade_contraceptivo BOOL NOT NULL,
 	ofertar_consulta_preventivo BOOL NOT NULL,
 	encaminhar_pre_natal BOOL NOT NULL,
-	CONSTRAINT id_saude_mulher_fk foreign key (id_prisioneiro) references prisioneiro(id)
-)
+	CONSTRAINT id_saude_mulher_fk FOREIGN KEY (id_prisioneiro) REFERENCES prisioneiro(id)
+);
 
 CREATE TABLE saude_homem(
-	id INT NOT NULL PRIMARY KEY auto_increment,
+	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	id_prisioneiro INT NOT NULL,
 	realizou_exame_prostata BOOL NOT NULL,
 	ano_exame_prostata INT,
@@ -166,8 +166,7 @@ CREATE TABLE saude_homem(
 	ofertar_encaminhamento_vasectomia BOOL NOT NULL,
 	ofertar_encaminhamento_pre_natal BOOL NOT NULL,
 	CONSTRAINT id_saude_homem_fk FOREIGN KEY (id_prisioneiro) REFERENCES prisioneiro(id)
-)
-
+);
 
 create table atendimento (
   id int not null primary key auto_increment,
@@ -184,7 +183,7 @@ create table atendimento (
   altura FLOAT NOT NULL,
   imc FLOAT NOT NULL,
   
-  pa VARCHAR NOT NULL,
+  pa VARCHAR(255) NOT NULL,
   fc FLOAT NOT NULL,
   sat FLOAT NOT NULL,
   temp FLOAT NOT NULL,
