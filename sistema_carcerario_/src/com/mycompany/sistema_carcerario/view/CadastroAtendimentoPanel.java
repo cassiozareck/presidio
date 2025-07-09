@@ -4,19 +4,47 @@
  */
 package com.mycompany.sistema_carcerario.view;
 
+import DAL.AtendenteDao;
+import DAL.PrisioneiroDao;
+import com.mycompany.sistema_carcerario.model.Atendente;
+import com.mycompany.sistema_carcerario.model.Prisioneiro;
+import java.util.ArrayList;
+
 /**
  *
  * @author fernando
  */
 public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     final MainFrame parent;
+    private final AtendenteDao atendenteDao = new AtendenteDao();
+    private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
     /**
      * Creates new form CadastroAtendimentoPanel
      */
     public CadastroAtendimentoPanel(MainFrame parent) {
         initComponents();
         this.parent = parent;
+        setComboBoxResponsavel();
+        setComboBoxDetento();
     }
+    
+    // Popula o combobox jComboBoxResponsavel com nome dos atendentes cadastrados.
+    private void setComboBoxResponsavel(){
+        jComboBoxResponsavel.removeAllItems();
+        ArrayList <Atendente> atendentes = atendenteDao.getAtendentes();
+        for(Atendente atendente : atendentes){
+            jComboBoxResponsavel.addItem(atendente.getNome());
+        }
+    }
+
+    // Popula o combobox jComboBoxDetento com nome dos detentos cadastrados.
+    private void setComboBoxDetento(){
+        jComboBoxDetento.removeAllItems();
+        ArrayList <Prisioneiro> prisioneiros = prisioneiroDao.getNomesPrisioneiros();
+        for(Prisioneiro prisioneiro : prisioneiros){
+            jComboBoxDetento.addItem(prisioneiro.getNome());
+        }
+    }     
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -35,6 +63,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
+        dataBase1 = new com.mycompany.sistema_carcerario.model.DataBase();
         atendimento_panel = new javax.swing.JPanel();
         jLabelData = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -188,7 +217,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jLabel64 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboBoxDetento = new javax.swing.JComboBox<>();
 
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel35.setText("ATENDIMENTO CLÍNCO");
@@ -591,7 +620,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
 
         jLabel65.setText("Nome completo:");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxDetento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -897,7 +926,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel65)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(jComboBoxDetento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -922,7 +951,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel65)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jComboBoxDetento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(55, 55, 55)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1241,7 +1270,8 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.ButtonGroup buttonGroup3;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private com.mycompany.sistema_carcerario.model.DataBase dataBase1;
+    private javax.swing.JComboBox<String> jComboBoxDetento;
     private javax.swing.JComboBox<String> jComboBoxResponsavel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;

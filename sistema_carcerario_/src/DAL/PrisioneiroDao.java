@@ -10,6 +10,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,7 +19,31 @@ import java.util.List;
  * @author m138824
  */
 public class PrisioneiroDao {
+   
     
+    public ArrayList<Prisioneiro> getNomesPrisioneiros(){
+        ArrayList<Prisioneiro> prisioneiros = new ArrayList<>();
+        String sql = "SELECT nome,id FROM prisioneiro";
+
+        try (Connection conexao = ConexaoBanco.conectar()){
+            Statement stmt = conexao.createStatement();  
+            ResultSet rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                Prisioneiro prisioneiro = new Prisioneiro();
+                prisioneiro.setNome(rs.getString("nome"));
+                prisioneiro.setId(rs.getInt("id"));
+                prisioneiros.add(prisioneiro);   
+            }
+
+            return prisioneiros;
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao listar prisioneiros com filtro");
+        }
+        return null;
+    }
     
     public List<Prisioneiro> listarPrisioneiros(String filter) {
     List<Prisioneiro> prisioneiros = new ArrayList<>();

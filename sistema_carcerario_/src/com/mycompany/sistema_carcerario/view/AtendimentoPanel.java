@@ -544,6 +544,11 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jLabel6.setText("Transferência");
 
         jComboBoxResponsavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxResponsavel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxResponsavelActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout atendimento_panelLayout = new javax.swing.GroupLayout(atendimento_panel);
         atendimento_panel.setLayout(atendimento_panelLayout);
@@ -2696,6 +2701,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private void tf_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nomeActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_nomeActionPerformed
+
+    private void jComboBoxResponsavelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxResponsavelActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxResponsavelActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
