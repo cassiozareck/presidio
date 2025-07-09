@@ -126,33 +126,8 @@ CREATE TABLE prisioneiro (
   outra_vacina VARCHAR(255),
   ofertar_carteira_vacinacao BOOL NOT NULL,
   
-  ----- PRIMEIRO ATENDIMENTO CLINICO
-  peso INT NOT NULL,
-  altura FLOAT NOT NULL,
-  imc FLOAT NOT NULL,
-  
-  pa VARCHAR NOT NULL,
-  fc FLOAT NOT NULL,
-  sat FLOAT NOT NULL,
-  temp FLOAT NOT NULL,
-  
-  tosse BOOL NOT NULL,
-  coriza BOOL NOT NULL,
-  espirros BOOL NOT NULL,
-  febre BOOL NOT NULL,
-  calafrios BOOL NOT NULL,
-  
-  outros_sistemas_respiratorios VARCHAR(255),
-  data_sintomas DATE,
-  
-  apresenta_lesoes BOOL NOT NULL,
-  local_lesoes VARCHAR(255),
+  encaminhamento_final VARCHAR(255) NOT NULL,
 );
-
-CREATE TABLE atendimento_clinico(
-	
-)
-
 
 CREATE TABLE saude_mulher(
 	id INT NOT NULL PRIMARY KEY auto_increment,
@@ -202,6 +177,63 @@ create table atendimento (
   data_entrada_unidade date not null,
   is_transferencia bool not null,
   procedencia varchar(255) not null,
+
+
+  ----- PRIMEIRO ATENDIMENTO CLINICO
+  peso INT NOT NULL,
+  altura FLOAT NOT NULL,
+  imc FLOAT NOT NULL,
+  
+  pa VARCHAR NOT NULL,
+  fc FLOAT NOT NULL,
+  sat FLOAT NOT NULL,
+  temp FLOAT NOT NULL,
+  
+  tosse BOOL NOT NULL,
+  coriza BOOL NOT NULL,
+  espirros BOOL NOT NULL,
+  febre BOOL NOT NULL,
+  calafrios BOOL NOT NULL,
+  
+  outros_sistemas_respiratorios VARCHAR(255),
+  data_sintomas DATE,
+  
+  apresenta_lesoes BOOL NOT NULL,
+  local_lesoes VARCHAR(255) NOT NULL,
+
+  conduta_lesoes_clinica VARCHAR(255) NOT NULL,
+  hiv_1_2_lote VARCHAR(255) NOT NULL,
+  hiv_1_2_validade DATE NOT NULL, 
+  hiv_1_2_reativo BOOL, 
+  hiv_2_2_lote VARCHAR(255) NOT NULL,
+  hiv_2_2_validade DATE NOT NULL,
+  hiv_2_2_reativo BOOL,
+  sifilis_lote VARCHAR(255) NOT NULL,
+  sifilis_validade DATE NOT NULL,
+  sifilis_reativo BOOL,
+  hepatite_b_lote VARCHAR(255) NOT NULL,
+  hepatite_b_validade DATE NOT NULL,
+  hepatite_b_reativo BOOL,
+  hepatite_c_lote VARCHAR(255) NOT NULL,
+  hepatite_c_validade DATE NOT NULL,
+  hepatite_c_reativo BOOL,
+  covid_lote VARCHAR(255) NOT NULL,
+  covid_validade DATE NOT NULL,
+  covid_reativo BOOL,
+  
+  teste_gravidez BOOL,
+  coleta_escarro BOOL NOT NULL,
+
+  apresenta_queixas_teste_rapido BOOL NOT NULL,
+  queixa_teste_rapido VARCHAR(255) NOT NULL,
+  conduta_teste_rapido VARCHAR(255) NOT NULL,
+  conduta_clinica VARCHAR(255) NOT NULL,
+
+  tem_queixa_odontologica BOOL NOT NULL,
+  queixa_odontologica VARCHAR(255) NOT NULL,
+  necessita_dentista BOOL NOT NULL,
+  conduta_odontologica VARCHAR(255) NOT NULL,
+
   constraint id_atendente_fk foreign key (id_atendente) references atendente(id),
   constraint id_prisioneiro_fk foreign key (id_prisioneiro) references prisioneiro(id)
 );
