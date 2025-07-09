@@ -201,6 +201,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         bg_hpv = new javax.swing.ButtonGroup();
         bg_tuberculose = new javax.swing.ButtonGroup();
         bg_hepatite_b = new javax.swing.ButtonGroup();
+        bg_med_continuo = new javax.swing.ButtonGroup();
+        bg_tipo_sangue = new javax.swing.ButtonGroup();
         btn_cancelar = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         atendimento_panel = new javax.swing.JPanel();
@@ -308,6 +310,23 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jLabel33 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
+        tf_med_continuo = new javax.swing.JTextField();
+        rb_doenca_pele_nao1 = new javax.swing.JRadioButton();
+        rb_doenca_pele_sim1 = new javax.swing.JRadioButton();
+        jLabel27 = new javax.swing.JLabel();
+        jLabel37 = new javax.swing.JLabel();
+        jLabel28 = new javax.swing.JLabel();
+        rb_tipo_sangue_ap = new javax.swing.JRadioButton();
+        rb_tipo_sangue_am = new javax.swing.JRadioButton();
+        rb_tipo_sangue_bp = new javax.swing.JRadioButton();
+        rb_tipo_sangue_bm = new javax.swing.JRadioButton();
+        rb_tipo_sangue_op = new javax.swing.JRadioButton();
+        rb_tipo_sangue_om = new javax.swing.JRadioButton();
+        rb_tipo_sangue_abp = new javax.swing.JRadioButton();
+        rb_tipo_sangue_abm = new javax.swing.JRadioButton();
+        rb_tipo_sangue_nao_sabe = new javax.swing.JRadioButton();
+        jLabel47 = new javax.swing.JLabel();
+        tf_tipo_sangue = new javax.swing.JTextField();
 
         jLabel1.setText("Responsável:");
 
@@ -831,6 +850,55 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel46.setText("Quais:");
 
+        tf_med_continuo.setEditable(false);
+        tf_med_continuo.setEnabled(false);
+        tf_med_continuo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_med_continuoActionPerformed(evt);
+            }
+        });
+
+        bg_med_continuo.add(rb_doenca_pele_nao1);
+        rb_doenca_pele_nao1.setText("Não");
+
+        bg_med_continuo.add(rb_doenca_pele_sim1);
+        rb_doenca_pele_sim1.setText("Sim");
+
+        jLabel27.setText("Usa medicamento contínuo:");
+
+        jLabel37.setText("Quais:");
+
+        jLabel28.setText("Usa medicamento contínuo:");
+
+        bg_tipo_sangue.add(rb_tipo_sangue_ap);
+        rb_tipo_sangue_ap.setText("A+");
+
+        bg_tipo_sangue.add(rb_tipo_sangue_am);
+        rb_tipo_sangue_am.setText("A-");
+
+        bg_tipo_sangue.add(rb_tipo_sangue_bp);
+        rb_tipo_sangue_bp.setText("B+");
+
+        bg_tipo_sangue.add(rb_tipo_sangue_bm);
+        rb_tipo_sangue_bm.setText("B-");
+
+        bg_tipo_sangue.add(rb_tipo_sangue_op);
+        rb_tipo_sangue_op.setText("O+");
+
+        bg_tipo_sangue.add(rb_tipo_sangue_om);
+        rb_tipo_sangue_om.setText("O-");
+
+        bg_tipo_sangue.add(rb_tipo_sangue_abp);
+        rb_tipo_sangue_abp.setText("AB+");
+
+        bg_tipo_sangue.add(rb_tipo_sangue_abm);
+        rb_tipo_sangue_abm.setText("AB-");
+
+        bg_tipo_sangue.add(rb_tipo_sangue_nao_sabe);
+        rb_tipo_sangue_nao_sabe.setText("Não sabe");
+
+        jLabel47.setText("Encaminhamentos:");
+
         javax.swing.GroupLayout condicoes_de_saudeLayout = new javax.swing.GroupLayout(condicoes_de_saude);
         condicoes_de_saude.setLayout(condicoes_de_saudeLayout);
         condicoes_de_saudeLayout.setHorizontalGroup(
@@ -873,7 +941,11 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tf_possui_intolerancia_quais8, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                        .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel37)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_med_continuo, javax.swing.GroupLayout.DEFAULT_SIZE, 749, Short.MAX_VALUE))
+                    .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                        .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                                 .addComponent(jLabel19)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -960,7 +1032,37 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(rb_doenca_pele_sim)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_doenca_pele_nao)))
+                                .addComponent(rb_doenca_pele_nao))
+                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                .addComponent(jLabel27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_doenca_pele_sim1)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_doenca_pele_nao1))
+                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_ap)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_am)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_bp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_bm)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_op)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_om)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_abp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_abm)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_nao_sabe))
+                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                .addComponent(jLabel47)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_tipo_sangue)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1082,7 +1184,32 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
                     .addComponent(tf_possui_intolerancia_quais8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel27)
+                    .addComponent(rb_doenca_pele_sim1)
+                    .addComponent(rb_doenca_pele_nao1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel37)
+                    .addComponent(tf_med_continuo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel28)
+                    .addComponent(rb_tipo_sangue_ap)
+                    .addComponent(rb_tipo_sangue_am)
+                    .addComponent(rb_tipo_sangue_bp)
+                    .addComponent(rb_tipo_sangue_bm)
+                    .addComponent(rb_tipo_sangue_op)
+                    .addComponent(rb_tipo_sangue_om)
+                    .addComponent(rb_tipo_sangue_abp)
+                    .addComponent(rb_tipo_sangue_abm)
+                    .addComponent(rb_tipo_sangue_nao_sabe))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel47)
+                    .addComponent(tf_tipo_sangue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(37, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -1117,7 +1244,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(condicoes_de_saude, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 285, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 118, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_cancelar)
                     .addComponent(btn_salvar))
@@ -1226,6 +1353,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_possui_intolerancia_quais2ActionPerformed
 
+    private void tf_med_continuoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_med_continuoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_med_continuoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel atendimento_panel;
@@ -1235,12 +1366,14 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bg_hipertencao;
     private javax.swing.ButtonGroup bg_hiv;
     private javax.swing.ButtonGroup bg_hpv;
+    private javax.swing.ButtonGroup bg_med_continuo;
     private javax.swing.ButtonGroup bg_nacionalidade;
     private javax.swing.ButtonGroup bg_possui_deficiencia;
     private javax.swing.ButtonGroup bg_possui_denca_de_pele;
     private javax.swing.ButtonGroup bg_possui_intolerancia;
     private javax.swing.ButtonGroup bg_realizou_cirurgia;
     private javax.swing.ButtonGroup bg_sifilis;
+    private javax.swing.ButtonGroup bg_tipo_sangue;
     private javax.swing.ButtonGroup bg_transferencia;
     private javax.swing.ButtonGroup bg_tuberculose;
     private javax.swing.JButton btn_cancelar;
@@ -1273,6 +1406,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
+    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel28;
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
@@ -1282,6 +1417,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
     private javax.swing.JLabel jLabel36;
+    private javax.swing.JLabel jLabel37;
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
@@ -1292,6 +1428,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
+    private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
@@ -1323,7 +1460,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_condicoes_cronicas_sim8;
     private javax.swing.JRadioButton rb_condicoes_cronicas_sim9;
     private javax.swing.JRadioButton rb_doenca_pele_nao;
+    private javax.swing.JRadioButton rb_doenca_pele_nao1;
     private javax.swing.JRadioButton rb_doenca_pele_sim;
+    private javax.swing.JRadioButton rb_doenca_pele_sim1;
     private javax.swing.JRadioButton rb_nacionalidade_brasileira;
     private javax.swing.JRadioButton rb_nacionalidade_estrangeiro;
     private javax.swing.JRadioButton rb_nacionalidade_naturalizado;
@@ -1336,6 +1475,15 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_realizou_cirurgia_nao;
     private javax.swing.JRadioButton rb_realizou_cirurgia_nao_sei;
     private javax.swing.JRadioButton rb_realizou_cirurgia_sim;
+    private javax.swing.JRadioButton rb_tipo_sangue_abm;
+    private javax.swing.JRadioButton rb_tipo_sangue_abp;
+    private javax.swing.JRadioButton rb_tipo_sangue_am;
+    private javax.swing.JRadioButton rb_tipo_sangue_ap;
+    private javax.swing.JRadioButton rb_tipo_sangue_bm;
+    private javax.swing.JRadioButton rb_tipo_sangue_bp;
+    private javax.swing.JRadioButton rb_tipo_sangue_nao_sabe;
+    private javax.swing.JRadioButton rb_tipo_sangue_om;
+    private javax.swing.JRadioButton rb_tipo_sangue_op;
     private javax.swing.JRadioButton rb_transferencia_nao;
     private javax.swing.JRadioButton rb_transferencia_sim;
     private javax.swing.JTextField tf_cpf;
@@ -1343,6 +1491,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_deficiencia_quais;
     private javax.swing.JTextField tf_etinia;
     private javax.swing.JTextField tf_idade;
+    private javax.swing.JTextField tf_med_continuo;
     private javax.swing.JTextField tf_nacionalidade_qual_pais;
     private javax.swing.JTextField tf_nome;
     private javax.swing.JTextField tf_nome_mae;
@@ -1355,5 +1504,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_possui_intolerancia_quais2;
     private javax.swing.JTextField tf_possui_intolerancia_quais7;
     private javax.swing.JTextField tf_possui_intolerancia_quais8;
+    private javax.swing.JTextField tf_tipo_sangue;
     // End of variables declaration//GEN-END:variables
 }

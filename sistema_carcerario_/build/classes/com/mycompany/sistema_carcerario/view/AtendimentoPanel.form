@@ -61,6 +61,10 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="bg_hepatite_b">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="bg_med_continuo">
+    </Component>
+    <Component class="javax.swing.ButtonGroup" name="bg_tipo_sangue">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -114,7 +118,7 @@
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="condicoes_de_saude" min="-2" max="-2" attributes="0"/>
-              <EmptySpace pref="285" max="32767" attributes="0"/>
+              <EmptySpace pref="118" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_salvar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -721,8 +725,13 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Component id="tf_possui_intolerancia_quais8" pref="749" max="32767" attributes="0"/>
                       </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tf_med_continuo" pref="749" max="32767" attributes="0"/>
+                      </Group>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -823,6 +832,39 @@
                                   <Component id="rb_doenca_pele_sim" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="rb_doenca_pele_nao" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_doenca_pele_sim1" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_doenca_pele_nao1" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_ap" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_am" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_bp" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_bm" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_op" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_om" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_abp" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_abm" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_nao_sabe" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tf_tipo_sangue" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -978,7 +1020,36 @@
                       <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tf_possui_intolerancia_quais8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="32767" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_doenca_pele_sim1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_doenca_pele_nao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_med_continuo" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_tipo_sangue_ap" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_tipo_sangue_am" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_tipo_sangue_bp" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_tipo_sangue_bm" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_tipo_sangue_op" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_tipo_sangue_om" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_tipo_sangue_abp" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_tipo_sangue_abm" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_tipo_sangue_nao_sabe" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_tipo_sangue" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <EmptySpace pref="37" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -1417,6 +1488,125 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Quais:"/>
           </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_med_continuo">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_med_continuoActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_doenca_pele_nao1">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_med_continuo"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_doenca_pele_sim1">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_med_continuo"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Sim"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel27">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Usa medicamento cont&#xed;nuo:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel37">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quais:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel28">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Usa medicamento cont&#xed;nuo:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_tipo_sangue_ap">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_tipo_sangue"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="A+"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_tipo_sangue_am">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_tipo_sangue"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="A-"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_tipo_sangue_bp">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_tipo_sangue"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="B+"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_tipo_sangue_bm">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_tipo_sangue"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="B-"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_tipo_sangue_op">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_tipo_sangue"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="O+"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_tipo_sangue_om">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_tipo_sangue"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="O-"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_tipo_sangue_abp">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_tipo_sangue"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="AB+"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_tipo_sangue_abm">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_tipo_sangue"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="AB-"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_tipo_sangue_nao_sabe">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_tipo_sangue"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="N&#xe3;o sabe"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel47">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Encaminhamentos:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_tipo_sangue">
         </Component>
       </SubComponents>
     </Container>
