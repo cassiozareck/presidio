@@ -53,13 +53,13 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="bg_autoimune">
     </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup3">
+    <Component class="javax.swing.ButtonGroup" name="bg_sifilis">
     </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup4">
+    <Component class="javax.swing.ButtonGroup" name="bg_hpv">
     </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup5">
+    <Component class="javax.swing.ButtonGroup" name="bg_tuberculose">
     </Component>
-    <Component class="javax.swing.ButtonGroup" name="buttonGroup6">
+    <Component class="javax.swing.ButtonGroup" name="bg_hepatite_b">
     </Component>
   </NonVisualComponents>
   <Properties>
@@ -85,7 +85,7 @@
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="jPanel4" max="32767" attributes="0"/>
+                  <Component id="condicoes_de_saude" max="32767" attributes="0"/>
                   <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
                   <Component id="atendimento_panel" alignment="0" max="32767" attributes="0"/>
                   <Component id="identificacao_panel" alignment="0" max="32767" attributes="0"/>
@@ -113,8 +113,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel4" max="32767" attributes="0"/>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="condicoes_de_saude" min="-2" max="-2" attributes="0"/>
+              <EmptySpace pref="285" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="btn_cancelar" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btn_salvar" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -668,7 +668,10 @@
         </Component>
       </SubComponents>
     </Container>
-    <Container class="javax.swing.JPanel" name="jPanel4">
+    <Container class="javax.swing.JPanel" name="condicoes_de_saude">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_SerializeTo" type="java.lang.String" value="condicoes_de_saude"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -676,23 +679,33 @@
               <Group type="102" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="tf_deficiencia_quais" max="32767" attributes="0"/>
-                      <Component id="tf_possui_intolerancia_quais" alignment="0" max="32767" attributes="0"/>
-                      <Component id="tf_possui_intolerancia_quais1" alignment="0" max="32767" attributes="0"/>
-                      <Component id="tf_possui_intolerancia_quais6" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel24" alignment="0" max="32767" attributes="0"/>
-                      <Component id="jLabel25" alignment="0" max="32767" attributes="0"/>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel33" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tf_possui_intolerancia_quais8" pref="749" max="32767" attributes="0"/>
+                          <Component id="tf_deficiencia_quais" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="tf_possui_intolerancia_quais9" max="32767" attributes="0"/>
+                          <Component id="jLabel45" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tf_possui_intolerancia_quais" max="32767" attributes="0"/>
                       </Group>
-                      <Component id="tf_possui_intolerancia_quais5" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tf_possui_intolerancia_quais1" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel24" alignment="0" max="32767" attributes="0"/>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tf_possui_intolerancia_quais2" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tf_possui_intolerancia_quais7" max="32767" attributes="0"/>
+                      </Group>
+                      <Component id="jLabel25" alignment="0" max="32767" attributes="0"/>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
@@ -704,35 +717,12 @@
                           <Component id="tf_possui_intolerancia_quais11" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tf_possui_intolerancia_quais2" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" alignment="0" attributes="0">
-                          <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
-                          <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tf_possui_intolerancia_quais7" max="32767" attributes="0"/>
+                          <Component id="tf_possui_intolerancia_quais8" pref="749" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_doenca_pele_sim1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_doenca_pele_nao1" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_doenca_pele_nao_sei1" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_doenca_pele_sim" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_doenca_pele_nao" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_doenca_pele_nao_sei" min="-2" max="-2" attributes="0"/>
-                              </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
@@ -760,51 +750,6 @@
                                   <EmptySpace max="-2" attributes="0"/>
                                   <Component id="rb_realizou_cirurgia_nao_sei" min="-2" max="-2" attributes="0"/>
                               </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_doenca_pele_sim2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_doenca_pele_nao2" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_doenca_pele_nao_sei2" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="rb_condicoes_cronicas_sim9" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_condicoes_cronicas_nao7" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="rb_condicoes_cronicas_sim8" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_condicoes_cronicas_nao6" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="rb_condicoes_cronicas_sim12" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_condicoes_cronicas_nao10" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="rb_condicoes_cronicas_sim10" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_condicoes_cronicas_nao8" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                  <Component id="rb_condicoes_cronicas_sim11" min="-2" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="rb_condicoes_cronicas_nao9" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="rb_condicoes_cronicas_sim7" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="rb_condicoes_cronicas_sim6" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
                                   <Group type="102" alignment="0" attributes="0">
@@ -836,6 +781,49 @@
                                       <Component id="rb_condicoes_cronicas_nao1" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel43" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="rb_condicoes_cronicas_sim9" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_condicoes_cronicas_nao7" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel44" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="rb_condicoes_cronicas_sim8" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_condicoes_cronicas_nao6" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel42" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="rb_condicoes_cronicas_sim10" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_condicoes_cronicas_nao8" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Component id="rb_condicoes_cronicas_sim7" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel40" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="rb_condicoes_cronicas_sim12" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_condicoes_cronicas_nao10" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel41" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                  <Component id="rb_condicoes_cronicas_sim11" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_condicoes_cronicas_nao9" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_doenca_pele_sim" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_doenca_pele_nao" min="-2" max="-2" attributes="0"/>
+                              </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                       </Group>
@@ -855,7 +843,10 @@
                       <Component id="rb_possui_deficiencia_nao_sei" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tf_deficiencia_quais" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="tf_deficiencia_quais" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel33" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel22" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -864,7 +855,10 @@
                       <Component id="rb_possui_alergia_nao_sei" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tf_possui_intolerancia_quais" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="tf_possui_intolerancia_quais" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel45" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel23" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -873,7 +867,10 @@
                       <Component id="rb_realizou_cirurgia_nao_sei" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tf_possui_intolerancia_quais1" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="tf_possui_intolerancia_quais1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel24" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -891,20 +888,20 @@
                       <Component id="rb_condicoes_cronicas_nao2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="rb_condicoes_cronicas_sim3" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="rb_condicoes_cronicas_nao3" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel32" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Group type="103" alignment="0" groupAlignment="3" attributes="0">
                           <Component id="rb_condicoes_cronicas_sim4" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="rb_condicoes_cronicas_nao4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
+                      <Component id="jLabel32" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -918,7 +915,7 @@
                       <Component id="tf_possui_intolerancia_quais2" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="92" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel25" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -970,41 +967,17 @@
                       <Component id="tf_possui_intolerancia_quais10" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="99" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel26" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rb_doenca_pele_sim" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="rb_doenca_pele_nao" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rb_doenca_pele_nao_sei" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="tf_possui_intolerancia_quais8" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel37" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tf_possui_intolerancia_quais9" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rb_doenca_pele_sim1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rb_doenca_pele_nao1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rb_doenca_pele_nao_sei1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tf_possui_intolerancia_quais5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rb_doenca_pele_sim2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rb_doenca_pele_nao2" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rb_doenca_pele_nao_sei2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="tf_possui_intolerancia_quais6" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -1166,84 +1139,6 @@
             <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_doenca_pele_nao_sei">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_possui_denca_de_pele"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="N&#xe3;o sabe responder"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel27">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Autoimune:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_doenca_pele_sim1">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_possui_denca_de_pele"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Sim"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_doenca_pele_nao1">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_possui_denca_de_pele"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_doenca_pele_nao_sei1">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_possui_denca_de_pele"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="N&#xe3;o sabe responder"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais5">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel28">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Usa medicamento:"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_doenca_pele_sim2">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_possui_denca_de_pele"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Sim"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_doenca_pele_nao2">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_possui_denca_de_pele"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_doenca_pele_nao_sei2">
-          <Properties>
-            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_possui_denca_de_pele"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="N&#xe3;o sabe responder"/>
-          </Properties>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais6">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel29">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hipertens&#xe3;o"/>
@@ -1368,16 +1263,6 @@
             <Property name="text" type="java.lang.String" value="Quais:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais9">
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_possui_intolerancia_quais9ActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JLabel" name="jLabel37">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Obs:"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais10">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
@@ -1441,7 +1326,7 @@
         <Component class="javax.swing.JRadioButton" name="rb_condicoes_cronicas_sim8">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_hipertencao"/>
+              <ComponentRef name="bg_sifilis"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sim"/>
           </Properties>
@@ -1449,7 +1334,7 @@
         <Component class="javax.swing.JRadioButton" name="rb_condicoes_cronicas_nao6">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_hipertencao"/>
+              <ComponentRef name="bg_sifilis"/>
             </Property>
             <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
           </Properties>
@@ -1457,7 +1342,7 @@
         <Component class="javax.swing.JRadioButton" name="rb_condicoes_cronicas_nao7">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_hipertencao"/>
+              <ComponentRef name="bg_hpv"/>
             </Property>
             <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
           </Properties>
@@ -1465,7 +1350,7 @@
         <Component class="javax.swing.JRadioButton" name="rb_condicoes_cronicas_sim9">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_hipertencao"/>
+              <ComponentRef name="bg_hpv"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sim"/>
           </Properties>
@@ -1473,7 +1358,7 @@
         <Component class="javax.swing.JRadioButton" name="rb_condicoes_cronicas_sim10">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_hipertencao"/>
+              <ComponentRef name="bg_tuberculose"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sim"/>
           </Properties>
@@ -1481,7 +1366,7 @@
         <Component class="javax.swing.JRadioButton" name="rb_condicoes_cronicas_nao8">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_hipertencao"/>
+              <ComponentRef name="bg_tuberculose"/>
             </Property>
             <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
           </Properties>
@@ -1489,7 +1374,7 @@
         <Component class="javax.swing.JRadioButton" name="rb_condicoes_cronicas_nao9">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_hipertencao"/>
+              <ComponentRef name="bg_hepatite_b"/>
             </Property>
             <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
           </Properties>
@@ -1497,7 +1382,7 @@
         <Component class="javax.swing.JRadioButton" name="rb_condicoes_cronicas_sim11">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
-              <ComponentRef name="bg_hipertencao"/>
+              <ComponentRef name="bg_hepatite_b"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Sim"/>
           </Properties>
@@ -1516,6 +1401,21 @@
               <ComponentRef name="bg_hipertencao"/>
             </Property>
             <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel33">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quais:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel45">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quais:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel46">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quais:"/>
           </Properties>
         </Component>
       </SubComponents>
