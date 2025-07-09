@@ -1,3 +1,5 @@
+-- Alguns bools foram substítuidos por 0 -> não, 1 -> sim - 2 -> não sabe responder
+
 create database sistema_carcerario;
 
 use sistema_carcerario;
@@ -8,29 +10,34 @@ create table atendente (
 );
 
 CREATE TABLE prisioneiro (
+  -- DADOS PRIMARIOS
   id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+  nome_completo VARCHAR(255) NOT NULL,
+  nome_social VARCHAR(255) NOT NULL,
   data_nascimento DATE NOT NULL,
-  nome VARCHAR(255) NOT NULL,
-  nome_mae VARCHAR(255) NOT NULL,
+  idade INT NOT NULL,
   cpf VARCHAR(255) NOT NULL,
-  uf VARCHAR(255) NOT NULL,
+  nacionalidade VARCHAR(255) NOT NULL,
+
+  nome_mae VARCHAR(255) NOT NULL,
+  estado_civil VARCHAR(255) NOT NULL,
+  raca VARCHAR(255) NOT NULL,
   orientacao VARCHAR(255) NOT NULL,
   genero VARCHAR(255) NOT NULL,
   sexo VARCHAR(255) NOT NULL,
-  raca VARCHAR(255) NOT NULL,
-  nacionalidade VARCHAR(255) NOT NULL,
-  estado_civil VARCHAR(255) NOT NULL,
-  escolaridade VARCHAR(255) NOT NULL,
+
+  -- DADOS SOCIAIS
+  escolaridade VARCHAR(255) NOT NULL, 
   beneficio_familia BOOL NOT NULL,
   beneficio_especificado VARCHAR(255) NOT NULL,
   possui_filhos BOOL NOT NULL,
-  quantos_filhos VARCHAR(255) NOT NULL,
+  quantos_filhos INT NOT NULL,
   idade INT NOT NULL,
   possui_dependentes BOOL NOT NULL,
   quantos_dependentes INT NOT NULL,
   ofertar_neeja BOOL NOT NULL,
   ofertar_assistencia_social BOOL NOT NULL,
-  possui_deficiencia INT NOT NULL, --Atenção ao tipo
+  possui_deficiencia INT NOT NULL, --Atenção ao tipo, 0 -> não, 1 -> sim - 2 -> não sabe responder
   qual_deficiencia VARCHAR(255) NOT NULL,
   possui_alergias INT NOT NULL, --Atenção ao tipo
   quais_alergias VARCHAR(255) NOT NULL,
@@ -56,6 +63,11 @@ CREATE TABLE prisioneiro (
   nao_sabe_responder_doencas_infecciosas BOOL NOT NULL,
   observacao_historico_doencas_infecciosas VARCHAR(255) NOT NULL,
   
+  -- Realizou cirurgias
+  realizou_cirurgias BOOL NOT NULL,
+  quais_cirurgias VARCHAR(255) NOT NULL,
+  nao_sabe_responder_cirurgias BOOL NOT NULL,
+  
   --Possui doença de pele
   doenca_pele BOOL,
   quais_doencas_pele VARCHAR(255) NOT NULL,
@@ -65,11 +77,9 @@ CREATE TABLE prisioneiro (
   medicamentos_continuos BOOL NOT NULL,
   quais_medicamentos VARCHAR(255) NOT NULL,
   
+  tipo_sanguineo VARCHAR(255) NOT NULL,
+
   ---- SAÚDE MENTAL E USO DE SUBSTANCIAS
-  
-  tipo_sanguineo INT NOT NULL, --Atenção várias opções
-  encaminhamento VARCHAR(1000),
-  
   vinculo_caps BOOL NOT NULL,
   nome_municio_caps VARCHAR(500),
   
@@ -79,12 +89,10 @@ CREATE TABLE prisioneiro (
   esquizofrenia BOOL,
   autismo BOOL,
   outra_saude_mental VARCHAR(255),
-  nao_sabe_responder_saude_mental BOOL NOT NULL,
-  
-  medicamento_controlado BOOL,
+  nao_sabe_responder_saude_mental BOOL NOT NULL,  
+  medicamento_controlado INT NOT NULL, --Atenção ao tipo
   qual_medicamento_controlado VARCHAR(255),
-  nao_sabe_responder_medicamento_controlado BOOL NOT NULL,
-  
+
   acompanhamento_mental_momento_prisao BOOL NOT NULL,
   motivo_acompanhamento_mental VARCHAR(255),
   
@@ -132,15 +140,11 @@ CREATE TABLE prisioneiro (
 CREATE TABLE saude_mulher(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	id_prisioneiro INT NOT NULL,
+
+  -- DADOS SOBRE A SAÚDE MULHER
 	gestacao INT NOT NULL,
 	idade_gestacional INT,
-	usa_contraceptivo BOOL NOT NULL,
-	anticoncepcional_oral BOOL NOT NULL,
-	diu_implante BOOL NOT NULL,
-	anticoncepcional_injetavel BOOL NOT NULL,
-	ligadura_trompas BOOL NOT NULL,
-	histerectomia BOOL NOT NULL,
-	
+  qual_contraceptivo VARCHAR(255) NOT NULL,
 	exame_preventivo_papanicolau BOOL NOT NULL,
 	exame_preventivo_papanicolau_ano INT,
 	
@@ -154,10 +158,12 @@ CREATE TABLE saude_mulher(
 CREATE TABLE saude_homem(
 	id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
 	id_prisioneiro INT NOT NULL,
+
+  -- DADOS SOBRE A SAÚDE HOMEM
 	realizou_exame_prostata BOOL NOT NULL,
 	ano_exame_prostata INT,
-	historico_cancer_familia BOOL NOT NULL,
-	qual_familiar_cancer VARCHAR(255),
+	historico_cancer_prostata_familia BOOL NOT NULL,
+	qual_familiar_cancer_prostata VARCHAR(255),
 	realizou_vasectomia BOOL NOT NULL,
 	parceira_gestante BOOL NOT NULL,
 	participa_pre_natal BOOL NOT NULL,
@@ -169,6 +175,7 @@ CREATE TABLE saude_homem(
 );
 
 create table atendimento (
+  -- DADOS DO ATENDIMENTO
   id int not null primary key auto_increment,
   id_atendente int not null,
   id_prisioneiro int not null,
@@ -178,7 +185,7 @@ create table atendimento (
   procedencia varchar(255) not null,
 
 
-  ----- PRIMEIRO ATENDIMENTO CLINICO
+  -- ATENDIMENTO CLINICO
   peso INT NOT NULL,
   altura FLOAT NOT NULL,
   imc FLOAT NOT NULL,
