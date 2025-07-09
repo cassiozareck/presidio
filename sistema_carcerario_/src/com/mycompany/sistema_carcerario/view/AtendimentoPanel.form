@@ -511,6 +511,9 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tf_nome">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_nomeActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel8">
           <Properties>
@@ -2674,13 +2677,13 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
+                          <Component id="rb_esta_participando_pre_natal_nao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rb_esta_participando_pre_natal_sim" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="rb_parceira_gestante_nao" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="rb_parceira_gestante_sim" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel75" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Group type="103" alignment="3" groupAlignment="3" attributes="0">
-                              <Component id="rb_esta_participando_pre_natal_nao" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="rb_esta_participando_pre_natal_sim" alignment="3" min="-2" max="-2" attributes="0"/>
-                          </Group>
                       </Group>
                       <Component id="jLabel74" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>

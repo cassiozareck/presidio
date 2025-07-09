@@ -13,10 +13,12 @@ public class MainFrame extends JFrame {
     
     private static final String ATENDIMENTO_PANEL = "atendimentoPanel";
     private static final String BUSCA_PANEL = "buscaPanel";
+    private static final String CADASTRO_ATENDIMENTO_PANEL = "cadastroAtendimentoPanel";
     
     // Refêrencias aos painéis
     private AtendimentoPanel atendimentoPanel;
     private BuscarPanel buscaPanel;
+    private CadastroAtendimentoPanel cadastroAtendimentoPanel;
     
     public MainFrame(){
         super("Painel principal");
@@ -25,21 +27,31 @@ public class MainFrame extends JFrame {
 
         atendimentoPanel = new AtendimentoPanel(this);
         buscaPanel = new BuscarPanel(this);
+        cadastroAtendimentoPanel = new CadastroAtendimentoPanel(this);
         
-        // Painel de rolagem
+        // Painel de rolagem para AtendimentoPanel
         JScrollPane scrollAtendimento = new JScrollPane(atendimentoPanel);
         // Condições em que a rolagem será disponibilizada
         scrollAtendimento.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollAtendimento.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         
-        // Adicionando scollAtendimento ao cardPanel e associando seu nome a ATENDIMENTO_PANEL
+        // Painel de rolagem para CadastroAtendimentoPanel
+        JScrollPane scrollCadastroAtendimento = new JScrollPane(cadastroAtendimentoPanel);
+        // Condições em que a rolagem será disponibilizada
+        scrollCadastroAtendimento.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollCadastroAtendimento.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        
+        // Adicionando scrollAtendimento ao cardPanel e associando seu nome a ATENDIMENTO_PANEL
         cardPanel.add(scrollAtendimento, ATENDIMENTO_PANEL);
         // Adicionando buscaPanel ao cardPanel e associando seu nome a BUSCA_PANEL
         cardPanel.add(buscaPanel, BUSCA_PANEL);
+        // Adicionando scrollcadastroAtendimentoPanel ao cardPanel e associando seu nome a CADASTRO_ATENDIMENTO_PANEL
+        cardPanel.add(scrollCadastroAtendimento, CADASTRO_ATENDIMENTO_PANEL);
         
         this.add(cardPanel);
         showPanel(BUSCA_PANEL);
-          
+        
+        this.setExtendedState(JFrame.MAXIMIZED_BOTH);  
         this.setVisible(true);
     }
     
@@ -50,6 +62,10 @@ public class MainFrame extends JFrame {
     void showAtendimentoPanel(int prisioneiroId) {
         atendimentoPanel.carregarPrisioneiro(prisioneiroId);
         showPanel(ATENDIMENTO_PANEL);
+    }
+    
+    void showCadastroAtendimentoPanel() {
+        showPanel(CADASTRO_ATENDIMENTO_PANEL);
     }
     
     void showAtendimentoPanelParaNovo() {

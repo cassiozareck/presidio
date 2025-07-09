@@ -593,6 +593,12 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel7.setText("Nome Completo:");
 
+        tf_nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_nomeActionPerformed(evt);
+            }
+        });
+
         jLabel8.setText("Nome Social:");
 
         jLabel9.setText("Data de Nascimento:");
@@ -2096,12 +2102,12 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(saude_homem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(saude_homem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rb_esta_participando_pre_natal_nao)
+                        .addComponent(rb_esta_participando_pre_natal_sim))
+                    .addGroup(saude_homem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rb_parceira_gestante_nao)
                         .addComponent(rb_parceira_gestante_sim)
-                        .addComponent(jLabel75)
-                        .addGroup(saude_homem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(rb_esta_participando_pre_natal_nao)
-                            .addComponent(rb_esta_participando_pre_natal_sim)))
+                        .addComponent(jLabel75))
                     .addComponent(jLabel74))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator7, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2686,6 +2692,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private void cb_ofertar_vaciana_outraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_outraActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_ofertar_vaciana_outraActionPerformed
+
+    private void tf_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_nomeActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

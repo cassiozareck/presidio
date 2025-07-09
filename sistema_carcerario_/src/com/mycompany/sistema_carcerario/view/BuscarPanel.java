@@ -6,6 +6,7 @@ package com.mycompany.sistema_carcerario.view;
 
 import DAL.PrisioneiroDao;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
+import java.awt.Dimension;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.util.ArrayList;
@@ -80,6 +81,10 @@ public class BuscarPanel extends javax.swing.JPanel {
         tf_nome = new javax.swing.JTextField();
         btn_buscar = new javax.swing.JButton();
         btn_cadastrar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
+        bt_cadastrar_atendimento = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
+        jButton4 = new javax.swing.JButton();
 
         tabela_prisioneiros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,22 +115,44 @@ public class BuscarPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setText("Alteração de cadastro");
+
+        bt_cadastrar_atendimento.setText("Cadastrar Atendimento");
+        bt_cadastrar_atendimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_cadastrar_atendimentoActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Consultar Atendimento");
+
+        jButton4.setText("Consultar Cadastro");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 509, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane3, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(lb_nome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tf_nome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(btn_buscar)
                         .addGap(18, 18, 18)
-                        .addComponent(btn_cadastrar)))
+                        .addComponent(btn_cadastrar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(bt_cadastrar_atendimento)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 178, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 68, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -138,8 +165,14 @@ public class BuscarPanel extends javax.swing.JPanel {
                     .addComponent(btn_cadastrar)
                     .addComponent(lb_nome))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane3, javax.swing.GroupLayout.DEFAULT_SIZE, 344, Short.MAX_VALUE)
-                .addContainerGap())
+                .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(bt_cadastrar_atendimento)
+                    .addComponent(jButton3)
+                    .addComponent(jButton4))
+                .addContainerGap(61, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -153,10 +186,32 @@ public class BuscarPanel extends javax.swing.JPanel {
         populateTablePrisioneiros(filter);
     }//GEN-LAST:event_btn_buscarActionPerformed
 
+    private void bt_cadastrar_atendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cadastrar_atendimentoActionPerformed
+        parent.showCadastroAtendimentoPanel();
+    }//GEN-LAST:event_bt_cadastrar_atendimentoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bt_cadastrar_atendimento;
     private javax.swing.JButton btn_buscar;
     private javax.swing.JButton btn_cadastrar;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
+    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JLabel lb_nome;
     private javax.swing.JTable tabela_prisioneiros;
