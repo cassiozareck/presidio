@@ -222,6 +222,12 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         bg_esta_participando_pre_natal = new javax.swing.ButtonGroup();
         bg_encaminhar_realiz_vasectomia = new javax.swing.ButtonGroup();
         bg_encaminhar_pre_natal_do_parceiro = new javax.swing.ButtonGroup();
+        bg_recebeu_vacina_covid = new javax.swing.ButtonGroup();
+        bg_recebeu_vacina_influenza = new javax.swing.ButtonGroup();
+        bg_recebeu_vacina_tetano = new javax.swing.ButtonGroup();
+        bg_recebeu_vacina_hepatite_b = new javax.swing.ButtonGroup();
+        cb_ofertar_vaciana_hepatite_b1 = new javax.swing.JCheckBox();
+        bg_ofertar_copia_carteira_vacinacao = new javax.swing.ButtonGroup();
         btn_cancelar = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         atendimento_panel = new javax.swing.JPanel();
@@ -441,6 +447,44 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jLabel78 = new javax.swing.JLabel();
         rb_encaminhar_pre_natal_parceiro_nao = new javax.swing.JRadioButton();
         rb_encaminhar_pre_natal_parceiro_sim = new javax.swing.JRadioButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel79 = new javax.swing.JLabel();
+        jPanel8 = new javax.swing.JPanel();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel80 = new javax.swing.JLabel();
+        jPanel10 = new javax.swing.JPanel();
+        rb_recebeu_vacina_covid_nao_sabe = new javax.swing.JRadioButton();
+        rb_recebeu_vacina_covid_nao = new javax.swing.JRadioButton();
+        rb_recebeu_vacina_covid_sim = new javax.swing.JRadioButton();
+        jLabel81 = new javax.swing.JLabel();
+        rb_recebeu_vacina_influenza_nao_sabe = new javax.swing.JRadioButton();
+        rb_recebeu_vacina_influenza_nao = new javax.swing.JRadioButton();
+        rb_recebeu_vacina_influenza_sim = new javax.swing.JRadioButton();
+        jLabel82 = new javax.swing.JLabel();
+        rb_recebeu_vacina_tetano_nao_sabe = new javax.swing.JRadioButton();
+        rb_recebeu_vacina_tetano_nao = new javax.swing.JRadioButton();
+        rb_recebeu_vacina_tetano_sim = new javax.swing.JRadioButton();
+        jLabel83 = new javax.swing.JLabel();
+        rb_recebeu_vacina_hepatite_b_nao_sabe = new javax.swing.JRadioButton();
+        rb_recebeu_vacina_hepatite_b_nao = new javax.swing.JRadioButton();
+        rb_recebeu_vacina_hepatite_b_sim = new javax.swing.JRadioButton();
+        jLabel84 = new javax.swing.JLabel();
+        jLabel85 = new javax.swing.JLabel();
+        jLabel86 = new javax.swing.JLabel();
+        jSeparator8 = new javax.swing.JSeparator();
+        cb_ofertar_vaciana_hepatite_b = new javax.swing.JCheckBox();
+        cb_ofertar_vaciana_nao = new javax.swing.JCheckBox();
+        cb_ofertar_vaciana_covid = new javax.swing.JCheckBox();
+        cb_ofertar_vaciana_influenza = new javax.swing.JCheckBox();
+        cb_ofertar_vaciana_febre_amarela = new javax.swing.JCheckBox();
+        cb_ofertar_vaciana_dupla_adulto = new javax.swing.JCheckBox();
+        cb_ofertar_vaciana_triplice_viral = new javax.swing.JCheckBox();
+        cb_ofertar_vaciana_outra = new javax.swing.JCheckBox();
+        tf_ = new javax.swing.JTextField();
+        jLabel87 = new javax.swing.JLabel();
+        rb_ofertar_copia_carteira_vacinacao_sim = new javax.swing.JRadioButton();
+        rb_ofertar_copia_carteira_vacinacao_nao = new javax.swing.JRadioButton();
+        jSeparator9 = new javax.swing.JSeparator();
 
         jLabel1.setText("Responsável:");
 
@@ -457,6 +501,13 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jCheckBoxMenuItem1.setSelected(true);
         jCheckBoxMenuItem1.setText("jCheckBoxMenuItem1");
+
+        cb_ofertar_vaciana_hepatite_b1.setText("Hepatite B");
+        cb_ofertar_vaciana_hepatite_b1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_ofertar_vaciana_hepatite_b1ActionPerformed(evt);
+            }
+        });
 
         setBackground(new java.awt.Color(204, 204, 204));
 
@@ -1808,7 +1859,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jPanel6.setBackground(new java.awt.Color(255, 255, 204));
 
         jLabel69.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel69.setText("SAÚDE DO HOMEM");
+        jLabel69.setText("SAÚDE MENTAL E USO DE SUBSTÂNCIAS");
 
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
@@ -2071,6 +2122,320 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jPanel7.setBackground(new java.awt.Color(255, 255, 204));
+
+        jLabel79.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel79.setText("SAÚDE DO HOMEM");
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel79, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap(9, Short.MAX_VALUE)
+                .addComponent(jLabel79)
+                .addContainerGap())
+        );
+
+        javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
+        jPanel8.setLayout(jPanel8Layout);
+        jPanel8Layout.setHorizontalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel8Layout.setVerticalGroup(
+            jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 217, Short.MAX_VALUE)
+        );
+
+        jPanel9.setBackground(new java.awt.Color(255, 255, 204));
+
+        jLabel80.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel80.setText("SITUAÇÂO VACINAL");
+
+        javax.swing.GroupLayout jPanel9Layout = new javax.swing.GroupLayout(jPanel9);
+        jPanel9.setLayout(jPanel9Layout);
+        jPanel9Layout.setHorizontalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel9Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel80, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        jPanel9Layout.setVerticalGroup(
+            jPanel9Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel9Layout.createSequentialGroup()
+                .addContainerGap(9, Short.MAX_VALUE)
+                .addComponent(jLabel80)
+                .addContainerGap())
+        );
+
+        bg_recebeu_vacina_covid.add(rb_recebeu_vacina_covid_nao_sabe);
+        rb_recebeu_vacina_covid_nao_sabe.setText("Não sabe");
+
+        bg_recebeu_vacina_covid.add(rb_recebeu_vacina_covid_nao);
+        rb_recebeu_vacina_covid_nao.setText("Não");
+
+        bg_recebeu_vacina_covid.add(rb_recebeu_vacina_covid_sim);
+        rb_recebeu_vacina_covid_sim.setText("Sim");
+
+        jLabel81.setText("Recebeu vacina da Covid-19 no ultimo ano?");
+
+        bg_recebeu_vacina_influenza.add(rb_recebeu_vacina_influenza_nao_sabe);
+        rb_recebeu_vacina_influenza_nao_sabe.setText("Não sabe");
+
+        bg_recebeu_vacina_influenza.add(rb_recebeu_vacina_influenza_nao);
+        rb_recebeu_vacina_influenza_nao.setText("Não");
+
+        bg_recebeu_vacina_influenza.add(rb_recebeu_vacina_influenza_sim);
+        rb_recebeu_vacina_influenza_sim.setText("Sim");
+
+        jLabel82.setText("Recebeu vacina da Influenza no ultimo ano?");
+
+        bg_recebeu_vacina_tetano.add(rb_recebeu_vacina_tetano_nao_sabe);
+        rb_recebeu_vacina_tetano_nao_sabe.setText("Não sabe");
+
+        bg_recebeu_vacina_tetano.add(rb_recebeu_vacina_tetano_nao);
+        rb_recebeu_vacina_tetano_nao.setText("Não");
+
+        bg_recebeu_vacina_tetano.add(rb_recebeu_vacina_tetano_sim);
+        rb_recebeu_vacina_tetano_sim.setText("Sim");
+
+        jLabel83.setText("Recebeu vacina da Tétano nos ultimos 10 ano?");
+
+        bg_recebeu_vacina_hepatite_b.add(rb_recebeu_vacina_hepatite_b_nao_sabe);
+        rb_recebeu_vacina_hepatite_b_nao_sabe.setText("Não sabe");
+
+        bg_recebeu_vacina_hepatite_b.add(rb_recebeu_vacina_hepatite_b_nao);
+        rb_recebeu_vacina_hepatite_b_nao.setText("Não");
+
+        bg_recebeu_vacina_hepatite_b.add(rb_recebeu_vacina_hepatite_b_sim);
+        rb_recebeu_vacina_hepatite_b_sim.setText("Sim");
+
+        jLabel84.setText("Recebeu vacina da Hepatite B Alguma vez na vida?");
+
+        jLabel85.setText("Encaminhamentos");
+
+        jLabel86.setText("Ofertar vacinas disponíveis:");
+
+        jSeparator8.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator8.setOpaque(true);
+
+        cb_ofertar_vaciana_hepatite_b.setText("Hepatite B");
+        cb_ofertar_vaciana_hepatite_b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_ofertar_vaciana_hepatite_bActionPerformed(evt);
+            }
+        });
+
+        cb_ofertar_vaciana_nao.setText("Não");
+
+        cb_ofertar_vaciana_covid.setText("Covid-19");
+        cb_ofertar_vaciana_covid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_ofertar_vaciana_covidActionPerformed(evt);
+            }
+        });
+
+        cb_ofertar_vaciana_influenza.setText("Influenza");
+        cb_ofertar_vaciana_influenza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_ofertar_vaciana_influenzaActionPerformed(evt);
+            }
+        });
+
+        cb_ofertar_vaciana_febre_amarela.setText("Febre Amaraela");
+        cb_ofertar_vaciana_febre_amarela.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_ofertar_vaciana_febre_amarelaActionPerformed(evt);
+            }
+        });
+
+        cb_ofertar_vaciana_dupla_adulto.setText("Dupla Adulto (dT)");
+        cb_ofertar_vaciana_dupla_adulto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_ofertar_vaciana_dupla_adultoActionPerformed(evt);
+            }
+        });
+
+        cb_ofertar_vaciana_triplice_viral.setText("Tríplice Viral (SRC)");
+        cb_ofertar_vaciana_triplice_viral.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_ofertar_vaciana_triplice_viralActionPerformed(evt);
+            }
+        });
+
+        cb_ofertar_vaciana_outra.setText("Outra");
+        cb_ofertar_vaciana_outra.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_ofertar_vaciana_outraActionPerformed(evt);
+            }
+        });
+
+        tf_.setEditable(false);
+        tf_.setEnabled(false);
+
+        jLabel87.setText("Ofertar cópia da carteira de vacinação:");
+
+        bg_ofertar_copia_carteira_vacinacao.add(rb_ofertar_copia_carteira_vacinacao_sim);
+        rb_ofertar_copia_carteira_vacinacao_sim.setText("Sim");
+
+        bg_ofertar_copia_carteira_vacinacao.add(rb_ofertar_copia_carteira_vacinacao_nao);
+        rb_ofertar_copia_carteira_vacinacao_nao.setText("Não");
+
+        jSeparator9.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator9.setOpaque(true);
+
+        javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
+        jPanel10.setLayout(jPanel10Layout);
+        jPanel10Layout.setHorizontalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addComponent(jLabel87)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rb_ofertar_copia_carteira_vacinacao_sim)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rb_ofertar_copia_carteira_vacinacao_nao)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel10Layout.createSequentialGroup()
+                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator8)
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel81)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_covid_sim)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_covid_nao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_covid_nao_sabe))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel82)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_influenza_sim)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_influenza_nao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_influenza_nao_sabe))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel83)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_tetano_sim)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_tetano_nao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_tetano_nao_sabe))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addComponent(jLabel84)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_hepatite_b_sim)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_hepatite_b_nao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_recebeu_vacina_hepatite_b_nao_sabe))
+                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel85)
+                                    .addGroup(jPanel10Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(cb_ofertar_vaciana_covid)
+                                                    .addComponent(cb_ofertar_vaciana_hepatite_b)
+                                                    .addComponent(cb_ofertar_vaciana_influenza))
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel10Layout.createSequentialGroup()
+                                                        .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(cb_ofertar_vaciana_dupla_adulto)
+                                                            .addComponent(cb_ofertar_vaciana_triplice_viral))
+                                                        .addGap(0, 0, Short.MAX_VALUE))
+                                                    .addGroup(jPanel10Layout.createSequentialGroup()
+                                                        .addComponent(cb_ofertar_vaciana_febre_amarela)
+                                                        .addGap(30, 30, 30)
+                                                        .addComponent(cb_ofertar_vaciana_outra)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(tf_))))
+                                            .addGroup(jPanel10Layout.createSequentialGroup()
+                                                .addComponent(jLabel86)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(cb_ofertar_vaciana_nao)
+                                                .addGap(0, 0, Short.MAX_VALUE))))))
+                            .addComponent(jSeparator9, javax.swing.GroupLayout.Alignment.TRAILING))
+                        .addContainerGap())))
+        );
+        jPanel10Layout.setVerticalGroup(
+            jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel10Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel81)
+                    .addComponent(rb_recebeu_vacina_covid_sim)
+                    .addComponent(rb_recebeu_vacina_covid_nao)
+                    .addComponent(rb_recebeu_vacina_covid_nao_sabe))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel82)
+                    .addComponent(rb_recebeu_vacina_influenza_sim)
+                    .addComponent(rb_recebeu_vacina_influenza_nao)
+                    .addComponent(rb_recebeu_vacina_influenza_nao_sabe))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel83)
+                    .addComponent(rb_recebeu_vacina_tetano_sim)
+                    .addComponent(rb_recebeu_vacina_tetano_nao)
+                    .addComponent(rb_recebeu_vacina_tetano_nao_sabe))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel84)
+                    .addComponent(rb_recebeu_vacina_hepatite_b_sim)
+                    .addComponent(rb_recebeu_vacina_hepatite_b_nao)
+                    .addComponent(rb_recebeu_vacina_hepatite_b_nao_sabe))
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator8, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel85)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel86)
+                    .addComponent(cb_ofertar_vaciana_nao))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_ofertar_vaciana_hepatite_b)
+                    .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(cb_ofertar_vaciana_febre_amarela)
+                        .addComponent(cb_ofertar_vaciana_outra)
+                        .addComponent(tf_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_ofertar_vaciana_covid)
+                    .addComponent(cb_ofertar_vaciana_dupla_adulto))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(cb_ofertar_vaciana_influenza)
+                    .addComponent(cb_ofertar_vaciana_triplice_viral))
+                .addGap(10, 10, 10)
+                .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel87)
+                    .addComponent(rb_ofertar_copia_carteira_vacinacao_sim)
+                    .addComponent(rb_ofertar_copia_carteira_vacinacao_nao))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -2082,18 +2447,22 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(atendimento_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(identificacao_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_cancelar)
-                        .addGap(18, 18, 18)
-                        .addComponent(btn_salvar))
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(saude_da_mulher_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(saude_homem_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(saude_homem_panel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jPanel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_cancelar)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_salvar))
+                    .addComponent(jPanel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel10, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -2118,10 +2487,18 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(saude_da_mulher_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(saude_homem_panel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 429, Short.MAX_VALUE)
+                .addGap(24, 24, 24)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_cancelar)
                     .addComponent(btn_salvar))
@@ -2278,6 +2655,38 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_rb_encaminhar_pre_natal_parceiro_simActionPerformed
 
+    private void cb_ofertar_vaciana_hepatite_bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_hepatite_bActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_ofertar_vaciana_hepatite_bActionPerformed
+
+    private void cb_ofertar_vaciana_hepatite_b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_hepatite_b1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_ofertar_vaciana_hepatite_b1ActionPerformed
+
+    private void cb_ofertar_vaciana_covidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_covidActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_ofertar_vaciana_covidActionPerformed
+
+    private void cb_ofertar_vaciana_influenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_influenzaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_ofertar_vaciana_influenzaActionPerformed
+
+    private void cb_ofertar_vaciana_febre_amarelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_febre_amarelaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_ofertar_vaciana_febre_amarelaActionPerformed
+
+    private void cb_ofertar_vaciana_dupla_adultoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_dupla_adultoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_ofertar_vaciana_dupla_adultoActionPerformed
+
+    private void cb_ofertar_vaciana_triplice_viralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_triplice_viralActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_ofertar_vaciana_triplice_viralActionPerformed
+
+    private void cb_ofertar_vaciana_outraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_outraActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_ofertar_vaciana_outraActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel atendimento_panel;
@@ -2302,6 +2711,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bg_nacionalidade;
     private javax.swing.ButtonGroup bg_neeja;
     private javax.swing.ButtonGroup bg_ofertar_continuidade_contraceptivo;
+    private javax.swing.ButtonGroup bg_ofertar_copia_carteira_vacinacao;
     private javax.swing.ButtonGroup bg_parceira_gestante;
     private javax.swing.ButtonGroup bg_possui_deficiencia;
     private javax.swing.ButtonGroup bg_possui_denca_de_pele;
@@ -2311,6 +2721,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bg_realizou_cirurgia;
     private javax.swing.ButtonGroup bg_realizou_papanicolau;
     private javax.swing.ButtonGroup bg_realizou_vasectomia;
+    private javax.swing.ButtonGroup bg_recebeu_vacina_covid;
+    private javax.swing.ButtonGroup bg_recebeu_vacina_hepatite_b;
+    private javax.swing.ButtonGroup bg_recebeu_vacina_influenza;
+    private javax.swing.ButtonGroup bg_recebeu_vacina_tetano;
     private javax.swing.ButtonGroup bg_sifilis;
     private javax.swing.ButtonGroup bg_tipo_met_anticoncepcional;
     private javax.swing.ButtonGroup bg_tipo_sangue;
@@ -2319,6 +2733,15 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_salvar;
     private javax.swing.JComboBox<String> cb_identidade_genero;
+    private javax.swing.JCheckBox cb_ofertar_vaciana_covid;
+    private javax.swing.JCheckBox cb_ofertar_vaciana_dupla_adulto;
+    private javax.swing.JCheckBox cb_ofertar_vaciana_febre_amarela;
+    private javax.swing.JCheckBox cb_ofertar_vaciana_hepatite_b;
+    private javax.swing.JCheckBox cb_ofertar_vaciana_hepatite_b1;
+    private javax.swing.JCheckBox cb_ofertar_vaciana_influenza;
+    private javax.swing.JCheckBox cb_ofertar_vaciana_nao;
+    private javax.swing.JCheckBox cb_ofertar_vaciana_outra;
+    private javax.swing.JCheckBox cb_ofertar_vaciana_triplice_viral;
     private javax.swing.JComboBox<String> cb_orientacao_sexual;
     private javax.swing.JComboBox<String> cb_sexo_biologico;
     private javax.swing.JPanel condicoes_de_saude;
@@ -2403,15 +2826,28 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel76;
     private javax.swing.JLabel jLabel77;
     private javax.swing.JLabel jLabel78;
+    private javax.swing.JLabel jLabel79;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel80;
+    private javax.swing.JLabel jLabel81;
+    private javax.swing.JLabel jLabel82;
+    private javax.swing.JLabel jLabel83;
+    private javax.swing.JLabel jLabel84;
+    private javax.swing.JLabel jLabel85;
+    private javax.swing.JLabel jLabel86;
+    private javax.swing.JLabel jLabel87;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelData;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel10;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
@@ -2419,6 +2855,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator5;
     private javax.swing.JSeparator jSeparator6;
     private javax.swing.JSeparator jSeparator7;
+    private javax.swing.JSeparator jSeparator8;
+    private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
     private javax.swing.JRadioButton rb_condicoes_cronicas_nao1;
@@ -2483,6 +2921,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_nacionalidade_naturalizado;
     private javax.swing.JRadioButton rb_ofertar_continuidade_contraceptivo_nao;
     private javax.swing.JRadioButton rb_ofertar_continuidade_contraceptivo_sim;
+    private javax.swing.JRadioButton rb_ofertar_copia_carteira_vacinacao_nao;
+    private javax.swing.JRadioButton rb_ofertar_copia_carteira_vacinacao_sim;
     private javax.swing.JRadioButton rb_ofertar_neeja_nao;
     private javax.swing.JRadioButton rb_ofertar_neeja_sim;
     private javax.swing.JRadioButton rb_parceira_gestante_nao;
@@ -2502,6 +2942,18 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_realizou_cirurgia_sim;
     private javax.swing.JRadioButton rb_realizou_vasectomia_nao;
     private javax.swing.JRadioButton rb_realizou_vasectomia_sim;
+    private javax.swing.JRadioButton rb_recebeu_vacina_covid_nao;
+    private javax.swing.JRadioButton rb_recebeu_vacina_covid_nao_sabe;
+    private javax.swing.JRadioButton rb_recebeu_vacina_covid_sim;
+    private javax.swing.JRadioButton rb_recebeu_vacina_hepatite_b_nao;
+    private javax.swing.JRadioButton rb_recebeu_vacina_hepatite_b_nao_sabe;
+    private javax.swing.JRadioButton rb_recebeu_vacina_hepatite_b_sim;
+    private javax.swing.JRadioButton rb_recebeu_vacina_influenza_nao;
+    private javax.swing.JRadioButton rb_recebeu_vacina_influenza_nao_sabe;
+    private javax.swing.JRadioButton rb_recebeu_vacina_influenza_sim;
+    private javax.swing.JRadioButton rb_recebeu_vacina_tetano_nao;
+    private javax.swing.JRadioButton rb_recebeu_vacina_tetano_nao_sabe;
+    private javax.swing.JRadioButton rb_recebeu_vacina_tetano_sim;
     private javax.swing.JRadioButton rb_tipo_sangue_abm;
     private javax.swing.JRadioButton rb_tipo_sangue_abp;
     private javax.swing.JRadioButton rb_tipo_sangue_am;
@@ -2515,6 +2967,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_transferencia_sim;
     private javax.swing.JPanel saude_da_mulher_panel;
     private javax.swing.JPanel saude_homem_panel;
+    private javax.swing.JTextField tf_;
     private javax.swing.JTextField tf_cpf;
     private javax.swing.JTextField tf_data_nascimento;
     private javax.swing.JTextField tf_deficiencia_quais;
