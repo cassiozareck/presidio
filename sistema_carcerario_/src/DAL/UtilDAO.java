@@ -14,13 +14,13 @@ public class UtilDAO {
     public static void InserirAtendimento(Prisioneiro prisioneiro, Atendimento atendimento){
         try{
             Connection conexao = ConexaoBanco.conectar();
-            String sql = "INSERT INTO prisioneiro (data_nascimento, nome, cpf, id_orientacao, id_genero, id_sexo, "
+            String sql = "INSERT INTO prisioneiro (data_nascimento, nome_completo, cpf, id_orientacao, id_genero, id_sexo, "
                     + "id_raça, id_nacionalidade, id_estado_civil, id_escolaridade)"
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             PreparedStatement ps = conexao.prepareStatement(sql);
-            ps.setString(1, prisioneiro.getNome());
-            ps.setDate(2, java.sql.Date.valueOf(prisioneiro.getDataNascimento()));
+            ps.setString(1, prisioneiro.getNomeCompleto());
+            ps.setDate(2, prisioneiro.getDataNascimento());
             ps.setString(3, prisioneiro.getCpf());
             ps.setString(4, prisioneiro.getOrientacao());
             ps.setString(5, prisioneiro.getGenero());

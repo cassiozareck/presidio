@@ -11,7 +11,7 @@ import com.mycompany.sistema_carcerario.model.Atendente;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import com.mycompany.sistema_carcerario.model.Atendimento;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
@@ -53,11 +53,11 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             // Esconde painel quando carrega novo prisioneiro
             atendimento_panel.setVisible(false);
             
-            tf_nome.setText(prisioneiroAtual.getNome());
-            tf_nome_social.setText(prisioneiroAtual.getNome()); // Assuming nome social is the same as nome for now
+            tf_nome.setText(prisioneiroAtual.getNomeCompleto());
+            tf_nome_social.setText(prisioneiroAtual.getNomeCompleto()); // Assuming nome social is the same as nome for now
             tf_data_nascimento.setText(prisioneiroAtual.getDataNascimento().toString());
             tf_cpf.setText(prisioneiroAtual.getCpf());
-            tf_idade.setText(String.valueOf(prisioneiroAtual.calcularIdade()));
+            //tf_idade.setText(String.valueOf(prisioneiroAtual.calcularIdade()));
             tf_etinia.setText(prisioneiroAtual.getRaca());
             
             setComboBoxValue(cb_sexo_biologico, prisioneiroAtual.getSexo());
@@ -114,8 +114,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         }
         
         // Colete dados
-        prisioneiro.setNome(tf_nome.getText());
-        prisioneiro.setNomeMae(tf_nome_social.getText()); 
+        prisioneiro.setNomeCompleto(tf_nome.getText());
+        prisioneiro.setNomeMae(tf_nome_mae.getText()); 
         prisioneiro.setCpf(tf_cpf.getText());
         
         try {
@@ -135,7 +135,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 return null;
             }
             
-            prisioneiro.setDataNascimento(dataNascimento);
+            prisioneiro.setDataNascimento(java.sql.Date.valueOf(dataNascimento));
         } catch (Exception e) {
             System.out.println("Erro ao parsear data de nascimento: " + e.getMessage());
             return null;
@@ -151,7 +151,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         prisioneiro.setNacionalidade("Brasileira");
         prisioneiro.setEstadoCivil("Solteiro");
         prisioneiro.setEscolaridade("Fundamental");
-        prisioneiro.setUf("SP"); // Valor padrão para UF
+
         
         return prisioneiro;
     }
@@ -2559,9 +2559,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 Atendimento atendimento = new Atendimento();
                 atendimento.setIdPrisioneiro(idPrisioneiro);
                 atendimento.setIdAtendente(atendenteDao.getIdAtendenteByName(jComboBoxResponsavel.getSelectedItem().toString())); // ID padrão do atendente
-                atendimento.setDataHora(LocalDateTime.now());
-                atendimento.setDataEntradaNaUnidade(LocalDateTime.now());
-                atendimento.setTransferencia(rb_transferencia_sim.isSelected()); // Se o radio button "Sim" estiver selecionado
+                atendimento.setDataHora(new java.sql.Timestamp(System.currentTimeMillis()));
+                atendimento.setDataEntradaUnidade(new java.util.Date());
+                atendimento.setIsTransferencia(rb_transferencia_sim.isSelected()); // Se o radio button "Sim" estiver selecionado
                 atendimento.setProcedencia(jTextField3.getText().trim().isEmpty() ? "Não informado" : jTextField3.getText().trim());
                 
                 boolean atendimentoSucesso = atendimentoDao.insertAtendimento(atendimento);

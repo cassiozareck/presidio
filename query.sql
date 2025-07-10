@@ -1,4 +1,5 @@
 -- Alguns bools foram substítuidos por 0 -> não, 1 -> sim - 2 -> não sabe responder
+DROP DATABASE IF EXISTS sistema_carcerario;
 
 create database sistema_carcerario;
 
@@ -32,19 +33,16 @@ CREATE TABLE prisioneiro (
   beneficio_especificado VARCHAR(255) NOT NULL,
   possui_filhos BOOL NOT NULL,
   quantos_filhos INT NOT NULL,
-  idade INT NOT NULL,
   possui_dependentes BOOL NOT NULL,
   quantos_dependentes INT NOT NULL,
   ofertar_neeja BOOL NOT NULL,
   ofertar_assistencia_social BOOL NOT NULL,
-  possui_deficiencia INT NOT NULL, --Atenção ao tipo, 0 -> não, 1 -> sim - 2 -> não sabe responder
+  possui_deficiencia INT NOT NULL, -- Atenção ao tipo, 0 -> não, 1 -> sim - 2 -> não sabe responder
   qual_deficiencia VARCHAR(255) NOT NULL,
-  possui_alergias INT NOT NULL, --Atenção ao tipo
+  possui_alergias INT NOT NULL, -- Atenção ao tipo
   quais_alergias VARCHAR(255) NOT NULL,
-  realizou_cirurgias INT NOT NULL,
-  quais_cirurgias VARCHAR(255) NOT NULL,
   
-  --Condições crônicas
+  -- Condições crônicas
   hipertencao BOOL,
   diabetes BOOL,
   hiv BOOL,
@@ -53,7 +51,7 @@ CREATE TABLE prisioneiro (
   nao_sabe_responder_condicoes_cronicas BOOL NOT NULL,
   observacao_condicoes_cronicas VARCHAR(255) NOT NULL,
   
-  --Historico doenças infecciosas
+  -- Historico doenças infecciosas
   sifilis BOOL,
   hpv BOOL,
   tuberculose BOOL,
@@ -68,10 +66,10 @@ CREATE TABLE prisioneiro (
   quais_cirurgias VARCHAR(255) NOT NULL,
   nao_sabe_responder_cirurgias BOOL NOT NULL,
   
-  --Possui doença de pele
+  -- Possui doença de pele
   doenca_pele BOOL,
   quais_doencas_pele VARCHAR(255) NOT NULL,
-  nao_sabe_responder_doencas_pele BOOL NOT NULL, --Atenção 
+  nao_sabe_responder_doencas_pele BOOL NOT NULL, -- Atenção 
   observacao_historico_doencas_pele VARCHAR(255) NOT NULL,
 
   medicamentos_continuos BOOL NOT NULL,
@@ -79,7 +77,7 @@ CREATE TABLE prisioneiro (
   
   tipo_sanguineo VARCHAR(255) NOT NULL,
 
-  ---- SAÚDE MENTAL E USO DE SUBSTANCIAS
+  -- SAÚDE MENTAL E USO DE SUBSTANCIAS
   vinculo_caps BOOL NOT NULL,
   nome_municio_caps VARCHAR(500),
   
@@ -90,7 +88,7 @@ CREATE TABLE prisioneiro (
   autismo BOOL,
   outra_saude_mental VARCHAR(255),
   nao_sabe_responder_saude_mental BOOL NOT NULL,  
-  medicamento_controlado INT NOT NULL, --Atenção ao tipo
+  medicamento_controlado INT NOT NULL, -- Atenção ao tipo
   qual_medicamento_controlado VARCHAR(255),
 
   acompanhamento_mental_momento_prisao BOOL NOT NULL,
@@ -117,19 +115,19 @@ CREATE TABLE prisioneiro (
   encaminhar_grupo_apoio BOOL NOT NULL,
   
   
-  --- SITUAÇÃO VACINAL
-  vacina_covid INT NOT NULL, --Atenção ao tipo
+  -- SITUAÇÃO VACINAL
+  vacina_covid INT NOT NULL, -- Atenção ao tipo
   vacina_influenza INT NOT NULL,
   vacina_tetano INT NOT NULL,
   vacina_hepatite INT NOT NULL,
   
   ofertar_vacinas BOOL NOT NULL,
-  febre_amarela BOOL NOT NULL,
-  hepatite_b BOOL NOT NULL,
-  covid_19 BOOL NOT NULL,
-  influenza BOOL NOT NULL,
-  dupla_adulto BOOL NOT NULL,
-  triplice_viral BOOL NOT NULL,
+  ofertar_vacina_febre_amarela BOOL NOT NULL,
+  ofertar_vacina_hepatite_b BOOL NOT NULL,
+  ofertar_vacina_covid_19 BOOL NOT NULL,
+  ofertar_vacina_influenza BOOL NOT NULL,
+  ofertar_vacina_dupla_adulto BOOL NOT NULL,
+  ofertar_vacina_triplice_viral BOOL NOT NULL,
   
   outra_vacina VARCHAR(255),
   ofertar_carteira_vacinacao BOOL NOT NULL,
@@ -144,11 +142,11 @@ CREATE TABLE saude_mulher(
   -- DADOS SOBRE A SAÚDE MULHER
 	gestacao INT NOT NULL,
 	idade_gestacional INT,
-  qual_contraceptivo VARCHAR(255) NOT NULL,
+	qual_contraceptivo VARCHAR(255) NOT NULL,
 	exame_preventivo_papanicolau BOOL NOT NULL,
 	exame_preventivo_papanicolau_ano INT,
 	
-	--encaminhamentos
+	-- Encaminhamentos
 	ofertar_continuidade_contraceptivo BOOL NOT NULL,
 	ofertar_consulta_preventivo BOOL NOT NULL,
 	encaminhar_pre_natal BOOL NOT NULL,
@@ -168,7 +166,7 @@ CREATE TABLE saude_homem(
 	parceira_gestante BOOL NOT NULL,
 	participa_pre_natal BOOL NOT NULL,
 	
-	--encaminhamentos
+	-- encaminhamentos
 	ofertar_encaminhamento_vasectomia BOOL NOT NULL,
 	ofertar_encaminhamento_pre_natal BOOL NOT NULL,
 	CONSTRAINT id_saude_homem_fk FOREIGN KEY (id_prisioneiro) REFERENCES prisioneiro(id)

@@ -54,9 +54,9 @@ public class BuscarPanel extends javax.swing.JPanel {
         for (Prisioneiro p : prisioneiroList) {
             Object[] row = {
                 p.getId(),
-                p.getNome(),
+                p.getNomeCompleto(),
                 p.getCpf(),
-                p.calcularIdade(), 
+                p.getIdade(), 
                 p.getNomeMae()
             };
             model.addRow(row);

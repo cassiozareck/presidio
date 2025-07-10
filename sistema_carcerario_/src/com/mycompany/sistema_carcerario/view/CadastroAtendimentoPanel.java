@@ -42,7 +42,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         jComboBoxDetento.removeAllItems();
         ArrayList <Prisioneiro> prisioneiros = prisioneiroDao.getNomesPrisioneiros();
         for(Prisioneiro prisioneiro : prisioneiros){
-            jComboBoxDetento.addItem(prisioneiro.getNome());
+            jComboBoxDetento.addItem(prisioneiro.getNomeCompleto());
         }
     }     
 

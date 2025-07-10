@@ -102,12 +102,12 @@ public class Prisioneiro {
     private int vacinaTetano;
     private int vacinaHepatite;
     private boolean ofertarVacinas;
-    private boolean febreAmarela;
-    private boolean hepatiteBVacina;
-    private boolean covid19;
-    private boolean influenza;
-    private boolean duplaAdulto;
-    private boolean tripliceViral;
+    private boolean ofertarVacinaFebreAmarela;
+    private boolean ofertarVacinaHepatiteB;
+    private boolean ofertarVacinaCovid19;
+    private boolean ofertarVacinaInfluenza;
+    private boolean ofertarVacinaDuplaAdulto;
+    private boolean ofertarVacinaTripliceViral;
     private String outraVacina;
     private boolean ofertarCarteiraVacinacao;
 
@@ -793,52 +793,52 @@ public class Prisioneiro {
         this.ofertarVacinas = ofertarVacinas;
     }
 
-    public boolean isFebreAmarela() {
-        return febreAmarela;
+    public boolean isOfertarVacinaFebreAmarela() {
+        return ofertarVacinaFebreAmarela;
     }
 
-    public void setFebreAmarela(boolean febreAmarela) {
-        this.febreAmarela = febreAmarela;
+    public void setOfertarVacinaFebreAmarela(boolean ofertarVacinaFebreAmarela) {
+        this.ofertarVacinaFebreAmarela = ofertarVacinaFebreAmarela;
     }
 
-    public boolean isHepatiteBVacina() {
-        return hepatiteBVacina;
+    public boolean isOfertarVacinaHepatiteB() {
+        return ofertarVacinaHepatiteB;
     }
 
-    public void setHepatiteBVacina(boolean hepatiteBVacina) {
-        this.hepatiteBVacina = hepatiteBVacina;
+    public void setOfertarVacinaHepatiteB(boolean ofertarVacinaHepatiteB) {
+        this.ofertarVacinaHepatiteB = ofertarVacinaHepatiteB;
     }
 
-    public boolean isCovid19() {
-        return covid19;
+    public boolean isOfertarVacinaCovid19() {
+        return ofertarVacinaCovid19;
     }
 
-    public void setCovid19(boolean covid19) {
-        this.covid19 = covid19;
+    public void setOfertarVacinaCovid19(boolean ofertarVacinaCovid19) {
+        this.ofertarVacinaCovid19 = ofertarVacinaCovid19;
     }
 
-    public boolean isInfluenza() {
-        return influenza;
+    public boolean isOfertarVacinaInfluenza() {
+        return ofertarVacinaInfluenza;
     }
 
-    public void setInfluenza(boolean influenza) {
-        this.influenza = influenza;
+    public void setOfertarVacinaInfluenza(boolean ofertarVacinaInfluenza) {
+        this.ofertarVacinaInfluenza = ofertarVacinaInfluenza;
     }
 
-    public boolean isDuplaAdulto() {
-        return duplaAdulto;
+    public boolean isOfertarVacinaDuplaAdulto() {
+        return ofertarVacinaDuplaAdulto;
     }
 
-    public void setDuplaAdulto(boolean duplaAdulto) {
-        this.duplaAdulto = duplaAdulto;
+    public void setOfertarVacinaDuplaAdulto(boolean ofertarVacinaDuplaAdulto) {
+        this.ofertarVacinaDuplaAdulto = ofertarVacinaDuplaAdulto;
     }
 
-    public boolean isTripliceViral() {
-        return tripliceViral;
+    public boolean isOfertarVacinaTripliceViral() {
+        return ofertarVacinaTripliceViral;
     }
 
-    public void setTripliceViral(boolean tripliceViral) {
-        this.tripliceViral = tripliceViral;
+    public void setOfertarVacinaTripliceViral(boolean ofertarVacinaTripliceViral) {
+        this.ofertarVacinaTripliceViral = ofertarVacinaTripliceViral;
     }
 
     public String getOutraVacina() {

@@ -9,6 +9,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,8 +27,8 @@ public class AtendimentoDao {
             
             ps.setInt(1, atendimento.getIdAtendente());
             ps.setInt(2, atendimento.getIdPrisioneiro());
-            ps.setTimestamp(3, java.sql.Timestamp.valueOf(atendimento.getDataHora()));
-            ps.setTimestamp(4, java.sql.Timestamp.valueOf(atendimento.getDataEntradaNaUnidade()));
+            ps.setTimestamp(3, atendimento.getDataHora());
+            ps.setDate(4, new java.sql.Date(atendimento.getDataEntradaUnidade().getTime()));
             ps.setBoolean(5, atendimento.isTransferencia());
             ps.setString(6, atendimento.getProcedencia());
             
@@ -53,12 +54,12 @@ public class AtendimentoDao {
             try (ResultSet rs = ps.executeQuery()) {
                 while (rs.next()) {
                     Atendimento a = new Atendimento();
-                    a.setIdAtendimento(rs.getInt("id"));
+                    a.setId(rs.getInt("id"));
                     a.setIdAtendente(rs.getInt("id_atendente"));
                     a.setIdPrisioneiro(rs.getInt("id_prisioneiro"));
-                    a.setDataHora(rs.getTimestamp("data_hora").toLocalDateTime());
-                    a.setDataEntradaNaUnidade(rs.getTimestamp("data_entrada_unidade").toLocalDateTime());
-                    a.setTransferencia(rs.getBoolean("is_transferencia"));
+                    a.setDataHora(rs.getTimestamp("data_hora"));
+                    a.setDataEntradaUnidade(rs.getDate("data_entrada_unidade"));
+                    a.setIsTransferencia(rs.getBoolean("is_transferencia"));
                     a.setProcedencia(rs.getString("procedencia"));
                     
                     atendimentos.add(a);
@@ -84,12 +85,12 @@ public class AtendimentoDao {
             try (ResultSet rs = ps.executeQuery()) {
                 if (rs.next()) {
                     Atendimento a = new Atendimento();
-                    a.setIdAtendimento(rs.getInt("id"));
+                    a.setId(rs.getInt("id"));
                     a.setIdAtendente(rs.getInt("id_atendente"));
                     a.setIdPrisioneiro(rs.getInt("id_prisioneiro"));
-                    a.setDataHora(rs.getTimestamp("data_hora").toLocalDateTime());
-                    a.setDataEntradaNaUnidade(rs.getTimestamp("data_entrada_unidade").toLocalDateTime());
-                    a.setTransferencia(rs.getBoolean("is_transferencia"));
+                    a.setDataHora(rs.getTimestamp("data_hora"));
+                    a.setDataEntradaUnidade(rs.getDate("data_entrada_unidade"));
+                    a.setIsTransferencia(rs.getBoolean("is_transferencia"));
                     a.setProcedencia(rs.getString("procedencia"));
                     
                     return a;

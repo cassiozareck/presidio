@@ -19,11 +19,10 @@ import java.util.List;
  * @author m138824
  */
 public class PrisioneiroDao {
-   
     
     public ArrayList<Prisioneiro> getNomesPrisioneiros(){
         ArrayList<Prisioneiro> prisioneiros = new ArrayList<>();
-        String sql = "SELECT nome,id FROM prisioneiro";
+        String sql = "SELECT nome_completo,id FROM prisioneiro";
 
         try (Connection conexao = ConexaoBanco.conectar()){
             Statement stmt = conexao.createStatement();  
@@ -31,7 +30,7 @@ public class PrisioneiroDao {
 
             while (rs.next()) {
                 Prisioneiro prisioneiro = new Prisioneiro();
-                prisioneiro.setNome(rs.getString("nome"));
+                prisioneiro.setNomeCompleto(rs.getString("nome_completo"));
                 prisioneiro.setId(rs.getInt("id"));
                 prisioneiros.add(prisioneiro);   
             }
@@ -47,7 +46,7 @@ public class PrisioneiroDao {
     
     public List<Prisioneiro> listarPrisioneiros(String filter) {
     List<Prisioneiro> prisioneiros = new ArrayList<>();
-    String sql = "SELECT * FROM prisioneiro WHERE nome LIKE ?";
+    String sql = "SELECT * FROM prisioneiro WHERE nome_completo LIKE ?";
 
     try (Connection conexao = ConexaoBanco.conectar();
          PreparedStatement ps = conexao.prepareStatement(sql)) {
@@ -61,9 +60,9 @@ public class PrisioneiroDao {
             while (rs.next()) {
                 Prisioneiro p = new Prisioneiro();
                 p.setId(rs.getInt("id"));
-                p.setNome(rs.getString("nome"));
+                p.setNomeCompleto(rs.getString("nome_completo"));
                 p.setNomeMae(rs.getString("nome_mae"));
-                p.setDataNascimento(rs.getDate("data_nascimento").toLocalDate());
+                p.setDataNascimento(rs.getDate("data_nascimento"));
                 p.setCpf(rs.getString("cpf"));
                 p.setOrientacao(rs.getString("orientacao"));
                 p.setGenero(rs.getString("genero"));
@@ -72,7 +71,6 @@ public class PrisioneiroDao {
                 p.setNacionalidade(rs.getString("nacionalidade"));
                 p.setEstadoCivil(rs.getString("estado_civil"));
                 p.setEscolaridade(rs.getString("escolaridade"));
-                p.setUf(rs.getString("uf"));
 
                 prisioneiros.add(p);
             }
@@ -98,9 +96,9 @@ public Prisioneiro buscarPrisioneiroPorId(int id) {
             if (rs.next()) {
                 Prisioneiro p = new Prisioneiro();
                 p.setId(rs.getInt("id"));
-                p.setNome(rs.getString("nome"));
+                p.setNomeCompleto(rs.getString("nome_completo"));
                 p.setNomeMae(rs.getString("nome_mae"));
-                p.setDataNascimento(rs.getDate("data_nascimento").toLocalDate());
+                p.setDataNascimento(rs.getDate("data_nascimento"));
                 p.setCpf(rs.getString("cpf"));
                 p.setOrientacao(rs.getString("orientacao"));
                 p.setGenero(rs.getString("genero"));
@@ -109,7 +107,6 @@ public Prisioneiro buscarPrisioneiroPorId(int id) {
                 p.setNacionalidade(rs.getString("nacionalidade"));
                 p.setEstadoCivil(rs.getString("estado_civil"));
                 p.setEscolaridade(rs.getString("escolaridade"));
-                p.setUf(rs.getString("uf"));
                 
                 return p;
             }
@@ -124,16 +121,16 @@ public Prisioneiro buscarPrisioneiroPorId(int id) {
 }
 
 public boolean updatePrisioneiro(Prisioneiro prisioneiro) {
-    String sql = "UPDATE prisioneiro SET nome = ?, nome_mae = ?, data_nascimento = ?, cpf = ?, " +
+    String sql = "UPDATE prisioneiro SET nome_completo = ?, nome_mae = ?, data_nascimento = ?, cpf = ?, " +
                  "orientacao = ?, genero = ?, sexo = ?, raca = ?, nacionalidade = ?, " +
-                 "estado_civil = ?, escolaridade = ?, uf = ? WHERE id = ?";
+                 "estado_civil = ?, escolaridade = ? WHERE id = ?";
     
     try (Connection conexao = ConexaoBanco.conectar();
          PreparedStatement ps = conexao.prepareStatement(sql)) {
         
-        ps.setString(1, prisioneiro.getNome());
+        ps.setString(1, prisioneiro.getNomeCompleto());
         ps.setString(2, prisioneiro.getNomeMae());
-        ps.setDate(3, java.sql.Date.valueOf(prisioneiro.getDataNascimento()));
+        ps.setDate(3, prisioneiro.getDataNascimento());
         ps.setString(4, prisioneiro.getCpf());
         ps.setString(5, prisioneiro.getOrientacao());
         ps.setString(6, prisioneiro.getGenero());
@@ -142,8 +139,7 @@ public boolean updatePrisioneiro(Prisioneiro prisioneiro) {
         ps.setString(9, prisioneiro.getNacionalidade());
         ps.setString(10, prisioneiro.getEstadoCivil());
         ps.setString(11, prisioneiro.getEscolaridade());
-        ps.setString(12, prisioneiro.getUf());
-        ps.setInt(13, prisioneiro.getId());
+        ps.setInt(12, prisioneiro.getId());
         
         int rowsAffected = ps.executeUpdate();
         return rowsAffected > 0;
@@ -159,13 +155,13 @@ public boolean updatePrisioneiro(Prisioneiro prisioneiro) {
     public static void insertPrisioneiro(Prisioneiro prisioneiro, Atendimento atendimento){
         try{
             Connection conexao = ConexaoBanco.conectar();
-            String sql = "INSERT INTO prisioneiro (data_nascimento, nome, cpf, id_orientacao, id_genero, id_sexo, "
+            String sql = "INSERT INTO prisioneiro (data_nascimento, nome_completo, cpf, id_orientacao, id_genero, id_sexo, "
                     + "id_raça, id_nacionalidade, id_estado_civil, id_escolaridade)"
                     + "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
             
             PreparedStatement ps = conexao.prepareStatement(sql);
-            ps.setString(1, prisioneiro.getNome());
-            ps.setDate(2, java.sql.Date.valueOf(prisioneiro.getDataNascimento()));
+            ps.setString(1, prisioneiro.getNomeCompleto());
+            ps.setDate(2, prisioneiro.getDataNascimento());
             ps.setString(3, prisioneiro.getCpf());
             ps.setString(4, prisioneiro.getOrientacao());
             ps.setString(5, prisioneiro.getGenero());
@@ -182,16 +178,16 @@ public boolean updatePrisioneiro(Prisioneiro prisioneiro) {
     }
     
     public int insertPrisioneiro(Prisioneiro prisioneiro) {
-        String sql = "INSERT INTO prisioneiro (nome, nome_mae, data_nascimento, cpf, " +
-                     "orientacao, genero, sexo, raca, nacionalidade, estado_civil, escolaridade, uf) " +
-                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO prisioneiro (nome_completo, nome_mae, data_nascimento, cpf, " +
+                     "orientacao, genero, sexo, raca, nacionalidade, estado_civil, escolaridade) " +
+                     "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         
         try (Connection conexao = ConexaoBanco.conectar();
              PreparedStatement ps = conexao.prepareStatement(sql, java.sql.Statement.RETURN_GENERATED_KEYS)) {
             
-            ps.setString(1, prisioneiro.getNome());
+            ps.setString(1, prisioneiro.getNomeCompleto());
             ps.setString(2, prisioneiro.getNomeMae());
-            ps.setDate(3, java.sql.Date.valueOf(prisioneiro.getDataNascimento()));
+            ps.setDate(3, prisioneiro.getDataNascimento());
             ps.setString(4, prisioneiro.getCpf());
             ps.setString(5, prisioneiro.getOrientacao());
             ps.setString(6, prisioneiro.getGenero());
@@ -200,7 +196,6 @@ public boolean updatePrisioneiro(Prisioneiro prisioneiro) {
             ps.setString(9, prisioneiro.getNacionalidade());
             ps.setString(10, prisioneiro.getEstadoCivil());
             ps.setString(11, prisioneiro.getEscolaridade());
-            ps.setString(12, prisioneiro.getUf());
             
             int rowsAffected = ps.executeUpdate();
             
