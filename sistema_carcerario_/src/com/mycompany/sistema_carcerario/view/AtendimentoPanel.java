@@ -228,6 +228,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         bg_recebeu_vacina_hepatite_b = new javax.swing.ButtonGroup();
         cb_ofertar_vaciana_hepatite_b1 = new javax.swing.JCheckBox();
         bg_ofertar_copia_carteira_vacinacao = new javax.swing.ButtonGroup();
+        bg_vinculo_caps = new javax.swing.ButtonGroup();
+        bg_usa_medicamento_controlado = new javax.swing.ButtonGroup();
+        bg_estava_acomp_saude_mental_momento_prisao = new javax.swing.ButtonGroup();
+        bg_ja_realizou_trat_para_cessar_reduzir_uso = new javax.swing.ButtonGroup();
         btn_cancelar = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         atendimento_panel = new javax.swing.JPanel();
@@ -294,19 +298,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jLabel26 = new javax.swing.JLabel();
         rb_doenca_pele_sim = new javax.swing.JRadioButton();
         rb_doenca_pele_nao = new javax.swing.JRadioButton();
-        jLabel29 = new javax.swing.JLabel();
-        rb_condicoes_cronicas_nao1 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_sim1 = new javax.swing.JRadioButton();
-        jLabel30 = new javax.swing.JLabel();
-        rb_condicoes_cronicas_sim2 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_nao2 = new javax.swing.JRadioButton();
-        jLabel31 = new javax.swing.JLabel();
-        rb_condicoes_cronicas_sim3 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_nao3 = new javax.swing.JRadioButton();
-        jLabel32 = new javax.swing.JLabel();
-        rb_condicoes_cronicas_sim4 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_nao4 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_sim6 = new javax.swing.JRadioButton();
         jLabel34 = new javax.swing.JLabel();
         tf_possui_intolerancia_quais7 = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
@@ -314,24 +305,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jLabel36 = new javax.swing.JLabel();
         tf_possui_intolerancia_quais10 = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
-        rb_condicoes_cronicas_sim7 = new javax.swing.JRadioButton();
         tf_possui_intolerancia_quais11 = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
-        jLabel40 = new javax.swing.JLabel();
-        jLabel41 = new javax.swing.JLabel();
-        jLabel42 = new javax.swing.JLabel();
-        jLabel43 = new javax.swing.JLabel();
-        jLabel44 = new javax.swing.JLabel();
-        rb_condicoes_cronicas_sim8 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_nao6 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_nao7 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_sim9 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_sim10 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_nao8 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_nao9 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_sim11 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_sim12 = new javax.swing.JRadioButton();
-        rb_condicoes_cronicas_nao10 = new javax.swing.JRadioButton();
         jLabel33 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
@@ -352,6 +327,17 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         rb_tipo_sangue_nao_sabe = new javax.swing.JRadioButton();
         jLabel47 = new javax.swing.JLabel();
         tf_tipo_sangue = new javax.swing.JTextField();
+        cb_cond_cron_possui_diabetes = new javax.swing.JCheckBox();
+        cb_cond_cron_possui_HIV = new javax.swing.JCheckBox();
+        cb_cond_cron_possui_autoimune = new javax.swing.JCheckBox();
+        cb_cond_cron_possui_hipertensao = new javax.swing.JCheckBox();
+        cb_cond_cron_nao_sabe_responder = new javax.swing.JCheckBox();
+        cb_hist_doencas_infec_sifilis = new javax.swing.JCheckBox();
+        cb_hist_doencas_infec_hpv = new javax.swing.JCheckBox();
+        cb_hist_doencas_infec_tuberculose = new javax.swing.JCheckBox();
+        cb_hist_doencas_infec_hepatite_b = new javax.swing.JCheckBox();
+        cb_hist_doencas_infec_hepatite_c = new javax.swing.JCheckBox();
+        cb_hist_doencas_infec_nao_sabe_responder = new javax.swing.JCheckBox();
         jPanel4 = new javax.swing.JPanel();
         jLabel48 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
@@ -450,6 +436,63 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jPanel7 = new javax.swing.JPanel();
         jLabel79 = new javax.swing.JLabel();
         jPanel8 = new javax.swing.JPanel();
+        jLabel88 = new javax.swing.JLabel();
+        rb_vinculo_caps_nao = new javax.swing.JRadioButton();
+        rb_vinculo_caps_sim = new javax.swing.JRadioButton();
+        jLabel89 = new javax.swing.JLabel();
+        tf_vinculo_caps_nome = new javax.swing.JTextField();
+        tf_vinculo_caps_municipio = new javax.swing.JTextField();
+        jLabel90 = new javax.swing.JLabel();
+        jLabel91 = new javax.swing.JLabel();
+        jSeparator10 = new javax.swing.JSeparator();
+        jLabel92 = new javax.swing.JLabel();
+        jLabel98 = new javax.swing.JLabel();
+        cb_possui_esquisofrenia = new javax.swing.JCheckBox();
+        cb_possui_bipolaridade = new javax.swing.JCheckBox();
+        cb_possui_depressao = new javax.swing.JCheckBox();
+        cb_possui_ansiedade = new javax.swing.JCheckBox();
+        cb_possui_autismo = new javax.swing.JCheckBox();
+        tf_possui_trasntorno_mental_outro = new javax.swing.JTextField();
+        jSeparator11 = new javax.swing.JSeparator();
+        jLabel93 = new javax.swing.JLabel();
+        tf_usa_med_controlado_qual = new javax.swing.JTextField();
+        jCheckBox2 = new javax.swing.JCheckBox();
+        rb_usa_med_controlado_nao = new javax.swing.JRadioButton();
+        rb_usa_med_controlado_sim = new javax.swing.JRadioButton();
+        jLabel94 = new javax.swing.JLabel();
+        rb_usa_med_controlado_nao_sabe = new javax.swing.JRadioButton();
+        jSeparator12 = new javax.swing.JSeparator();
+        jLabel95 = new javax.swing.JLabel();
+        rb_acompanhamento_saude_mental_no_momento_da_prisao_nao = new javax.swing.JRadioButton();
+        rb_acompanhamento_saude_mental_no_momento_da_prisao_sim = new javax.swing.JRadioButton();
+        jLabel96 = new javax.swing.JLabel();
+        tf_acompanhamento_saude_mental_no_momento_da_prisao_qual = new javax.swing.JTextField();
+        jSeparator13 = new javax.swing.JSeparator();
+        jLabel97 = new javax.swing.JLabel();
+        cb_faz_uso_de_cigarro = new javax.swing.JCheckBox();
+        cb_faz_uso_de_alccol = new javax.swing.JCheckBox();
+        cb_faz_uso_de_maconha = new javax.swing.JCheckBox();
+        cb_faz_uso_de_cocaina = new javax.swing.JCheckBox();
+        cb_faz_uso_de_crack = new javax.swing.JCheckBox();
+        cb_faz_uso_de_drogas_k = new javax.swing.JCheckBox();
+        cb_faz_uso_de_anfetaminas = new javax.swing.JCheckBox();
+        jLabel99 = new javax.swing.JLabel();
+        tf_faz_uso_de_outras = new javax.swing.JTextField();
+        jSeparator14 = new javax.swing.JSeparator();
+        jLabel100 = new javax.swing.JLabel();
+        rb_ja_realizou_trat_para_cessar_reduzir_uso_nao = new javax.swing.JRadioButton();
+        rb_ja_realizou_trat_para_cessar_reduzir_uso_sim = new javax.swing.JRadioButton();
+        jLabel101 = new javax.swing.JLabel();
+        tf_ja_realizou_trat_para_cessar_reduzir_uso_qual = new javax.swing.JTextField();
+        cb_gostaria_realizar_trat_para_cessar_reduzir_uso = new javax.swing.JCheckBox();
+        tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs = new javax.swing.JTextField();
+        jLabel102 = new javax.swing.JLabel();
+        jSeparator15 = new javax.swing.JSeparator();
+        jLabel103 = new javax.swing.JLabel();
+        jCheckBox1 = new javax.swing.JCheckBox();
+        jCheckBox3 = new javax.swing.JCheckBox();
+        jCheckBox4 = new javax.swing.JCheckBox();
+        jCheckBox5 = new javax.swing.JCheckBox();
         jPanel9 = new javax.swing.JPanel();
         jLabel80 = new javax.swing.JLabel();
         jPanel10 = new javax.swing.JPanel();
@@ -894,46 +937,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         bg_possui_denca_de_pele.add(rb_doenca_pele_nao);
         rb_doenca_pele_nao.setText("Não");
 
-        jLabel29.setText("Hipertensão");
-
-        bg_hipertencao.add(rb_condicoes_cronicas_nao1);
-        rb_condicoes_cronicas_nao1.setText("Não");
-
-        bg_hipertencao.add(rb_condicoes_cronicas_sim1);
-        rb_condicoes_cronicas_sim1.setText("Sim");
-
-        jLabel30.setText("Diabetes");
-
-        bg_diabetes.add(rb_condicoes_cronicas_sim2);
-        rb_condicoes_cronicas_sim2.setText("Sim");
-
-        bg_diabetes.add(rb_condicoes_cronicas_nao2);
-        rb_condicoes_cronicas_nao2.setText("Não");
-
-        jLabel31.setText("HIV");
-
-        bg_hiv.add(rb_condicoes_cronicas_sim3);
-        rb_condicoes_cronicas_sim3.setText("Sim");
-
-        bg_hiv.add(rb_condicoes_cronicas_nao3);
-        rb_condicoes_cronicas_nao3.setText("Não");
-
-        jLabel32.setText("Autoimune");
-
-        bg_autoimune.add(rb_condicoes_cronicas_sim4);
-        rb_condicoes_cronicas_sim4.setText("Sim");
-
-        bg_autoimune.add(rb_condicoes_cronicas_nao4);
-        rb_condicoes_cronicas_nao4.setText("Não");
-
-        bg_hipertencao.add(rb_condicoes_cronicas_sim6);
-        rb_condicoes_cronicas_sim6.setText("Não sabe responder");
-        rb_condicoes_cronicas_sim6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_condicoes_cronicas_sim6ActionPerformed(evt);
-            }
-        });
-
         jLabel34.setText("Obs:");
 
         tf_possui_intolerancia_quais7.addActionListener(new java.awt.event.ActionListener() {
@@ -964,14 +967,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel38.setText("Obs:");
 
-        bg_hipertencao.add(rb_condicoes_cronicas_sim7);
-        rb_condicoes_cronicas_sim7.setText("Não sabe responder");
-        rb_condicoes_cronicas_sim7.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_condicoes_cronicas_sim7ActionPerformed(evt);
-            }
-        });
-
         tf_possui_intolerancia_quais11.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_possui_intolerancia_quais11ActionPerformed(evt);
@@ -979,46 +974,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         });
 
         jLabel39.setText("Outra:");
-
-        jLabel40.setText("Hepatite C");
-
-        jLabel41.setText("Hepatite B");
-
-        jLabel42.setText("Tuberculoe");
-
-        jLabel43.setText("HPV");
-
-        jLabel44.setText("Sifilis");
-
-        bg_sifilis.add(rb_condicoes_cronicas_sim8);
-        rb_condicoes_cronicas_sim8.setText("Sim");
-
-        bg_sifilis.add(rb_condicoes_cronicas_nao6);
-        rb_condicoes_cronicas_nao6.setText("Não");
-
-        bg_hpv.add(rb_condicoes_cronicas_nao7);
-        rb_condicoes_cronicas_nao7.setText("Não");
-
-        bg_hpv.add(rb_condicoes_cronicas_sim9);
-        rb_condicoes_cronicas_sim9.setText("Sim");
-
-        bg_tuberculose.add(rb_condicoes_cronicas_sim10);
-        rb_condicoes_cronicas_sim10.setText("Sim");
-
-        bg_tuberculose.add(rb_condicoes_cronicas_nao8);
-        rb_condicoes_cronicas_nao8.setText("Não");
-
-        bg_hepatite_b.add(rb_condicoes_cronicas_nao9);
-        rb_condicoes_cronicas_nao9.setText("Não");
-
-        bg_hepatite_b.add(rb_condicoes_cronicas_sim11);
-        rb_condicoes_cronicas_sim11.setText("Sim");
-
-        bg_hipertencao.add(rb_condicoes_cronicas_sim12);
-        rb_condicoes_cronicas_sim12.setText("Sim");
-
-        bg_hipertencao.add(rb_condicoes_cronicas_nao10);
-        rb_condicoes_cronicas_nao10.setText("Não");
 
         jLabel33.setText("Quais:");
 
@@ -1075,6 +1030,43 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel47.setText("Encaminhamentos:");
 
+        cb_cond_cron_possui_diabetes.setText("Diabetes");
+
+        cb_cond_cron_possui_HIV.setText("HIV");
+
+        cb_cond_cron_possui_autoimune.setText("Autoimune");
+
+        cb_cond_cron_possui_hipertensao.setText("Hipertensão");
+
+        cb_cond_cron_nao_sabe_responder.setText("Não sabe responder");
+
+        cb_hist_doencas_infec_sifilis.setText("Sifilis");
+
+        cb_hist_doencas_infec_hpv.setText("HPV");
+
+        cb_hist_doencas_infec_tuberculose.setText("Tuberculose");
+        cb_hist_doencas_infec_tuberculose.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_hist_doencas_infec_tuberculoseActionPerformed(evt);
+            }
+        });
+
+        cb_hist_doencas_infec_hepatite_b.setText("Hepatite B");
+        cb_hist_doencas_infec_hepatite_b.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_hist_doencas_infec_hepatite_bActionPerformed(evt);
+            }
+        });
+
+        cb_hist_doencas_infec_hepatite_c.setText("Hepatite C");
+        cb_hist_doencas_infec_hepatite_c.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_hist_doencas_infec_hepatite_cActionPerformed(evt);
+            }
+        });
+
+        cb_hist_doencas_infec_nao_sabe_responder.setText("Não sabe responder");
+
         javax.swing.GroupLayout condicoes_de_saudeLayout = new javax.swing.GroupLayout(condicoes_de_saude);
         condicoes_de_saude.setLayout(condicoes_de_saudeLayout);
         condicoes_de_saudeLayout.setHorizontalGroup(
@@ -1095,14 +1087,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tf_possui_intolerancia_quais1))
                     .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                        .addComponent(jLabel34)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_possui_intolerancia_quais2))
-                    .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                        .addComponent(jLabel35)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_possui_intolerancia_quais7))
                     .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                         .addComponent(jLabel38)
@@ -1121,123 +1105,97 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(tf_med_continuo))
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                        .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGap(6, 6, 6)
+                        .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel19)
+                                .addComponent(jLabel35)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_possui_deficiencia_sim)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_possui_deficiencia_nao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_possui_deficiencia_nao_sei))
+                                .addComponent(tf_possui_intolerancia_quais7))
                             .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel22)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_possui_alergia_sim)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_possui_alergia_nao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_possui_alergia_nao_sei))
+                                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(cb_cond_cron_nao_sabe_responder)
+                                    .addComponent(cb_cond_cron_possui_diabetes)
+                                    .addComponent(cb_cond_cron_possui_HIV)
+                                    .addComponent(cb_cond_cron_possui_autoimune)
+                                    .addComponent(cb_cond_cron_possui_hipertensao))
+                                .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel23)
+                                .addComponent(jLabel34)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_realizou_cirurgia_sim)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_realizou_cirurgia_nao)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_realizou_cirurgia_nao_sei))
-                            .addComponent(rb_condicoes_cronicas_sim6)
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel32)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rb_condicoes_cronicas_sim4)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_condicoes_cronicas_nao4))
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel31)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rb_condicoes_cronicas_sim3)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_condicoes_cronicas_nao3))
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel30)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(rb_condicoes_cronicas_sim2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_condicoes_cronicas_nao2))
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel29)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rb_condicoes_cronicas_sim1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_condicoes_cronicas_nao1))
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel43)
-                                .addGap(18, 18, 18)
-                                .addComponent(rb_condicoes_cronicas_sim9)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_condicoes_cronicas_nao7))
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel44)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rb_condicoes_cronicas_sim8)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_condicoes_cronicas_nao6))
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel42)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rb_condicoes_cronicas_sim10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_condicoes_cronicas_nao8))
-                            .addComponent(rb_condicoes_cronicas_sim7)
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel40)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rb_condicoes_cronicas_sim12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_condicoes_cronicas_nao10))
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel41)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rb_condicoes_cronicas_sim11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_condicoes_cronicas_nao9))
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel26)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_doenca_pele_sim)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_doenca_pele_nao))
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel27)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_doenca_pele_sim1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_doenca_pele_nao1))
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel28)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_tipo_sangue_ap)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_tipo_sangue_am)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_tipo_sangue_bp)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_tipo_sangue_bm)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_tipo_sangue_op)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_tipo_sangue_om)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_tipo_sangue_abp)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_tipo_sangue_abm)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(rb_tipo_sangue_nao_sabe))
-                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                .addComponent(jLabel47)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_tipo_sangue)))
+                                .addComponent(tf_possui_intolerancia_quais2))))
+                    .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                        .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                    .addComponent(jLabel19)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_possui_deficiencia_sim)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_possui_deficiencia_nao)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_possui_deficiencia_nao_sei))
+                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                    .addComponent(jLabel22)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_possui_alergia_sim)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_possui_alergia_nao)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_possui_alergia_nao_sei))
+                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                    .addComponent(jLabel23)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_realizou_cirurgia_sim)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_realizou_cirurgia_nao)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_realizou_cirurgia_nao_sei))
+                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                    .addComponent(jLabel26)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_doenca_pele_sim)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_doenca_pele_nao))
+                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                    .addComponent(jLabel27)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_doenca_pele_sim1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_doenca_pele_nao1))
+                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                    .addComponent(jLabel28)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_tipo_sangue_ap)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_tipo_sangue_am)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_tipo_sangue_bp)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_tipo_sangue_bm)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_tipo_sangue_op)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_tipo_sangue_om)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_tipo_sangue_abp)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_tipo_sangue_abm)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(rb_tipo_sangue_nao_sabe))
+                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                    .addComponent(jLabel47)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                    .addComponent(tf_tipo_sangue))
+                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                    .addGap(6, 6, 6)
+                                    .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(cb_hist_doencas_infec_sifilis)
+                                            .addComponent(cb_hist_doencas_infec_hpv, javax.swing.GroupLayout.Alignment.LEADING))
+                                        .addComponent(cb_hist_doencas_infec_tuberculose)
+                                        .addComponent(cb_hist_doencas_infec_hepatite_c)
+                                        .addComponent(cb_hist_doencas_infec_hepatite_b))))
+                            .addComponent(cb_hist_doencas_infec_nao_sabe_responder))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1276,76 +1234,42 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                     .addComponent(jLabel46))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel24)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cb_cond_cron_possui_hipertensao)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel29)
-                    .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_condicoes_cronicas_sim1)
-                        .addComponent(rb_condicoes_cronicas_nao1)))
+                .addComponent(cb_cond_cron_possui_diabetes)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel30)
-                    .addComponent(rb_condicoes_cronicas_sim2)
-                    .addComponent(rb_condicoes_cronicas_nao2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_condicoes_cronicas_sim3)
-                        .addComponent(rb_condicoes_cronicas_nao3))
-                    .addComponent(jLabel31))
+                .addComponent(cb_cond_cron_possui_HIV)
                 .addGap(6, 6, 6)
-                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_condicoes_cronicas_sim4)
-                        .addComponent(rb_condicoes_cronicas_nao4))
-                    .addComponent(jLabel32))
-                .addGap(8, 8, 8)
+                .addComponent(cb_cond_cron_possui_autoimune)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_possui_intolerancia_quais7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rb_condicoes_cronicas_sim6)
+                .addComponent(cb_cond_cron_nao_sabe_responder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_possui_intolerancia_quais2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34))
-                .addGap(18, 18, 18)
+                .addGap(20, 20, 20)
                 .addComponent(jLabel25)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(cb_hist_doencas_infec_sifilis)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel44)
-                    .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_condicoes_cronicas_sim8)
-                        .addComponent(rb_condicoes_cronicas_nao6)))
+                .addComponent(cb_hist_doencas_infec_hpv)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel43)
-                    .addComponent(rb_condicoes_cronicas_sim9)
-                    .addComponent(rb_condicoes_cronicas_nao7))
+                .addComponent(cb_hist_doencas_infec_tuberculose)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel42)
-                    .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_condicoes_cronicas_sim10)
-                        .addComponent(rb_condicoes_cronicas_nao8)))
+                .addComponent(cb_hist_doencas_infec_hepatite_b)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel41)
-                    .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_condicoes_cronicas_sim11)
-                        .addComponent(rb_condicoes_cronicas_nao9)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel40)
-                    .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_condicoes_cronicas_sim12)
-                        .addComponent(rb_condicoes_cronicas_nao10)))
+                .addComponent(cb_hist_doencas_infec_hepatite_c)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_possui_intolerancia_quais11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel39))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(rb_condicoes_cronicas_sim7)
+                .addComponent(cb_hist_doencas_infec_nao_sabe_responder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tf_possui_intolerancia_quais10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2155,15 +2079,433 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jLabel88.setText("Possui vinculo com CAPS?");
+
+        bg_vinculo_caps.add(rb_vinculo_caps_nao);
+        rb_vinculo_caps_nao.setText("Não");
+
+        bg_vinculo_caps.add(rb_vinculo_caps_sim);
+        rb_vinculo_caps_sim.setText("Sim");
+
+        jLabel89.setText("Qual o nome e município desse CAPS");
+
+        tf_vinculo_caps_nome.setEditable(false);
+        tf_vinculo_caps_nome.setToolTipText("Local");
+        tf_vinculo_caps_nome.setEnabled(false);
+        tf_vinculo_caps_nome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_vinculo_caps_nomeActionPerformed(evt);
+            }
+        });
+
+        tf_vinculo_caps_municipio.setEditable(false);
+        tf_vinculo_caps_municipio.setToolTipText("Local");
+        tf_vinculo_caps_municipio.setEnabled(false);
+        tf_vinculo_caps_municipio.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_vinculo_caps_municipioActionPerformed(evt);
+            }
+        });
+
+        jLabel90.setText("Nome:");
+
+        jLabel91.setText("Município:");
+
+        jSeparator10.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator10.setOpaque(true);
+
+        jLabel92.setText("Possui transtorno mental:");
+
+        jLabel98.setText("Outro:");
+
+        cb_possui_esquisofrenia.setText("Esquisofrenia");
+
+        cb_possui_bipolaridade.setText("Bipolaridade");
+
+        cb_possui_depressao.setText("Depressão");
+
+        cb_possui_ansiedade.setText("Ansisedade");
+
+        cb_possui_autismo.setText("Autismo");
+
+        jSeparator11.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator11.setOpaque(true);
+
+        jLabel93.setText("Qual:");
+
+        tf_usa_med_controlado_qual.setEditable(false);
+        tf_usa_med_controlado_qual.setToolTipText("Local");
+        tf_usa_med_controlado_qual.setEnabled(false);
+        tf_usa_med_controlado_qual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_usa_med_controlado_qualActionPerformed(evt);
+            }
+        });
+
+        jCheckBox2.setText("Não sabe responder");
+
+        bg_usa_medicamento_controlado.add(rb_usa_med_controlado_nao);
+        rb_usa_med_controlado_nao.setText("Não");
+
+        bg_usa_medicamento_controlado.add(rb_usa_med_controlado_sim);
+        rb_usa_med_controlado_sim.setText("Sim");
+
+        jLabel94.setText("Usa Medicamento controlado?");
+
+        rb_usa_med_controlado_nao_sabe.setText("Não sabe responder");
+
+        jSeparator12.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator12.setOpaque(true);
+
+        jLabel95.setText("Estava em acompanhamento em Saúde Mental no momento da Prisão?");
+
+        bg_estava_acomp_saude_mental_momento_prisao.add(rb_acompanhamento_saude_mental_no_momento_da_prisao_nao);
+        rb_acompanhamento_saude_mental_no_momento_da_prisao_nao.setText("Não");
+
+        bg_estava_acomp_saude_mental_momento_prisao.add(rb_acompanhamento_saude_mental_no_momento_da_prisao_sim);
+        rb_acompanhamento_saude_mental_no_momento_da_prisao_sim.setText("Sim");
+
+        jLabel96.setText("Qual:");
+
+        tf_acompanhamento_saude_mental_no_momento_da_prisao_qual.setEditable(false);
+        tf_acompanhamento_saude_mental_no_momento_da_prisao_qual.setToolTipText("Local");
+        tf_acompanhamento_saude_mental_no_momento_da_prisao_qual.setEnabled(false);
+        tf_acompanhamento_saude_mental_no_momento_da_prisao_qual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_acompanhamento_saude_mental_no_momento_da_prisao_qualActionPerformed(evt);
+            }
+        });
+
+        jSeparator13.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator13.setOpaque(true);
+
+        jLabel97.setText("Faz uso de:");
+
+        cb_faz_uso_de_cigarro.setText("Cigarro");
+
+        cb_faz_uso_de_alccol.setText("Álcool");
+
+        cb_faz_uso_de_maconha.setText("Maconha");
+
+        cb_faz_uso_de_cocaina.setText("Cocaína");
+
+        cb_faz_uso_de_crack.setText("Crack");
+
+        cb_faz_uso_de_drogas_k.setText("Drogas \"k\"");
+
+        cb_faz_uso_de_anfetaminas.setText("Anfetaminas");
+
+        jLabel99.setText("Outra(s):");
+
+        jSeparator14.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator14.setOpaque(true);
+
+        jLabel100.setText("Já realizou algum tratamento para cessar ou reduzir o uso?");
+
+        bg_ja_realizou_trat_para_cessar_reduzir_uso.add(rb_ja_realizou_trat_para_cessar_reduzir_uso_nao);
+        rb_ja_realizou_trat_para_cessar_reduzir_uso_nao.setText("Não");
+
+        bg_ja_realizou_trat_para_cessar_reduzir_uso.add(rb_ja_realizou_trat_para_cessar_reduzir_uso_sim);
+        rb_ja_realizou_trat_para_cessar_reduzir_uso_sim.setText("Sim");
+
+        jLabel101.setText("Qual:");
+
+        tf_ja_realizou_trat_para_cessar_reduzir_uso_qual.setEditable(false);
+        tf_ja_realizou_trat_para_cessar_reduzir_uso_qual.setToolTipText("Local");
+        tf_ja_realizou_trat_para_cessar_reduzir_uso_qual.setEnabled(false);
+        tf_ja_realizou_trat_para_cessar_reduzir_uso_qual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_ja_realizou_trat_para_cessar_reduzir_uso_qualActionPerformed(evt);
+            }
+        });
+
+        cb_gostaria_realizar_trat_para_cessar_reduzir_uso.setText("Gostaria de realizar algum tratamento para cessar ou reduzir o uso?");
+        cb_gostaria_realizar_trat_para_cessar_reduzir_uso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cb_gostaria_realizar_trat_para_cessar_reduzir_usoActionPerformed(evt);
+            }
+        });
+
+        tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs.setEditable(false);
+        tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs.setToolTipText("Local");
+        tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs.setEnabled(false);
+        tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subsActionPerformed(evt);
+            }
+        });
+
+        jLabel102.setText("Qual substancia:");
+
+        jSeparator15.setBackground(new java.awt.Color(153, 153, 153));
+        jSeparator15.setOpaque(true);
+
+        jLabel103.setText("Encaminhamentos:");
+
+        jCheckBox1.setText("Ofertar consulta com a psicologia?");
+
+        jCheckBox3.setText("Ofertar consulta com a psiquiatra?");
+
+        jCheckBox4.setText("Encaminhar para renovação de receitas?");
+
+        jCheckBox5.setText("Ofertar encaminhamento para grupos de apoio para cessar ou reduzir o uso (se existir)");
+
         javax.swing.GroupLayout jPanel8Layout = new javax.swing.GroupLayout(jPanel8);
         jPanel8.setLayout(jPanel8Layout);
         jPanel8Layout.setHorizontalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGap(6, 6, 6)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel103)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jCheckBox3)
+                                    .addComponent(jCheckBox1)
+                                    .addComponent(jCheckBox4)
+                                    .addComponent(jCheckBox5))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jSeparator13, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jSeparator11, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel88)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGap(6, 6, 6)
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(rb_vinculo_caps_sim)
+                                            .addComponent(rb_vinculo_caps_nao)
+                                            .addComponent(jLabel89)
+                                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                                        .addComponent(jLabel91)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(tf_vinculo_caps_municipio))
+                                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                                        .addComponent(jLabel90)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(tf_vinculo_caps_nome, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                .addGap(18, 18, 18)
+                                .addComponent(jSeparator10, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addComponent(jLabel98)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(tf_possui_trasntorno_mental_outro))
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jCheckBox2)
+                                            .addComponent(jLabel92)
+                                            .addComponent(cb_possui_esquisofrenia)
+                                            .addComponent(cb_possui_bipolaridade)
+                                            .addComponent(cb_possui_depressao)
+                                            .addComponent(cb_possui_ansiedade)
+                                            .addComponent(cb_possui_autismo))
+                                        .addGap(0, 0, Short.MAX_VALUE))))
+                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel94)
+                                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                                .addGap(6, 6, 6)
+                                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(rb_usa_med_controlado_nao_sabe)
+                                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                                        .addComponent(rb_usa_med_controlado_sim)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                        .addComponent(jLabel93)
+                                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                        .addComponent(tf_usa_med_controlado_qual, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                    .addComponent(rb_usa_med_controlado_nao))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jSeparator12, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                                .addComponent(rb_acompanhamento_saude_mental_no_momento_da_prisao_sim)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel96)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tf_acompanhamento_saude_mental_no_momento_da_prisao_qual))
+                                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel95)
+                                                    .addComponent(rb_acompanhamento_saude_mental_no_momento_da_prisao_nao))
+                                                .addGap(0, 0, Short.MAX_VALUE))))
+                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel97)
+                                                    .addGroup(jPanel8Layout.createSequentialGroup()
+                                                        .addGap(6, 6, 6)
+                                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                            .addComponent(cb_faz_uso_de_cigarro)
+                                                            .addComponent(cb_faz_uso_de_alccol)
+                                                            .addComponent(cb_faz_uso_de_maconha)
+                                                            .addComponent(cb_faz_uso_de_crack)
+                                                            .addComponent(cb_faz_uso_de_cocaina)
+                                                            .addComponent(cb_faz_uso_de_anfetaminas)
+                                                            .addComponent(cb_faz_uso_de_drogas_k))))
+                                                .addGap(304, 304, 304))
+                                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel8Layout.createSequentialGroup()
+                                                .addComponent(jLabel99)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tf_faz_uso_de_outras, javax.swing.GroupLayout.PREFERRED_SIZE, 324, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                .addGap(18, 18, 18)))
+                                        .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                                .addComponent(rb_ja_realizou_trat_para_cessar_reduzir_uso_sim)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addComponent(jLabel101)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tf_ja_realizou_trat_para_cessar_reduzir_uso_qual))
+                                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel100)
+                                                    .addComponent(rb_ja_realizou_trat_para_cessar_reduzir_uso_nao)
+                                                    .addComponent(cb_gostaria_realizar_trat_para_cessar_reduzir_uso))
+                                                .addGap(0, 0, Short.MAX_VALUE))
+                                            .addGroup(jPanel8Layout.createSequentialGroup()
+                                                .addComponent(jLabel102)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addComponent(tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs))))))
+                            .addComponent(jSeparator15))
+                        .addContainerGap())))
         );
         jPanel8Layout.setVerticalGroup(
             jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 217, Short.MAX_VALUE)
+            .addGroup(jPanel8Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel92)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_possui_ansiedade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_possui_depressao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_possui_bipolaridade)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_possui_esquisofrenia)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_possui_autismo)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel98)
+                            .addComponent(tf_possui_trasntorno_mental_outro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(jSeparator10)
+                        .addGroup(jPanel8Layout.createSequentialGroup()
+                            .addComponent(jLabel88)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rb_vinculo_caps_nao)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rb_vinculo_caps_sim)
+                            .addGap(18, 18, 18)
+                            .addComponent(jLabel89)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tf_vinculo_caps_nome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel90))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(tf_vinculo_caps_municipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel91)))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jCheckBox2)
+                .addGap(18, 18, 18)
+                .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel8Layout.createSequentialGroup()
+                            .addComponent(jLabel94)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rb_usa_med_controlado_nao)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                                .addComponent(rb_usa_med_controlado_sim)
+                                .addComponent(jLabel93)
+                                .addComponent(tf_usa_med_controlado_qual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(rb_usa_med_controlado_nao_sabe))
+                        .addComponent(jSeparator12))
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel95)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(rb_acompanhamento_saude_mental_no_momento_da_prisao_nao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rb_acompanhamento_saude_mental_no_momento_da_prisao_sim)
+                            .addComponent(jLabel96)
+                            .addComponent(tf_acompanhamento_saude_mental_no_momento_da_prisao_qual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jSeparator13, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel97)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cb_faz_uso_de_alccol)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_faz_uso_de_cigarro)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_faz_uso_de_maconha)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_faz_uso_de_crack)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_faz_uso_de_cocaina)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_faz_uso_de_anfetaminas)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cb_faz_uso_de_drogas_k)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel99)
+                            .addComponent(tf_faz_uso_de_outras, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(jSeparator14, javax.swing.GroupLayout.PREFERRED_SIZE, 262, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel8Layout.createSequentialGroup()
+                        .addComponent(jLabel100)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(rb_ja_realizou_trat_para_cessar_reduzir_uso_nao)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(rb_ja_realizou_trat_para_cessar_reduzir_uso_sim)
+                            .addComponent(jLabel101)
+                            .addComponent(tf_ja_realizou_trat_para_cessar_reduzir_uso_qual, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(30, 30, 30)
+                        .addComponent(cb_gostaria_realizar_trat_para_cessar_reduzir_uso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel102)
+                            .addComponent(tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jSeparator15, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel103)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jCheckBox5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel9.setBackground(new java.awt.Color(255, 255, 204));
@@ -2509,7 +2851,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addComponent(jPanel9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 184, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_cancelar)
                     .addComponent(btn_salvar))
@@ -2594,10 +2936,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_possui_intolerancia_quais11ActionPerformed
 
-    private void rb_condicoes_cronicas_sim7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_condicoes_cronicas_sim7ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_condicoes_cronicas_sim7ActionPerformed
-
     private void tf_possui_intolerancia_quais10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_possui_intolerancia_quais10ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_possui_intolerancia_quais10ActionPerformed
@@ -2609,10 +2947,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private void tf_possui_intolerancia_quais7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_possui_intolerancia_quais7ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_possui_intolerancia_quais7ActionPerformed
-
-    private void rb_condicoes_cronicas_sim6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_condicoes_cronicas_sim6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_rb_condicoes_cronicas_sim6ActionPerformed
 
     private void tf_possui_intolerancia_quais2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_possui_intolerancia_quais2ActionPerformed
         // TODO add your handling code here:
@@ -2706,6 +3040,46 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_jComboBoxResponsavelActionPerformed
 
+    private void tf_vinculo_caps_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_vinculo_caps_nomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_vinculo_caps_nomeActionPerformed
+
+    private void tf_vinculo_caps_municipioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_vinculo_caps_municipioActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_vinculo_caps_municipioActionPerformed
+
+    private void tf_usa_med_controlado_qualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_usa_med_controlado_qualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_usa_med_controlado_qualActionPerformed
+
+    private void tf_acompanhamento_saude_mental_no_momento_da_prisao_qualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_acompanhamento_saude_mental_no_momento_da_prisao_qualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_acompanhamento_saude_mental_no_momento_da_prisao_qualActionPerformed
+
+    private void tf_ja_realizou_trat_para_cessar_reduzir_uso_qualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_ja_realizou_trat_para_cessar_reduzir_uso_qualActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_ja_realizou_trat_para_cessar_reduzir_uso_qualActionPerformed
+
+    private void cb_gostaria_realizar_trat_para_cessar_reduzir_usoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_gostaria_realizar_trat_para_cessar_reduzir_usoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_gostaria_realizar_trat_para_cessar_reduzir_usoActionPerformed
+
+    private void tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subsActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subsActionPerformed
+
+    private void cb_hist_doencas_infec_tuberculoseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_hist_doencas_infec_tuberculoseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_hist_doencas_infec_tuberculoseActionPerformed
+
+    private void cb_hist_doencas_infec_hepatite_bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_hist_doencas_infec_hepatite_bActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_hist_doencas_infec_hepatite_bActionPerformed
+
+    private void cb_hist_doencas_infec_hepatite_cActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_hist_doencas_infec_hepatite_cActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cb_hist_doencas_infec_hepatite_cActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel atendimento_panel;
@@ -2718,6 +3092,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bg_encaminhar_realiz_vasectomia;
     private javax.swing.ButtonGroup bg_escolaridade;
     private javax.swing.ButtonGroup bg_esta_participando_pre_natal;
+    private javax.swing.ButtonGroup bg_estava_acomp_saude_mental_momento_prisao;
     private javax.swing.ButtonGroup bg_exame_prostata;
     private javax.swing.ButtonGroup bg_fam_rec_beneficio;
     private javax.swing.ButtonGroup bg_gestacao_no_momvento;
@@ -2726,6 +3101,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bg_historico_prostata_familia;
     private javax.swing.ButtonGroup bg_hiv;
     private javax.swing.ButtonGroup bg_hpv;
+    private javax.swing.ButtonGroup bg_ja_realizou_trat_para_cessar_reduzir_uso;
     private javax.swing.ButtonGroup bg_med_continuo;
     private javax.swing.ButtonGroup bg_nacionalidade;
     private javax.swing.ButtonGroup bg_neeja;
@@ -2749,8 +3125,29 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bg_tipo_sangue;
     private javax.swing.ButtonGroup bg_transferencia;
     private javax.swing.ButtonGroup bg_tuberculose;
+    private javax.swing.ButtonGroup bg_usa_medicamento_controlado;
+    private javax.swing.ButtonGroup bg_vinculo_caps;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_salvar;
+    private javax.swing.JCheckBox cb_cond_cron_nao_sabe_responder;
+    private javax.swing.JCheckBox cb_cond_cron_possui_HIV;
+    private javax.swing.JCheckBox cb_cond_cron_possui_autoimune;
+    private javax.swing.JCheckBox cb_cond_cron_possui_diabetes;
+    private javax.swing.JCheckBox cb_cond_cron_possui_hipertensao;
+    private javax.swing.JCheckBox cb_faz_uso_de_alccol;
+    private javax.swing.JCheckBox cb_faz_uso_de_anfetaminas;
+    private javax.swing.JCheckBox cb_faz_uso_de_cigarro;
+    private javax.swing.JCheckBox cb_faz_uso_de_cocaina;
+    private javax.swing.JCheckBox cb_faz_uso_de_crack;
+    private javax.swing.JCheckBox cb_faz_uso_de_drogas_k;
+    private javax.swing.JCheckBox cb_faz_uso_de_maconha;
+    private javax.swing.JCheckBox cb_gostaria_realizar_trat_para_cessar_reduzir_uso;
+    private javax.swing.JCheckBox cb_hist_doencas_infec_hepatite_b;
+    private javax.swing.JCheckBox cb_hist_doencas_infec_hepatite_c;
+    private javax.swing.JCheckBox cb_hist_doencas_infec_hpv;
+    private javax.swing.JCheckBox cb_hist_doencas_infec_nao_sabe_responder;
+    private javax.swing.JCheckBox cb_hist_doencas_infec_sifilis;
+    private javax.swing.JCheckBox cb_hist_doencas_infec_tuberculose;
     private javax.swing.JComboBox<String> cb_identidade_genero;
     private javax.swing.JCheckBox cb_ofertar_vaciana_covid;
     private javax.swing.JCheckBox cb_ofertar_vaciana_dupla_adulto;
@@ -2762,15 +3159,29 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox cb_ofertar_vaciana_outra;
     private javax.swing.JCheckBox cb_ofertar_vaciana_triplice_viral;
     private javax.swing.JComboBox<String> cb_orientacao_sexual;
+    private javax.swing.JCheckBox cb_possui_ansiedade;
+    private javax.swing.JCheckBox cb_possui_autismo;
+    private javax.swing.JCheckBox cb_possui_bipolaridade;
+    private javax.swing.JCheckBox cb_possui_depressao;
+    private javax.swing.JCheckBox cb_possui_esquisofrenia;
     private javax.swing.JComboBox<String> cb_sexo_biologico;
     private javax.swing.JPanel condicoes_de_saude;
     private javax.swing.JPanel identificacao_panel;
     private javax.swing.JButton jButton1;
+    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox jCheckBox2;
+    private javax.swing.JCheckBox jCheckBox3;
+    private javax.swing.JCheckBox jCheckBox4;
+    private javax.swing.JCheckBox jCheckBox5;
     private javax.swing.JCheckBoxMenuItem jCheckBoxMenuItem1;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBoxResponsavel;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel100;
+    private javax.swing.JLabel jLabel101;
+    private javax.swing.JLabel jLabel102;
+    private javax.swing.JLabel jLabel103;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -2790,11 +3201,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
     private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -2803,11 +3210,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel38;
     private javax.swing.JLabel jLabel39;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel40;
-    private javax.swing.JLabel jLabel41;
-    private javax.swing.JLabel jLabel42;
-    private javax.swing.JLabel jLabel43;
-    private javax.swing.JLabel jLabel44;
     private javax.swing.JLabel jLabel45;
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
@@ -2855,7 +3257,19 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel85;
     private javax.swing.JLabel jLabel86;
     private javax.swing.JLabel jLabel87;
+    private javax.swing.JLabel jLabel88;
+    private javax.swing.JLabel jLabel89;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabel90;
+    private javax.swing.JLabel jLabel91;
+    private javax.swing.JLabel jLabel92;
+    private javax.swing.JLabel jLabel93;
+    private javax.swing.JLabel jLabel94;
+    private javax.swing.JLabel jLabel95;
+    private javax.swing.JLabel jLabel96;
+    private javax.swing.JLabel jLabel97;
+    private javax.swing.JLabel jLabel98;
+    private javax.swing.JLabel jLabel99;
     private javax.swing.JLabel jLabelData;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel10;
@@ -2868,6 +3282,12 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator10;
+    private javax.swing.JSeparator jSeparator11;
+    private javax.swing.JSeparator jSeparator12;
+    private javax.swing.JSeparator jSeparator13;
+    private javax.swing.JSeparator jSeparator14;
+    private javax.swing.JSeparator jSeparator15;
     private javax.swing.JSeparator jSeparator2;
     private javax.swing.JSeparator jSeparator3;
     private javax.swing.JSeparator jSeparator4;
@@ -2878,26 +3298,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField3;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_nao1;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_nao10;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_nao2;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_nao3;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_nao4;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_nao6;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_nao7;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_nao8;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_nao9;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_sim1;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_sim10;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_sim11;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_sim12;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_sim2;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_sim3;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_sim4;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_sim6;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_sim7;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_sim8;
-    private javax.swing.JRadioButton rb_condicoes_cronicas_sim9;
+    private javax.swing.JRadioButton rb_acompanhamento_saude_mental_no_momento_da_prisao_nao;
+    private javax.swing.JRadioButton rb_acompanhamento_saude_mental_no_momento_da_prisao_sim;
     private javax.swing.JRadioButton rb_consultar_exame_preventivo_nao;
     private javax.swing.JRadioButton rb_consultar_exame_preventivo_sim;
     private javax.swing.JRadioButton rb_conversa_assistencia_social_nao;
@@ -2935,6 +3337,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_gestacao_no_momvento_nao1;
     private javax.swing.JRadioButton rb_gestacao_no_momvento_nao_sabe;
     private javax.swing.JRadioButton rb_gestacao_no_momvento_sim;
+    private javax.swing.JRadioButton rb_ja_realizou_trat_para_cessar_reduzir_uso_nao;
+    private javax.swing.JRadioButton rb_ja_realizou_trat_para_cessar_reduzir_uso_sim;
     private javax.swing.JRadioButton rb_nacionalidade_brasileira;
     private javax.swing.JRadioButton rb_nacionalidade_estrangeiro;
     private javax.swing.JRadioButton rb_nacionalidade_naturalizado;
@@ -2984,9 +3388,15 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_tipo_sangue_op;
     private javax.swing.JRadioButton rb_transferencia_nao;
     private javax.swing.JRadioButton rb_transferencia_sim;
+    private javax.swing.JRadioButton rb_usa_med_controlado_nao;
+    private javax.swing.JRadioButton rb_usa_med_controlado_nao_sabe;
+    private javax.swing.JRadioButton rb_usa_med_controlado_sim;
+    private javax.swing.JRadioButton rb_vinculo_caps_nao;
+    private javax.swing.JRadioButton rb_vinculo_caps_sim;
     private javax.swing.JPanel saude_da_mulher_panel;
     private javax.swing.JPanel saude_homem_panel;
     private javax.swing.JTextField tf_;
+    private javax.swing.JTextField tf_acompanhamento_saude_mental_no_momento_da_prisao_qual;
     private javax.swing.JTextField tf_cpf;
     private javax.swing.JTextField tf_data_nascimento;
     private javax.swing.JTextField tf_deficiencia_quais;
@@ -2994,8 +3404,11 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_etinia;
     private javax.swing.JTextField tf_exame_prostata_ano;
     private javax.swing.JTextField tf_exame_prostata_ano1;
+    private javax.swing.JTextField tf_faz_uso_de_outras;
+    private javax.swing.JTextField tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs;
     private javax.swing.JTextField tf_idade;
     private javax.swing.JTextField tf_idade_filhos;
+    private javax.swing.JTextField tf_ja_realizou_trat_para_cessar_reduzir_uso_qual;
     private javax.swing.JTextField tf_med_continuo;
     private javax.swing.JTextField tf_nacionalidade_qual_pais;
     private javax.swing.JTextField tf_nome;
@@ -3011,6 +3424,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_possui_intolerancia_quais7;
     private javax.swing.JTextField tf_possui_intolerancia_quais8;
     private javax.swing.JTextField tf_possui_outro_dependente;
+    private javax.swing.JTextField tf_possui_trasntorno_mental_outro;
     private javax.swing.JTextField tf_tipo_sangue;
+    private javax.swing.JTextField tf_usa_med_controlado_qual;
+    private javax.swing.JTextField tf_vinculo_caps_municipio;
+    private javax.swing.JTextField tf_vinculo_caps_nome;
     // End of variables declaration//GEN-END:variables
 }
