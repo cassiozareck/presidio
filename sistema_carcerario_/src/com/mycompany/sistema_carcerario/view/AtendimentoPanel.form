@@ -1604,18 +1604,18 @@
                                           <Component id="tf_deficiencia_quais1" max="32767" attributes="0"/>
                                       </Group>
                                       <Group type="102" attributes="0">
-                                          <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="rb_fam_rec_beneficio_sim" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="rb_fam_rec_beneficion_nao" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                                          <Group type="103" groupAlignment="0" attributes="0">
+                                              <Group type="102" attributes="0">
+                                                  <Component id="jLabel51" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="rb_fam_rec_beneficio_sim" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="rb_fam_rec_beneficion_nao" min="-2" max="-2" attributes="0"/>
+                                              </Group>
                                               <Group type="102" attributes="0">
                                                   <Component id="jLabel55" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace max="-2" attributes="0"/>
-                                                  <Component id="tf_idade_filhos" max="32767" attributes="0"/>
+                                                  <Component id="tf_idade_filhos" min="-2" pref="215" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel53" min="-2" max="-2" attributes="0"/>
@@ -1624,22 +1624,23 @@
                                                   <EmptySpace max="-2" attributes="0"/>
                                                   <Component id="rb_poss_filhos_nao" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                                  <Component id="jLabel54" min="-2" pref="53" max="-2" attributes="0"/>
+                                                  <Component id="jLabel29" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="tf_poss_filhos_quantos" min="-2" pref="314" max="-2" attributes="0"/>
+                                              </Group>
+                                              <Group type="102" alignment="0" attributes="0">
+                                                  <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="rb_possui_outro_dependente_sim" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <Component id="rb_possui_outro_dependente_nao" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                                  <Component id="tf_possui_outro_dependente" min="-2" pref="316" max="-2" attributes="0"/>
                                               </Group>
                                           </Group>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="tf_poss_filhos_quantos" min="-2" pref="314" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="jLabel56" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="rb_possui_outro_dependente_sim" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="rb_possui_outro_dependente_nao" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="jLabel57" min="-2" pref="53" max="-2" attributes="0"/>
-                                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                                          <Component id="tf_possui_outro_dependente" min="-2" pref="316" max="-2" attributes="0"/>
+                                          <EmptySpace min="0" pref="5" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                               </Group>
@@ -1677,7 +1678,7 @@
                               <Component id="rb_poss_filhos_nao" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tf_poss_filhos_quantos" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel53" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel54" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
@@ -1690,7 +1691,7 @@
                               <Component id="rb_possui_outro_dependente_nao" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="tf_possui_outro_dependente" alignment="3" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel56" alignment="3" min="-2" max="-2" attributes="0"/>
-                              <Component id="jLabel57" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -1857,11 +1858,6 @@
             <Property name="text" type="java.lang.String" value="Possui filhos?"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel54">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Quantos:"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JLabel" name="jLabel55">
           <Properties>
             <Property name="text" type="java.lang.String" value="Idade:"/>
@@ -1967,7 +1963,12 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JLabel" name="jLabel57">
+        <Component class="javax.swing.JLabel" name="jLabel29">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Quantos:"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel30">
           <Properties>
             <Property name="text" type="java.lang.String" value="Quantos:"/>
           </Properties>
@@ -3220,6 +3221,9 @@
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_usa_med_controlado_nao_sabe">
           <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_usa_medicamento_controlado"/>
+            </Property>
             <Property name="text" type="java.lang.String" value="N&#xe3;o sabe responder"/>
           </Properties>
         </Component>
