@@ -107,4 +107,31 @@ public class RadioButtonController {
         btnSim.addActionListener(listenerGrupo);
         btnNao.addActionListener(listenerGrupo);
     }
+    
+    // Faz o mesmo que o de cima mas inclui mais um campo de texto que pode ser habilitado
+    // é uma sobrecarga de método
+    public void configurarRadioGroup(
+            ButtonGroup buttonGroup,
+            JRadioButton btnSim,
+            JRadioButton btnNao,
+            JRadioButton radioBtn1,
+            JRadioButton radioBtn2
+    ) {
+ 
+        ActionListener listenerGrupo = e -> {
+            
+            ButtonModel selecionado = buttonGroup.getSelection();
+
+            if (selecionado == btnSim.getModel()) {
+                radioBtn1.setEnabled(true);
+                radioBtn2.setEnabled(true);
+            } else {
+                radioBtn1.setEnabled(false);
+                radioBtn2.setEnabled(false);
+            }
+        };
+        
+        btnSim.addActionListener(listenerGrupo);
+        btnNao.addActionListener(listenerGrupo);
+    }
 }

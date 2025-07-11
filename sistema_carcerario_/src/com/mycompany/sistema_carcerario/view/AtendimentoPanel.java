@@ -60,10 +60,26 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         
         
         // Condições de Saúde
-        rbController.configurarRadioGroup(bg_possui_deficiencia, rb_possui_deficiencia_sim, rb_possui_deficiencia_nao, tf_deficiencia_quais);
+        rbController.configurarRadioGroup(bg_possui_deficiencia, rb_possui_deficiencia_sim, rb_possui_deficiencia_nao, rb_possui_deficiencia_nao_sei, tf_deficiencia_quais);
+        rbController.configurarRadioGroup(bg_possui_intolerancia, rb_possui_alergia_sim, rb_possui_alergia_nao, rb_possui_alergia_nao_sei, tf_possui_intolerancia_quais);
+        rbController.configurarRadioGroup(bg_realizou_cirurgia, rb_realizou_cirurgia_sim, rb_realizou_cirurgia_nao, rb_realizou_cirurgia_nao_sei, tf_realizou_cirurgia_quais);
         
+        // Histórico doenças infecciosas
+        rbController.configurarRadioGroup(bg_possui_denca_de_pele, rb_doenca_pele_sim, rb_doenca_pele_nao, tf_doenca_pele_quais);
+        rbController.configurarRadioGroup(bg_med_continuo, rb_usa_med_continuo_sim, rb_usa_med_continuo_nao, tf_med_continuo);
         
+        // Saúde da mulher
+        rbController.configurarRadioGroup(bg_realizou_papanicolau, rb_papanicolau_sim, rb_papanicolau_nao, tf_papanicolau_ano);
+        
+        // Saúde do Homem
+        rbController.configurarRadioGroup(bg_exame_prostata, rb_exame_prostata_sim, rb_exame_prostata_nao, tf_exame_prostata_ano);
+        rbController.configurarRadioGroup(bg_historico_prostata_familia, rb_historico_prostata_sim, rb_historico_prostata_nao, rb_historico_prostata_familiar);
+        
+        //rbController.configurarRadioGroup(bg_parceira_gestante, rb_parceira_gestante_sim, rb_parceira_gestante_nao, ); // TODO pasaar radio button
+
         //rbController.configurarRadioGroup();
+        
+        
     }
     
     // Retorna uma String contendo a data atual no formato "dd/MM/yyyy"
@@ -261,6 +277,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         bg_usa_medicamento_controlado = new javax.swing.ButtonGroup();
         bg_estava_acomp_saude_mental_momento_prisao = new javax.swing.ButtonGroup();
         bg_ja_realizou_trat_para_cessar_reduzir_uso = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         btn_cancelar = new javax.swing.JButton();
         btn_salvar = new javax.swing.JButton();
         atendimento_panel = new javax.swing.JPanel();
@@ -316,7 +333,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         rb_possui_alergia_nao = new javax.swing.JRadioButton();
         rb_possui_alergia_sim = new javax.swing.JRadioButton();
         tf_possui_intolerancia_quais = new javax.swing.JTextField();
-        tf_possui_intolerancia_quais1 = new javax.swing.JTextField();
+        tf_realizou_cirurgia_quais = new javax.swing.JTextField();
         rb_realizou_cirurgia_nao_sei = new javax.swing.JRadioButton();
         rb_realizou_cirurgia_nao = new javax.swing.JRadioButton();
         rb_realizou_cirurgia_sim = new javax.swing.JRadioButton();
@@ -330,7 +347,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jLabel34 = new javax.swing.JLabel();
         tf_possui_intolerancia_quais7 = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
-        tf_possui_intolerancia_quais8 = new javax.swing.JTextField();
+        tf_doenca_pele_quais = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
         tf_possui_intolerancia_quais10 = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
@@ -340,8 +357,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jLabel45 = new javax.swing.JLabel();
         jLabel46 = new javax.swing.JLabel();
         tf_med_continuo = new javax.swing.JTextField();
-        rb_doenca_pele_nao1 = new javax.swing.JRadioButton();
-        rb_doenca_pele_sim1 = new javax.swing.JRadioButton();
+        rb_usa_med_continuo_nao = new javax.swing.JRadioButton();
+        rb_usa_med_continuo_sim = new javax.swing.JRadioButton();
         jLabel27 = new javax.swing.JLabel();
         jLabel37 = new javax.swing.JLabel();
         jLabel28 = new javax.swing.JLabel();
@@ -432,6 +449,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jLabel68 = new javax.swing.JLabel();
         rb_enc_pre_natal_sim = new javax.swing.JRadioButton();
         rb_enc_pre_natal_nao = new javax.swing.JRadioButton();
+        rb_papanicolau_nao = new javax.swing.JRadioButton();
+        rb_papanicolau_sim = new javax.swing.JRadioButton();
+        jLabel104 = new javax.swing.JLabel();
+        tf_papanicolau_ano = new javax.swing.JTextField();
         jPanel6 = new javax.swing.JPanel();
         jLabel69 = new javax.swing.JLabel();
         saude_homem_panel = new javax.swing.JPanel();
@@ -441,10 +462,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jLabel63 = new javax.swing.JLabel();
         tf_exame_prostata_ano = new javax.swing.JTextField();
         jLabel71 = new javax.swing.JLabel();
-        rb_exame_prostata_nao1 = new javax.swing.JRadioButton();
-        rb_exame_prostata_sim1 = new javax.swing.JRadioButton();
+        rb_historico_prostata_nao = new javax.swing.JRadioButton();
+        rb_historico_prostata_sim = new javax.swing.JRadioButton();
         jLabel72 = new javax.swing.JLabel();
-        tf_exame_prostata_ano1 = new javax.swing.JTextField();
+        rb_historico_prostata_familiar = new javax.swing.JTextField();
         jLabel73 = new javax.swing.JLabel();
         rb_realizou_vasectomia_nao = new javax.swing.JRadioButton();
         rb_realizou_vasectomia_sim = new javax.swing.JRadioButton();
@@ -926,8 +947,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         tf_possui_intolerancia_quais.setEditable(false);
         tf_possui_intolerancia_quais.setEnabled(false);
 
-        tf_possui_intolerancia_quais1.setEditable(false);
-        tf_possui_intolerancia_quais1.setEnabled(false);
+        tf_realizou_cirurgia_quais.setEditable(false);
+        tf_realizou_cirurgia_quais.setEnabled(false);
 
         bg_realizou_cirurgia.add(rb_realizou_cirurgia_nao_sei);
         rb_realizou_cirurgia_nao_sei.setText("Não sabe responder");
@@ -940,8 +961,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel23.setText("Realizou cirurgias:");
 
-        tf_possui_intolerancia_quais2.setEditable(false);
-        tf_possui_intolerancia_quais2.setEnabled(false);
         tf_possui_intolerancia_quais2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_possui_intolerancia_quais2ActionPerformed(evt);
@@ -976,18 +995,16 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel35.setText("Outra:");
 
-        tf_possui_intolerancia_quais8.setEditable(false);
-        tf_possui_intolerancia_quais8.setEnabled(false);
-        tf_possui_intolerancia_quais8.addActionListener(new java.awt.event.ActionListener() {
+        tf_doenca_pele_quais.setEditable(false);
+        tf_doenca_pele_quais.setEnabled(false);
+        tf_doenca_pele_quais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_possui_intolerancia_quais8ActionPerformed(evt);
+                tf_doenca_pele_quaisActionPerformed(evt);
             }
         });
 
         jLabel36.setText("Quais:");
 
-        tf_possui_intolerancia_quais10.setEditable(false);
-        tf_possui_intolerancia_quais10.setEnabled(false);
         tf_possui_intolerancia_quais10.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tf_possui_intolerancia_quais10ActionPerformed(evt);
@@ -1018,11 +1035,11 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
-        bg_med_continuo.add(rb_doenca_pele_nao1);
-        rb_doenca_pele_nao1.setText("Não");
+        bg_med_continuo.add(rb_usa_med_continuo_nao);
+        rb_usa_med_continuo_nao.setText("Não");
 
-        bg_med_continuo.add(rb_doenca_pele_sim1);
-        rb_doenca_pele_sim1.setText("Sim");
+        bg_med_continuo.add(rb_usa_med_continuo_sim);
+        rb_usa_med_continuo_sim.setText("Sim");
 
         jLabel27.setText("Usa medicamento contínuo:");
 
@@ -1114,7 +1131,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                         .addComponent(jLabel46)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_possui_intolerancia_quais1))
+                        .addComponent(tf_realizou_cirurgia_quais))
                     .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
@@ -1128,7 +1145,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                         .addComponent(jLabel36)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_possui_intolerancia_quais8))
+                        .addComponent(tf_doenca_pele_quais))
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                         .addComponent(jLabel37)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1154,78 +1171,77 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                 .addComponent(tf_possui_intolerancia_quais2))))
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                         .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                    .addComponent(jLabel19)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_possui_deficiencia_sim)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_possui_deficiencia_nao)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_possui_deficiencia_nao_sei))
-                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                    .addComponent(jLabel22)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_possui_alergia_sim)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_possui_alergia_nao)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_possui_alergia_nao_sei))
-                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                    .addComponent(jLabel23)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_realizou_cirurgia_sim)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_realizou_cirurgia_nao)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_realizou_cirurgia_nao_sei))
-                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                    .addComponent(jLabel26)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_doenca_pele_sim)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_doenca_pele_nao))
-                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                    .addComponent(jLabel27)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_doenca_pele_sim1)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_doenca_pele_nao1))
-                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                    .addComponent(jLabel28)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_tipo_sangue_ap)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_tipo_sangue_am)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_tipo_sangue_bp)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_tipo_sangue_bm)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_tipo_sangue_op)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_tipo_sangue_om)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_tipo_sangue_abp)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_tipo_sangue_abm)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(rb_tipo_sangue_nao_sabe))
-                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                    .addComponent(jLabel47)
-                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                    .addComponent(tf_tipo_sangue))
-                                .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
-                                    .addGap(6, 6, 6)
-                                    .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(cb_hist_doencas_infec_sifilis)
-                                            .addComponent(cb_hist_doencas_infec_hpv, javax.swing.GroupLayout.Alignment.LEADING))
-                                        .addComponent(cb_hist_doencas_infec_tuberculose)
-                                        .addComponent(cb_hist_doencas_infec_hepatite_c)
-                                        .addComponent(cb_hist_doencas_infec_hepatite_b))))
+                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                .addComponent(jLabel19)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_possui_deficiencia_sim)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_possui_deficiencia_nao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_possui_deficiencia_nao_sei))
+                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                .addComponent(jLabel22)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_possui_alergia_sim)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_possui_alergia_nao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_possui_alergia_nao_sei))
+                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                .addComponent(jLabel23)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_realizou_cirurgia_sim)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_realizou_cirurgia_nao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_realizou_cirurgia_nao_sei))
+                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                .addComponent(jLabel26)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_doenca_pele_sim)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_doenca_pele_nao))
+                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                .addComponent(jLabel27)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_usa_med_continuo_sim)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_usa_med_continuo_nao))
+                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                .addComponent(jLabel28)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_ap)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_am)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_bp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_bm)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_op)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_om)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_abp)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_abm)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_tipo_sangue_nao_sabe))
+                            .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                                .addGap(6, 6, 6)
+                                .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addComponent(cb_hist_doencas_infec_sifilis)
+                                        .addComponent(cb_hist_doencas_infec_hpv, javax.swing.GroupLayout.Alignment.LEADING))
+                                    .addComponent(cb_hist_doencas_infec_tuberculose)
+                                    .addComponent(cb_hist_doencas_infec_hepatite_c)
+                                    .addComponent(cb_hist_doencas_infec_hepatite_b)))
                             .addComponent(cb_hist_doencas_infec_nao_sabe_responder))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(0, 289, Short.MAX_VALUE))
+                    .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
+                        .addComponent(jLabel47)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tf_tipo_sangue)))
                 .addContainerGap())
         );
         condicoes_de_saudeLayout.setVerticalGroup(
@@ -1259,7 +1275,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                     .addComponent(rb_realizou_cirurgia_nao_sei))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_possui_intolerancia_quais1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_realizou_cirurgia_quais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel46))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel24)
@@ -1311,12 +1327,12 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
-                    .addComponent(tf_possui_intolerancia_quais8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tf_doenca_pele_quais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel27)
-                    .addComponent(rb_doenca_pele_sim1)
-                    .addComponent(rb_doenca_pele_nao1))
+                    .addComponent(rb_usa_med_continuo_sim)
+                    .addComponent(rb_usa_med_continuo_nao))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel37)
@@ -1707,6 +1723,28 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         bg_enc_pre_natal.add(rb_enc_pre_natal_nao);
         rb_enc_pre_natal_nao.setText("Não");
 
+        bg_realizou_papanicolau.add(rb_papanicolau_nao);
+        rb_papanicolau_nao.setText("Não");
+
+        bg_realizou_papanicolau.add(rb_papanicolau_sim);
+        rb_papanicolau_sim.setText("Sim");
+        rb_papanicolau_sim.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                rb_papanicolau_simActionPerformed(evt);
+            }
+        });
+
+        jLabel104.setText("Qual foi o ano?");
+
+        tf_papanicolau_ano.setEditable(false);
+        tf_papanicolau_ano.setToolTipText("Local");
+        tf_papanicolau_ano.setEnabled(false);
+        tf_papanicolau_ano.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_papanicolau_anoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout saude_da_mulher_panelLayout = new javax.swing.GroupLayout(saude_da_mulher_panel);
         saude_da_mulher_panel.setLayout(saude_da_mulher_panelLayout);
         saude_da_mulher_panelLayout.setHorizontalGroup(
@@ -1738,7 +1776,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                             .addComponent(rb_escolaridade_sup_inc1)
                                             .addComponent(rb_escolaridade_sup_com1)
                                             .addComponent(rb_gestacao_no_momvento_nao1)))))
-                            .addComponent(jLabel64)
                             .addComponent(jLabel66)
                             .addGroup(saude_da_mulher_panelLayout.createSequentialGroup()
                                 .addGap(6, 6, 6)
@@ -1760,7 +1797,17 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addComponent(rb_consultar_exame_preventivo_sim)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(rb_consultar_exame_preventivo_nao)))))
+                                        .addComponent(rb_consultar_exame_preventivo_nao))))
+                            .addGroup(saude_da_mulher_panelLayout.createSequentialGroup()
+                                .addComponent(jLabel64)
+                                .addGap(18, 18, 18)
+                                .addComponent(rb_papanicolau_nao)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(rb_papanicolau_sim)
+                                .addGap(18, 18, 18)
+                                .addComponent(jLabel104)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tf_papanicolau_ano, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -1794,8 +1841,14 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                     .addComponent(jSeparator4))
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15)
-                .addComponent(jLabel64)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(saude_da_mulher_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel64)
+                    .addGroup(saude_da_mulher_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(rb_papanicolau_nao)
+                        .addComponent(tf_papanicolau_ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel104)
+                        .addComponent(rb_papanicolau_sim)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
@@ -1869,25 +1922,25 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel71.setText("Possui histórico de câncer de próstata na família?");
 
-        bg_historico_prostata_familia.add(rb_exame_prostata_nao1);
-        rb_exame_prostata_nao1.setText("Não");
+        bg_historico_prostata_familia.add(rb_historico_prostata_nao);
+        rb_historico_prostata_nao.setText("Não");
 
-        bg_historico_prostata_familia.add(rb_exame_prostata_sim1);
-        rb_exame_prostata_sim1.setText("Sim");
-        rb_exame_prostata_sim1.addActionListener(new java.awt.event.ActionListener() {
+        bg_historico_prostata_familia.add(rb_historico_prostata_sim);
+        rb_historico_prostata_sim.setText("Sim");
+        rb_historico_prostata_sim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                rb_exame_prostata_sim1ActionPerformed(evt);
+                rb_historico_prostata_simActionPerformed(evt);
             }
         });
 
         jLabel72.setText("Qual foi familiar?");
 
-        tf_exame_prostata_ano1.setEditable(false);
-        tf_exame_prostata_ano1.setToolTipText("Local");
-        tf_exame_prostata_ano1.setEnabled(false);
-        tf_exame_prostata_ano1.addActionListener(new java.awt.event.ActionListener() {
+        rb_historico_prostata_familiar.setEditable(false);
+        rb_historico_prostata_familiar.setToolTipText("Local");
+        rb_historico_prostata_familiar.setEnabled(false);
+        rb_historico_prostata_familiar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_exame_prostata_ano1ActionPerformed(evt);
+                rb_historico_prostata_familiarActionPerformed(evt);
             }
         });
 
@@ -1984,17 +2037,17 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel63)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_exame_prostata_ano, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(tf_exame_prostata_ano, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(saude_homem_panelLayout.createSequentialGroup()
                                         .addComponent(jLabel71)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(rb_exame_prostata_nao1)
+                                        .addComponent(rb_historico_prostata_nao)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(rb_exame_prostata_sim1)
+                                        .addComponent(rb_historico_prostata_sim)
                                         .addGap(18, 18, 18)
                                         .addComponent(jLabel72)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_exame_prostata_ano1, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(rb_historico_prostata_familiar, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addGroup(saude_homem_panelLayout.createSequentialGroup()
                                         .addComponent(jLabel73)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2014,7 +2067,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                         .addComponent(rb_esta_participando_pre_natal_sim))
                                     .addComponent(jLabel76))
-                                .addGap(0, 0, Short.MAX_VALUE)))
+                                .addGap(0, 72, Short.MAX_VALUE)))
                         .addContainerGap())
                     .addGroup(saude_homem_panelLayout.createSequentialGroup()
                         .addGap(6, 6, 6)
@@ -2047,10 +2100,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(saude_homem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(saude_homem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(rb_exame_prostata_nao1)
-                        .addComponent(tf_exame_prostata_ano1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(rb_historico_prostata_nao)
+                        .addComponent(rb_historico_prostata_familiar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel72)
-                        .addComponent(rb_exame_prostata_sim1))
+                        .addComponent(rb_historico_prostata_sim))
                     .addComponent(jLabel71))
                 .addGap(18, 18, 18)
                 .addGroup(saude_homem_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -2635,7 +2688,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
-        cb_ofertar_vaciana_febre_amarela.setText("Febre Amaraela");
+        cb_ofertar_vaciana_febre_amarela.setText("Febre Amarela");
         cb_ofertar_vaciana_febre_amarela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 cb_ofertar_vaciana_febre_amarelaActionPerformed(evt);
@@ -2971,9 +3024,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_possui_intolerancia_quais10ActionPerformed
 
-    private void tf_possui_intolerancia_quais8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_possui_intolerancia_quais8ActionPerformed
+    private void tf_doenca_pele_quaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_doenca_pele_quaisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_possui_intolerancia_quais8ActionPerformed
+    }//GEN-LAST:event_tf_doenca_pele_quaisActionPerformed
 
     private void tf_possui_intolerancia_quais7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_possui_intolerancia_quais7ActionPerformed
         // TODO add your handling code here:
@@ -3003,13 +3056,13 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_rb_exame_prostata_simActionPerformed
 
-    private void rb_exame_prostata_sim1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_exame_prostata_sim1ActionPerformed
+    private void rb_historico_prostata_simActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_historico_prostata_simActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_rb_exame_prostata_sim1ActionPerformed
+    }//GEN-LAST:event_rb_historico_prostata_simActionPerformed
 
-    private void tf_exame_prostata_ano1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_exame_prostata_ano1ActionPerformed
+    private void rb_historico_prostata_familiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_historico_prostata_familiarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_exame_prostata_ano1ActionPerformed
+    }//GEN-LAST:event_rb_historico_prostata_familiarActionPerformed
 
     private void rb_realizou_vasectomia_simActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_realizou_vasectomia_simActionPerformed
         // TODO add your handling code here:
@@ -3111,6 +3164,14 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_hist_doencas_infec_hepatite_cActionPerformed
 
+    private void rb_papanicolau_simActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_papanicolau_simActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rb_papanicolau_simActionPerformed
+
+    private void tf_papanicolau_anoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_papanicolau_anoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_papanicolau_anoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel atendimento_panel;
@@ -3160,6 +3221,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bg_vinculo_caps;
     private javax.swing.JButton btn_cancelar;
     private javax.swing.JButton btn_salvar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JCheckBox cb_cond_cron_nao_sabe_responder;
     private javax.swing.JCheckBox cb_cond_cron_possui_HIV;
     private javax.swing.JCheckBox cb_cond_cron_possui_autoimune;
@@ -3213,6 +3275,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel101;
     private javax.swing.JLabel jLabel102;
     private javax.swing.JLabel jLabel103;
+    private javax.swing.JLabel jLabel104;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -3335,9 +3398,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_conversa_assistencia_social_nao;
     private javax.swing.JRadioButton rb_conversa_assistencia_social_sim;
     private javax.swing.JRadioButton rb_doenca_pele_nao;
-    private javax.swing.JRadioButton rb_doenca_pele_nao1;
     private javax.swing.JRadioButton rb_doenca_pele_sim;
-    private javax.swing.JRadioButton rb_doenca_pele_sim1;
     private javax.swing.JRadioButton rb_enc_pre_natal_nao;
     private javax.swing.JRadioButton rb_enc_pre_natal_sim;
     private javax.swing.JRadioButton rb_encaminhar_pre_natal_parceiro_nao;
@@ -3358,15 +3419,16 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_esta_participando_pre_natal_nao;
     private javax.swing.JRadioButton rb_esta_participando_pre_natal_sim;
     private javax.swing.JRadioButton rb_exame_prostata_nao;
-    private javax.swing.JRadioButton rb_exame_prostata_nao1;
     private javax.swing.JRadioButton rb_exame_prostata_sim;
-    private javax.swing.JRadioButton rb_exame_prostata_sim1;
     private javax.swing.JRadioButton rb_fam_rec_beneficio_nao;
     private javax.swing.JRadioButton rb_fam_rec_beneficio_sim;
     private javax.swing.JRadioButton rb_gestacao_no_momvento_nao;
     private javax.swing.JRadioButton rb_gestacao_no_momvento_nao1;
     private javax.swing.JRadioButton rb_gestacao_no_momvento_nao_sabe;
     private javax.swing.JRadioButton rb_gestacao_no_momvento_sim;
+    private javax.swing.JTextField rb_historico_prostata_familiar;
+    private javax.swing.JRadioButton rb_historico_prostata_nao;
+    private javax.swing.JRadioButton rb_historico_prostata_sim;
     private javax.swing.JRadioButton rb_ja_realizou_trat_para_cessar_reduzir_uso_nao;
     private javax.swing.JRadioButton rb_ja_realizou_trat_para_cessar_reduzir_uso_sim;
     private javax.swing.JRadioButton rb_nacionalidade_brasileira;
@@ -3378,6 +3440,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_ofertar_copia_carteira_vacinacao_sim;
     private javax.swing.JRadioButton rb_ofertar_neeja_nao;
     private javax.swing.JRadioButton rb_ofertar_neeja_sim;
+    private javax.swing.JRadioButton rb_papanicolau_nao;
+    private javax.swing.JRadioButton rb_papanicolau_sim;
     private javax.swing.JRadioButton rb_parceira_gestante_nao;
     private javax.swing.JRadioButton rb_parceira_gestante_sim;
     private javax.swing.JRadioButton rb_poss_filhos_nao;
@@ -3418,6 +3482,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_tipo_sangue_op;
     private javax.swing.JRadioButton rb_transferencia_nao;
     private javax.swing.JRadioButton rb_transferencia_sim;
+    private javax.swing.JRadioButton rb_usa_med_continuo_nao;
+    private javax.swing.JRadioButton rb_usa_med_continuo_sim;
     private javax.swing.JRadioButton rb_usa_med_controlado_nao;
     private javax.swing.JRadioButton rb_usa_med_controlado_nao_sabe;
     private javax.swing.JRadioButton rb_usa_med_controlado_sim;
@@ -3430,9 +3496,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_cpf;
     private javax.swing.JTextField tf_data_nascimento;
     private javax.swing.JTextField tf_deficiencia_quais;
+    private javax.swing.JTextField tf_doenca_pele_quais;
     private javax.swing.JTextField tf_etinia;
     private javax.swing.JTextField tf_exame_prostata_ano;
-    private javax.swing.JTextField tf_exame_prostata_ano1;
     private javax.swing.JTextField tf_fam_rec_beneficio_quais;
     private javax.swing.JTextField tf_faz_uso_de_outras;
     private javax.swing.JTextField tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs;
@@ -3445,16 +3511,16 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_nome_mae;
     private javax.swing.JTextField tf_nome_social;
     private javax.swing.JTextField tf_orientacao_sexual_outra;
+    private javax.swing.JTextField tf_papanicolau_ano;
     private javax.swing.JTextField tf_poss_filhos_quantos;
     private javax.swing.JTextField tf_possui_intolerancia_quais;
-    private javax.swing.JTextField tf_possui_intolerancia_quais1;
     private javax.swing.JTextField tf_possui_intolerancia_quais10;
     private javax.swing.JTextField tf_possui_intolerancia_quais11;
     private javax.swing.JTextField tf_possui_intolerancia_quais2;
     private javax.swing.JTextField tf_possui_intolerancia_quais7;
-    private javax.swing.JTextField tf_possui_intolerancia_quais8;
     private javax.swing.JTextField tf_possui_outro_dependente_qts;
     private javax.swing.JTextField tf_possui_trasntorno_mental_outro;
+    private javax.swing.JTextField tf_realizou_cirurgia_quais;
     private javax.swing.JTextField tf_tipo_sangue;
     private javax.swing.JTextField tf_transferencia;
     private javax.swing.JTextField tf_usa_med_controlado_qual;

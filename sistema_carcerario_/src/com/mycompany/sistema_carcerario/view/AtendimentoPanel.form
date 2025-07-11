@@ -129,6 +129,8 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="bg_ja_realizou_trat_para_cessar_reduzir_uso">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
   </NonVisualComponents>
   <Properties>
     <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
@@ -796,7 +798,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel46" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tf_possui_intolerancia_quais1" max="32767" attributes="0"/>
+                          <Component id="tf_realizou_cirurgia_quais" max="32767" attributes="0"/>
                       </Group>
                       <Component id="jLabel24" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel25" alignment="0" max="32767" attributes="0"/>
@@ -813,7 +815,7 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tf_possui_intolerancia_quais8" max="32767" attributes="0"/>
+                          <Component id="tf_doenca_pele_quais" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel37" min="-2" max="-2" attributes="0"/>
@@ -847,90 +849,88 @@
                       </Group>
                       <Group type="102" attributes="0">
                           <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Group type="102" attributes="0">
-                                      <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_possui_deficiencia_sim" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_possui_deficiencia_nao" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_possui_deficiencia_nao_sei" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_possui_alergia_sim" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_possui_alergia_nao" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_possui_alergia_nao_sei" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_realizou_cirurgia_sim" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_realizou_cirurgia_nao" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_realizou_cirurgia_nao_sei" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_doenca_pele_sim" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_doenca_pele_nao" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_doenca_pele_sim1" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_doenca_pele_nao1" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_tipo_sangue_ap" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_tipo_sangue_am" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_tipo_sangue_bp" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_tipo_sangue_bm" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_tipo_sangue_op" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_tipo_sangue_om" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_tipo_sangue_abp" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_tipo_sangue_abm" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="rb_tipo_sangue_nao_sabe" min="-2" max="-2" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace max="-2" attributes="0"/>
-                                      <Component id="tf_tipo_sangue" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" attributes="0">
-                                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="103" groupAlignment="1" attributes="0">
-                                              <Component id="cb_hist_doencas_infec_sifilis" min="-2" max="-2" attributes="0"/>
-                                              <Component id="cb_hist_doencas_infec_hpv" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Component id="cb_hist_doencas_infec_tuberculose" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cb_hist_doencas_infec_hepatite_c" alignment="0" min="-2" max="-2" attributes="0"/>
-                                          <Component id="cb_hist_doencas_infec_hepatite_b" alignment="0" min="-2" max="-2" attributes="0"/>
+                              <Group type="102" attributes="0">
+                                  <Component id="jLabel19" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_possui_deficiencia_sim" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_possui_deficiencia_nao" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_possui_deficiencia_nao_sei" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel22" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_possui_alergia_sim" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_possui_alergia_nao" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_possui_alergia_nao_sei" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel23" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_realizou_cirurgia_sim" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_realizou_cirurgia_nao" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_realizou_cirurgia_nao_sei" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel26" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_doenca_pele_sim" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_doenca_pele_nao" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel27" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_usa_med_continuo_sim" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_usa_med_continuo_nao" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel28" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_ap" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_am" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_bp" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_bm" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_op" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_om" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_abp" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_abm" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_tipo_sangue_nao_sabe" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                              <Group type="102" attributes="0">
+                                  <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Group type="103" groupAlignment="1" attributes="0">
+                                          <Component id="cb_hist_doencas_infec_sifilis" min="-2" max="-2" attributes="0"/>
+                                          <Component id="cb_hist_doencas_infec_hpv" alignment="0" min="-2" max="-2" attributes="0"/>
                                       </Group>
+                                      <Component id="cb_hist_doencas_infec_tuberculose" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cb_hist_doencas_infec_hepatite_c" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cb_hist_doencas_infec_hepatite_b" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                               <Component id="cb_hist_doencas_infec_nao_sabe_responder" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="289" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
+                          <EmptySpace max="-2" attributes="0"/>
+                          <Component id="tf_tipo_sangue" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -973,7 +973,7 @@
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tf_possui_intolerancia_quais1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_realizou_cirurgia_quais" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel46" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1031,13 +1031,13 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel36" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="tf_possui_intolerancia_quais8" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_doenca_pele_quais" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rb_doenca_pele_sim1" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="rb_doenca_pele_nao1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_usa_med_continuo_sim" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="rb_usa_med_continuo_nao" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -1138,7 +1138,7 @@
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais1">
+        <Component class="javax.swing.JTextField" name="tf_realizou_cirurgia_quais">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
@@ -1174,10 +1174,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais2">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_possui_intolerancia_quais2ActionPerformed"/>
           </Events>
@@ -1238,13 +1234,13 @@
             <Property name="text" type="java.lang.String" value="Outra:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais8">
+        <Component class="javax.swing.JTextField" name="tf_doenca_pele_quais">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_possui_intolerancia_quais8ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_doenca_pele_quaisActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel36">
@@ -1253,10 +1249,6 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais10">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_possui_intolerancia_quais10ActionPerformed"/>
           </Events>
@@ -1300,7 +1292,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_med_continuoActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_doenca_pele_nao1">
+        <Component class="javax.swing.JRadioButton" name="rb_usa_med_continuo_nao">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="bg_med_continuo"/>
@@ -1308,7 +1300,7 @@
             <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_doenca_pele_sim1">
+        <Component class="javax.swing.JRadioButton" name="rb_usa_med_continuo_sim">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="bg_med_continuo"/>
@@ -2012,7 +2004,6 @@
                                       </Group>
                                   </Group>
                               </Group>
-                              <Component id="jLabel64" alignment="0" min="-2" max="-2" attributes="0"/>
                               <Component id="jLabel66" min="-2" max="-2" attributes="0"/>
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
@@ -2039,6 +2030,17 @@
                                           <Component id="rb_consultar_exame_preventivo_nao" min="-2" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
+                              </Group>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="rb_papanicolau_nao" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="rb_papanicolau_sim" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                                  <Component id="jLabel104" min="-2" max="-2" attributes="0"/>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Component id="tf_papanicolau_ano" min="-2" pref="75" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
@@ -2081,8 +2083,16 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jSeparator6" min="-2" pref="2" max="-2" attributes="0"/>
-                  <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
-                  <Component id="jLabel64" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jLabel64" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                          <Component id="rb_papanicolau_nao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tf_papanicolau_ano" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel104" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rb_papanicolau_sim" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jSeparator5" min="-2" pref="2" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
@@ -2299,6 +2309,40 @@
             <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
           </Properties>
         </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_papanicolau_nao">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_realizou_papanicolau"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JRadioButton" name="rb_papanicolau_sim">
+          <Properties>
+            <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+              <ComponentRef name="bg_realizou_papanicolau"/>
+            </Property>
+            <Property name="text" type="java.lang.String" value="Sim"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_papanicolau_simActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel104">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Qual foi o ano?"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="tf_papanicolau_ano">
+          <Properties>
+            <Property name="editable" type="boolean" value="false"/>
+            <Property name="toolTipText" type="java.lang.String" value="Local"/>
+            <Property name="enabled" type="boolean" value="false"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_papanicolau_anoActionPerformed"/>
+          </Events>
+        </Component>
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel6">
@@ -2359,18 +2403,18 @@
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel63" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="tf_exame_prostata_ano" min="-2" pref="316" max="-2" attributes="0"/>
+                                          <Component id="tf_exame_prostata_ano" min="-2" pref="78" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel71" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="rb_exame_prostata_nao1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rb_historico_prostata_nao" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="rb_exame_prostata_sim1" min="-2" max="-2" attributes="0"/>
+                                          <Component id="rb_historico_prostata_sim" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace type="separate" max="-2" attributes="0"/>
                                           <Component id="jLabel72" min="-2" max="-2" attributes="0"/>
                                           <EmptySpace max="-2" attributes="0"/>
-                                          <Component id="tf_exame_prostata_ano1" min="-2" pref="316" max="-2" attributes="0"/>
+                                          <Component id="rb_historico_prostata_familiar" min="-2" pref="316" max="-2" attributes="0"/>
                                       </Group>
                                       <Group type="102" alignment="0" attributes="0">
                                           <Component id="jLabel73" min="-2" max="-2" attributes="0"/>
@@ -2394,7 +2438,7 @@
                                       </Group>
                                       <Component id="jLabel76" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
-                                  <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                                  <EmptySpace min="0" pref="72" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
@@ -2439,10 +2483,10 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" alignment="0" groupAlignment="3" attributes="0">
-                          <Component id="rb_exame_prostata_nao1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tf_exame_prostata_ano1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rb_historico_prostata_nao" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rb_historico_prostata_familiar" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel72" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="rb_exame_prostata_sim1" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="rb_historico_prostata_sim" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Component id="jLabel71" alignment="0" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -2537,7 +2581,7 @@
             <Property name="text" type="java.lang.String" value="Possui hist&#xf3;rico de c&#xe2;ncer de pr&#xf3;stata na fam&#xed;lia?"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_exame_prostata_nao1">
+        <Component class="javax.swing.JRadioButton" name="rb_historico_prostata_nao">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="bg_historico_prostata_familia"/>
@@ -2545,7 +2589,7 @@
             <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JRadioButton" name="rb_exame_prostata_sim1">
+        <Component class="javax.swing.JRadioButton" name="rb_historico_prostata_sim">
           <Properties>
             <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
               <ComponentRef name="bg_historico_prostata_familia"/>
@@ -2553,7 +2597,7 @@
             <Property name="text" type="java.lang.String" value="Sim"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_exame_prostata_sim1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_historico_prostata_simActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel72">
@@ -2561,14 +2605,14 @@
             <Property name="text" type="java.lang.String" value="Qual foi familiar?"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_exame_prostata_ano1">
+        <Component class="javax.swing.JTextField" name="rb_historico_prostata_familiar">
           <Properties>
             <Property name="editable" type="boolean" value="false"/>
             <Property name="toolTipText" type="java.lang.String" value="Local"/>
             <Property name="enabled" type="boolean" value="false"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_exame_prostata_ano1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="rb_historico_prostata_familiarActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel73">
@@ -3807,7 +3851,7 @@
         </Component>
         <Component class="javax.swing.JCheckBox" name="cb_ofertar_vaciana_febre_amarela">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Febre Amaraela"/>
+            <Property name="text" type="java.lang.String" value="Febre Amarela"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vaciana_febre_amarelaActionPerformed"/>
