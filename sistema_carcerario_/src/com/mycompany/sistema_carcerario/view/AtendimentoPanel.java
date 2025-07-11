@@ -7,13 +7,19 @@ package com.mycompany.sistema_carcerario.view;
 import DAL.AtendenteDao;
 import DAL.PrisioneiroDao;
 import DAL.AtendimentoDao;
+import com.mycompany.sistema_carcerario.controller.RadioButtonController;
 import com.mycompany.sistema_carcerario.model.Atendente;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import com.mycompany.sistema_carcerario.model.Atendimento;
+import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
+import javax.swing.ButtonGroup;
+import javax.swing.ButtonModel;
+import javax.swing.JRadioButton;
+import javax.swing.JTextField;
 
 /**
  *
@@ -21,6 +27,8 @@ import java.util.ArrayList;
  */
 public class AtendimentoPanel extends javax.swing.JPanel {
     final MainFrame parent;
+    private final RadioButtonController rbController = new RadioButtonController();
+    
     private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
     private final AtendimentoDao atendimentoDao = new AtendimentoDao();
     private Prisioneiro prisioneiroAtual;
@@ -35,6 +43,27 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         //Setando a data atual 
         jLabelData.setText(getDataAtual());
         
+        
+        configurarTextFieldCondicionais();
+    }
+    
+    public void configurarTextFieldCondicionais() {
+        
+        // Identificação
+        rbController.configurarRadioGroup(bg_transferencia, rb_transferencia_sim, rb_transferencia_nao, tf_transferencia);
+        rbController.configurarRadioGroup(bg_nacionalidade, rb_nacionalidade_estrangeiro, rb_nacionalidade_brasileira, rb_nacionalidade_naturalizado, tf_nacionalidade_qual_pais);
+        
+        // Dados sociais e econômicos
+        rbController.configurarRadioGroup(bg_fam_rec_beneficio, rb_fam_rec_beneficio_sim, rb_fam_rec_beneficio_nao, tf_fam_rec_beneficio_quais);
+        rbController.configurarRadioGroup(bg_possui_filhos, rb_poss_filhos_sim, rb_poss_filhos_nao, tf_poss_filhos_quantos, tf_idade_filhos);
+        rbController.configurarRadioGroup(bg_possuio_outro_dependente, rb_possui_outro_dependente_sim, rb_possui_outro_dependente_nao, tf_possui_outro_dependente_qts);
+        
+        
+        // Condições de Saúde
+        rbController.configurarRadioGroup(bg_possui_deficiencia, rb_possui_deficiencia_sim, rb_possui_deficiencia_nao, tf_deficiencia_quais);
+        
+        
+        //rbController.configurarRadioGroup();
     }
     
     // Retorna uma String contendo a data atual no formato "dd/MM/yyyy"
@@ -170,7 +199,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             return false;
         }
         return true;
-    }
+    }  
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -239,7 +268,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         rb_transferencia_nao = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        tf_transferencia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jComboBoxResponsavel = new javax.swing.JComboBox<>();
         jLabelData = new javax.swing.JLabel();
@@ -353,9 +382,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jSeparator1 = new javax.swing.JSeparator();
         jLabel51 = new javax.swing.JLabel();
         rb_fam_rec_beneficio_sim = new javax.swing.JRadioButton();
-        rb_fam_rec_beneficion_nao = new javax.swing.JRadioButton();
+        rb_fam_rec_beneficio_nao = new javax.swing.JRadioButton();
         jLabel52 = new javax.swing.JLabel();
-        tf_deficiencia_quais1 = new javax.swing.JTextField();
+        tf_fam_rec_beneficio_quais = new javax.swing.JTextField();
         tf_poss_filhos_quantos = new javax.swing.JTextField();
         rb_poss_filhos_nao = new javax.swing.JRadioButton();
         rb_poss_filhos_sim = new javax.swing.JRadioButton();
@@ -365,7 +394,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jLabel56 = new javax.swing.JLabel();
         rb_possui_outro_dependente_sim = new javax.swing.JRadioButton();
         rb_possui_outro_dependente_nao = new javax.swing.JRadioButton();
-        tf_possui_outro_dependente = new javax.swing.JTextField();
+        tf_possui_outro_dependente_qts = new javax.swing.JTextField();
         jLabel58 = new javax.swing.JLabel();
         jSeparator2 = new javax.swing.JSeparator();
         rb_ofertar_neeja_nao = new javax.swing.JRadioButton();
@@ -580,9 +609,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel4.setText("Data:");
 
-        jTextField3.setEditable(false);
-        jTextField3.setToolTipText("Local");
-        jTextField3.setEnabled(false);
+        tf_transferencia.setEditable(false);
+        tf_transferencia.setToolTipText("Local");
+        tf_transferencia.setEnabled(false);
 
         jLabel6.setText("Transferência");
 
@@ -607,7 +636,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rb_transferencia_nao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3))
+                        .addComponent(tf_transferencia))
                     .addGroup(atendimento_panelLayout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(18, 18, 18)
@@ -634,7 +663,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addGroup(atendimento_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rb_transferencia_sim)
                     .addComponent(rb_transferencia_nao)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_transferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
@@ -1383,13 +1412,13 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         bg_fam_rec_beneficio.add(rb_fam_rec_beneficio_sim);
         rb_fam_rec_beneficio_sim.setText("Sim");
 
-        bg_fam_rec_beneficio.add(rb_fam_rec_beneficion_nao);
-        rb_fam_rec_beneficion_nao.setText("Não");
+        bg_fam_rec_beneficio.add(rb_fam_rec_beneficio_nao);
+        rb_fam_rec_beneficio_nao.setText("Não");
 
         jLabel52.setText("Qual:");
 
-        tf_deficiencia_quais1.setEditable(false);
-        tf_deficiencia_quais1.setEnabled(false);
+        tf_fam_rec_beneficio_quais.setEditable(false);
+        tf_fam_rec_beneficio_quais.setEnabled(false);
 
         tf_poss_filhos_quantos.setEditable(false);
         tf_poss_filhos_quantos.setToolTipText("Local");
@@ -1416,12 +1445,12 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         bg_possuio_outro_dependente.add(rb_possui_outro_dependente_nao);
         rb_possui_outro_dependente_nao.setText("Não");
 
-        tf_possui_outro_dependente.setEditable(false);
-        tf_possui_outro_dependente.setToolTipText("Local");
-        tf_possui_outro_dependente.setEnabled(false);
-        tf_possui_outro_dependente.addActionListener(new java.awt.event.ActionListener() {
+        tf_possui_outro_dependente_qts.setEditable(false);
+        tf_possui_outro_dependente_qts.setToolTipText("Local");
+        tf_possui_outro_dependente_qts.setEnabled(false);
+        tf_possui_outro_dependente_qts.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_possui_outro_dependenteActionPerformed(evt);
+                tf_possui_outro_dependente_qtsActionPerformed(evt);
             }
         });
 
@@ -1498,7 +1527,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addComponent(jLabel52)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(tf_deficiencia_quais1))
+                                        .addComponent(tf_fam_rec_beneficio_quais))
                                     .addGroup(jPanel1Layout.createSequentialGroup()
                                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -1506,7 +1535,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                                 .addComponent(rb_fam_rec_beneficio_sim)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(rb_fam_rec_beneficion_nao))
+                                                .addComponent(rb_fam_rec_beneficio_nao))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel55)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1520,7 +1549,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jLabel29)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(tf_poss_filhos_quantos, javax.swing.GroupLayout.PREFERRED_SIZE, 314, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(tf_poss_filhos_quantos, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jPanel1Layout.createSequentialGroup()
                                                 .addComponent(jLabel56)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1530,7 +1559,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jLabel30)
                                                 .addGap(18, 18, 18)
-                                                .addComponent(tf_possui_outro_dependente, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                                .addComponent(tf_possui_outro_dependente_qts, javax.swing.GroupLayout.PREFERRED_SIZE, 316, javax.swing.GroupLayout.PREFERRED_SIZE)))
                                         .addGap(0, 5, Short.MAX_VALUE))))
                             .addComponent(jSeparator2, javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
@@ -1547,10 +1576,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel51)
                             .addComponent(rb_fam_rec_beneficio_sim)
-                            .addComponent(rb_fam_rec_beneficion_nao))
+                            .addComponent(rb_fam_rec_beneficio_nao))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(tf_deficiencia_quais1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_fam_rec_beneficio_quais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel52))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -1567,7 +1596,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(rb_possui_outro_dependente_sim)
                             .addComponent(rb_possui_outro_dependente_nao)
-                            .addComponent(tf_possui_outro_dependente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tf_possui_outro_dependente_qts, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel56)
                             .addComponent(jLabel30)))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -2906,7 +2935,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 atendimento.setDataHora(new java.sql.Timestamp(System.currentTimeMillis()));
                 atendimento.setDataEntradaUnidade(new java.util.Date());
                 atendimento.setIsTransferencia(rb_transferencia_sim.isSelected()); // Se o radio button "Sim" estiver selecionado
-                atendimento.setProcedencia(jTextField3.getText().trim().isEmpty() ? "Não informado" : jTextField3.getText().trim());
+                atendimento.setProcedencia(tf_transferencia.getText().trim().isEmpty() ? "Não informado" : tf_transferencia.getText().trim());
                 
                 boolean atendimentoSucesso = atendimentoDao.insertAtendimento(atendimento);
                 
@@ -2958,9 +2987,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_med_continuoActionPerformed
 
-    private void tf_possui_outro_dependenteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_possui_outro_dependenteActionPerformed
+    private void tf_possui_outro_dependente_qtsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_possui_outro_dependente_qtsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_possui_outro_dependenteActionPerformed
+    }//GEN-LAST:event_tf_possui_outro_dependente_qtsActionPerformed
 
     private void rb_gestacao_no_momvento_nao1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rb_gestacao_no_momvento_nao1ActionPerformed
         // TODO add your handling code here:
@@ -3299,7 +3328,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
     private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JRadioButton rb_acompanhamento_saude_mental_no_momento_da_prisao_nao;
     private javax.swing.JRadioButton rb_acompanhamento_saude_mental_no_momento_da_prisao_sim;
     private javax.swing.JRadioButton rb_consultar_exame_preventivo_nao;
@@ -3333,8 +3361,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_exame_prostata_nao1;
     private javax.swing.JRadioButton rb_exame_prostata_sim;
     private javax.swing.JRadioButton rb_exame_prostata_sim1;
+    private javax.swing.JRadioButton rb_fam_rec_beneficio_nao;
     private javax.swing.JRadioButton rb_fam_rec_beneficio_sim;
-    private javax.swing.JRadioButton rb_fam_rec_beneficion_nao;
     private javax.swing.JRadioButton rb_gestacao_no_momvento_nao;
     private javax.swing.JRadioButton rb_gestacao_no_momvento_nao1;
     private javax.swing.JRadioButton rb_gestacao_no_momvento_nao_sabe;
@@ -3402,10 +3430,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_cpf;
     private javax.swing.JTextField tf_data_nascimento;
     private javax.swing.JTextField tf_deficiencia_quais;
-    private javax.swing.JTextField tf_deficiencia_quais1;
     private javax.swing.JTextField tf_etinia;
     private javax.swing.JTextField tf_exame_prostata_ano;
     private javax.swing.JTextField tf_exame_prostata_ano1;
+    private javax.swing.JTextField tf_fam_rec_beneficio_quais;
     private javax.swing.JTextField tf_faz_uso_de_outras;
     private javax.swing.JTextField tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs;
     private javax.swing.JTextField tf_idade;
@@ -3425,9 +3453,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_possui_intolerancia_quais2;
     private javax.swing.JTextField tf_possui_intolerancia_quais7;
     private javax.swing.JTextField tf_possui_intolerancia_quais8;
-    private javax.swing.JTextField tf_possui_outro_dependente;
+    private javax.swing.JTextField tf_possui_outro_dependente_qts;
     private javax.swing.JTextField tf_possui_trasntorno_mental_outro;
     private javax.swing.JTextField tf_tipo_sangue;
+    private javax.swing.JTextField tf_transferencia;
     private javax.swing.JTextField tf_usa_med_controlado_qual;
     private javax.swing.JTextField tf_vinculo_caps_municipio;
     private javax.swing.JTextField tf_vinculo_caps_nome;
