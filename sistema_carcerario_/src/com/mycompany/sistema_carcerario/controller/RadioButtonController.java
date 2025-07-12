@@ -40,6 +40,7 @@ public class RadioButtonController {
             } else {
                 campoTexto.setEnabled(false);
                 campoTexto.setEditable(false);
+                campoTexto.setText("");
             }
         };
         
@@ -68,6 +69,7 @@ public class RadioButtonController {
             } else {
                 campoTexto.setEnabled(false);
                 campoTexto.setEditable(false);
+                campoTexto.setText("");
             }
         };
         
@@ -98,9 +100,11 @@ public class RadioButtonController {
             } else {
                 campoTexto1.setEnabled(false);
                 campoTexto1.setEditable(false);
+                campoTexto1.setText("");
                 
                 campoTexto2.setEnabled(false);
                 campoTexto2.setEditable(false);
+                campoTexto2.setText("");
             }
         };
         
@@ -115,7 +119,8 @@ public class RadioButtonController {
             JRadioButton btnSim,
             JRadioButton btnNao,
             JRadioButton radioBtn1,
-            JRadioButton radioBtn2
+            JRadioButton radioBtn2,
+            ButtonGroup buttonGroup2
     ) {
  
         ActionListener listenerGrupo = e -> {
@@ -128,6 +133,7 @@ public class RadioButtonController {
             } else {
                 radioBtn1.setEnabled(false);
                 radioBtn2.setEnabled(false);
+                buttonGroup2.clearSelection();
             }
         };
         

@@ -47,6 +47,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         configurarTextFieldCondicionais();
     }
     
+    
+    // Passa todos os chackboxes que precisam desativar/ativar algum campo de 
+    // texto estes são configurados pela função do RadioButtonController 
+    // para tal comportamento
     public void configurarTextFieldCondicionais() {
         
         // Identificação
@@ -74,12 +78,13 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // Saúde do Homem
         rbController.configurarRadioGroup(bg_exame_prostata, rb_exame_prostata_sim, rb_exame_prostata_nao, tf_exame_prostata_ano);
         rbController.configurarRadioGroup(bg_historico_prostata_familia, rb_historico_prostata_sim, rb_historico_prostata_nao, rb_historico_prostata_familiar);
+        rbController.configurarRadioGroup(bg_parceira_gestante, rb_parceira_gestante_sim, rb_parceira_gestante_nao, rb_esta_participando_pre_natal_nao, rb_esta_participando_pre_natal_sim, bg_esta_participando_pre_natal); 
         
-        //rbController.configurarRadioGroup(bg_parceira_gestante, rb_parceira_gestante_sim, rb_parceira_gestante_nao, ); // TODO pasaar radio button
-
-        //rbController.configurarRadioGroup();
-        
-        
+        // Saúde mental e uso de substâncias
+        rbController.configurarRadioGroup(bg_vinculo_caps, rb_vinculo_caps_sim, rb_vinculo_caps_nao, tf_vinculo_caps_nome, tf_vinculo_caps_municipio);
+        rbController.configurarRadioGroup(bg_usa_medicamento_controlado, rb_usa_med_controlado_sim, rb_usa_med_controlado_nao, rb_usa_med_controlado_nao_sabe, tf_usa_med_controlado_qual);
+        rbController.configurarRadioGroup(bg_estava_acomp_saude_mental_momento_prisao, rb_acompanhamento_saude_mental_no_momento_da_prisao_sim, rb_acompanhamento_saude_mental_no_momento_da_prisao_nao, tf_acompanhamento_saude_mental_no_momento_da_prisao_qual);
+        rbController.configurarRadioGroup(bg_ja_realizou_trat_para_cessar_reduzir_uso, rb_ja_realizou_trat_para_cessar_reduzir_uso_sim, rb_ja_realizou_trat_para_cessar_reduzir_uso_nao, tf_ja_realizou_trat_para_cessar_reduzir_uso_qual);
     }
     
     // Retorna uma String contendo a data atual no formato "dd/MM/yyyy"
@@ -1842,13 +1847,13 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator6, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(saude_da_mulher_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel64)
+                .addGroup(saude_da_mulher_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(saude_da_mulher_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(rb_papanicolau_nao)
                         .addComponent(tf_papanicolau_ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel104)
-                        .addComponent(rb_papanicolau_sim)))
+                        .addComponent(rb_papanicolau_sim))
+                    .addComponent(jLabel64))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jSeparator5, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(8, 8, 8)
