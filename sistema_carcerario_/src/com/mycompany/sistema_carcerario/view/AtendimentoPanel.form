@@ -2854,7 +2854,7 @@
                                       </Group>
                                       <Group type="102" attributes="0">
                                           <Group type="103" groupAlignment="0" attributes="0">
-                                              <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                                              <Component id="cb_transt_mentais_n_sabe_resp" min="-2" max="-2" attributes="0"/>
                                               <Component id="jLabel92" min="-2" max="-2" attributes="0"/>
                                               <Component id="cb_possui_esquisofrenia" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="cb_possui_bipolaridade" min="-2" max="-2" attributes="0"/>
@@ -3016,7 +3016,7 @@
                       </Group>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jCheckBox2" min="-2" max="-2" attributes="0"/>
+                  <Component id="cb_transt_mentais_n_sabe_resp" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
                   <Component id="jSeparator11" min="-2" pref="2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
@@ -3237,7 +3237,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_usa_med_controlado_qualActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox2">
+        <Component class="javax.swing.JCheckBox" name="cb_transt_mentais_n_sabe_resp">
           <Properties>
             <Property name="text" type="java.lang.String" value="N&#xe3;o sabe responder"/>
           </Properties>
@@ -3573,25 +3573,25 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Group type="103" groupAlignment="0" attributes="0">
-                                                      <Component id="cb_ofertar_vaciana_covid" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="cb_ofertar_vaciana_hepatite_b" min="-2" max="-2" attributes="0"/>
-                                                      <Component id="cb_ofertar_vaciana_influenza" alignment="0" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cb_ofertar_vacina_covid" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cb_ofertar_vacina_hepatite_b" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="cb_ofertar_vacina_influenza" alignment="0" min="-2" max="-2" attributes="0"/>
                                                   </Group>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Group type="103" groupAlignment="0" attributes="0">
                                                       <Group type="102" attributes="0">
                                                           <Group type="103" groupAlignment="0" attributes="0">
-                                                              <Component id="cb_ofertar_vaciana_dupla_adulto" min="-2" max="-2" attributes="0"/>
+                                                              <Component id="cb_ofertar_vacina_dupla_adulto" min="-2" max="-2" attributes="0"/>
                                                               <Component id="cb_ofertar_vaciana_triplice_viral" min="-2" max="-2" attributes="0"/>
                                                           </Group>
                                                           <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                                       </Group>
                                                       <Group type="102" alignment="0" attributes="0">
-                                                          <Component id="cb_ofertar_vaciana_febre_amarela" min="-2" max="-2" attributes="0"/>
-                                                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
-                                                          <Component id="cb_ofertar_vaciana_outra" min="-2" max="-2" attributes="0"/>
+                                                          <Component id="cb_ofertar_vacina_febre_amarela" min="-2" max="-2" attributes="0"/>
+                                                          <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
+                                                          <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
                                                           <EmptySpace max="-2" attributes="0"/>
-                                                          <Component id="tf_" max="32767" attributes="0"/>
+                                                          <Component id="tf_ofertar_vacina_outra" pref="612" max="32767" attributes="0"/>
                                                       </Group>
                                                   </Group>
                                               </Group>
@@ -3655,21 +3655,21 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cb_ofertar_vaciana_hepatite_b" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_ofertar_vacina_hepatite_b" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="cb_ofertar_vaciana_febre_amarela" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="cb_ofertar_vaciana_outra" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tf_" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="cb_ofertar_vacina_febre_amarela" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tf_ofertar_vacina_outra" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cb_ofertar_vaciana_covid" min="-2" max="-2" attributes="0"/>
-                      <Component id="cb_ofertar_vaciana_dupla_adulto" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_ofertar_vacina_covid" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_ofertar_vacina_dupla_adulto" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
-                      <Component id="cb_ofertar_vaciana_influenza" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_ofertar_vacina_influenza" min="-2" max="-2" attributes="0"/>
                       <Component id="cb_ofertar_vaciana_triplice_viral" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -3820,12 +3820,12 @@
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vaciana_hepatite_b">
+        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vacina_hepatite_b">
           <Properties>
             <Property name="text" type="java.lang.String" value="Hepatite B"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vaciana_hepatite_bActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vacina_hepatite_bActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cb_ofertar_vaciana_nao">
@@ -3833,36 +3833,36 @@
             <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vaciana_covid">
+        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vacina_covid">
           <Properties>
             <Property name="text" type="java.lang.String" value="Covid-19"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vaciana_covidActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vacina_covidActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vaciana_influenza">
+        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vacina_influenza">
           <Properties>
             <Property name="text" type="java.lang.String" value="Influenza"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vaciana_influenzaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vacina_influenzaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vaciana_febre_amarela">
+        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vacina_febre_amarela">
           <Properties>
             <Property name="text" type="java.lang.String" value="Febre Amarela"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vaciana_febre_amarelaActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vacina_febre_amarelaActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vaciana_dupla_adulto">
+        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vacina_dupla_adulto">
           <Properties>
             <Property name="text" type="java.lang.String" value="Dupla Adulto (dT)"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vaciana_dupla_adultoActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vacina_dupla_adultoActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JCheckBox" name="cb_ofertar_vaciana_triplice_viral">
@@ -3873,19 +3873,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vaciana_triplice_viralActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vaciana_outra">
-          <Properties>
-            <Property name="text" type="java.lang.String" value="Outra"/>
-          </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vaciana_outraActionPerformed"/>
-          </Events>
-        </Component>
-        <Component class="javax.swing.JTextField" name="tf_">
-          <Properties>
-            <Property name="editable" type="boolean" value="false"/>
-            <Property name="enabled" type="boolean" value="false"/>
-          </Properties>
+        <Component class="javax.swing.JTextField" name="tf_ofertar_vacina_outra">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel87">
           <Properties>
@@ -3914,6 +3902,11 @@
               <Color blue="99" green="99" red="99" type="rgb"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel31">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Outra:"/>
           </Properties>
         </Component>
       </SubComponents>

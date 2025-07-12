@@ -7,32 +7,34 @@ package com.mycompany.sistema_carcerario.view;
 import DAL.AtendenteDao;
 import DAL.PrisioneiroDao;
 import DAL.AtendimentoDao;
+import com.mycompany.sistema_carcerario.controller.CheckBoxController;
 import com.mycompany.sistema_carcerario.controller.RadioButtonController;
 import com.mycompany.sistema_carcerario.model.Atendente;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import com.mycompany.sistema_carcerario.model.Atendimento;
-import java.awt.event.ActionListener;
 import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import javax.swing.ButtonGroup;
-import javax.swing.ButtonModel;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
+import java.util.Arrays;
+import java.util.List;
+import javax.swing.JCheckBox;
 
 /**
  *
  * @author m138824
  */
 public class AtendimentoPanel extends javax.swing.JPanel {
+
     final MainFrame parent;
     private final RadioButtonController rbController = new RadioButtonController();
-    
+    private final CheckBoxController cbController = new CheckBoxController();
+
     private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
     private final AtendimentoDao atendimentoDao = new AtendimentoDao();
     private Prisioneiro prisioneiroAtual;
     private final AtendenteDao atendenteDao = new AtendenteDao();
+
     /**
      * Creates new form AtendimentoPanel2
      */
@@ -42,89 +44,128 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         setComboBoxResponsavel();
         //Setando a data atual 
         jLabelData.setText(getDataAtual());
-        
-        
+
         configurarTextFieldCondicionais();
+        configurarCheckBoxesCondicionais();
+        configurarComboBoxOrientacaoSex();
     }
-    
-    
+
     // Passa todos os chackboxes que precisam desativar/ativar algum campo de 
     // texto estes são configurados pela função do RadioButtonController 
     // para tal comportamento
-    public void configurarTextFieldCondicionais() {
-        
+    private void configurarTextFieldCondicionais() {
+
         // Identificação
         rbController.configurarRadioGroup(bg_transferencia, rb_transferencia_sim, rb_transferencia_nao, tf_transferencia);
         rbController.configurarRadioGroup(bg_nacionalidade, rb_nacionalidade_estrangeiro, rb_nacionalidade_brasileira, rb_nacionalidade_naturalizado, tf_nacionalidade_qual_pais);
-        
+
         // Dados sociais e econômicos
         rbController.configurarRadioGroup(bg_fam_rec_beneficio, rb_fam_rec_beneficio_sim, rb_fam_rec_beneficio_nao, tf_fam_rec_beneficio_quais);
         rbController.configurarRadioGroup(bg_possui_filhos, rb_poss_filhos_sim, rb_poss_filhos_nao, tf_poss_filhos_quantos, tf_idade_filhos);
         rbController.configurarRadioGroup(bg_possuio_outro_dependente, rb_possui_outro_dependente_sim, rb_possui_outro_dependente_nao, tf_possui_outro_dependente_qts);
-        
-        
+
         // Condições de Saúde
         rbController.configurarRadioGroup(bg_possui_deficiencia, rb_possui_deficiencia_sim, rb_possui_deficiencia_nao, rb_possui_deficiencia_nao_sei, tf_deficiencia_quais);
         rbController.configurarRadioGroup(bg_possui_intolerancia, rb_possui_alergia_sim, rb_possui_alergia_nao, rb_possui_alergia_nao_sei, tf_possui_intolerancia_quais);
         rbController.configurarRadioGroup(bg_realizou_cirurgia, rb_realizou_cirurgia_sim, rb_realizou_cirurgia_nao, rb_realizou_cirurgia_nao_sei, tf_realizou_cirurgia_quais);
-        
+
         // Histórico doenças infecciosas
         rbController.configurarRadioGroup(bg_possui_denca_de_pele, rb_doenca_pele_sim, rb_doenca_pele_nao, tf_doenca_pele_quais);
         rbController.configurarRadioGroup(bg_med_continuo, rb_usa_med_continuo_sim, rb_usa_med_continuo_nao, tf_med_continuo);
-        
+
         // Saúde da mulher
         rbController.configurarRadioGroup(bg_realizou_papanicolau, rb_papanicolau_sim, rb_papanicolau_nao, tf_papanicolau_ano);
-        
+
         // Saúde do Homem
         rbController.configurarRadioGroup(bg_exame_prostata, rb_exame_prostata_sim, rb_exame_prostata_nao, tf_exame_prostata_ano);
         rbController.configurarRadioGroup(bg_historico_prostata_familia, rb_historico_prostata_sim, rb_historico_prostata_nao, rb_historico_prostata_familiar);
-        rbController.configurarRadioGroup(bg_parceira_gestante, rb_parceira_gestante_sim, rb_parceira_gestante_nao, rb_esta_participando_pre_natal_nao, rb_esta_participando_pre_natal_sim, bg_esta_participando_pre_natal); 
-        
+        rbController.configurarRadioGroup(bg_parceira_gestante, rb_parceira_gestante_sim, rb_parceira_gestante_nao, rb_esta_participando_pre_natal_nao, rb_esta_participando_pre_natal_sim, bg_esta_participando_pre_natal);
+
         // Saúde mental e uso de substâncias
         rbController.configurarRadioGroup(bg_vinculo_caps, rb_vinculo_caps_sim, rb_vinculo_caps_nao, tf_vinculo_caps_nome, tf_vinculo_caps_municipio);
         rbController.configurarRadioGroup(bg_usa_medicamento_controlado, rb_usa_med_controlado_sim, rb_usa_med_controlado_nao, rb_usa_med_controlado_nao_sabe, tf_usa_med_controlado_qual);
         rbController.configurarRadioGroup(bg_estava_acomp_saude_mental_momento_prisao, rb_acompanhamento_saude_mental_no_momento_da_prisao_sim, rb_acompanhamento_saude_mental_no_momento_da_prisao_nao, tf_acompanhamento_saude_mental_no_momento_da_prisao_qual);
         rbController.configurarRadioGroup(bg_ja_realizou_trat_para_cessar_reduzir_uso, rb_ja_realizou_trat_para_cessar_reduzir_uso_sim, rb_ja_realizou_trat_para_cessar_reduzir_uso_nao, tf_ja_realizou_trat_para_cessar_reduzir_uso_qual);
     }
+
+    private void configurarCheckBoxesCondicionais() {
+        // Condições especiais
+        List<JCheckBox> checkBoxList_cond_cron = Arrays.asList(cb_cond_cron_possui_diabetes, cb_cond_cron_possui_HIV, cb_cond_cron_possui_autoimune, cb_cond_cron_possui_hipertensao);
+        cbController.configurarCheckBox(cb_cond_cron_nao_sabe_responder, checkBoxList_cond_cron);
+
+        // Doenças infecciosas
+        List<JCheckBox> checkBoxList_doencas_infec = Arrays.asList(cb_hist_doencas_infec_sifilis, cb_hist_doencas_infec_tuberculose, cb_hist_doencas_infec_hpv, cb_hist_doencas_infec_hepatite_c, cb_hist_doencas_infec_hepatite_b);
+        cbController.configurarCheckBox(cb_hist_doencas_infec_nao_sabe_responder, checkBoxList_doencas_infec);
+
+        // Possui transtornos mentais
+        List<JCheckBox> checkBoxList_transt_mentais = Arrays.asList(cb_possui_ansiedade, cb_possui_autismo, cb_possui_bipolaridade, cb_possui_depressao, cb_possui_esquisofrenia);
+        cbController.configurarCheckBox(cb_transt_mentais_n_sabe_resp, checkBoxList_transt_mentais);
+
+        // Ofertar Vacinas disponieis
+        List<JCheckBox> checkBoxList_vac_dispo = Arrays.asList(cb_ofertar_vacina_covid, cb_ofertar_vacina_dupla_adulto, cb_ofertar_vacina_febre_amarela, cb_ofertar_vacina_hepatite_b, cb_ofertar_vacina_influenza, cb_ofertar_vaciana_triplice_viral);
+        cbController.configurarCheckBox(cb_ofertar_vaciana_nao, checkBoxList_vac_dispo);
+
+        // Gostaria de realizar algum tratamento para cessar ou reduzir o uso?
+        cbController.configurarCheckBoxECampoDeTexto(cb_gostaria_realizar_trat_para_cessar_reduzir_uso, tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs);
+    }
+
     
+    // Se o ComboBox tiver na Opção Outra, ele habilita o texto apra o usuário 
+    // poder digitar qual aopção que seria a tal da outra
+    private void configurarComboBoxOrientacaoSex() {
+
+        cb_orientacao_sexual.addActionListener(e -> {
+            String selecionado = (String) cb_orientacao_sexual.getSelectedItem();
+            if ("Outra".equals(selecionado)) {
+                tf_orientacao_sexual_outra.setEnabled(true);
+                tf_orientacao_sexual_outra.setEditable(true);
+            } else {
+                tf_orientacao_sexual_outra.setEnabled(false);
+                tf_orientacao_sexual_outra.setEditable(false);
+                tf_orientacao_sexual_outra.setText("");
+            }
+        });
+    }
+    
+
     // Retorna uma String contendo a data atual no formato "dd/MM/yyyy"
-    public String getDataAtual(){
+    public String getDataAtual() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         String dataFormatada = LocalDate.now().format(formatter);
         return dataFormatada;
     }
-    
+
     // Função responsável por carregar um prisioneiro existente pelo ID
     // Vai chamar query no DAO e preencher UI
     public void carregarPrisioneiro(int idPrisioneiro) {
         prisioneiroAtual = prisioneiroDao.buscarPrisioneiroPorId(idPrisioneiro);
-        
+
         if (prisioneiroAtual != null) {
             // Esconde painel quando carrega novo prisioneiro
             atendimento_panel.setVisible(false);
-            
+
             tf_nome.setText(prisioneiroAtual.getNomeCompleto());
             tf_nome_social.setText(prisioneiroAtual.getNomeCompleto()); // Assuming nome social is the same as nome for now
             tf_data_nascimento.setText(prisioneiroAtual.getDataNascimento().toString());
             tf_cpf.setText(prisioneiroAtual.getCpf());
             //tf_idade.setText(String.valueOf(prisioneiroAtual.calcularIdade()));
             tf_etinia.setText(prisioneiroAtual.getRaca());
-            
+
             setComboBoxValue(cb_sexo_biologico, prisioneiroAtual.getSexo());
             setComboBoxValue(cb_identidade_genero, prisioneiroAtual.getGenero());
             setComboBoxValue(cb_orientacao_sexual, prisioneiroAtual.getOrientacao());
             setComboBoxValue(jComboBox1, prisioneiroAtual.getRaca());
         }
     }
-    
-    private void setComboBoxResponsavel(){
+
+    private void setComboBoxResponsavel() {
         jComboBoxResponsavel.removeAllItems();
-        ArrayList <Atendente> atendentes = atendenteDao.getAtendentes();
-        for(Atendente atendente : atendentes){
+        ArrayList<Atendente> atendentes = atendenteDao.getAtendentes();
+        for (Atendente atendente : atendentes) {
             jComboBoxResponsavel.addItem(atendente.getNome());
         }
     }
-    
+
     private void setComboBoxValue(javax.swing.JComboBox<String> comboBox, String value) {
         for (int i = 0; i < comboBox.getItemCount(); i++) {
             if (comboBox.getItemAt(i).equalsIgnoreCase(value)) {
@@ -133,13 +174,13 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             }
         }
     }
-    
+
     public void prepararParaNovoPrisioneiro() {
         // Limpa para um novo prisioneiro
         prisioneiroAtual = null;
-        
+
         atendimento_panel.setVisible(true);
-        
+
         // Limpa todos os campos
         tf_nome.setText("");
         tf_nome_social.setText("");
@@ -147,31 +188,31 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         tf_cpf.setText("");
         tf_idade.setText("");
         tf_etinia.setText("");
-        
+
         // Reseta os combo boxes
         cb_sexo_biologico.setSelectedIndex(0);
         cb_identidade_genero.setSelectedIndex(0);
         cb_orientacao_sexual.setSelectedIndex(0);
         jComboBox1.setSelectedIndex(0);
     }
-    
+
     private Prisioneiro coletarDadosFormulario() {
         Prisioneiro prisioneiro = new Prisioneiro();
-        
+
         // Se tiver editando um prisioneiro conhecido
         if (prisioneiroAtual != null) {
             prisioneiro.setId(prisioneiroAtual.getId());
         }
-        
+
         // Colete dados
         prisioneiro.setNomeCompleto(tf_nome.getText());
-        prisioneiro.setNomeMae(tf_nome_mae.getText()); 
+        prisioneiro.setNomeMae(tf_nome_mae.getText());
         prisioneiro.setCpf(tf_cpf.getText());
-        
+
         try {
             String dataTexto = tf_data_nascimento.getText().trim();
             java.time.LocalDate dataNascimento;
-            
+
             // Tenta diferentes formatos de data
             if (dataTexto.matches("\\d{4}-\\d{2}-\\d{2}")) {
                 // Formato YYYY-MM-DD
@@ -184,28 +225,27 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 System.out.println("Formato de data inválido. Use DD/MM/YYYY ou YYYY-MM-DD");
                 return null;
             }
-            
+
             prisioneiro.setDataNascimento(java.sql.Date.valueOf(dataNascimento));
         } catch (Exception e) {
             System.out.println("Erro ao parsear data de nascimento: " + e.getMessage());
             return null;
         }
-        
+
         // Valores das combo boxes
         prisioneiro.setSexo((String) cb_sexo_biologico.getSelectedItem());
         prisioneiro.setGenero((String) cb_identidade_genero.getSelectedItem());
         prisioneiro.setOrientacao((String) cb_orientacao_sexual.getSelectedItem());
         prisioneiro.setRaca((String) jComboBox1.getSelectedItem());
-        
+
         // Valores padrão para campos obrigatórios
         prisioneiro.setNacionalidade("Brasileira");
         prisioneiro.setEstadoCivil("Solteiro");
         prisioneiro.setEscolaridade("Fundamental");
 
-        
         return prisioneiro;
     }
-    
+
     private boolean validarFormulario() {
         if (tf_nome.getText().trim().isEmpty()) {
             System.out.println("Nome é obrigatório");
@@ -220,7 +260,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             return false;
         }
         return true;
-    }  
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -511,7 +551,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jSeparator11 = new javax.swing.JSeparator();
         jLabel93 = new javax.swing.JLabel();
         tf_usa_med_controlado_qual = new javax.swing.JTextField();
-        jCheckBox2 = new javax.swing.JCheckBox();
+        cb_transt_mentais_n_sabe_resp = new javax.swing.JCheckBox();
         rb_usa_med_controlado_nao = new javax.swing.JRadioButton();
         rb_usa_med_controlado_sim = new javax.swing.JRadioButton();
         jLabel94 = new javax.swing.JLabel();
@@ -570,19 +610,19 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jLabel85 = new javax.swing.JLabel();
         jLabel86 = new javax.swing.JLabel();
         jSeparator8 = new javax.swing.JSeparator();
-        cb_ofertar_vaciana_hepatite_b = new javax.swing.JCheckBox();
+        cb_ofertar_vacina_hepatite_b = new javax.swing.JCheckBox();
         cb_ofertar_vaciana_nao = new javax.swing.JCheckBox();
-        cb_ofertar_vaciana_covid = new javax.swing.JCheckBox();
-        cb_ofertar_vaciana_influenza = new javax.swing.JCheckBox();
-        cb_ofertar_vaciana_febre_amarela = new javax.swing.JCheckBox();
-        cb_ofertar_vaciana_dupla_adulto = new javax.swing.JCheckBox();
+        cb_ofertar_vacina_covid = new javax.swing.JCheckBox();
+        cb_ofertar_vacina_influenza = new javax.swing.JCheckBox();
+        cb_ofertar_vacina_febre_amarela = new javax.swing.JCheckBox();
+        cb_ofertar_vacina_dupla_adulto = new javax.swing.JCheckBox();
         cb_ofertar_vaciana_triplice_viral = new javax.swing.JCheckBox();
-        cb_ofertar_vaciana_outra = new javax.swing.JCheckBox();
-        tf_ = new javax.swing.JTextField();
+        tf_ofertar_vacina_outra = new javax.swing.JTextField();
         jLabel87 = new javax.swing.JLabel();
         rb_ofertar_copia_carteira_vacinacao_sim = new javax.swing.JRadioButton();
         rb_ofertar_copia_carteira_vacinacao_nao = new javax.swing.JRadioButton();
         jSeparator9 = new javax.swing.JSeparator();
+        jLabel31 = new javax.swing.JLabel();
 
         jLabel1.setText("Responsável:");
 
@@ -2230,7 +2270,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
-        jCheckBox2.setText("Não sabe responder");
+        cb_transt_mentais_n_sabe_resp.setText("Não sabe responder");
 
         bg_usa_medicamento_controlado.add(rb_usa_med_controlado_nao);
         rb_usa_med_controlado_nao.setText("Não");
@@ -2392,7 +2432,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                         .addComponent(tf_possui_trasntorno_mental_outro))
                                     .addGroup(jPanel8Layout.createSequentialGroup()
                                         .addGroup(jPanel8Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jCheckBox2)
+                                            .addComponent(cb_transt_mentais_n_sabe_resp)
                                             .addComponent(jLabel92)
                                             .addComponent(cb_possui_esquisofrenia)
                                             .addComponent(cb_possui_bipolaridade)
@@ -2515,7 +2555,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                 .addComponent(tf_vinculo_caps_municipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jLabel91)))))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jCheckBox2)
+                .addComponent(cb_transt_mentais_n_sabe_resp)
                 .addGap(18, 18, 18)
                 .addComponent(jSeparator11, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -2670,40 +2710,40 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         jSeparator8.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator8.setOpaque(true);
 
-        cb_ofertar_vaciana_hepatite_b.setText("Hepatite B");
-        cb_ofertar_vaciana_hepatite_b.addActionListener(new java.awt.event.ActionListener() {
+        cb_ofertar_vacina_hepatite_b.setText("Hepatite B");
+        cb_ofertar_vacina_hepatite_b.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_ofertar_vaciana_hepatite_bActionPerformed(evt);
+                cb_ofertar_vacina_hepatite_bActionPerformed(evt);
             }
         });
 
         cb_ofertar_vaciana_nao.setText("Não");
 
-        cb_ofertar_vaciana_covid.setText("Covid-19");
-        cb_ofertar_vaciana_covid.addActionListener(new java.awt.event.ActionListener() {
+        cb_ofertar_vacina_covid.setText("Covid-19");
+        cb_ofertar_vacina_covid.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_ofertar_vaciana_covidActionPerformed(evt);
+                cb_ofertar_vacina_covidActionPerformed(evt);
             }
         });
 
-        cb_ofertar_vaciana_influenza.setText("Influenza");
-        cb_ofertar_vaciana_influenza.addActionListener(new java.awt.event.ActionListener() {
+        cb_ofertar_vacina_influenza.setText("Influenza");
+        cb_ofertar_vacina_influenza.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_ofertar_vaciana_influenzaActionPerformed(evt);
+                cb_ofertar_vacina_influenzaActionPerformed(evt);
             }
         });
 
-        cb_ofertar_vaciana_febre_amarela.setText("Febre Amarela");
-        cb_ofertar_vaciana_febre_amarela.addActionListener(new java.awt.event.ActionListener() {
+        cb_ofertar_vacina_febre_amarela.setText("Febre Amarela");
+        cb_ofertar_vacina_febre_amarela.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_ofertar_vaciana_febre_amarelaActionPerformed(evt);
+                cb_ofertar_vacina_febre_amarelaActionPerformed(evt);
             }
         });
 
-        cb_ofertar_vaciana_dupla_adulto.setText("Dupla Adulto (dT)");
-        cb_ofertar_vaciana_dupla_adulto.addActionListener(new java.awt.event.ActionListener() {
+        cb_ofertar_vacina_dupla_adulto.setText("Dupla Adulto (dT)");
+        cb_ofertar_vacina_dupla_adulto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_ofertar_vaciana_dupla_adultoActionPerformed(evt);
+                cb_ofertar_vacina_dupla_adultoActionPerformed(evt);
             }
         });
 
@@ -2713,16 +2753,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 cb_ofertar_vaciana_triplice_viralActionPerformed(evt);
             }
         });
-
-        cb_ofertar_vaciana_outra.setText("Outra");
-        cb_ofertar_vaciana_outra.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                cb_ofertar_vaciana_outraActionPerformed(evt);
-            }
-        });
-
-        tf_.setEditable(false);
-        tf_.setEnabled(false);
 
         jLabel87.setText("Ofertar cópia da carteira de vacinação:");
 
@@ -2734,6 +2764,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jSeparator9.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator9.setOpaque(true);
+
+        jLabel31.setText("Outra:");
 
         javax.swing.GroupLayout jPanel10Layout = new javax.swing.GroupLayout(jPanel10);
         jPanel10.setLayout(jPanel10Layout);
@@ -2794,22 +2826,22 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel10Layout.createSequentialGroup()
                                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(cb_ofertar_vaciana_covid)
-                                                    .addComponent(cb_ofertar_vaciana_hepatite_b)
-                                                    .addComponent(cb_ofertar_vaciana_influenza))
+                                                    .addComponent(cb_ofertar_vacina_covid)
+                                                    .addComponent(cb_ofertar_vacina_hepatite_b)
+                                                    .addComponent(cb_ofertar_vacina_influenza))
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                                     .addGroup(jPanel10Layout.createSequentialGroup()
                                                         .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                            .addComponent(cb_ofertar_vaciana_dupla_adulto)
+                                                            .addComponent(cb_ofertar_vacina_dupla_adulto)
                                                             .addComponent(cb_ofertar_vaciana_triplice_viral))
                                                         .addGap(0, 0, Short.MAX_VALUE))
                                                     .addGroup(jPanel10Layout.createSequentialGroup()
-                                                        .addComponent(cb_ofertar_vaciana_febre_amarela)
-                                                        .addGap(30, 30, 30)
-                                                        .addComponent(cb_ofertar_vaciana_outra)
+                                                        .addComponent(cb_ofertar_vacina_febre_amarela)
+                                                        .addGap(37, 37, 37)
+                                                        .addComponent(jLabel31)
                                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                        .addComponent(tf_))))
+                                                        .addComponent(tf_ofertar_vacina_outra, javax.swing.GroupLayout.DEFAULT_SIZE, 612, Short.MAX_VALUE))))
                                             .addGroup(jPanel10Layout.createSequentialGroup()
                                                 .addComponent(jLabel86)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -2855,18 +2887,18 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                     .addComponent(cb_ofertar_vaciana_nao))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_ofertar_vaciana_hepatite_b)
+                    .addComponent(cb_ofertar_vacina_hepatite_b)
                     .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(cb_ofertar_vaciana_febre_amarela)
-                        .addComponent(cb_ofertar_vaciana_outra)
-                        .addComponent(tf_, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(cb_ofertar_vacina_febre_amarela)
+                        .addComponent(tf_ofertar_vacina_outra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel31)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_ofertar_vaciana_covid)
-                    .addComponent(cb_ofertar_vaciana_dupla_adulto))
+                    .addComponent(cb_ofertar_vacina_covid)
+                    .addComponent(cb_ofertar_vacina_dupla_adulto))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel10Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(cb_ofertar_vaciana_influenza)
+                    .addComponent(cb_ofertar_vacina_influenza)
                     .addComponent(cb_ofertar_vaciana_triplice_viral))
                 .addGap(10, 10, 10)
                 .addComponent(jSeparator9, javax.swing.GroupLayout.PREFERRED_SIZE, 2, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -2961,16 +2993,16 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         if (!validarFormulario()) {
             return;
         }
-        
+
         Prisioneiro prisioneiro = coletarDadosFormulario();
-        
+
         if (prisioneiro == null) {
             System.out.println("Erro ao coletar dados do formulário");
             return;
         }
-        
+
         boolean sucesso = false;
-        
+
         if (prisioneiroAtual != null) {
             // Editando prisioneiro existente
             sucesso = prisioneiroDao.updatePrisioneiro(prisioneiro);
@@ -2982,10 +3014,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         } else {
             // Novo cadastro - inserir prisioneiro e atendimento
             int idPrisioneiro = prisioneiroDao.insertPrisioneiro(prisioneiro);
-            
+
             if (idPrisioneiro > 0) {
                 System.out.println("Prisioneiro inserido com sucesso! ID: " + idPrisioneiro);
-                
+
                 // Criar e inserir o atendimento
                 Atendimento atendimento = new Atendimento();
                 atendimento.setIdPrisioneiro(idPrisioneiro);
@@ -2994,9 +3026,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 atendimento.setDataEntradaUnidade(new java.util.Date());
                 atendimento.setIsTransferencia(rb_transferencia_sim.isSelected()); // Se o radio button "Sim" estiver selecionado
                 atendimento.setProcedencia(tf_transferencia.getText().trim().isEmpty() ? "Não informado" : tf_transferencia.getText().trim());
-                
+
                 boolean atendimentoSucesso = atendimentoDao.insertAtendimento(atendimento);
-                
+
                 if (atendimentoSucesso) {
                     System.out.println("Atendimento inserido com sucesso!");
                     sucesso = true;
@@ -3007,7 +3039,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 System.out.println("Erro ao inserir prisioneiro");
             }
         }
-        
+
         if (sucesso) {
             parent.showPanel("buscaPanel");
         }
@@ -3089,37 +3121,33 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_rb_encaminhar_pre_natal_parceiro_simActionPerformed
 
-    private void cb_ofertar_vaciana_hepatite_bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_hepatite_bActionPerformed
+    private void cb_ofertar_vacina_hepatite_bActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vacina_hepatite_bActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cb_ofertar_vaciana_hepatite_bActionPerformed
+    }//GEN-LAST:event_cb_ofertar_vacina_hepatite_bActionPerformed
 
     private void cb_ofertar_vaciana_hepatite_b1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_hepatite_b1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_ofertar_vaciana_hepatite_b1ActionPerformed
 
-    private void cb_ofertar_vaciana_covidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_covidActionPerformed
+    private void cb_ofertar_vacina_covidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vacina_covidActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cb_ofertar_vaciana_covidActionPerformed
+    }//GEN-LAST:event_cb_ofertar_vacina_covidActionPerformed
 
-    private void cb_ofertar_vaciana_influenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_influenzaActionPerformed
+    private void cb_ofertar_vacina_influenzaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vacina_influenzaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cb_ofertar_vaciana_influenzaActionPerformed
+    }//GEN-LAST:event_cb_ofertar_vacina_influenzaActionPerformed
 
-    private void cb_ofertar_vaciana_febre_amarelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_febre_amarelaActionPerformed
+    private void cb_ofertar_vacina_febre_amarelaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vacina_febre_amarelaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cb_ofertar_vaciana_febre_amarelaActionPerformed
+    }//GEN-LAST:event_cb_ofertar_vacina_febre_amarelaActionPerformed
 
-    private void cb_ofertar_vaciana_dupla_adultoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_dupla_adultoActionPerformed
+    private void cb_ofertar_vacina_dupla_adultoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vacina_dupla_adultoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_cb_ofertar_vaciana_dupla_adultoActionPerformed
+    }//GEN-LAST:event_cb_ofertar_vacina_dupla_adultoActionPerformed
 
     private void cb_ofertar_vaciana_triplice_viralActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_triplice_viralActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cb_ofertar_vaciana_triplice_viralActionPerformed
-
-    private void cb_ofertar_vaciana_outraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cb_ofertar_vaciana_outraActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_cb_ofertar_vaciana_outraActionPerformed
 
     private void tf_nomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_nomeActionPerformed
         // TODO add your handling code here:
@@ -3247,15 +3275,14 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox cb_hist_doencas_infec_sifilis;
     private javax.swing.JCheckBox cb_hist_doencas_infec_tuberculose;
     private javax.swing.JComboBox<String> cb_identidade_genero;
-    private javax.swing.JCheckBox cb_ofertar_vaciana_covid;
-    private javax.swing.JCheckBox cb_ofertar_vaciana_dupla_adulto;
-    private javax.swing.JCheckBox cb_ofertar_vaciana_febre_amarela;
-    private javax.swing.JCheckBox cb_ofertar_vaciana_hepatite_b;
     private javax.swing.JCheckBox cb_ofertar_vaciana_hepatite_b1;
-    private javax.swing.JCheckBox cb_ofertar_vaciana_influenza;
     private javax.swing.JCheckBox cb_ofertar_vaciana_nao;
-    private javax.swing.JCheckBox cb_ofertar_vaciana_outra;
     private javax.swing.JCheckBox cb_ofertar_vaciana_triplice_viral;
+    private javax.swing.JCheckBox cb_ofertar_vacina_covid;
+    private javax.swing.JCheckBox cb_ofertar_vacina_dupla_adulto;
+    private javax.swing.JCheckBox cb_ofertar_vacina_febre_amarela;
+    private javax.swing.JCheckBox cb_ofertar_vacina_hepatite_b;
+    private javax.swing.JCheckBox cb_ofertar_vacina_influenza;
     private javax.swing.JComboBox<String> cb_orientacao_sexual;
     private javax.swing.JCheckBox cb_possui_ansiedade;
     private javax.swing.JCheckBox cb_possui_autismo;
@@ -3263,11 +3290,11 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JCheckBox cb_possui_depressao;
     private javax.swing.JCheckBox cb_possui_esquisofrenia;
     private javax.swing.JComboBox<String> cb_sexo_biologico;
+    private javax.swing.JCheckBox cb_transt_mentais_n_sabe_resp;
     private javax.swing.JPanel condicoes_de_saude;
     private javax.swing.JPanel identificacao_panel;
     private javax.swing.JButton jButton1;
     private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
     private javax.swing.JCheckBox jCheckBox3;
     private javax.swing.JCheckBox jCheckBox4;
     private javax.swing.JCheckBox jCheckBox5;
@@ -3303,6 +3330,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel29;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
+    private javax.swing.JLabel jLabel31;
     private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel34;
     private javax.swing.JLabel jLabel35;
@@ -3496,7 +3524,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_vinculo_caps_sim;
     private javax.swing.JPanel saude_da_mulher_panel;
     private javax.swing.JPanel saude_homem_panel;
-    private javax.swing.JTextField tf_;
     private javax.swing.JTextField tf_acompanhamento_saude_mental_no_momento_da_prisao_qual;
     private javax.swing.JTextField tf_cpf;
     private javax.swing.JTextField tf_data_nascimento;
@@ -3515,6 +3542,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_nome;
     private javax.swing.JTextField tf_nome_mae;
     private javax.swing.JTextField tf_nome_social;
+    private javax.swing.JTextField tf_ofertar_vacina_outra;
     private javax.swing.JTextField tf_orientacao_sexual_outra;
     private javax.swing.JTextField tf_papanicolau_ano;
     private javax.swing.JTextField tf_poss_filhos_quantos;
