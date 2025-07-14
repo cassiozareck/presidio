@@ -30,7 +30,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         setComboBoxDetento();
         configurarTextFieldCondicionais();
     }
-    
+        
     // Popula o combobox jComboBoxResponsavel com nome dos atendentes cadastrados.
     private void setComboBoxResponsavel(){
         jComboBoxResponsavel.removeAllItems();
@@ -700,6 +700,11 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         jLabel65.setText("Nome completo:");
 
         jComboBoxDetento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxDetento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDetentoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -1340,6 +1345,10 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     private void bt_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelarActionPerformed
         parent.showPanel("buscaPanel");
     }//GEN-LAST:event_bt_cancelarActionPerformed
+
+    private void jComboBoxDetentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDetentoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxDetentoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

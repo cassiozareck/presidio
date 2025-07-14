@@ -14,11 +14,13 @@ public class MainFrame extends JFrame {
     private static final String ATENDIMENTO_PANEL = "atendimentoPanel";
     private static final String BUSCA_PANEL = "buscaPanel";
     private static final String CADASTRO_ATENDIMENTO_PANEL = "cadastroAtendimentoPanel";
+    private static final String CONSULTAR_ATENDIMENTO_PANEL = "consultarAtendimentoPanel";
     
     // Refêrencias aos painéis
     private AtendimentoPanel atendimentoPanel;
     private BuscarPanel buscaPanel;
     private CadastroAtendimentoPanel cadastroAtendimentoPanel;
+    private ConsultarAtendimentoPanel consultarAtendimentoPanel;
     
     public MainFrame(){
         super("Painel principal");
@@ -28,6 +30,7 @@ public class MainFrame extends JFrame {
         atendimentoPanel = new AtendimentoPanel(this);
         buscaPanel = new BuscarPanel(this);
         cadastroAtendimentoPanel = new CadastroAtendimentoPanel(this);
+        consultarAtendimentoPanel = new ConsultarAtendimentoPanel(this);
         
         // Painel de rolagem para AtendimentoPanel
         JScrollPane scrollAtendimento = new JScrollPane(atendimentoPanel);
@@ -47,6 +50,8 @@ public class MainFrame extends JFrame {
         cardPanel.add(buscaPanel, BUSCA_PANEL);
         // Adicionando scrollcadastroAtendimentoPanel ao cardPanel e associando seu nome a CADASTRO_ATENDIMENTO_PANEL
         cardPanel.add(scrollCadastroAtendimento, CADASTRO_ATENDIMENTO_PANEL);
+        // Adicionando consultarAtendimentoPanel ao cardPanel e associando seu nome a CONSULTAR_ATENDIMENTO_PANEL
+        cardPanel.add(consultarAtendimentoPanel, CONSULTAR_ATENDIMENTO_PANEL);
         
         this.add(cardPanel);
         showPanel(BUSCA_PANEL);
@@ -72,5 +77,10 @@ public class MainFrame extends JFrame {
         atendimentoPanel.prepararParaNovoPrisioneiro();
         showPanel(ATENDIMENTO_PANEL);
     }
+    
+    void showConsultarAtendimentoPanel() {
+        showPanel(CONSULTAR_ATENDIMENTO_PANEL);
+    }
+    
     
 }
