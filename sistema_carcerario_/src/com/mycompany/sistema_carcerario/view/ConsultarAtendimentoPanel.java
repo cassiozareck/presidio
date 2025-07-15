@@ -92,6 +92,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 204));
 
+        jLabel64.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel64.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel64.setText("IDENTIFICAÇÃO DO DETENTO");
 
@@ -107,7 +108,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
         jPanel4Layout.setVerticalGroup(
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel64)
                 .addContainerGap())
         );
@@ -131,6 +132,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 204));
 
+        jLabel65.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel65.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel65.setText("ATENDIMENTOS REALIZADOS");
 
@@ -146,11 +148,12 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
         jPanel5Layout.setVerticalGroup(
             jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
-                .addContainerGap(9, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel65)
                 .addContainerGap())
         );
 
+        jButton2.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jButton2.setText("Voltar ao menu");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -161,6 +164,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
         nome_detento.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         nome_detento.setText("Nome do detento");
 
+        jButton_ver_atendimento.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jButton_ver_atendimento.setText("Ver tendimento");
         jButton_ver_atendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -202,7 +206,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 251, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2)
                     .addComponent(jButton_ver_atendimento))

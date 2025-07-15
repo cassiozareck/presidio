@@ -86,6 +86,7 @@ public class BuscarPanel extends javax.swing.JPanel {
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
 
+        tabela_prisioneiros.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         tabela_prisioneiros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -99,8 +100,12 @@ public class BuscarPanel extends javax.swing.JPanel {
         ));
         jScrollPane3.setViewportView(tabela_prisioneiros);
 
+        lb_nome.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         lb_nome.setText("Nome:");
 
+        tf_nome.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+
+        btn_buscar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         btn_buscar.setText("Buscar");
         btn_buscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -108,6 +113,7 @@ public class BuscarPanel extends javax.swing.JPanel {
             }
         });
 
+        btn_cadastrar.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         btn_cadastrar.setText("Cadastrar detento");
         btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -115,6 +121,7 @@ public class BuscarPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jButton1.setText("Alterar de cadastro");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -122,6 +129,7 @@ public class BuscarPanel extends javax.swing.JPanel {
             }
         });
 
+        bt_cadastrar_atendimento.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         bt_cadastrar_atendimento.setText("Cadastrar Atendimento");
         bt_cadastrar_atendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -129,6 +137,7 @@ public class BuscarPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton3.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jButton3.setText("Consultar Atendimento");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -136,6 +145,7 @@ public class BuscarPanel extends javax.swing.JPanel {
             }
         });
 
+        jButton4.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jButton4.setText("Consultar Cadastro");
         jButton4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -189,7 +199,7 @@ public class BuscarPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton4)
                     .addComponent(jButton3))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addContainerGap(19, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
