@@ -96,6 +96,8 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         tf_sat.setText(String.valueOf(atendimentoAtual.getSat()));
         tf_temp.setText(String.valueOf(atendimentoAtual.getTemp()));
         
+        tf_quais_queixas.setText(atendimentoAtual.getQueixaTesteRapido());
+        tf_quais_queixas_odontologicas.setText(atendimentoAtual.getQueixaOdontologica());
         //Apresenta sintomas resporatórios?
         carregarDadosRadioButtons(atendimentoAtual);
         
