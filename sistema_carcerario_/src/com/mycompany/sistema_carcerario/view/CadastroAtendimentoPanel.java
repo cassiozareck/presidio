@@ -21,6 +21,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -631,7 +632,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, atendimento_panelLayout.createSequentialGroup()
                 .addGap(59, 59, 59)
                 .addComponent(jLabelData)
-                .addContainerGap(975, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         atendimento_panelLayout.setVerticalGroup(
             atendimento_panelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -652,7 +653,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 1022, Short.MAX_VALUE)
+                .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -1091,7 +1092,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(29, 29, 29)
+                .addGap(295, 295, 295)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
@@ -1106,7 +1107,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                 .addComponent(jLabel34)
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 772, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 239, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel32)
@@ -1220,7 +1221,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(6, 6, 6)
+                        .addGap(288, 288, 288)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel42)
                             .addComponent(jLabel41)
@@ -1316,7 +1317,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addComponent(jSeparator9)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+                .addGap(300, 300, 300)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(rb_queixa_odontologica_nao)
@@ -1725,22 +1726,31 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_rb_covid_reativoActionPerformed
 
-    private void bt_salvarActionPerformed(java.awt.event.ActionEvent evt) {                                            
-        Atendimento atendimento = new Atendimento();
-        atendimento = coletarDatosDoFormulario(atendimento);
-        
-        while(true){
-            try{
-                atendimentoDao.insertAtendimento2(atendimento);
-                break;
-            }catch(Exception e){
-                System.out.println("Erro ao salvar atendimento:");
-                System.out.println(e);
-            }    
-        }
+private void bt_salvarActionPerformed(java.awt.event.ActionEvent evt) {
+
+    try {
+        Atendimento atendimento = coletarDatosDoFormulario(new Atendimento());
+
+        atendimentoDao.insertAtendimento2(atendimento);
 
         parent.showPanel("buscaPanel");
+
+    } catch (Throwable t) {
+        // Captura qualquer tipo de erro (Exception e Error também)
+        t.printStackTrace(); // Log no console
+
+        // Força a abertura da caixa de diálogo na thread da interface
+        javax.swing.SwingUtilities.invokeLater(() -> {
+            JOptionPane.showMessageDialog(
+                null,
+                "Erro ao salvar atendimento, confira se todas as informações foram preenchidas corretamente.",
+                "Erro",
+                JOptionPane.ERROR_MESSAGE
+            );
+        });
+        }
     }
+
     
     private void bt_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelarActionPerformed
         parent.showPanel("buscaPanel");
