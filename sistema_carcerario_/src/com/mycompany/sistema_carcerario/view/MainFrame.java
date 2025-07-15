@@ -85,7 +85,6 @@ public class MainFrame extends JFrame {
         showPanel(CADASTRO_ATENDIMENTO_PANEL);
     }
     
-    //mudar aqui
     void showAtendimentoPanelParaNovo() {
         atendimentoPanel = new AtendimentoPanel(this);
         JScrollPane scrollAtendimento = new JScrollPane(atendimentoPanel);
@@ -94,7 +93,7 @@ public class MainFrame extends JFrame {
         scrollAtendimento.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         // Adicionando scrollAtendimento ao cardPanel e associando seu nome a ATENDIMENTO_PANEL
         cardPanel.add(scrollAtendimento, ATENDIMENTO_PANEL);
-        showPanel(CADASTRO_ATENDIMENTO_PANEL);
+        showPanel(ATENDIMENTO_PANEL);
     }
     
     void showConsultarAtendimentoPanel(int id_prisioneiro) {
