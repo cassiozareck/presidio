@@ -6,6 +6,7 @@ package com.mycompany.sistema_carcerario.view;
 
 import DAL.AtendenteDao;
 import DAL.PrisioneiroDao;
+import com.mycompany.sistema_carcerario.controller.RadioButtonController;
 import com.mycompany.sistema_carcerario.model.Atendente;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import java.util.ArrayList;
@@ -18,6 +19,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     final MainFrame parent;
     private final AtendenteDao atendenteDao = new AtendenteDao();
     private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
+    private final RadioButtonController rbController = new RadioButtonController();
     /**
      * Creates new form CadastroAtendimentoPanel
      */
@@ -26,8 +28,9 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         this.parent = parent;
         setComboBoxResponsavel();
         setComboBoxDetento();
+        configurarTextFieldCondicionais();
     }
-    
+        
     // Popula o combobox jComboBoxResponsavel com nome dos atendentes cadastrados.
     private void setComboBoxResponsavel(){
         jComboBoxResponsavel.removeAllItems();
@@ -45,6 +48,15 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             jComboBoxDetento.addItem(prisioneiro.getNomeCompleto());
         }
     }     
+    
+    private void configurarTextFieldCondicionais() {
+
+        // Identificação
+        rbController.configurarRadioGroup(bg_transferencia, rb_transferencia_sim, rb_transferencia_nao, tf_transferencia);
+        rbController.configurarRadioGroup(bg_possui_lesoes_ferimentos, rb_apresenta_lesoes_sim, rb_apresenta_lesoes_nao, tf_lesoes_locais);
+        rbController.configurarRadioGroup(bg_apresenta_outra_queixa, rb_queixa_sim, rb_queixa_nao, tf_quais_queixas);
+        rbController.configurarRadioGroup(bg_apresenta_queixa_odontologica, rb_queixa_odontologica_sim, rb_queixa_odontologica_nao, tf_quais_queixas_odontologicas);        
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,15 +67,30 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
-        buttonGroup2 = new javax.swing.ButtonGroup();
-        buttonGroup3 = new javax.swing.ButtonGroup();
+        bg_transferencia = new javax.swing.ButtonGroup();
+        bg_possui_tosse = new javax.swing.ButtonGroup();
+        bg_possui_coriza = new javax.swing.ButtonGroup();
         jLabel35 = new javax.swing.JLabel();
         jSeparator5 = new javax.swing.JSeparator();
         jSeparator6 = new javax.swing.JSeparator();
         jSeparator8 = new javax.swing.JSeparator();
         jSeparator7 = new javax.swing.JSeparator();
         dataBase1 = new com.mycompany.sistema_carcerario.model.DataBase();
+        bg_possui_febre = new javax.swing.ButtonGroup();
+        bg_possui_espirros = new javax.swing.ButtonGroup();
+        bg_possui_calafrios = new javax.swing.ButtonGroup();
+        bg_possui_lesoes_ferimentos = new javax.swing.ButtonGroup();
+        bg_tst_rap_hiv_1 = new javax.swing.ButtonGroup();
+        bg_tst_rap_hiv_2 = new javax.swing.ButtonGroup();
+        bg_tst_rap_sifilis = new javax.swing.ButtonGroup();
+        bg_tst_rap_hepatite_b = new javax.swing.ButtonGroup();
+        bg_tst_rap_hepatite_c = new javax.swing.ButtonGroup();
+        bg_tst_rap_covid = new javax.swing.ButtonGroup();
+        bg_tst_gravidez = new javax.swing.ButtonGroup();
+        bg_coleta_escarro = new javax.swing.ButtonGroup();
+        bg_apresenta_outra_queixa = new javax.swing.ButtonGroup();
+        bg_apresenta_queixa_odontologica = new javax.swing.ButtonGroup();
+        bg_necessita_aval_imediat_dentista = new javax.swing.ButtonGroup();
         atendimento_panel = new javax.swing.JPanel();
         jLabelData = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -192,8 +219,8 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         jScrollPane2 = new javax.swing.JScrollPane();
         tf_conduta_testes_rapidos = new javax.swing.JTextArea();
         jLabel59 = new javax.swing.JLabel();
-        tf_queixa_odontologica_nao = new javax.swing.JRadioButton();
-        tf_queixa_odontologica_sim = new javax.swing.JRadioButton();
+        rb_queixa_odontologica_nao = new javax.swing.JRadioButton();
+        rb_queixa_odontologica_sim = new javax.swing.JRadioButton();
         jLabel60 = new javax.swing.JLabel();
         tf_quais_queixas_odontologicas = new javax.swing.JTextField();
         rb_necessita_dentista_nao = new javax.swing.JRadioButton();
@@ -212,7 +239,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         rb_transferencia_nao = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        tf_transferencia = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jPanel4 = new javax.swing.JPanel();
         jLabel64 = new javax.swing.JLabel();
@@ -324,6 +351,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
 
         jLabel28.setText("Outros:");
 
+        bg_possui_tosse.add(rb_tosse_sim);
         rb_tosse_sim.setText("Sim");
         rb_tosse_sim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -331,8 +359,10 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
+        bg_possui_tosse.add(rb_tosse_nao);
         rb_tosse_nao.setText("Não");
 
+        bg_possui_coriza.add(rb_coriza_sim);
         rb_coriza_sim.setText("Sim");
         rb_coriza_sim.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -340,14 +370,19 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
+        bg_possui_coriza.add(rb_coriza_nao);
         rb_coriza_nao.setText("Não");
 
+        bg_possui_espirros.add(rb_espirros_sim);
         rb_espirros_sim.setText("Sim");
 
+        bg_possui_espirros.add(rb_espirros_nao);
         rb_espirros_nao.setText("Não");
 
+        bg_possui_febre.add(rb_febre_sim);
         rb_febre_sim.setText("Sim");
 
+        bg_possui_febre.add(rb_febre_nao);
         rb_febre_nao.setText("Não");
         rb_febre_nao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -355,8 +390,10 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
+        bg_possui_calafrios.add(rb_calafrios_sim);
         rb_calafrios_sim.setText("Sim");
 
+        bg_possui_calafrios.add(rb_calafrios_nao);
         rb_calafrios_nao.setText("Não");
         rb_calafrios_nao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -372,11 +409,16 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
 
         jLabel32.setText("Apresenta lesões / ferimentos no corpo?");
 
+        bg_possui_lesoes_ferimentos.add(rb_apresenta_lesoes_sim);
         rb_apresenta_lesoes_sim.setText("Sim");
 
+        bg_possui_lesoes_ferimentos.add(rb_apresenta_lesoes_nao);
         rb_apresenta_lesoes_nao.setText("Não");
 
         jLabel33.setText("Locais:");
+
+        tf_lesoes_locais.setEditable(false);
+        tf_lesoes_locais.setEnabled(false);
 
         jLabel34.setText("Conduta:");
 
@@ -442,6 +484,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
 
         jLabel54.setText("Validade:");
 
+        bg_tst_rap_hiv_1.add(rb_hiv1_2_reativo);
         rb_hiv1_2_reativo.setText("R");
         rb_hiv1_2_reativo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -449,8 +492,10 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
+        bg_tst_rap_hiv_1.add(rb_hiv1_2_nao_reativo);
         rb_hiv1_2_nao_reativo.setText("NR");
 
+        bg_tst_rap_hiv_1.add(rb_hiv1_2_nao_realizado);
         rb_hiv1_2_nao_realizado.setText("Não realizado");
 
         jSeparator2.setBackground(new java.awt.Color(153, 153, 153));
@@ -462,10 +507,13 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         jSeparator4.setBackground(new java.awt.Color(153, 153, 153));
         jSeparator4.setOpaque(true);
 
+        bg_tst_rap_hiv_2.add(rb_hiv2_2_nao_realizado);
         rb_hiv2_2_nao_realizado.setText("Não realizado");
 
+        bg_tst_rap_hiv_2.add(rb_hiv2_2_nao_reativo);
         rb_hiv2_2_nao_reativo.setText("NR");
 
+        bg_tst_rap_hiv_2.add(rb_hiv2_2_reativo);
         rb_hiv2_2_reativo.setText("R");
         rb_hiv2_2_reativo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -473,10 +521,13 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
+        bg_tst_rap_sifilis.add(rb_sifilis_nao_realizado);
         rb_sifilis_nao_realizado.setText("Não realizado");
 
+        bg_tst_rap_sifilis.add(rb_sifilis_nao_reativo);
         rb_sifilis_nao_reativo.setText("NR");
 
+        bg_tst_rap_sifilis.add(rb_sifilis_reativo);
         rb_sifilis_reativo.setText("R");
         rb_sifilis_reativo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -484,10 +535,13 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
+        bg_tst_rap_hepatite_b.add(rb_hepatite_b_nao_realizado);
         rb_hepatite_b_nao_realizado.setText("Não realizado");
 
+        bg_tst_rap_hepatite_b.add(rb_hepatite_b_nao_reativo);
         rb_hepatite_b_nao_reativo.setText("NR");
 
+        bg_tst_rap_hepatite_b.add(rb_hepatite_b_reativo);
         rb_hepatite_b_reativo.setText("R");
         rb_hepatite_b_reativo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -495,10 +549,13 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
+        bg_tst_rap_hepatite_c.add(rb_hepatite_c_nao_realizado);
         rb_hepatite_c_nao_realizado.setText("Não realizado");
 
+        bg_tst_rap_hepatite_c.add(rb_hepatite_c_nao_reativo);
         rb_hepatite_c_nao_reativo.setText("NR");
 
+        bg_tst_rap_hepatite_c.add(rb_hepatite_c_reativo);
         rb_hepatite_c_reativo.setText("R");
         rb_hepatite_c_reativo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -506,10 +563,13 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
+        bg_tst_rap_covid.add(rb_covid_nao_realizado);
         rb_covid_nao_realizado.setText("Não realizado");
 
+        bg_tst_rap_covid.add(rb_covid_nao_reativo);
         rb_covid_nao_reativo.setText("NR");
 
+        bg_tst_rap_covid.add(rb_covid_reativo);
         rb_covid_reativo.setText("R");
         rb_covid_reativo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -519,25 +579,35 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
 
         jLabel21.setText("Teste de gravidez:");
 
+        bg_tst_gravidez.add(rb_gravidez_negativo);
         rb_gravidez_negativo.setText("Negativo");
 
+        bg_tst_gravidez.add(rb_gravidez_nao_realizado);
         rb_gravidez_nao_realizado.setText("Não realizado");
 
+        bg_tst_gravidez.add(rb_gravidez_positivo);
         rb_gravidez_positivo.setText("Positivo");
 
         jLabel55.setText("Coleta de escarro:");
 
+        bg_coleta_escarro.add(rb_coleta_escarro_sim);
         rb_coleta_escarro_sim.setText("Sim");
 
+        bg_coleta_escarro.add(rb_coleta_escarro_nao);
         rb_coleta_escarro_nao.setText("Não");
 
         jLabel56.setText("Apresenta alguma outra queixa?");
 
+        bg_apresenta_outra_queixa.add(rb_queixa_sim);
         rb_queixa_sim.setText("Sim");
 
+        bg_apresenta_outra_queixa.add(rb_queixa_nao);
         rb_queixa_nao.setText("Não");
 
         jLabel57.setText("Qual(is):");
+
+        tf_quais_queixas.setEditable(false);
+        tf_quais_queixas.setEnabled(false);
 
         jLabel58.setText("Condutas:");
 
@@ -547,16 +617,23 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
 
         jLabel59.setText("Apresenta alguma queixa odontológica?");
 
-        tf_queixa_odontologica_nao.setText("Não");
+        bg_apresenta_queixa_odontologica.add(rb_queixa_odontologica_nao);
+        rb_queixa_odontologica_nao.setText("Não");
 
-        tf_queixa_odontologica_sim.setText("Sim");
+        bg_apresenta_queixa_odontologica.add(rb_queixa_odontologica_sim);
+        rb_queixa_odontologica_sim.setText("Sim");
 
         jLabel60.setText("Qual(is):");
 
+        tf_quais_queixas_odontologicas.setEditable(false);
+        tf_quais_queixas_odontologicas.setEnabled(false);
+
+        bg_necessita_aval_imediat_dentista.add(rb_necessita_dentista_nao);
         rb_necessita_dentista_nao.setText("Não");
 
         jLabel61.setText("Necessita avaliação imediata de dentista:");
 
+        bg_necessita_aval_imediat_dentista.add(rb_necessita_dentista_sim);
         rb_necessita_dentista_sim.setText("Sim");
 
         jLabel62.setText("Conduta:");
@@ -587,17 +664,19 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
 
         jComboBoxResponsavel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
+        bg_transferencia.add(rb_transferencia_sim);
         rb_transferencia_sim.setText("Sim");
 
+        bg_transferencia.add(rb_transferencia_nao);
         rb_transferencia_nao.setText("Não");
 
         jLabel3.setText("Responsável:");
 
         jLabel4.setText("Data:");
 
-        jTextField3.setEditable(false);
-        jTextField3.setToolTipText("Local");
-        jTextField3.setEnabled(false);
+        tf_transferencia.setEditable(false);
+        tf_transferencia.setToolTipText("Local");
+        tf_transferencia.setEnabled(false);
 
         jLabel6.setText("Transferência");
 
@@ -626,6 +705,11 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         jLabel65.setText("Nome completo:");
 
         jComboBoxDetento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxDetento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDetentoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -860,9 +944,9 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(tf_queixa_odontologica_nao)
+                        .addComponent(rb_queixa_odontologica_nao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_queixa_odontologica_sim)
+                        .addComponent(rb_queixa_odontologica_sim)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jLabel60)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -919,7 +1003,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(rb_transferencia_nao)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jTextField3))
+                        .addComponent(tf_transferencia))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addGap(987, 987, 987))
@@ -947,7 +1031,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rb_transferencia_sim)
                     .addComponent(rb_transferencia_nao)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_transferencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(atendimento_panel, javax.swing.GroupLayout.PREFERRED_SIZE, 21, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -1190,8 +1274,8 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                 .addComponent(jLabel59)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_queixa_odontologica_nao)
-                    .addComponent(tf_queixa_odontologica_sim)
+                    .addComponent(rb_queixa_odontologica_nao)
+                    .addComponent(rb_queixa_odontologica_sim)
                     .addComponent(jLabel60)
                     .addComponent(tf_quais_queixas_odontologicas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -1267,18 +1351,33 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         parent.showPanel("buscaPanel");
     }//GEN-LAST:event_bt_cancelarActionPerformed
 
-    private void bt_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvarActionPerformed
+    private void jComboBoxDetentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDetentoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_bt_salvarActionPerformed
+    }//GEN-LAST:event_jComboBoxDetentoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel atendimento_panel;
+    private javax.swing.ButtonGroup bg_apresenta_outra_queixa;
+    private javax.swing.ButtonGroup bg_apresenta_queixa_odontologica;
+    private javax.swing.ButtonGroup bg_coleta_escarro;
+    private javax.swing.ButtonGroup bg_necessita_aval_imediat_dentista;
+    private javax.swing.ButtonGroup bg_possui_calafrios;
+    private javax.swing.ButtonGroup bg_possui_coriza;
+    private javax.swing.ButtonGroup bg_possui_espirros;
+    private javax.swing.ButtonGroup bg_possui_febre;
+    private javax.swing.ButtonGroup bg_possui_lesoes_ferimentos;
+    private javax.swing.ButtonGroup bg_possui_tosse;
+    private javax.swing.ButtonGroup bg_transferencia;
+    private javax.swing.ButtonGroup bg_tst_gravidez;
+    private javax.swing.ButtonGroup bg_tst_rap_covid;
+    private javax.swing.ButtonGroup bg_tst_rap_hepatite_b;
+    private javax.swing.ButtonGroup bg_tst_rap_hepatite_c;
+    private javax.swing.ButtonGroup bg_tst_rap_hiv_1;
+    private javax.swing.ButtonGroup bg_tst_rap_hiv_2;
+    private javax.swing.ButtonGroup bg_tst_rap_sifilis;
     private javax.swing.JButton bt_cancelar;
     private javax.swing.JButton bt_salvar;
-    private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.ButtonGroup buttonGroup3;
     private com.mycompany.sistema_carcerario.model.DataBase dataBase1;
     private javax.swing.JComboBox<String> jComboBoxDetento;
     private javax.swing.JComboBox<String> jComboBoxResponsavel;
@@ -1364,7 +1463,6 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JSeparator jSeparator7;
     private javax.swing.JSeparator jSeparator8;
     private javax.swing.JSeparator jSeparator9;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTextField jt_lote_covid;
     private javax.swing.JTextField jt_lote_hepatite_b;
     private javax.swing.JTextField jt_lote_hepatite_c;
@@ -1404,6 +1502,8 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JRadioButton rb_necessita_dentista_nao;
     private javax.swing.JRadioButton rb_necessita_dentista_sim;
     private javax.swing.JRadioButton rb_queixa_nao;
+    private javax.swing.JRadioButton rb_queixa_odontologica_nao;
+    private javax.swing.JRadioButton rb_queixa_odontologica_sim;
     private javax.swing.JRadioButton rb_queixa_sim;
     private javax.swing.JRadioButton rb_sifilis_nao_realizado;
     private javax.swing.JRadioButton rb_sifilis_nao_reativo;
@@ -1426,10 +1526,9 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_peso;
     private javax.swing.JTextField tf_quais_queixas;
     private javax.swing.JTextField tf_quais_queixas_odontologicas;
-    private javax.swing.JRadioButton tf_queixa_odontologica_nao;
-    private javax.swing.JRadioButton tf_queixa_odontologica_sim;
     private javax.swing.JTextField tf_sat;
     private javax.swing.JTextField tf_temp;
+    private javax.swing.JTextField tf_transferencia;
     private javax.swing.JTextField tf_validade_covid;
     private javax.swing.JTextField tf_validade_hepatite_b;
     private javax.swing.JTextField tf_validade_hepatite_c;
