@@ -18,36 +18,36 @@ import javax.swing.table.DefaultTableModel;
  * @author m138824
  */
 public class BuscarPanel extends javax.swing.JPanel {
+
     final MainFrame parent;
-    
+
     private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
-            
+
     /**
      * Creates new form BuscarPanel
      */
     public BuscarPanel(MainFrame parent) {
         initComponents();
         this.parent = parent;
-        
+
         populateTablePrisioneiros("");
-        
+
         // Quando clicar valor na tabela irá ir para o prisioneiro na tela de atendimento
-        tabela_prisioneiros.addMouseListener(new MouseAdapter() {
-        @Override 
-        public void mouseClicked(MouseEvent e) {
-            int row = tabela_prisioneiros.getSelectedRow();
-            if (row >= 0) {
-                int idPrisioneiro = (int) tabela_prisioneiros.getValueAt(row, 0);
-                parent.showAtendimentoPanel(idPrisioneiro);
-            }
-        }
-    });
+//        tabela_prisioneiros.addMouseListener(new MouseAdapter() {
+//            @Override
+//            public void mouseClicked(MouseEvent e) {
+//                int row = tabela_prisioneiros.getSelectedRow();
+//                if (row >= 0) {
+//                    int idPrisioneiro = (int) tabela_prisioneiros.getValueAt(row, 0);
+//                    parent.showAtendimentoPanel(idPrisioneiro);
+//                }
+//            }
+//        });
     }
 
-    
     private void populateTablePrisioneiros(String filter) {
         List<Prisioneiro> prisioneiroList = prisioneiroDao.listarPrisioneiros(filter);
-        
+
         String[] headers = {"ID", "Nome", "CPF", "Idade", "Nome da Mãe"};
         DefaultTableModel model = new DefaultTableModel(headers, 0);
 
@@ -56,7 +56,7 @@ public class BuscarPanel extends javax.swing.JPanel {
                 p.getId(),
                 p.getNomeCompleto(),
                 p.getCpf(),
-                p.getIdade(), 
+                p.getIdade(),
                 p.getNomeMae()
             };
             model.addRow(row);
@@ -64,8 +64,8 @@ public class BuscarPanel extends javax.swing.JPanel {
 
         tabela_prisioneiros.setModel(model);
 
-        
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -116,6 +116,11 @@ public class BuscarPanel extends javax.swing.JPanel {
         });
 
         jButton1.setText("Alteração de cadastro");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         bt_cadastrar_atendimento.setText("Cadastrar Atendimento");
         bt_cadastrar_atendimento.addActionListener(new java.awt.event.ActionListener() {
@@ -186,8 +191,8 @@ public class BuscarPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_cadastrarActionPerformed
 
     private void btn_buscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarActionPerformed
-        String filter =  tf_nome.getText();
-        
+        String filter = tf_nome.getText();
+
         populateTablePrisioneiros(filter);
     }//GEN-LAST:event_btn_buscarActionPerformed
 
@@ -203,6 +208,17 @@ public class BuscarPanel extends javax.swing.JPanel {
             parent.showConsultarAtendimentoPanel(id_prisioneiro);
         }
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        int linhaSelecionada = tabela_prisioneiros.getSelectedRow();
+
+        if (linhaSelecionada != -1) {
+            Object valor = tabela_prisioneiros.getValueAt(linhaSelecionada, 0);
+            int id_prisioneiro = Integer.parseInt(valor.toString());
+            parent.showAtendimentoPanel(id_prisioneiro);
+        }
+
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
