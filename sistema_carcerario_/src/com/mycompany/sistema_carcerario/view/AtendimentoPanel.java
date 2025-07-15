@@ -246,6 +246,15 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             prisioneiro.setNomeSocial(tf_nome_social.getText().trim());
             prisioneiro.setNomeMae(tf_nome_mae.getText().trim());
             prisioneiro.setCpf(tf_cpf.getText().trim());
+            
+            // Processar idade
+            try {
+                if (!tf_idade.getText().trim().isEmpty()) {
+                    prisioneiro.setIdade(Integer.parseInt(tf_idade.getText().trim()));
+                }
+            } catch (NumberFormatException e) {
+                prisioneiro.setIdade(0);
+            }
 
             // Processar data de nascimento
             try {
@@ -285,7 +294,12 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             }
 
             if (cb_orientacao_sexual.getSelectedItem() != null) {
-                prisioneiro.setOrientacao((String) cb_orientacao_sexual.getSelectedItem());
+                String orientacao = (String) cb_orientacao_sexual.getSelectedItem();
+                if ("Outra".equals(orientacao) && !tf_orientacao_sexual_outra.getText().trim().isEmpty()) {
+                    prisioneiro.setOrientacao(tf_orientacao_sexual_outra.getText().trim());
+                } else {
+                    prisioneiro.setOrientacao(orientacao);
+                }
             } else {
                 prisioneiro.setOrientacao("Não informado");
             }
@@ -295,6 +309,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             } else {
                 prisioneiro.setRaca("Não informado");
             }
+            
+            // Etnia
+            prisioneiro.setOutrasDoencasCronicas(tf_etinia.getText().trim());
 
             // Nacionalidade
             if (rb_nacionalidade_brasileira.isSelected()) {
@@ -303,6 +320,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 prisioneiro.setNacionalidade("Naturalizado");
             } else if (rb_nacionalidade_estrangeiro.isSelected()) {
                 prisioneiro.setNacionalidade("Estrangeiro");
+                if (!tf_nacionalidade_qual_pais.getText().trim().isEmpty()) {
+                    prisioneiro.setNacionalidade("Estrangeiro - " + tf_nacionalidade_qual_pais.getText().trim());
+                }
             } else {
                 prisioneiro.setNacionalidade("Não informado");
             }
@@ -357,22 +377,22 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
             // Deficiência
             if (rb_possui_deficiencia_sim.isSelected()) {
-               // prisioneiro.setPossuiDeficiencia(1);
+                prisioneiro.setPossuiDeficiencia(true);
                 prisioneiro.setQualDeficiencia(tf_deficiencia_quais.getText().trim());
             } else if (rb_possui_deficiencia_nao.isSelected()) {
-                //prisioneiro.setPossuiDeficiencia(0);
+                prisioneiro.setPossuiDeficiencia(false);
             } else if (rb_possui_deficiencia_nao_sei.isSelected()) {
-                //prisioneiro.setPossuiDeficiencia(2);
+                prisioneiro.setPossuiDeficiencia(false);
             }
 
             // Alergias
             if (rb_possui_alergia_sim.isSelected()) {
-              //  prisioneiro.setPossuiAlergias(1);
+                prisioneiro.setPossuiAlergias(true);
                 prisioneiro.setQuaisAlergias(tf_possui_intolerancia_quais.getText().trim());
             } else if (rb_possui_alergia_nao.isSelected()) {
-             //   prisioneiro.setPossuiAlergias(0);
+                prisioneiro.setPossuiAlergias(false);
             } else if (rb_possui_alergia_nao_sei.isSelected()) {
-             //   prisioneiro.setPossuiAlergias(2);
+                prisioneiro.setPossuiAlergias(false);
             }
 
             // Cirurgias
@@ -404,7 +424,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             }
 
             // Medicamentos contínuos
-            //prisioneiro.setMedicamentosContinuos(rb_usa_med_continuo_sim.isSelected());
+            prisioneiro.setMedicamentosContinuos(rb_usa_med_continuo_sim.isSelected() ? "Sim" : "Não");
             if (rb_usa_med_continuo_sim.isSelected()) {
                 prisioneiro.setQuaisMedicamentos(tf_med_continuo.getText().trim());
             }
@@ -433,7 +453,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             }
 
             // Saúde mental
-            //prisioneiro.setVinculoCaps(rb_vinculo_caps_sim.isSelected());
+            prisioneiro.setVinculoCaps(rb_vinculo_caps_sim.isSelected() ? "Sim" : "Não");
             if (rb_vinculo_caps_sim.isSelected()) {
                 prisioneiro.setNomeMunicioCaps(tf_vinculo_caps_municipio.getText().trim());
             }
@@ -448,12 +468,12 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
             // Medicamento controlado
             if (rb_usa_med_controlado_sim.isSelected()) {
-            //    prisioneiro.setMedicamentoControlado(1);
+                prisioneiro.setMedicamentoControlado("Sim");
                 prisioneiro.setQualMedicamentoControlado(tf_usa_med_controlado_qual.getText().trim());
             } else if (rb_usa_med_controlado_nao.isSelected()) {
-            //    prisioneiro.setMedicamentoControlado(0);
+                prisioneiro.setMedicamentoControlado("Não");
             } else if (rb_usa_med_controlado_nao_sabe.isSelected()) {
-             //   prisioneiro.setMedicamentoControlado(2);
+                prisioneiro.setMedicamentoControlado("Não sabe");
             }
 
             // Acompanhamento mental no momento da prisão
@@ -485,35 +505,35 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
             // Vacinação
             if (rb_recebeu_vacina_covid_sim.isSelected()) {
-             //   prisioneiro.setVacinaCovid(1);
+                prisioneiro.setVacinaCovid(true);
             } else if (rb_recebeu_vacina_covid_nao.isSelected()) {
-             //   prisioneiro.setVacinaCovid(0);
+                prisioneiro.setVacinaCovid(false);
             } else if (rb_recebeu_vacina_covid_nao_sabe.isSelected()) {
-              //  prisioneiro.setVacinaCovid(2);
+                prisioneiro.setVacinaCovid(false);
             }
 
             if (rb_recebeu_vacina_influenza_sim.isSelected()) {
-              //  prisioneiro.setVacinaInfluenza(1);
+                prisioneiro.setVacinaInfluenza(true);
             } else if (rb_recebeu_vacina_influenza_nao.isSelected()) {
-              //  prisioneiro.setVacinaInfluenza(0);
+                prisioneiro.setVacinaInfluenza(false);
             } else if (rb_recebeu_vacina_influenza_nao_sabe.isSelected()) {
-             //   prisioneiro.setVacinaInfluenza(2);
+                prisioneiro.setVacinaInfluenza(false);
             }
 
             if (rb_recebeu_vacina_tetano_sim.isSelected()) {
-             //   prisioneiro.setVacinaTetano(1);
+                prisioneiro.setVacinaTetano(true);
             } else if (rb_recebeu_vacina_tetano_nao.isSelected()) {
-            //    prisioneiro.setVacinaTetano(0);
+                prisioneiro.setVacinaTetano(false);
             } else if (rb_recebeu_vacina_tetano_nao_sabe.isSelected()) {
-             //   prisioneiro.setVacinaTetano(2);
+                prisioneiro.setVacinaTetano(false);
             }
 
             if (rb_recebeu_vacina_hepatite_b_sim.isSelected()) {
-               // prisioneiro.setVacinaHepatite(1);
+                prisioneiro.setVacinaHepatite(true);
             } else if (rb_recebeu_vacina_hepatite_b_nao.isSelected()) {
-                //prisioneiro.setVacinaHepatite(0);
+                prisioneiro.setVacinaHepatite(false);
             } else if (rb_recebeu_vacina_hepatite_b_nao_sabe.isSelected()) {
-               // prisioneiro.setVacinaHepatite(2);
+                prisioneiro.setVacinaHepatite(false);
             }
 
             // Ofertar vacinas
@@ -527,8 +547,37 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             prisioneiro.setOutraVacina(tf_ofertar_vacina_outra.getText().trim());
             prisioneiro.setOfertarCarteiraVacinacao(rb_ofertar_copia_carteira_vacinacao_sim.isSelected());
 
+            // Saúde da Mulher - dados serão salvos em tabelas separadas
+            // prisioneiro.setOfertarContinuidadeContraceptivo(rb_ofertar_continuidade_contraceptivo_sim.isSelected());
+            // prisioneiro.setConsultarExamePreventivo(rb_consultar_exame_preventivo_sim.isSelected());
+            // prisioneiro.setEncaminharPreNatal(rb_enc_pre_natal_sim.isSelected());
+            // prisioneiro.setRealizouPapanicolau(rb_papanicolau_sim.isSelected());
+            if (rb_papanicolau_sim.isSelected() && !tf_papanicolau_ano.getText().trim().isEmpty()) {
+                prisioneiro.setObservacaoCondicoesCronicas(tf_papanicolau_ano.getText().trim());
+            }
+            
+            // Saúde do Homem - dados serão salvos em tabelas separadas
+            // prisioneiro.setExameProstata(rb_exame_prostata_sim.isSelected());
+            if (rb_exame_prostata_sim.isSelected() && !tf_exame_prostata_ano.getText().trim().isEmpty()) {
+                prisioneiro.setObservacaoHistoricoDoencasInfecciosas(tf_exame_prostata_ano.getText().trim());
+            }
+            // prisioneiro.setHistoricoProstataFamilia(rb_historico_prostata_sim.isSelected());
+            // prisioneiro.setRealizouVasectomia(rb_realizou_vasectomia_sim.isSelected());
+            // prisioneiro.setParceiraGestante(rb_parceira_gestante_sim.isSelected());
+            // prisioneiro.setEstaParticipandoPreNatal(rb_esta_participando_pre_natal_sim.isSelected());
+            // prisioneiro.setEncaminharRealizVasectomia(rb_encaminhar_realiz_vasectomia_sim.isSelected());
+            // prisioneiro.setEncaminharPreNatalParceiro(rb_encaminhar_pre_natal_parceiro_sim.isSelected());
+            
+            // Gestação
+            // prisioneiro.setGestacaoNoMomento(rb_gestacao_no_momvento_sim.isSelected());
+            
             // Transferência
             prisioneiro.setEncaminhamentosFinais(tf_transferencia.getText().trim());
+            
+            // Responsável pelo atendimento
+            if (jComboBoxResponsavel.getSelectedItem() != null) {
+                prisioneiro.setOutrasDoencasInfecciosas(jComboBoxResponsavel.getSelectedItem().toString());
+            }
 
             return prisioneiro;
         } catch (Exception e) {
