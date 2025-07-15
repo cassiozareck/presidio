@@ -572,6 +572,11 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         jScrollPane4.setViewportView(tf_encaminhamentos_finais);
 
         bt_salvar.setText("Salvar");
+        bt_salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salvarActionPerformed(evt);
+            }
+        });
 
         bt_cancelar.setText("Cancelar");
         bt_cancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -1261,6 +1266,10 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     private void bt_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelarActionPerformed
         parent.showPanel("buscaPanel");
     }//GEN-LAST:event_bt_cancelarActionPerformed
+
+    private void bt_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_salvarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bt_salvarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

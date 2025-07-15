@@ -197,68 +197,350 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     }
 
     private Prisioneiro coletarDadosFormulario() {
-        Prisioneiro prisioneiro = new Prisioneiro();
-
-        // Se tiver editando um prisioneiro conhecido
-        if (prisioneiroAtual != null) {
-            prisioneiro.setId(prisioneiroAtual.getId());
-        }
-
-        // Colete dados
-        prisioneiro.setNomeCompleto(tf_nome.getText());
-        prisioneiro.setNomeMae(tf_nome_mae.getText());
-        prisioneiro.setCpf(tf_cpf.getText());
-
         try {
-            String dataTexto = tf_data_nascimento.getText().trim();
-            java.time.LocalDate dataNascimento;
+            Prisioneiro prisioneiro = new Prisioneiro();
 
-            // Tenta diferentes formatos de data
-            if (dataTexto.matches("\\d{4}-\\d{2}-\\d{2}")) {
-                // Formato YYYY-MM-DD
-                dataNascimento = java.time.LocalDate.parse(dataTexto);
-            } else if (dataTexto.matches("\\d{2}/\\d{2}/\\d{4}")) {
-                // Formato DD/MM/YYYY
-                java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
-                dataNascimento = java.time.LocalDate.parse(dataTexto, formatter);
-            } else {
-                System.out.println("Formato de data inválido. Use DD/MM/YYYY ou YYYY-MM-DD");
+            // Se tiver editando um prisioneiro conhecido
+            if (prisioneiroAtual != null) {
+                prisioneiro.setId(prisioneiroAtual.getId());
+            }
+
+            // Coletar dados básicos
+            prisioneiro.setNomeCompleto(tf_nome.getText().trim());
+            prisioneiro.setNomeSocial(tf_nome_social.getText().trim());
+            prisioneiro.setNomeMae(tf_nome_mae.getText().trim());
+            prisioneiro.setCpf(tf_cpf.getText().trim());
+
+            // Processar data de nascimento
+            try {
+                String dataTexto = tf_data_nascimento.getText().trim();
+                java.time.LocalDate dataNascimento;
+
+                // Tenta diferentes formatos de data
+                if (dataTexto.matches("\\d{4}-\\d{2}-\\d{2}")) {
+                    // Formato YYYY-MM-DD
+                    dataNascimento = java.time.LocalDate.parse(dataTexto);
+                } else if (dataTexto.matches("\\d{2}/\\d{2}/\\d{4}")) {
+                    // Formato DD/MM/YYYY
+                    java.time.format.DateTimeFormatter formatter = java.time.format.DateTimeFormatter.ofPattern("dd/MM/yyyy");
+                    dataNascimento = java.time.LocalDate.parse(dataTexto, formatter);
+                } else {
+                    System.out.println("Formato de data inválido. Use DD/MM/YYYY ou YYYY-MM-DD");
+                    return null;
+                }
+
+                prisioneiro.setDataNascimento(java.sql.Date.valueOf(dataNascimento));
+            } catch (Exception e) {
+                System.out.println("Erro ao parsear data de nascimento: " + e.getMessage());
                 return null;
             }
 
-            prisioneiro.setDataNascimento(java.sql.Date.valueOf(dataNascimento));
+            // Valores das combo boxes com validação
+            if (cb_sexo_biologico.getSelectedItem() != null) {
+                prisioneiro.setSexo((String) cb_sexo_biologico.getSelectedItem());
+            } else {
+                prisioneiro.setSexo("Não informado");
+            }
+
+            if (cb_identidade_genero.getSelectedItem() != null) {
+                prisioneiro.setGenero((String) cb_identidade_genero.getSelectedItem());
+            } else {
+                prisioneiro.setGenero("Não informado");
+            }
+
+            if (cb_orientacao_sexual.getSelectedItem() != null) {
+                prisioneiro.setOrientacao((String) cb_orientacao_sexual.getSelectedItem());
+            } else {
+                prisioneiro.setOrientacao("Não informado");
+            }
+
+            if (jComboBox1.getSelectedItem() != null) {
+                prisioneiro.setRaca((String) jComboBox1.getSelectedItem());
+            } else {
+                prisioneiro.setRaca("Não informado");
+            }
+
+            // Nacionalidade
+            if (rb_nacionalidade_brasileira.isSelected()) {
+                prisioneiro.setNacionalidade("Brasileira");
+            } else if (rb_nacionalidade_naturalizado.isSelected()) {
+                prisioneiro.setNacionalidade("Naturalizado");
+            } else if (rb_nacionalidade_estrangeiro.isSelected()) {
+                prisioneiro.setNacionalidade("Estrangeiro");
+            } else {
+                prisioneiro.setNacionalidade("Não informado");
+            }
+
+            // Escolaridade
+            if (rb_escolaridade_fund_inc.isSelected()) {
+                prisioneiro.setEscolaridade("Fundamental Incompleto");
+            } else if (rb_escolaridade_fund_com.isSelected()) {
+                prisioneiro.setEscolaridade("Fundamental Completo");
+            } else if (rb_escolaridade_med_inc.isSelected()) {
+                prisioneiro.setEscolaridade("Médio Incompleto");
+            } else if (rb_escolaridade_med_com.isSelected()) {
+                prisioneiro.setEscolaridade("Médio Completo");
+            } else if (rb_escolaridade_sup_inc.isSelected()) {
+                prisioneiro.setEscolaridade("Superior Incompleto");
+            } else if (rb_escolaridade_sup_com.isSelected()) {
+                prisioneiro.setEscolaridade("Superior Completo");
+            } else {
+                prisioneiro.setEscolaridade("Não informado");
+            }
+
+            // Estado Civil (padrão)
+            prisioneiro.setEstadoCivil("Solteiro");
+
+            // Dados sociais
+            prisioneiro.setPossuiFilhos(rb_poss_filhos_sim.isSelected());
+            if (rb_poss_filhos_sim.isSelected() && !tf_poss_filhos_quantos.getText().trim().isEmpty()) {
+                try {
+                    prisioneiro.setQuantosFilhos(Integer.parseInt(tf_poss_filhos_quantos.getText().trim()));
+                } catch (NumberFormatException e) {
+                    prisioneiro.setQuantosFilhos(0);
+                }
+            }
+
+            prisioneiro.setPossuiDependentes(rb_possui_outro_dependente_sim.isSelected());
+            if (rb_possui_outro_dependente_sim.isSelected() && !tf_possui_outro_dependente_qts.getText().trim().isEmpty()) {
+                try {
+                    prisioneiro.setQuantosDependentes(Integer.parseInt(tf_possui_outro_dependente_qts.getText().trim()));
+                } catch (NumberFormatException e) {
+                    prisioneiro.setQuantosDependentes(0);
+                }
+            }
+
+            prisioneiro.setOfertarNeeja(rb_ofertar_neeja_sim.isSelected());
+            prisioneiro.setOfertarAssistenciaSocial(rb_conversa_assistencia_social_sim.isSelected());
+
+            // Benefício família
+            prisioneiro.setBeneficioFamilia(rb_fam_rec_beneficio_sim.isSelected());
+            if (rb_fam_rec_beneficio_sim.isSelected()) {
+                prisioneiro.setBeneficioEspecificado(tf_fam_rec_beneficio_quais.getText().trim());
+            }
+
+            // Deficiência
+            if (rb_possui_deficiencia_sim.isSelected()) {
+               // prisioneiro.setPossuiDeficiencia(1);
+                prisioneiro.setQualDeficiencia(tf_deficiencia_quais.getText().trim());
+            } else if (rb_possui_deficiencia_nao.isSelected()) {
+                //prisioneiro.setPossuiDeficiencia(0);
+            } else if (rb_possui_deficiencia_nao_sei.isSelected()) {
+                //prisioneiro.setPossuiDeficiencia(2);
+            }
+
+            // Alergias
+            if (rb_possui_alergia_sim.isSelected()) {
+              //  prisioneiro.setPossuiAlergias(1);
+                prisioneiro.setQuaisAlergias(tf_possui_intolerancia_quais.getText().trim());
+            } else if (rb_possui_alergia_nao.isSelected()) {
+             //   prisioneiro.setPossuiAlergias(0);
+            } else if (rb_possui_alergia_nao_sei.isSelected()) {
+             //   prisioneiro.setPossuiAlergias(2);
+            }
+
+            // Cirurgias
+            prisioneiro.setRealizouCirurgias(rb_realizou_cirurgia_sim.isSelected());
+            if (rb_realizou_cirurgia_sim.isSelected()) {
+                prisioneiro.setQuaisCirurgias(tf_realizou_cirurgia_quais.getText().trim());
+            }
+            prisioneiro.setNaoSabeResponderCirurgias(rb_realizou_cirurgia_nao_sei.isSelected());
+
+            // Condições crônicas
+            prisioneiro.setHipertencao(cb_cond_cron_possui_hipertensao.isSelected());
+            prisioneiro.setDiabetes(cb_cond_cron_possui_diabetes.isSelected());
+            prisioneiro.setHiv(cb_cond_cron_possui_HIV.isSelected());
+            prisioneiro.setAutoimune(cb_cond_cron_possui_autoimune.isSelected());
+            prisioneiro.setNaoSabeResponderCondicoesCronicas(cb_cond_cron_nao_sabe_responder.isSelected());
+
+            // Histórico doenças infecciosas
+            prisioneiro.setSifilis(cb_hist_doencas_infec_sifilis.isSelected());
+            prisioneiro.setHpv(cb_hist_doencas_infec_hpv.isSelected());
+            prisioneiro.setTuberculose(cb_hist_doencas_infec_tuberculose.isSelected());
+            prisioneiro.setHepatiteB(cb_hist_doencas_infec_hepatite_b.isSelected());
+            prisioneiro.setHepatiteC(cb_hist_doencas_infec_hepatite_c.isSelected());
+            prisioneiro.setNaoSabeResponderDoencasInfecciosas(cb_hist_doencas_infec_nao_sabe_responder.isSelected());
+
+            // Doença de pele
+            prisioneiro.setDoencaPele(rb_doenca_pele_sim.isSelected());
+            if (rb_doenca_pele_sim.isSelected()) {
+                prisioneiro.setQuaisDoencasPele(tf_doenca_pele_quais.getText().trim());
+            }
+
+            // Medicamentos contínuos
+            //prisioneiro.setMedicamentosContinuos(rb_usa_med_continuo_sim.isSelected());
+            if (rb_usa_med_continuo_sim.isSelected()) {
+                prisioneiro.setQuaisMedicamentos(tf_med_continuo.getText().trim());
+            }
+
+            // Tipo sanguíneo
+            if (rb_tipo_sangue_ap.isSelected()) {
+                prisioneiro.setTipoSanguineo("A+");
+            } else if (rb_tipo_sangue_am.isSelected()) {
+                prisioneiro.setTipoSanguineo("A-");
+            } else if (rb_tipo_sangue_bp.isSelected()) {
+                prisioneiro.setTipoSanguineo("B+");
+            } else if (rb_tipo_sangue_bm.isSelected()) {
+                prisioneiro.setTipoSanguineo("B-");
+            } else if (rb_tipo_sangue_abp.isSelected()) {
+                prisioneiro.setTipoSanguineo("AB+");
+            } else if (rb_tipo_sangue_abm.isSelected()) {
+                prisioneiro.setTipoSanguineo("AB-");
+            } else if (rb_tipo_sangue_op.isSelected()) {
+                prisioneiro.setTipoSanguineo("O+");
+            } else if (rb_tipo_sangue_om.isSelected()) {
+                prisioneiro.setTipoSanguineo("O-");
+            } else if (rb_tipo_sangue_nao_sabe.isSelected()) {
+                prisioneiro.setTipoSanguineo("Não sabe");
+            } else {
+                prisioneiro.setTipoSanguineo("Não informado");
+            }
+
+            // Saúde mental
+            //prisioneiro.setVinculoCaps(rb_vinculo_caps_sim.isSelected());
+            if (rb_vinculo_caps_sim.isSelected()) {
+                prisioneiro.setNomeMunicioCaps(tf_vinculo_caps_municipio.getText().trim());
+            }
+
+            prisioneiro.setAnsiedade(cb_possui_ansiedade.isSelected());
+            prisioneiro.setDepressao(cb_possui_depressao.isSelected());
+            prisioneiro.setBipolaridade(cb_possui_bipolaridade.isSelected());
+            prisioneiro.setEsquizofrenia(cb_possui_esquisofrenia.isSelected());
+            prisioneiro.setAutismo(cb_possui_autismo.isSelected());
+            prisioneiro.setNaoSabeResponderSaudeMental(cb_transt_mentais_n_sabe_resp.isSelected());
+            prisioneiro.setOutraSaudeMental(tf_possui_trasntorno_mental_outro.getText().trim());
+
+            // Medicamento controlado
+            if (rb_usa_med_controlado_sim.isSelected()) {
+            //    prisioneiro.setMedicamentoControlado(1);
+                prisioneiro.setQualMedicamentoControlado(tf_usa_med_controlado_qual.getText().trim());
+            } else if (rb_usa_med_controlado_nao.isSelected()) {
+            //    prisioneiro.setMedicamentoControlado(0);
+            } else if (rb_usa_med_controlado_nao_sabe.isSelected()) {
+             //   prisioneiro.setMedicamentoControlado(2);
+            }
+
+            // Acompanhamento mental no momento da prisão
+            prisioneiro.setAcompanhamentoMentalMomentoPrisao(rb_acompanhamento_saude_mental_no_momento_da_prisao_sim.isSelected());
+            if (rb_acompanhamento_saude_mental_no_momento_da_prisao_sim.isSelected()) {
+                prisioneiro.setMotivoAcompanhamentoMental(tf_acompanhamento_saude_mental_no_momento_da_prisao_qual.getText().trim());
+            }
+
+            // Uso de substâncias
+            prisioneiro.setAlcool(cb_faz_uso_de_alccol.isSelected());
+            prisioneiro.setCigarro(cb_faz_uso_de_cigarro.isSelected());
+            prisioneiro.setMaconha(cb_faz_uso_de_maconha.isSelected());
+            prisioneiro.setCrack(cb_faz_uso_de_crack.isSelected());
+            prisioneiro.setCocaina(cb_faz_uso_de_cocaina.isSelected());
+            prisioneiro.setAnfetaminas(cb_faz_uso_de_anfetaminas.isSelected());
+            prisioneiro.setDrogas(cb_faz_uso_de_drogas_k.isSelected());
+            prisioneiro.setOutrasDrogas(tf_faz_uso_de_outras.getText().trim());
+
+            // Tratamento reabilitação
+            prisioneiro.setTratamentoReabilitacao(rb_ja_realizou_trat_para_cessar_reduzir_uso_sim.isSelected());
+            if (rb_ja_realizou_trat_para_cessar_reduzir_uso_sim.isSelected()) {
+                prisioneiro.setTratamentoQualSubstancia(tf_ja_realizou_trat_para_cessar_reduzir_uso_qual.getText().trim());
+            }
+
+            prisioneiro.setQuerReabilitacao(cb_gostaria_realizar_trat_para_cessar_reduzir_uso.isSelected());
+            if (cb_gostaria_realizar_trat_para_cessar_reduzir_uso.isSelected()) {
+                prisioneiro.setReabilitacaoQualSubstancia(tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs.getText().trim());
+            }
+
+            // Vacinação
+            if (rb_recebeu_vacina_covid_sim.isSelected()) {
+             //   prisioneiro.setVacinaCovid(1);
+            } else if (rb_recebeu_vacina_covid_nao.isSelected()) {
+             //   prisioneiro.setVacinaCovid(0);
+            } else if (rb_recebeu_vacina_covid_nao_sabe.isSelected()) {
+              //  prisioneiro.setVacinaCovid(2);
+            }
+
+            if (rb_recebeu_vacina_influenza_sim.isSelected()) {
+              //  prisioneiro.setVacinaInfluenza(1);
+            } else if (rb_recebeu_vacina_influenza_nao.isSelected()) {
+              //  prisioneiro.setVacinaInfluenza(0);
+            } else if (rb_recebeu_vacina_influenza_nao_sabe.isSelected()) {
+             //   prisioneiro.setVacinaInfluenza(2);
+            }
+
+            if (rb_recebeu_vacina_tetano_sim.isSelected()) {
+             //   prisioneiro.setVacinaTetano(1);
+            } else if (rb_recebeu_vacina_tetano_nao.isSelected()) {
+            //    prisioneiro.setVacinaTetano(0);
+            } else if (rb_recebeu_vacina_tetano_nao_sabe.isSelected()) {
+             //   prisioneiro.setVacinaTetano(2);
+            }
+
+            if (rb_recebeu_vacina_hepatite_b_sim.isSelected()) {
+               // prisioneiro.setVacinaHepatite(1);
+            } else if (rb_recebeu_vacina_hepatite_b_nao.isSelected()) {
+                //prisioneiro.setVacinaHepatite(0);
+            } else if (rb_recebeu_vacina_hepatite_b_nao_sabe.isSelected()) {
+               // prisioneiro.setVacinaHepatite(2);
+            }
+
+            // Ofertar vacinas
+            prisioneiro.setOfertarVacinas(true);
+            prisioneiro.setOfertarVacinaFebreAmarela(cb_ofertar_vacina_febre_amarela.isSelected());
+            prisioneiro.setOfertarVacinaHepatiteB(cb_ofertar_vacina_hepatite_b.isSelected());
+            prisioneiro.setOfertarVacinaCovid19(cb_ofertar_vacina_covid.isSelected());
+            prisioneiro.setOfertarVacinaInfluenza(cb_ofertar_vacina_influenza.isSelected());
+            prisioneiro.setOfertarVacinaDuplaAdulto(cb_ofertar_vacina_dupla_adulto.isSelected());
+            prisioneiro.setOfertarVacinaTripliceViral(cb_ofertar_vaciana_triplice_viral.isSelected());
+            prisioneiro.setOutraVacina(tf_ofertar_vacina_outra.getText().trim());
+            prisioneiro.setOfertarCarteiraVacinacao(rb_ofertar_copia_carteira_vacinacao_sim.isSelected());
+
+            // Transferência
+            prisioneiro.setEncaminhamentosFinais(tf_transferencia.getText().trim());
+
+            return prisioneiro;
         } catch (Exception e) {
-            System.out.println("Erro ao parsear data de nascimento: " + e.getMessage());
+            System.out.println("Erro ao coletar dados do formulário: " + e.getMessage());
+            e.printStackTrace();
             return null;
         }
-
-        // Valores das combo boxes
-        prisioneiro.setSexo((String) cb_sexo_biologico.getSelectedItem());
-        prisioneiro.setGenero((String) cb_identidade_genero.getSelectedItem());
-        prisioneiro.setOrientacao((String) cb_orientacao_sexual.getSelectedItem());
-        prisioneiro.setRaca((String) jComboBox1.getSelectedItem());
-
-        // Valores padrão para campos obrigatórios
-        prisioneiro.setNacionalidade("Brasileira");
-        prisioneiro.setEstadoCivil("Solteiro");
-        prisioneiro.setEscolaridade("Fundamental");
-
-        return prisioneiro;
     }
 
     private boolean validarFormulario() {
+        // Validar nome
         if (tf_nome.getText().trim().isEmpty()) {
             System.out.println("Nome é obrigatório");
             return false;
         }
+
+        // Validar CPF
         if (tf_cpf.getText().trim().isEmpty()) {
             System.out.println("CPF é obrigatório");
             return false;
         }
+
+        // Validar data de nascimento
         if (tf_data_nascimento.getText().trim().isEmpty()) {
             System.out.println("Data de nascimento é obrigatória");
             return false;
         }
+
+        // Validar formato da data
+        try {
+            String dataTexto = tf_data_nascimento.getText().trim();
+            if (!dataTexto.matches("\\d{4}-\\d{2}-\\d{2}") && 
+                !dataTexto.matches("\\d{2}/\\d{2}/\\d{4}")) {
+                System.out.println("Formato de data inválido. Use DD/MM/YYYY ou YYYY-MM-DD");
+                return false;
+            }
+        } catch (Exception e) {
+            System.out.println("Erro ao validar formato da data");
+            return false;
+        }
+
+        // Validar se um atendente foi selecionado
+        if (jComboBoxResponsavel.getSelectedItem() == null || 
+            jComboBoxResponsavel.getSelectedItem().toString().trim().isEmpty()) {
+            System.out.println("Atendente responsável é obrigatório");
+            return false;
+        }
+
         return true;
     }
 
@@ -2989,59 +3271,105 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_btn_cancelarActionPerformed
 
     private void btn_salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salvarActionPerformed
-
-        if (!validarFormulario()) {
-            return;
-        }
-
-        Prisioneiro prisioneiro = coletarDadosFormulario();
-
-        if (prisioneiro == null) {
-            System.out.println("Erro ao coletar dados do formulário");
-            return;
-        }
-
-        boolean sucesso = false;
-
-        if (prisioneiroAtual != null) {
-            // Editando prisioneiro existente
-            sucesso = prisioneiroDao.updatePrisioneiro(prisioneiro);
-            if (sucesso) {
-                System.out.println("Prisioneiro atualizado com sucesso!");
-            } else {
-                System.out.println("Erro ao atualizar prisioneiro");
+        try {
+            // Validar formulário
+            if (!validarFormulario()) {
+                javax.swing.JOptionPane.showMessageDialog(this, 
+                    "Por favor, preencha todos os campos obrigatórios.", 
+                    "Validação", 
+                    javax.swing.JOptionPane.WARNING_MESSAGE);
+                return;
             }
-        } else {
-            // Novo cadastro - inserir prisioneiro e atendimento
-            int idPrisioneiro = prisioneiroDao.insertPrisioneiro(prisioneiro);
 
-            if (idPrisioneiro > 0) {
-                System.out.println("Prisioneiro inserido com sucesso! ID: " + idPrisioneiro);
+            // Coletar dados do formulário
+            Prisioneiro prisioneiro = coletarDadosFormulario();
 
-                // Criar e inserir o atendimento
-                Atendimento atendimento = new Atendimento();
-                atendimento.setIdPrisioneiro(idPrisioneiro);
-                atendimento.setIdAtendente(atendenteDao.getIdAtendenteByName(jComboBoxResponsavel.getSelectedItem().toString())); // ID padrão do atendente
-                atendimento.setDataHora(new java.sql.Timestamp(System.currentTimeMillis()));
-                atendimento.setDataEntradaUnidade(new java.util.Date());
-                atendimento.setIsTransferencia(rb_transferencia_sim.isSelected()); // Se o radio button "Sim" estiver selecionado
-                atendimento.setProcedencia(tf_transferencia.getText().trim().isEmpty() ? "Não informado" : tf_transferencia.getText().trim());
+            if (prisioneiro == null) {
+                javax.swing.JOptionPane.showMessageDialog(this, 
+                    "Erro ao coletar dados do formulário. Verifique os dados inseridos.", 
+                    "Erro", 
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+                return;
+            }
 
-                boolean atendimentoSucesso = atendimentoDao.insertAtendimento(atendimento);
+            boolean sucesso = false;
+            String mensagem = "";
 
-                if (atendimentoSucesso) {
-                    System.out.println("Atendimento inserido com sucesso!");
-                    sucesso = true;
+            if (prisioneiroAtual != null) {
+                // Editando prisioneiro existente
+                sucesso = prisioneiroDao.updatePrisioneiro(prisioneiro);
+                if (sucesso) {
+                    mensagem = "Prisioneiro atualizado com sucesso!";
+                    System.out.println("Prisioneiro atualizado com sucesso!");
                 } else {
-                    System.out.println("Erro ao inserir atendimento");
+                    mensagem = "Erro ao atualizar prisioneiro";
+                    System.out.println("Erro ao atualizar prisioneiro");
                 }
             } else {
-                System.out.println("Erro ao inserir prisioneiro");
-            }
-        }
+                // Novo cadastro - inserir prisioneiro e atendimento
+                int idPrisioneiro = prisioneiroDao.insertPrisioneiro(prisioneiro);
 
-        if (sucesso) {
-            parent.showPanel("buscaPanel");
+                if (idPrisioneiro > 0) {
+                    System.out.println("Prisioneiro inserido com sucesso! ID: " + idPrisioneiro);
+
+                    // Criar e inserir o atendimento
+                    Atendimento atendimento = new Atendimento();
+                    atendimento.setIdPrisioneiro(idPrisioneiro);
+                    
+                    // Obter ID do atendente selecionado
+                    String nomeAtendente = jComboBoxResponsavel.getSelectedItem().toString();
+                    int idAtendente = atendenteDao.getIdAtendenteByName(nomeAtendente);
+                    
+                    if (idAtendente == -1) {
+                        javax.swing.JOptionPane.showMessageDialog(this, 
+                            "Erro: Atendente não encontrado. Selecione um atendente válido.", 
+                            "Erro", 
+                            javax.swing.JOptionPane.ERROR_MESSAGE);
+                        return;
+                    }
+                    
+                    atendimento.setIdAtendente(idAtendente);
+                    atendimento.setDataHora(new java.sql.Timestamp(System.currentTimeMillis()));
+                    atendimento.setDataEntradaUnidade(new java.util.Date());
+                    atendimento.setIsTransferencia(rb_transferencia_sim.isSelected());
+                    atendimento.setProcedencia(tf_transferencia.getText().trim().isEmpty() ? 
+                        "Não informado" : tf_transferencia.getText().trim());
+
+                    boolean atendimentoSucesso = atendimentoDao.insertAtendimento(atendimento);
+
+                    if (atendimentoSucesso) {
+                        mensagem = "Prisioneiro e atendimento cadastrados com sucesso!";
+                        System.out.println("Atendimento inserido com sucesso!");
+                        sucesso = true;
+                    } else {
+                        mensagem = "Prisioneiro cadastrado, mas erro ao inserir atendimento";
+                        System.out.println("Erro ao inserir atendimento");
+                    }
+                } else {
+                    mensagem = "Erro ao inserir prisioneiro";
+                    System.out.println("Erro ao inserir prisioneiro");
+                }
+            }
+
+            if (sucesso) {
+                javax.swing.JOptionPane.showMessageDialog(this, 
+                    mensagem, 
+                    "Sucesso", 
+                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                parent.showPanel("buscaPanel");
+            } else {
+                javax.swing.JOptionPane.showMessageDialog(this, 
+                    mensagem, 
+                    "Erro", 
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
+            }
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            javax.swing.JOptionPane.showMessageDialog(this, 
+                "Erro inesperado: " + e.getMessage(), 
+                "Erro", 
+                javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_salvarActionPerformed
 
