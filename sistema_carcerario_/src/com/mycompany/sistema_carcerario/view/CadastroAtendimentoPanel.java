@@ -14,6 +14,7 @@ import com.mycompany.sistema_carcerario.model.Atendimento;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import java.awt.event.ActionEvent;
 import java.sql.Date;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
@@ -41,6 +42,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         setComboBoxResponsavel();
         setComboBoxDetento();
         configurarTextFieldCondicionais();
+        label_data.setText(getDataAtual());
     }
         
     // Popula o combobox jComboBoxResponsavel com nome dos atendentes cadastrados.
@@ -140,6 +142,13 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         
         //Coleta de escarro (BG)
         
+    }
+    
+    // Retorna uma String contendo a data atual no formato "dd/MM/yyyy"
+    public String getDataAtual() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        String dataFormatada = LocalDate.now().format(formatter);
+        return dataFormatada;
     }
     
     private void setComboBoxValue(javax.swing.JComboBox<String> comboBox, String value) {

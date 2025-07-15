@@ -70,13 +70,14 @@ public class MainFrame extends JFrame {
     }
     
     void showCadastroAtendimentoPanel() {
-        atendimentoPanel = new AtendimentoPanel(this);
-        JScrollPane scrollAtendimento = new JScrollPane(atendimentoPanel);
+        cardPanel.remove(cadastroAtendimentoPanel); // remove o panel antigo
+        cadastroAtendimentoPanel = new CadastroAtendimentoPanel(this);
+        JScrollPane scrollAtendimento = new JScrollPane(cadastroAtendimentoPanel);
         // Condições em que a rolagem será disponibilizada
         scrollAtendimento.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
         scrollAtendimento.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
         // Adicionando scrollAtendimento ao cardPanel e associando seu nome a ATENDIMENTO_PANEL
-        cardPanel.add(scrollAtendimento, ATENDIMENTO_PANEL);
+        cardPanel.add(scrollAtendimento, CADASTRO_ATENDIMENTO_PANEL);
         showPanel(CADASTRO_ATENDIMENTO_PANEL);
     }
     
@@ -85,6 +86,7 @@ public class MainFrame extends JFrame {
         showPanel(CADASTRO_ATENDIMENTO_PANEL);
     }
     
+
     void showAtendimentoPanelParaNovo() {
         atendimentoPanel = new AtendimentoPanel(this);
         JScrollPane scrollAtendimento = new JScrollPane(atendimentoPanel);
