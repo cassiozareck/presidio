@@ -178,7 +178,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         //rbController.selecionarRadioButtonPorValorSimNao( bg_neeja ,prisioneiro.get);
         //rbController.selecionarRadioButtonPorValorSimNao( bg_conversa_assistencia_social ,prisioneiro.get);
         
-        rbController.selecionarRadioButtonSimNaoNSR( bg_possui_deficiencia ,prisioneiro.getPossuiDeficiencia());
+        //rbController.selecionarRadioButtonSimNaoNSR( bg_possui_deficiencia ,prisioneiro.getPossuiDeficiencia());
         
         
         //rbController.selecionarRadioButtonPorValorSimNao( bg_ ,prisioneiro.);
