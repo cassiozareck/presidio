@@ -14,6 +14,7 @@ import com.mycompany.sistema_carcerario.model.Atendimento;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import java.awt.event.ActionEvent;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
@@ -98,6 +99,8 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         //Apresenta sintomas resporatórios?
         carregarDadosRadioButtons(atendimentoAtual);
         
+
+        
         tf_atendimento_clinico_outros.setText(atendimentoAtual.getOutrosSistemasRespiratorios());
         tf_inicio_simtomas.setText(dataFormatada);
         
@@ -106,26 +109,28 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         
         //HIV(1/2)
         jt_lote_hiv1_2.setText(atendimentoAtual.getHiv12Lote());
-        //tf_validade_hiv1_2.setText(atendimentoAtual.getHiv12Validade());
+        //tf_validade_hiv1_2;
+        tf_validade_hiv1_2.setText(preencherDatasDeValidade(atendimentoAtual.getHiv12Validade()));
         
         //HIV(2/2)
         jt_lote_hiv2_2.setText(atendimentoAtual.getHiv22Lote());
-        //tf_validade_hiv2_2.setText(atendimentoAtual.getHiv22Validade());
+        tf_validade_hiv2_2.setText(preencherDatasDeValidade(atendimentoAtual.getHiv22Validade()));
         
         //Sifilis
         jt_lote_sifilis.setText(atendimentoAtual.getSifilisLote());
-        //tf_validade_sifilis.setText(atendimentoAtual.getSifilisValidade());
+        tf_validade_sifilis.setText(preencherDatasDeValidade(atendimentoAtual.getSifilisValidade()));
         
         //Hepatite B
         jt_lote_hepatite_b.setText(atendimentoAtual.getHepatiteBLote());
+        tf_validade_hepatite_b.setText(preencherDatasDeValidade(atendimentoAtual.getHepatiteBValidade()));
         
         //Hepatite C
         jt_lote_hepatite_c.setText(atendimentoAtual.getHepatiteCLote());
-        //tf_validade_hepatite_c.setText(atendimentoAtual.getHepatiteCValidade());
+        tf_validade_hepatite_c.setText(preencherDatasDeValidade(atendimentoAtual.getHepatiteCValidade()));
         
         //Covid
         jt_lote_covid.setText(atendimentoAtual.getCovidLote());
-        //tf_validade_covid.setText(atendimentoAtual.getCovidValidade());
+        tf_validade_covid.setText(preencherDatasDeValidade(atendimentoAtual.getCovidValidade()));
 
         
         ta_atendimento_clinico_conduta.setText(atendimentoAtual.getCondutaClinica());
@@ -136,7 +141,22 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         
     }
     
+    private String preencherDatasDeValidade(java.util.Date data){
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // ou "yyyy-MM-dd"
+    
+        Date validadeHiv = (Date) data;
+        if (validadeHiv != null) {
+            String dataFormatada = sdf.format(validadeHiv);
+            return dataFormatada;
+        } else {
+            return("");
+        }
+        
+    }
+    
     private void carregarDadosRadioButtons(Atendimento atendimento) {
+        rbController.selecionarRadioButtonPorValorSimNao(bg_transferencia, atendimento.isTransferencia());
+        
         rbController.selecionarRadioButtonPorValorSimNao(bg_possui_tosse, atendimento.isTosse());
         rbController.selecionarRadioButtonPorValorSimNao(bg_possui_coriza, atendimento.isCoriza());
         rbController.selecionarRadioButtonPorValorSimNao(bg_possui_espirros, atendimento.isEspirros());
