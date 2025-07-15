@@ -70,6 +70,13 @@ public class MainFrame extends JFrame {
     }
     
     void showCadastroAtendimentoPanel() {
+        atendimentoPanel = new AtendimentoPanel(this);
+        JScrollPane scrollAtendimento = new JScrollPane(atendimentoPanel);
+        // Condições em que a rolagem será disponibilizada
+        scrollAtendimento.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollAtendimento.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        // Adicionando scrollAtendimento ao cardPanel e associando seu nome a ATENDIMENTO_PANEL
+        cardPanel.add(scrollAtendimento, ATENDIMENTO_PANEL);
         showPanel(CADASTRO_ATENDIMENTO_PANEL);
     }
     
@@ -78,9 +85,16 @@ public class MainFrame extends JFrame {
         showPanel(CADASTRO_ATENDIMENTO_PANEL);
     }
     
+    //mudar aqui
     void showAtendimentoPanelParaNovo() {
-        atendimentoPanel.prepararParaNovoPrisioneiro();
-        showPanel(ATENDIMENTO_PANEL);
+        atendimentoPanel = new AtendimentoPanel(this);
+        JScrollPane scrollAtendimento = new JScrollPane(atendimentoPanel);
+        // Condições em que a rolagem será disponibilizada
+        scrollAtendimento.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+        scrollAtendimento.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+        // Adicionando scrollAtendimento ao cardPanel e associando seu nome a ATENDIMENTO_PANEL
+        cardPanel.add(scrollAtendimento, ATENDIMENTO_PANEL);
+        showPanel(CADASTRO_ATENDIMENTO_PANEL);
     }
     
     void showConsultarAtendimentoPanel(int id_prisioneiro) {
