@@ -54,6 +54,8 @@
     </Component>
     <Component class="javax.swing.ButtonGroup" name="bg_necessita_aval_imediat_dentista">
     </Component>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
   </NonVisualComponents>
   <AuxValues>
     <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>

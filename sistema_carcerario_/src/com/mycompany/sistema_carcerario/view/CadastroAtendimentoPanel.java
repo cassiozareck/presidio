@@ -96,12 +96,8 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         tf_temp.setText(String.valueOf(atendimentoAtual.getTemp()));
         
         //Apresenta sintomas resporatórios?
-        // ISSO AQUI QUEBRA O CODIGO -> rbController.selecionarRadioButtonPorValor(bg_possui_tosse, String.valueOf(atendimentoAtual.isTosse()));
-        //tosse   (BG)
-        //corriza (BG)
-        //espirros (BG)
-        //febre (BG)
-        //calafrios (BG)
+        carregarDadosRadioButtons(atendimentoAtual);
+        
         tf_atendimento_clinico_outros.setText(atendimentoAtual.getOutrosSistemasRespiratorios());
         tf_inicio_simtomas.setText(dataFormatada);
         
@@ -111,36 +107,58 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         //HIV(1/2)
         jt_lote_hiv1_2.setText(atendimentoAtual.getHiv12Lote());
         //tf_validade_hiv1_2.setText(atendimentoAtual.getHiv12Validade());
-        //R NR E NÃO REALIZADO (BG)
         
         //HIV(2/2)
         jt_lote_hiv2_2.setText(atendimentoAtual.getHiv22Lote());
         //tf_validade_hiv2_2.setText(atendimentoAtual.getHiv22Validade());
-        //R NR E NÃO REALIZADO (BG)
         
         //Sifilis
         jt_lote_sifilis.setText(atendimentoAtual.getSifilisLote());
         //tf_validade_sifilis.setText(atendimentoAtual.getSifilisValidade());
-        //R NR E NÃO REALIZADO (BG)
         
         //Hepatite B
         jt_lote_hepatite_b.setText(atendimentoAtual.getHepatiteBLote());
-        //tf_validade_hepatite_b.setText(atendimentoAtual.getHepatiteBValidade());
-        //R NR E NÃO REALIZADO (BG)
         
         //Hepatite C
         jt_lote_hepatite_c.setText(atendimentoAtual.getHepatiteCLote());
         //tf_validade_hepatite_c.setText(atendimentoAtual.getHepatiteCValidade());
-        //R NR E NÃO REALIZADO (BG)
         
         //Covid
         jt_lote_covid.setText(atendimentoAtual.getCovidLote());
         //tf_validade_covid.setText(atendimentoAtual.getCovidValidade());
-        //R NR E NÃO REALIZADO (BG)
+
         
-        //Teste de gravides (BG)
+        ta_atendimento_clinico_conduta.setText(atendimentoAtual.getCondutaClinica());
+        tf_conduta_testes_rapidos.setText(atendimentoAtual.getCondutaTesteRapido());
+        tf_conduta_odontologica.setText(atendimentoAtual.getCondutaOdontologica());
+        tf_encaminhamentos_finais.setText(atendimentoAtual.getEncaminhamentosFinais());
         
-        //Coleta de escarro (BG)
+        
+    }
+    
+    private void carregarDadosRadioButtons(Atendimento atendimento) {
+        rbController.selecionarRadioButtonPorValorSimNao(bg_possui_tosse, atendimento.isTosse());
+        rbController.selecionarRadioButtonPorValorSimNao(bg_possui_coriza, atendimento.isCoriza());
+        rbController.selecionarRadioButtonPorValorSimNao(bg_possui_espirros, atendimento.isEspirros());
+        rbController.selecionarRadioButtonPorValorSimNao(bg_possui_febre, atendimento.isFebre());
+        rbController.selecionarRadioButtonPorValorSimNao(bg_possui_calafrios, atendimento.isCalafrios());
+        
+        rbController.selecionarRadioButtonPorValorSimNao(bg_possui_lesoes_ferimentos, atendimento.isApresentaLesoes());
+        
+        rbController.selecionarRadioButtonR_NR_NaoRealizado(bg_tst_rap_hiv_1, atendimento.getHiv12Reativo());
+        rbController.selecionarRadioButtonR_NR_NaoRealizado(bg_tst_rap_hiv_2, atendimento.getHiv22Reativo());
+        rbController.selecionarRadioButtonR_NR_NaoRealizado(bg_tst_rap_sifilis, atendimento.getSifilisReativo());
+        rbController.selecionarRadioButtonR_NR_NaoRealizado(bg_tst_rap_hepatite_b, atendimento.getHepatiteBReativo());
+        rbController.selecionarRadioButtonR_NR_NaoRealizado(bg_tst_rap_hepatite_c, atendimento.getHepatiteCReativo());
+        rbController.selecionarRadioButtonR_NR_NaoRealizado(bg_tst_rap_covid, atendimento.getCovidReativo());
+        
+        rbController.selecionarRadioButtonPorValorSimNao(bg_coleta_escarro, atendimento.isColetaEscarro());
+        rbController.selecionarRadioButtonNegativo_Positivo_NaoRealizado(bg_tst_gravidez, atendimento.getTesteGravidez());
+    
+        rbController.selecionarRadioButtonPorValorSimNao(bg_apresenta_outra_queixa, atendimento.isApresentaQueixasTesteRapido());
+        rbController.selecionarRadioButtonPorValorSimNao(bg_apresenta_queixa_odontologica, atendimento.isTemQueixaOdontologica());
+        
+        rbController.selecionarRadioButtonPorValorSimNao(bg_necessita_aval_imediat_dentista, atendimento.isNecessitaDentista());
         
     }
     
@@ -200,6 +218,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         bg_apresenta_outra_queixa = new javax.swing.ButtonGroup();
         bg_apresenta_queixa_odontologica = new javax.swing.ButtonGroup();
         bg_necessita_aval_imediat_dentista = new javax.swing.ButtonGroup();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         atendimento_panel = new javax.swing.JPanel();
         jLabelData = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
@@ -1119,8 +1138,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(label_data)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(label_data))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
@@ -1498,6 +1516,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bg_tst_rap_sifilis;
     private javax.swing.JButton bt_cancelar;
     private javax.swing.JButton bt_salvar;
+    private javax.swing.ButtonGroup buttonGroup1;
     private com.mycompany.sistema_carcerario.model.DataBase dataBase1;
     private javax.swing.JComboBox<String> jComboBoxDetento;
     private javax.swing.JComboBox<String> jComboBoxResponsavel;

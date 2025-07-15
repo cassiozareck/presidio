@@ -151,6 +151,8 @@ public class AtendimentoDao {
                 a.setQueixaOdontologica(rs.getString("queixa_odontologica"));
                 a.setNecessitaDentista(rs.getBoolean("necessita_dentista"));
                 a.setCondutaOdontologica(rs.getString("conduta_odontologica"));
+                
+                a.setEncaminhamentosFinais(rs.getString("encaminhamentos_finais"));
 
                 return a;
             }

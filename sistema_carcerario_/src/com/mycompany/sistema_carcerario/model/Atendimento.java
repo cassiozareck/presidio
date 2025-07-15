@@ -71,6 +71,8 @@ public class Atendimento {
     private String queixaOdontologica;
     private boolean necessitaDentista;
     private String condutaOdontologica;
+    
+    private String encaminhamentosFinais;
 
     // Construtor padrão
     public Atendimento() {
@@ -95,6 +97,14 @@ public class Atendimento {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public void setEncaminhamentosFinais(String encaminhamentosFinais) {
+        this.encaminhamentosFinais = encaminhamentosFinais;
+    }
+
+    public String getEncaminhamentosFinais() {
+        return encaminhamentosFinais;
     }
 
     public int getIdAtendente() {

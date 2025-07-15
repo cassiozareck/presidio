@@ -247,6 +247,50 @@ public class RadioButtonController {
             botao.setSelected(textoBotao.equals(textoNormalizado));
         }
     }
+    
+    public void selecionarRadioButtonNegativo_Positivo_NaoRealizado(ButtonGroup grupo, Boolean valor) {
+        String textoDesejado;
+
+        if (valor == null) {
+            textoDesejado = "Não realizado";
+        } else if (valor) {
+            textoDesejado = "Positivo";
+        } else {
+            textoDesejado = "Negativo";
+        }
+
+        String textoNormalizado = normalizarTexto(textoDesejado);
+
+        Enumeration<AbstractButton> botoes = grupo.getElements();
+        while (botoes.hasMoreElements()) {
+            AbstractButton botao = botoes.nextElement();
+            String textoBotao = normalizarTexto(botao.getText());
+
+            botao.setSelected(textoBotao.equals(textoNormalizado));
+        }
+    }
+    
+    public void selecionarRadioButtonR_NR_NaoRealizado(ButtonGroup grupo, Boolean valor) {
+        String textoDesejado;
+
+        if (valor == null) {
+            textoDesejado = "Não realizado";
+        } else if (valor) {
+            textoDesejado = "R";
+        } else {
+            textoDesejado = "NR";
+        }
+
+        String textoNormalizado = normalizarTexto(textoDesejado);
+
+        Enumeration<AbstractButton> botoes = grupo.getElements();
+        while (botoes.hasMoreElements()) {
+            AbstractButton botao = botoes.nextElement();
+            String textoBotao = normalizarTexto(botao.getText());
+
+            botao.setSelected(textoBotao.equals(textoNormalizado));
+        }
+    }
 
     private String normalizarTexto(String texto) {
         if (texto == null) {
