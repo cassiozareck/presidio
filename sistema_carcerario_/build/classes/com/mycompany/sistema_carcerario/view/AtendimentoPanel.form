@@ -2803,10 +2803,10 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <EmptySpace min="6" pref="6" max="-2" attributes="0"/>
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jCheckBox4" alignment="0" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jCheckBox5" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cb_ofertar_consulta_pisiquiatra" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cb_ofertar_consulta_pisicologa" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cb_encaminhar_renv_receita" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Component id="cb_ofertar_ecaminhamneto_p_grupos_apoio" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -3100,13 +3100,13 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jLabel103" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCheckBox1" min="-2" max="-2" attributes="0"/>
+                  <Component id="cb_ofertar_consulta_pisicologa" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCheckBox3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cb_ofertar_consulta_pisiquiatra" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCheckBox4" min="-2" max="-2" attributes="0"/>
+                  <Component id="cb_encaminhar_renv_receita" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jCheckBox5" min="-2" max="-2" attributes="0"/>
+                  <Component id="cb_ofertar_ecaminhamneto_p_grupos_apoio" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
@@ -3450,22 +3450,22 @@
             <Property name="text" type="java.lang.String" value="Encaminhamentos:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+        <Component class="javax.swing.JCheckBox" name="cb_ofertar_consulta_pisicologa">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ofertar consulta com a psicologia?"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox3">
+        <Component class="javax.swing.JCheckBox" name="cb_ofertar_consulta_pisiquiatra">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ofertar consulta com a psiquiatra?"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox4">
+        <Component class="javax.swing.JCheckBox" name="cb_encaminhar_renv_receita">
           <Properties>
             <Property name="text" type="java.lang.String" value="Encaminhar para renova&#xe7;&#xe3;o de receitas?"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox5">
+        <Component class="javax.swing.JCheckBox" name="cb_ofertar_ecaminhamneto_p_grupos_apoio">
           <Properties>
             <Property name="text" type="java.lang.String" value="Ofertar encaminhamento para grupos de apoio para cessar ou reduzir o uso (se existir)"/>
           </Properties>
@@ -3598,7 +3598,7 @@
                                               <Group type="102" attributes="0">
                                                   <Component id="jLabel86" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="cb_ofertar_vaciana_nao" min="-2" max="-2" attributes="0"/>
+                                                  <Component id="cb_ofertar_vacina_nao" min="-2" max="-2" attributes="0"/>
                                                   <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                                               </Group>
                                           </Group>
@@ -3651,7 +3651,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel86" min="-2" max="-2" attributes="0"/>
-                      <Component id="cb_ofertar_vaciana_nao" min="-2" max="-2" attributes="0"/>
+                      <Component id="cb_ofertar_vacina_nao" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
@@ -3828,7 +3828,7 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="cb_ofertar_vacina_hepatite_bActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vaciana_nao">
+        <Component class="javax.swing.JCheckBox" name="cb_ofertar_vacina_nao">
           <Properties>
             <Property name="text" type="java.lang.String" value="N&#xe3;o"/>
           </Properties>
