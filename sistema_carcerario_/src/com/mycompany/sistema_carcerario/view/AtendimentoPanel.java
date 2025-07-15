@@ -140,22 +140,55 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     public void carregarPrisioneiro(int idPrisioneiro) {
         prisioneiroAtual = prisioneiroDao.buscarPrisioneiroPorId(idPrisioneiro);
 
-        if (prisioneiroAtual != null) {
-            // Esconde painel quando carrega novo prisioneiro
-            atendimento_panel.setVisible(false);
-
-            tf_nome.setText(prisioneiroAtual.getNomeCompleto());
-            tf_nome_social.setText(prisioneiroAtual.getNomeCompleto()); // Assuming nome social is the same as nome for now
-            tf_data_nascimento.setText(prisioneiroAtual.getDataNascimento().toString());
-            tf_cpf.setText(prisioneiroAtual.getCpf());
-            //tf_idade.setText(String.valueOf(prisioneiroAtual.calcularIdade()));
-            tf_etinia.setText(prisioneiroAtual.getRaca());
-
-            setComboBoxValue(cb_sexo_biologico, prisioneiroAtual.getSexo());
-            setComboBoxValue(cb_identidade_genero, prisioneiroAtual.getGenero());
-            setComboBoxValue(cb_orientacao_sexual, prisioneiroAtual.getOrientacao());
-            setComboBoxValue(jComboBox1, prisioneiroAtual.getRaca());
+        if (prisioneiroAtual == null) {
+            return;
         }
+        
+        // Esconde painel quando carrega novo prisioneiro
+        atendimento_panel.setVisible(false);
+
+        tf_nome.setText(prisioneiroAtual.getNomeCompleto());
+        tf_nome_social.setText(prisioneiroAtual.getNomeCompleto()); // Assuming nome social is the same as nome for now
+        tf_data_nascimento.setText(prisioneiroAtual.getDataNascimento().toString());
+        tf_nome_mae.setText(prisioneiroAtual.getNomeMae());
+        tf_cpf.setText(prisioneiroAtual.getCpf());
+        //tf_idade.setText(String.valueOf(prisioneiroAtual.calcularIdade()));
+        tf_etinia.setText(prisioneiroAtual.getRaca());
+
+        setComboBoxValue(cb_sexo_biologico, prisioneiroAtual.getSexo());
+        setComboBoxValue(cb_identidade_genero, prisioneiroAtual.getGenero());
+        setComboBoxValue(cb_orientacao_sexual, prisioneiroAtual.getOrientacao());
+        setComboBoxValue(jComboBox1, prisioneiroAtual.getRaca());
+        
+        carregarDadosRadioButtons(prisioneiroAtual);
+        carregarDadosTextField(prisioneiroAtual);
+        
+    }
+    
+    private void carregarDadosRadioButtons(Prisioneiro prisioneiro) {
+        rbController.selecionarRadioButtonPorValor(bg_nacionalidade, prisioneiro.getNacionalidade());
+        rbController.selecionarRadioButtonPorValor(bg_escolaridade, prisioneiro.getEscolaridade());
+        //rbController.selecionarRadioButtonPorValorSimNao(bg_fam_rec_beneficio, prisioneiro.getB);
+        
+        //rbController.selecionarRadioButtonPorValorSimNao(bg_possui_filhos, prisioneiro.get)
+                
+                //rbController.selecionarRadioButtonPorValorSimNao( bg_possuio_outro_dependente ,prisioneiro.getP);
+        
+
+        //rbController.selecionarRadioButtonPorValorSimNao( bg_neeja ,prisioneiro.get);
+        //rbController.selecionarRadioButtonPorValorSimNao( bg_conversa_assistencia_social ,prisioneiro.get);
+        
+        rbController.selecionarRadioButtonSimNaoNSR( bg_possui_deficiencia ,prisioneiro.getPossuiDeficiencia());
+        
+        
+        //rbController.selecionarRadioButtonPorValorSimNao( bg_ ,prisioneiro.);
+        
+    }
+    
+    private void carregarDadosTextField(Prisioneiro prisioneiro) {
+        tf_fam_rec_beneficio_quais.setText(prisioneiro.getBeneficioEspecificado());
+        System.out.println(prisioneiro.getBeneficioEspecificado());
+                
     }
 
     private void setComboBoxResponsavel() {
