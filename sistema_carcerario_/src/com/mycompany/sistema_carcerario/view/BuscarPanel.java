@@ -196,7 +196,12 @@ public class BuscarPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_bt_cadastrar_atendimentoActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        parent.showConsultarAtendimentoPanel();
+        int linhaSelecionada = tabela_prisioneiros.getSelectedRow();
+        if (linhaSelecionada != -1) {
+            Object valor = tabela_prisioneiros.getValueAt(linhaSelecionada, 0);
+            int id_prisioneiro = Integer.parseInt(valor.toString());
+            parent.showConsultarAtendimentoPanel(id_prisioneiro);
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
 

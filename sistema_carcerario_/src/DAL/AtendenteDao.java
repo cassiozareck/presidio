@@ -64,4 +64,28 @@ public class AtendenteDao {
         return -1;
     }
     
+    public String getNomeAtendenteByID(int id){
+        String sql = "SELECT nome FROM atendente WHERE id = ?";   
+
+        try (Connection conexao = ConexaoBanco.conectar()){
+            PreparedStatement ps = conexao.prepareStatement(sql);
+            ps.setInt(1, id);
+
+            try(ResultSet rs = ps.executeQuery()){     
+                if (rs.next()){ 
+                    String nome = rs.getString("nome");
+                    System.out.println("Erro ao buscar nome do atendente com ID: " + id);
+                    return nome;
+                }
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            System.out.println("Erro ao buscar id do responsável pelo atendimento");
+        }
+        return "Sem nome";
+    }
+    
+    
+    
 }

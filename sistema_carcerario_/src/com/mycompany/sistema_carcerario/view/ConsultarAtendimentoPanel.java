@@ -10,6 +10,8 @@ import DAL.PrisioneiroDao;
 import com.mycompany.sistema_carcerario.controller.RadioButtonController;
 import com.mycompany.sistema_carcerario.model.Atendimento;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
@@ -20,6 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
     final MainFrame parent;
+    int id_prisioneiro;
     private final AtendenteDao atendenteDao = new AtendenteDao();
     private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
     private final AtendimentoDao atendimentoDao = new AtendimentoDao();
@@ -27,40 +30,45 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
     /**
      * Creates new form ConsultarAtendimentoPanel
      */
+    public ConsultarAtendimentoPanel(MainFrame parent, Integer id_prisioneiro) {
+        initComponents();
+        this.parent = parent;
+        this.id_prisioneiro = id_prisioneiro;
+        populateTableAtendimentos("");
+    }
+    
     public ConsultarAtendimentoPanel(MainFrame parent) {
         initComponents();
         this.parent = parent;
-        setComboBoxDetento();
+        this.id_prisioneiro = -1; //-1 indicando que prisioneiro não foi selecionado
         populateTableAtendimentos("");
     }
 
-    // Popula o combobox jComboBoxDetento com nome dos detentos cadastrados.
-    private void setComboBoxDetento(){
-        jComboBoxDetento.removeAllItems();
-        ArrayList <Prisioneiro> prisioneiros = prisioneiroDao.getNomesPrisioneiros();
-        for(Prisioneiro prisioneiro : prisioneiros){
-            jComboBoxDetento.addItem(prisioneiro.getNomeCompleto());
+    private void populateTableAtendimentos(String filter) {
+        //se um prisioneiro foi selecionado, seu id é maior que -1
+        if(id_prisioneiro > -1){
+            String nome = (prisioneiroDao.buscarPrisioneiroPorId(id_prisioneiro).getNomeCompleto());
+            List<Atendimento> atendimentoList = atendimentoDao.listarAtendimentosPorPrisioneiro(id_prisioneiro);    
+            
+            nome_detento.setText(nome);
+            
+            String[] headers = {"ID","Data", "Nome do atendente"};
+            DefaultTableModel model = new DefaultTableModel(headers, 0); 
+
+            for (Atendimento a : atendimentoList) {
+                Object[] row = {
+                    a.getId(),
+                    a.getDataHora(),
+                    atendenteDao.getNomeAtendenteByID(a.getIdAtendente())
+                };
+                model.addRow(row);
+            }
+
+            tabela_atendimentos.setModel(model);
         }
     }
 
-    private void populateTableAtendimentos(String filter) {
-    List<Atendimento> atendimentoList = atendimentoDao.listarAtendimentosPorPrisioneiro(1);
-
-    //String nome = getIdPrisioneiroPeloNome(jComboBoxDetento.getSelectedItem().toString());
     
-    String[] headers = {"Data", "Nome do atendente"};
-    DefaultTableModel model = new DefaultTableModel(headers, 0); 
-
-    for (Atendimento a : atendimentoList) {
-        Object[] row = {
-            a.getDataHora(),
-        };
-        model.addRow(row);
-    }
-
-    tabela_atendimentos.setModel(model);
-    
-    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -74,12 +82,13 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
         jPanel4 = new javax.swing.JPanel();
         jLabel64 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
-        jComboBoxDetento = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         tabela_atendimentos = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel65 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
+        nome_detento = new javax.swing.JLabel();
+        jButton_ver_atendimento = new javax.swing.JButton();
 
         jPanel4.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -92,7 +101,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel64, javax.swing.GroupLayout.DEFAULT_SIZE, 917, Short.MAX_VALUE)
+                .addComponent(jLabel64, javax.swing.GroupLayout.DEFAULT_SIZE, 665, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -103,15 +112,10 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
                 .addContainerGap())
         );
 
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         jLabel1.setText("Nome completo:");
 
-        jComboBoxDetento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jComboBoxDetento.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBoxDetentoActionPerformed(evt);
-            }
-        });
-
+        tabela_atendimentos.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
         tabela_atendimentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -154,6 +158,16 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
+        nome_detento.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
+        nome_detento.setText("Nome do detento");
+
+        jButton_ver_atendimento.setText("Ver tendimento");
+        jButton_ver_atendimento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton_ver_atendimentoActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -165,50 +179,60 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
                     .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(nome_detento)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButton_ver_atendimento)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jComboBoxDetento, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton2)))
                 .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton2))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jComboBoxDetento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel1)
+                    .addComponent(nome_detento))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 499, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 255, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton2)
+                    .addComponent(jButton_ver_atendimento))
                 .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jComboBoxDetentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDetentoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxDetentoActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         parent.showPanel("buscaPanel");
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    private void jButton_ver_atendimentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ver_atendimentoActionPerformed
+        int row = tabela_atendimentos.getSelectedRow();
+        if (row >= 0) {
+            int idAtendimento = (int) tabela_atendimentos.getValueAt(row, 0);
+            parent.showCadastroAtendimentoPanelModoVisualizarAtendimento(idAtendimento);
+        }
+    }//GEN-LAST:event_jButton_ver_atendimentoActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBoxDetento;
+    private javax.swing.JButton jButton_ver_atendimento;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel64;
     private javax.swing.JLabel jLabel65;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel nome_detento;
     private javax.swing.JTable tabela_atendimentos;
     // End of variables declaration//GEN-END:variables
 }

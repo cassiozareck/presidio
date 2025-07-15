@@ -5,11 +5,18 @@
 package com.mycompany.sistema_carcerario.view;
 
 import DAL.AtendenteDao;
+import DAL.AtendimentoDao;
 import DAL.PrisioneiroDao;
+import com.mycompany.sistema_carcerario.controller.CheckBoxController;
 import com.mycompany.sistema_carcerario.controller.RadioButtonController;
 import com.mycompany.sistema_carcerario.model.Atendente;
+import com.mycompany.sistema_carcerario.model.Atendimento;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import java.awt.event.ActionEvent;
+import java.sql.Date;
+import java.time.format.DateTimeFormatter;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
 import java.util.ArrayList;
 
 /**
@@ -18,9 +25,13 @@ import java.util.ArrayList;
  */
 public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     final MainFrame parent;
+    private final RadioButtonController rbController = new RadioButtonController();
+    private final CheckBoxController cbController = new CheckBoxController();
+    
     private final AtendenteDao atendenteDao = new AtendenteDao();
     private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
-    private final RadioButtonController rbController = new RadioButtonController();
+    private final AtendimentoDao atendimentoDao = new AtendimentoDao();
+
     /**
      * Creates new form CadastroAtendimentoPanel
      */
@@ -59,6 +70,94 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         rbController.configurarRadioGroup(bg_apresenta_queixa_odontologica, rb_queixa_odontologica_sim, rb_queixa_odontologica_nao, tf_quais_queixas_odontologicas);        
     }
 
+    public void carregarAtendimento (int idAtendimento){
+        Atendimento atendimentoAtual = atendimentoDao.buscarAtendimentoPorId(idAtendimento);
+        
+        if (atendimentoAtual == null) {
+            return;
+        }
+        
+        setComboBoxValue(jComboBoxResponsavel, atendenteDao.getNomeAtendenteByID(atendimentoAtual.getIdAtendente()));
+        LocalDateTime dataHora = atendimentoAtual.getDataHora().toLocalDateTime();
+        String dataFormatada = dataHora.format(DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm"));
+        label_data.setText(dataFormatada);
+        //bg_transferencia
+        setComboBoxValue(jComboBoxDetento, atendenteDao.getNomeAtendenteByID(atendimentoAtual.getIdPrisioneiro()));
+        //Antropometria
+        tf_peso.setText(String.valueOf(atendimentoAtual.getPeso()));
+        tf_altura.setText(String.valueOf(atendimentoAtual.getAltura()));
+        tf_imc.setText(String.valueOf(atendimentoAtual.getImc()));
+        //Sinais vitais
+        tf_pa.setText(atendimentoAtual.getPa());
+        tf_fc.setText(String.valueOf(atendimentoAtual.getFc()));
+        tf_sat.setText(String.valueOf(atendimentoAtual.getSat()));
+        tf_temp.setText(String.valueOf(atendimentoAtual.getTemp()));
+        
+        //Apresenta sintomas resporatórios?
+        // ISSO AQUI QUEBRA O CODIGO -> rbController.selecionarRadioButtonPorValor(bg_possui_tosse, String.valueOf(atendimentoAtual.isTosse()));
+        //tosse   (BG)
+        //corriza (BG)
+        //espirros (BG)
+        //febre (BG)
+        //calafrios (BG)
+        tf_atendimento_clinico_outros.setText(atendimentoAtual.getOutrosSistemasRespiratorios());
+        tf_inicio_simtomas.setText(dataFormatada);
+        
+        //apresenta lesoes (BG) Onde?
+        ta_atendimento_clinico_conduta.setText(atendimentoAtual.getCondutaClinica());
+        
+        //HIV(1/2)
+        jt_lote_hiv1_2.setText(atendimentoAtual.getHiv12Lote());
+        //tf_validade_hiv1_2.setText(atendimentoAtual.getHiv12Validade());
+        //R NR E NÃO REALIZADO (BG)
+        
+        //HIV(2/2)
+        jt_lote_hiv2_2.setText(atendimentoAtual.getHiv22Lote());
+        //tf_validade_hiv2_2.setText(atendimentoAtual.getHiv22Validade());
+        //R NR E NÃO REALIZADO (BG)
+        
+        //Sifilis
+        jt_lote_sifilis.setText(atendimentoAtual.getSifilisLote());
+        //tf_validade_sifilis.setText(atendimentoAtual.getSifilisValidade());
+        //R NR E NÃO REALIZADO (BG)
+        
+        //Hepatite B
+        jt_lote_hepatite_b.setText(atendimentoAtual.getHepatiteBLote());
+        //tf_validade_hepatite_b.setText(atendimentoAtual.getHepatiteBValidade());
+        //R NR E NÃO REALIZADO (BG)
+        
+        //Hepatite C
+        jt_lote_hepatite_c.setText(atendimentoAtual.getHepatiteCLote());
+        //tf_validade_hepatite_c.setText(atendimentoAtual.getHepatiteCValidade());
+        //R NR E NÃO REALIZADO (BG)
+        
+        //Covid
+        jt_lote_covid.setText(atendimentoAtual.getCovidLote());
+        //tf_validade_covid.setText(atendimentoAtual.getCovidValidade());
+        //R NR E NÃO REALIZADO (BG)
+        
+        //Teste de gravides (BG)
+        
+        //Coleta de escarro (BG)
+        
+    }
+    
+    private void setComboBoxValue(javax.swing.JComboBox<String> comboBox, String value) {
+        for (int i = 0; i < comboBox.getItemCount(); i++) {
+            if (comboBox.getItemAt(i).equalsIgnoreCase(value)) {
+                comboBox.setSelectedIndex(i);
+                break;
+            }
+        }
+    }
+    
+    private String formatarData(Date data) {
+    return data.toInstant()
+               .atZone(ZoneId.systemDefault())
+               .toLocalDate()
+               .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -246,6 +345,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         jLabel64 = new javax.swing.JLabel();
         jLabel65 = new javax.swing.JLabel();
         jComboBoxDetento = new javax.swing.JComboBox<>();
+        label_data = new javax.swing.JLabel();
 
         jLabel35.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel35.setText("ATENDIMENTO CLÍNCO");
@@ -712,6 +812,8 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
+        label_data.setText("jLabel66");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -1007,7 +1109,9 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                         .addComponent(tf_transferencia))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel4)
-                        .addGap(987, 987, 987))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(label_data)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(18, 18, 18)
@@ -1027,7 +1131,9 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                     .addComponent(jLabel3)
                     .addComponent(jComboBoxResponsavel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(label_data))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(rb_transferencia_sim)
@@ -1474,6 +1580,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField jt_lote_hiv1_2;
     private javax.swing.JTextField jt_lote_hiv2_2;
     private javax.swing.JTextField jt_lote_sifilis;
+    private javax.swing.JLabel label_data;
     private javax.swing.JRadioButton rb_apresenta_lesoes_nao;
     private javax.swing.JRadioButton rb_apresenta_lesoes_sim;
     private javax.swing.JRadioButton rb_calafrios_nao;

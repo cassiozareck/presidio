@@ -73,12 +73,20 @@ public class MainFrame extends JFrame {
         showPanel(CADASTRO_ATENDIMENTO_PANEL);
     }
     
+    void showCadastroAtendimentoPanelModoVisualizarAtendimento(int atendimentoId) {
+        cadastroAtendimentoPanel.carregarAtendimento(atendimentoId);
+        showPanel(CADASTRO_ATENDIMENTO_PANEL);
+    }
+    
     void showAtendimentoPanelParaNovo() {
         atendimentoPanel.prepararParaNovoPrisioneiro();
         showPanel(ATENDIMENTO_PANEL);
     }
     
-    void showConsultarAtendimentoPanel() {
+    void showConsultarAtendimentoPanel(int id_prisioneiro) {
+        consultarAtendimentoPanel = new ConsultarAtendimentoPanel(this, id_prisioneiro);
+        cardPanel.add(consultarAtendimentoPanel, CONSULTAR_ATENDIMENTO_PANEL);
+        this.add(cardPanel);
         showPanel(CONSULTAR_ATENDIMENTO_PANEL);
     }
     
