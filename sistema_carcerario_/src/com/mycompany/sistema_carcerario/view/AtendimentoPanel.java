@@ -17,6 +17,7 @@ import com.mycompany.sistema_carcerario.model.Atendimento;
 import com.mycompany.sistema_carcerario.model.SaudeHomem;
 import com.mycompany.sistema_carcerario.model.SaudeMulher;
 import java.time.LocalDate;
+import java.time.Period;
 
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -165,7 +166,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         tf_data_nascimento.setText(prisioneiroAtual.getDataNascimento().toString());
         tf_nome_mae.setText(prisioneiroAtual.getNomeMae());
         tf_cpf.setText(prisioneiroAtual.getCpf());
-        //tf_idade.setText(String.valueOf(prisioneiroAtual.calcularIdade()));
+        tf_idade.setText(String.valueOf(calcularIdade(prisioneiroAtual.getDataNascimento().toString())));
         tf_etinia.setText(prisioneiroAtual.getRaca());
 
         setComboBoxValue(cb_sexo_biologico, prisioneiroAtual.getSexo());
@@ -179,6 +180,18 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         configSaudePanels();
     }
 
+    public static int calcularIdade(String dataNascimentoStr) {
+        try {
+            LocalDate dataNascimento = LocalDate.parse(dataNascimentoStr); // assume formato ISO: yyyy-MM-dd
+            LocalDate dataAtual = LocalDate.now();
+            System.out.println(Period.between(dataNascimento, dataAtual).getYears());
+            return Period.between(dataNascimento, dataAtual).getYears();
+        } catch (Exception e) {
+            System.out.println("Erro ao calcular idade: " + e.getMessage());
+            return -1; // valor de erro
+        }
+    }
+    
     private void carregarDadosRadioButtons(Prisioneiro prisioneiro) {
         rbController.selecionarRadioButtonPorValor(bg_nacionalidade, prisioneiro.getNacionalidade());
         rbController.selecionarRadioButtonPorValor(bg_escolaridade, prisioneiro.getEscolaridade());
@@ -252,7 +265,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     }
 
     private void carregarDadosTextField(Prisioneiro prisioneiro) {
-        tf_idade.setText(String.valueOf(prisioneiroAtual.getIdade()));
+        tf_idade.setText(String.valueOf(calcularIdade(prisioneiroAtual.getDataNascimento().toString())));
         tf_fam_rec_beneficio_quais.setText(prisioneiro.getBeneficioEspecificado());
         tf_poss_filhos_quantos.setText(String.valueOf(prisioneiroAtual.getQuantosFilhos()));
         //tf_idade_filhos.setText(prisioneiroAtual.get
