@@ -7,11 +7,15 @@ package com.mycompany.sistema_carcerario.view;
 import DAL.AtendenteDao;
 import DAL.PrisioneiroDao;
 import DAL.AtendimentoDao;
+import DAL.SaudeHomemDao;
+import DAL.SaudeMulherDao;
 import com.mycompany.sistema_carcerario.controller.CheckBoxController;
 import com.mycompany.sistema_carcerario.controller.RadioButtonController;
 import com.mycompany.sistema_carcerario.model.Atendente;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import com.mycompany.sistema_carcerario.model.Atendimento;
+import com.mycompany.sistema_carcerario.model.SaudeHomem;
+import com.mycompany.sistema_carcerario.model.SaudeMulher;
 import java.time.LocalDate;
 
 import java.time.format.DateTimeFormatter;
@@ -32,7 +36,13 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
     private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
     private final AtendimentoDao atendimentoDao = new AtendimentoDao();
+    private final SaudeHomemDao saudeHomemDao = new SaudeHomemDao();
+    private final SaudeMulherDao saudeMulherDao = new SaudeMulherDao();
+
     private Prisioneiro prisioneiroAtual;
+    private SaudeHomem saudeHomemAtual;
+    private SaudeMulher saudeMulherAtual;
+
     private final AtendenteDao atendenteDao = new AtendenteDao();
 
     /**
@@ -109,7 +119,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         cbController.configurarCheckBoxECampoDeTexto(cb_gostaria_realizar_trat_para_cessar_reduzir_uso, tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs);
     }
 
-    
     // Se o ComboBox tiver na Opção Outra, ele habilita o texto apra o usuário 
     // poder digitar qual aopção que seria a tal da outra
     private void configurarComboBoxOrientacaoSex() {
@@ -126,7 +135,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             }
         });
     }
-    
 
     // Retorna uma String contendo a data atual no formato "dd/MM/yyyy"
     public String getDataAtual() {
@@ -139,11 +147,16 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     // Vai chamar query no DAO e preencher UI
     public void carregarPrisioneiro(int idPrisioneiro) {
         prisioneiroAtual = prisioneiroDao.buscarPrisioneiroPorId(idPrisioneiro);
+        saudeMulherAtual = saudeMulherDao.buscarSaudeMulherPorId(idPrisioneiro);
+        saudeHomemAtual = saudeHomemDao.buscarSaudeHomemPorId(idPrisioneiro);
+
+        System.out.println(saudeMulherAtual);
+        System.out.println(saudeHomemAtual);
 
         if (prisioneiroAtual == null) {
             return;
         }
-        
+
         // Esconde painel quando carrega novo prisioneiro
         atendimento_panel.setVisible(false);
 
@@ -159,59 +172,108 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         setComboBoxValue(cb_identidade_genero, prisioneiroAtual.getGenero());
         setComboBoxValue(cb_orientacao_sexual, prisioneiroAtual.getOrientacao());
         setComboBoxValue(jComboBox1, prisioneiroAtual.getRaca());
-        
+
         carregarDadosRadioButtons(prisioneiroAtual);
         carregarDadosTextField(prisioneiroAtual);
-        carregarDadosCheckBox(prisioneiroAtual);        
+        carregarDadosCheckBox(prisioneiroAtual);
+        configSaudePanels();
     }
-    
+
     private void carregarDadosRadioButtons(Prisioneiro prisioneiro) {
         rbController.selecionarRadioButtonPorValor(bg_nacionalidade, prisioneiro.getNacionalidade());
         rbController.selecionarRadioButtonPorValor(bg_escolaridade, prisioneiro.getEscolaridade());
         rbController.selecionarRadioButtonPorValorSimNao(bg_fam_rec_beneficio, prisioneiro.isBeneficioFamilia());
-        
+
         rbController.selecionarRadioButtonPorValorSimNao(bg_possui_filhos, prisioneiro.isPossuiFilhos());
-        rbController.selecionarRadioButtonPorValorSimNao( bg_possuio_outro_dependente ,prisioneiro.isPossuiDependentes());
-        rbController.selecionarRadioButtonPorValorSimNao( bg_neeja ,prisioneiro.isOfertarNeeja());
-        rbController.selecionarRadioButtonPorValorSimNao( bg_conversa_assistencia_social ,prisioneiro.isOfertarAssistenciaSocial());
-        
+        rbController.selecionarRadioButtonPorValorSimNao(bg_possuio_outro_dependente, prisioneiro.isPossuiDependentes());
+        rbController.selecionarRadioButtonPorValorSimNao(bg_neeja, prisioneiro.isOfertarNeeja());
+        rbController.selecionarRadioButtonPorValorSimNao(bg_conversa_assistencia_social, prisioneiro.isOfertarAssistenciaSocial());
+
         // Condições de saúde
-        rbController.selecionarRadioButtonSimNaoNSR( bg_possui_deficiencia ,prisioneiro.isPossuiDeficiencia());
-        rbController.selecionarRadioButtonSimNaoNSR( bg_possui_intolerancia, prisioneiro.isPossuiAlergias());
-        rbController.selecionarRadioButtonPorValorSimNao( bg_realizou_cirurgia ,prisioneiro.isRealizouCirurgias());
-        
+        rbController.selecionarRadioButtonSimNaoNSR(bg_possui_deficiencia, prisioneiro.isPossuiDeficiencia());
+        rbController.selecionarRadioButtonSimNaoNSR(bg_possui_intolerancia, prisioneiro.isPossuiAlergias());
+        rbController.selecionarRadioButtonPorValorSimNao(bg_realizou_cirurgia, prisioneiro.isRealizouCirurgias());
+
         // histórico doenças infecciosas
-        rbController.selecionarRadioButtonPorValorSimNao( bg_possui_denca_de_pele ,prisioneiro.isDoencaPele());
+        rbController.selecionarRadioButtonPorValorSimNao(bg_possui_denca_de_pele, prisioneiro.isDoencaPele());
         //rbController.selecionarRadioButtonPorValorSimNao( bg_med_continuo ,prisioneiro.ismed);
-        
-        rb_tipo_sangue_ap
+
+        rbController.selecionarRadioButtonPorTexto(bg_tipo_sangue, prisioneiro.getTipoSanguineo());
+
+        // Saúde da Mulher
+        if (saudeMulherAtual != null) {
+            rbController.selecionarRadioButtonSimNaoNSR(bg_gestacao_no_momento, saudeMulherAtual.getGestacao());
+            rbController.selecionarRadioButtonPorTexto(bg_tipo_met_anticoncepcional, saudeMulherAtual.getQualContraceptivo());
+            rbController.selecionarRadioButtonPorValorSimNao(bg_realizou_papanicolau, saudeMulherAtual.isExamePreventivoPapanicolau());
+            rbController.selecionarRadioButtonPorValorSimNao(bg_ofertar_continuidade_contraceptivo, saudeMulherAtual.isOfertarContinuidadeContraceptivo());
+            rbController.selecionarRadioButtonPorValorSimNao(bg_consultar_exame_preventivo, saudeMulherAtual.isOfertarConsultaPreventivo());
+            rbController.selecionarRadioButtonPorValorSimNao(bg_enc_pre_natal, saudeMulherAtual.isEncaminharPreNatal());
+        } else {
+            bg_gestacao_no_momento.clearSelection();
+            bg_tipo_met_anticoncepcional.clearSelection();
+            bg_realizou_papanicolau.clearSelection();
+            bg_ofertar_continuidade_contraceptivo.clearSelection();
+            bg_consultar_exame_preventivo.clearSelection();
+            bg_enc_pre_natal.clearSelection();
+        }
+
+        // Saúde do Homem
+        if (saudeHomemAtual != null) {
+            rbController.selecionarRadioButtonPorValorSimNao(bg_exame_prostata, saudeHomemAtual.isRealizouExameProstata());
+            rbController.selecionarRadioButtonPorValorSimNao(bg_exame_prostata, saudeHomemAtual.isRealizouExameProstata());
+            rbController.selecionarRadioButtonPorValorSimNao(bg_realizou_vasectomia, saudeHomemAtual.isRealizouVasectomia());
+            rbController.selecionarRadioButtonPorValorSimNao(bg_parceira_gestante, saudeHomemAtual.isParceiraGestante());
+            rbController.selecionarRadioButtonPorValorSimNao(bg_esta_participando_pre_natal, saudeHomemAtual.isParticipaPreNatal());
+            rbController.selecionarRadioButtonPorValorSimNao(bg_encaminhar_realiz_vasectomia, saudeHomemAtual.isOfertarEncaminhamentoVasectomia());
+            rbController.selecionarRadioButtonPorValorSimNao(bg_encaminhar_pre_natal_do_parceiro, saudeHomemAtual.isOfertarEncaminhamentoPreNatal());
+        } else {
+            bg_exame_prostata.clearSelection();
+            bg_exame_prostata.clearSelection();
+            bg_realizou_vasectomia.clearSelection();
+            bg_parceira_gestante.clearSelection();
+            bg_esta_participando_pre_natal.clearSelection();
+            bg_encaminhar_realiz_vasectomia.clearSelection();
+            bg_encaminhar_pre_natal_do_parceiro.clearSelection();
+        }
+
         //rbController.selecionarRadioButtonPorValorSimNao( bg_ ,prisioneiro.);
-        
     }
-    
+
     private void carregarDadosTextField(Prisioneiro prisioneiro) {
         tf_idade.setText(String.valueOf(prisioneiroAtual.getIdade()));
         tf_fam_rec_beneficio_quais.setText(prisioneiro.getBeneficioEspecificado());
         tf_poss_filhos_quantos.setText(String.valueOf(prisioneiroAtual.getQuantosFilhos()));
         //tf_idade_filhos.setText(prisioneiroAtual.get
-        
+
         tf_possui_outro_dependente_qts.setText(String.valueOf(prisioneiro.getQuantosDependentes()));
-        
+
         tf_fam_rec_beneficio_quais.setText(prisioneiro.getBeneficioEspecificado());
         tf_possui_intolerancia_quais.setText(prisioneiro.getQuaisAlergias());
         tf_realizou_cirurgia_quais.setText(prisioneiro.getQuaisCirurgias());
-        
+
         // Condições crônicas
         tf_cond_croni_outra.setText(prisioneiro.getOutrasDoencasCronicas());
         tf_cond_croni_quais.setText(prisioneiro.getObservacaoCondicoesCronicas());
-        
+
         // histórico doenças infecciosas
         tf_hist_doenc_outra.setText(prisioneiro.getOutrasDoencasInfecciosas());
         tf_hist_doenc_obs.setText(prisioneiro.getObservacaoHistoricoDoencasInfecciosas());
         tf_doenca_pele_quais.setText(prisioneiro.getQuaisDoencasPele());
         tf_med_continuo.setText(prisioneiro.getQuaisMedicamentos());
+        //tf_tipo_sangue.setText(prisioneiro.get);
+
+        // Saúde mulher
+        //tf_papanicolau_ano.setText(saudeMulherAtual.get);
+        // Saúde do Homem
+        if (saudeHomemAtual != null) {
+            tf_exame_prostata_ano.setText(String.valueOf(saudeHomemAtual.getAnoExameProstata()));
+            rb_historico_prostata_familiar.setText(saudeHomemAtual.getQualFamiliarCancerProstata());
+        } else {
+            tf_exame_prostata_ano.setText("");
+            rb_historico_prostata_familiar.setText("");
+        }
     }
-    
+
     private void carregarDadosCheckBox(Prisioneiro prisioneiro) {
         // Condições crônicas
         cb_cond_cron_possui_hipertensao.setSelected(prisioneiro.isHipertencao());
@@ -219,7 +281,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         cb_cond_cron_possui_HIV.setSelected(prisioneiro.isHiv());
         cb_cond_cron_possui_autoimune.setSelected(prisioneiro.isAutoimune());
         cb_cond_cron_nao_sabe_responder.setSelected(prisioneiro.isNaoSabeResponderCondicoesCronicas());
-                
+
         // histórico doenças infecciosas
         cb_hist_doencas_infec_sifilis.setSelected(prisioneiro.isSifilis());
         cb_hist_doencas_infec_hpv.setSelected(prisioneiro.isHpv());
@@ -228,9 +290,23 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         cb_hist_doencas_infec_hepatite_c.setSelected(prisioneiro.isHepatiteC());
         cb_hist_doencas_infec_nao_sabe_responder.setSelected(prisioneiro.isNaoSabeResponderDoencasInfecciosas());
     }
-    
-    
 
+    
+    private void configSaudePanels() {
+        
+        if (saudeMulherAtual == null) {
+            saude_da_mulher_panel.setVisible(false);
+        } else {
+            saude_da_mulher_panel.setVisible(true);
+        }
+        
+        if (saudeHomemAtual == null) {
+            saude_homem_panel.setVisible(false);
+        } else {
+            saude_homem_panel.setVisible(true);
+        }
+    }
+    
     private void setComboBoxResponsavel() {
         jComboBoxResponsavel.removeAllItems();
         ArrayList<Atendente> atendentes = atendenteDao.getAtendentes();
@@ -283,7 +359,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             prisioneiro.setNomeSocial(tf_nome_social.getText().trim());
             prisioneiro.setNomeMae(tf_nome_mae.getText().trim());
             prisioneiro.setCpf(tf_cpf.getText().trim());
-            
+
             // Processar idade
             try {
                 if (!tf_idade.getText().trim().isEmpty()) {
@@ -346,7 +422,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             } else {
                 prisioneiro.setRaca("Não informado");
             }
-            
+
             // Etnia
             prisioneiro.setOutrasDoencasCronicas(tf_etinia.getText().trim());
 
@@ -592,7 +668,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             if (rb_papanicolau_sim.isSelected() && !tf_papanicolau_ano.getText().trim().isEmpty()) {
                 prisioneiro.setObservacaoCondicoesCronicas(tf_papanicolau_ano.getText().trim());
             }
-            
+
             // Saúde do Homem - dados serão salvos em tabelas separadas
             // prisioneiro.setExameProstata(rb_exame_prostata_sim.isSelected());
             if (rb_exame_prostata_sim.isSelected() && !tf_exame_prostata_ano.getText().trim().isEmpty()) {
@@ -604,13 +680,12 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             // prisioneiro.setEstaParticipandoPreNatal(rb_esta_participando_pre_natal_sim.isSelected());
             // prisioneiro.setEncaminharRealizVasectomia(rb_encaminhar_realiz_vasectomia_sim.isSelected());
             // prisioneiro.setEncaminharPreNatalParceiro(rb_encaminhar_pre_natal_parceiro_sim.isSelected());
-            
+
             // Gestação
             // prisioneiro.setGestacaoNoMomento(rb_gestacao_no_momvento_sim.isSelected());
-            
             // Transferência
             prisioneiro.setEncaminhamentosFinais(tf_transferencia.getText().trim());
-            
+
             // Responsável pelo atendimento
             if (jComboBoxResponsavel.getSelectedItem() != null) {
                 prisioneiro.setOutrasDoencasInfecciosas(jComboBoxResponsavel.getSelectedItem().toString());
@@ -646,8 +721,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // Validar formato da data
         try {
             String dataTexto = tf_data_nascimento.getText().trim();
-            if (!dataTexto.matches("\\d{4}-\\d{2}-\\d{2}") && 
-                !dataTexto.matches("\\d{2}/\\d{2}/\\d{4}")) {
+            if (!dataTexto.matches("\\d{4}-\\d{2}-\\d{2}")
+                    && !dataTexto.matches("\\d{2}/\\d{2}/\\d{4}")) {
                 System.out.println("Formato de data inválido. Use DD/MM/YYYY ou YYYY-MM-DD");
                 return false;
             }
@@ -657,8 +732,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         }
 
         // Validar se um atendente foi selecionado
-        if (jComboBoxResponsavel.getSelectedItem() == null || 
-            jComboBoxResponsavel.getSelectedItem().toString().trim().isEmpty()) {
+        if (jComboBoxResponsavel.getSelectedItem() == null
+                || jComboBoxResponsavel.getSelectedItem().toString().trim().isEmpty()) {
             System.out.println("Atendente responsável é obrigatório");
             return false;
         }
@@ -703,7 +778,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         bg_possuio_outro_dependente = new javax.swing.ButtonGroup();
         bg_neeja = new javax.swing.ButtonGroup();
         bg_conversa_assistencia_social = new javax.swing.ButtonGroup();
-        bg_gestacao_no_momvento = new javax.swing.ButtonGroup();
+        bg_gestacao_no_momento = new javax.swing.ButtonGroup();
         bg_tipo_met_anticoncepcional = new javax.swing.ButtonGroup();
         bg_realizou_papanicolau = new javax.swing.ButtonGroup();
         bg_ofertar_continuidade_contraceptivo = new javax.swing.ButtonGroup();
@@ -2101,13 +2176,13 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel61.setText("Gestação no momento");
 
-        bg_gestacao_no_momvento.add(rb_gestacao_no_momvento_sim);
+        bg_gestacao_no_momento.add(rb_gestacao_no_momvento_sim);
         rb_gestacao_no_momvento_sim.setText("Sim");
 
-        bg_gestacao_no_momvento.add(rb_gestacao_no_momvento_nao);
+        bg_gestacao_no_momento.add(rb_gestacao_no_momvento_nao);
         rb_gestacao_no_momvento_nao.setText("Não");
 
-        bg_gestacao_no_momvento.add(rb_gestacao_no_momvento_nao_sabe);
+        bg_gestacao_no_momento.add(rb_gestacao_no_momvento_nao_sabe);
         rb_gestacao_no_momvento_nao_sabe.setText("Não sabe");
 
         jSeparator4.setBackground(new java.awt.Color(153, 153, 153));
@@ -3396,10 +3471,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         try {
             // Validar formulário
             if (!validarFormulario()) {
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                    "Por favor, preencha todos os campos obrigatórios.", 
-                    "Validação", 
-                    javax.swing.JOptionPane.WARNING_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Por favor, preencha todos os campos obrigatórios.",
+                        "Validação",
+                        javax.swing.JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -3407,10 +3482,10 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             Prisioneiro prisioneiro = coletarDadosFormulario();
 
             if (prisioneiro == null) {
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                    "Erro ao coletar dados do formulário. Verifique os dados inseridos.", 
-                    "Erro", 
-                    javax.swing.JOptionPane.ERROR_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        "Erro ao coletar dados do formulário. Verifique os dados inseridos.",
+                        "Erro",
+                        javax.swing.JOptionPane.ERROR_MESSAGE);
                 return;
             }
 
@@ -3437,25 +3512,25 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                     // Criar e inserir o atendimento
                     Atendimento atendimento = new Atendimento();
                     atendimento.setIdPrisioneiro(idPrisioneiro);
-                    
+
                     // Obter ID do atendente selecionado
                     String nomeAtendente = jComboBoxResponsavel.getSelectedItem().toString();
                     int idAtendente = atendenteDao.getIdAtendenteByName(nomeAtendente);
-                    
+
                     if (idAtendente == -1) {
-                        javax.swing.JOptionPane.showMessageDialog(this, 
-                            "Erro: Atendente não encontrado. Selecione um atendente válido.", 
-                            "Erro", 
-                            javax.swing.JOptionPane.ERROR_MESSAGE);
+                        javax.swing.JOptionPane.showMessageDialog(this,
+                                "Erro: Atendente não encontrado. Selecione um atendente válido.",
+                                "Erro",
+                                javax.swing.JOptionPane.ERROR_MESSAGE);
                         return;
                     }
-                    
+
                     atendimento.setIdAtendente(idAtendente);
                     atendimento.setDataHora(new java.sql.Timestamp(System.currentTimeMillis()));
                     atendimento.setDataEntradaUnidade(new java.util.Date());
                     atendimento.setIsTransferencia(rb_transferencia_sim.isSelected());
-                    atendimento.setProcedencia(tf_transferencia.getText().trim().isEmpty() ? 
-                        "Não informado" : tf_transferencia.getText().trim());
+                    atendimento.setProcedencia(tf_transferencia.getText().trim().isEmpty()
+                            ? "Não informado" : tf_transferencia.getText().trim());
 
                     boolean atendimentoSucesso = atendimentoDao.insertAtendimento(atendimento);
 
@@ -3474,24 +3549,24 @@ public class AtendimentoPanel extends javax.swing.JPanel {
             }
 
             if (sucesso) {
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                    mensagem, 
-                    "Sucesso", 
-                    javax.swing.JOptionPane.INFORMATION_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        mensagem,
+                        "Sucesso",
+                        javax.swing.JOptionPane.INFORMATION_MESSAGE);
                 parent.showPanel("buscaPanel");
             } else {
-                javax.swing.JOptionPane.showMessageDialog(this, 
-                    mensagem, 
-                    "Erro", 
-                    javax.swing.JOptionPane.ERROR_MESSAGE);
+                javax.swing.JOptionPane.showMessageDialog(this,
+                        mensagem,
+                        "Erro",
+                        javax.swing.JOptionPane.ERROR_MESSAGE);
             }
-            
+
         } catch (Exception e) {
             e.printStackTrace();
-            javax.swing.JOptionPane.showMessageDialog(this, 
-                "Erro inesperado: " + e.getMessage(), 
-                "Erro", 
-                javax.swing.JOptionPane.ERROR_MESSAGE);
+            javax.swing.JOptionPane.showMessageDialog(this,
+                    "Erro inesperado: " + e.getMessage(),
+                    "Erro",
+                    javax.swing.JOptionPane.ERROR_MESSAGE);
         }
     }//GEN-LAST:event_btn_salvarActionPerformed
 
@@ -3670,7 +3745,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.ButtonGroup bg_estava_acomp_saude_mental_momento_prisao;
     private javax.swing.ButtonGroup bg_exame_prostata;
     private javax.swing.ButtonGroup bg_fam_rec_beneficio;
-    private javax.swing.ButtonGroup bg_gestacao_no_momvento;
+    private javax.swing.ButtonGroup bg_gestacao_no_momento;
     private javax.swing.ButtonGroup bg_hepatite_b;
     private javax.swing.ButtonGroup bg_hipertencao;
     private javax.swing.ButtonGroup bg_historico_prostata_familia;

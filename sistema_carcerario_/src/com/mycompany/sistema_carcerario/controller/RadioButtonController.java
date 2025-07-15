@@ -255,4 +255,15 @@ public class RadioButtonController {
         return texto.trim().replaceAll("\\s+", " ").toLowerCase();
     }
 
+    public void selecionarRadioButtonPorTexto(ButtonGroup grupo, String textoDesejado) {
+        String textoNormalizado = normalizarTexto(textoDesejado);
+
+        Enumeration<AbstractButton> botoes = grupo.getElements();
+        while (botoes.hasMoreElements()) {
+            AbstractButton botao = botoes.nextElement();
+            String textoBotao = normalizarTexto(botao.getText());
+
+            botao.setSelected(textoBotao.equals(textoNormalizado));
+        }
+    }
 }
