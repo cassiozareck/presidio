@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.sql.Timestamp;
+import java.sql.Types;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +43,135 @@ public class AtendimentoDao {
             return false;
         }
     }
+    
+    public void insertAtendimento2(Atendimento atendimento) throws SQLException {
+        String sql = "INSERT INTO atendimento (" +
+                "id_atendente, id_prisioneiro, data_hora, data_entrada_unidade, is_transferencia, procedencia," +
+                "peso, altura, imc, pa, fc, sat, temp," +
+                "tosse, coriza, espirros, febre, calafrios," +
+                "outros_sistemas_respiratorios, data_sintomas," +
+                "apresenta_lesoes, local_lesoes, conduta_lesoes_clinica," +
+                "hiv_1_2_lote, hiv_1_2_validade, hiv_1_2_reativo," +
+                "hiv_2_2_lote, hiv_2_2_validade, hiv_2_2_reativo," +
+                "sifilis_lote, sifilis_validade, sifilis_reativo," +
+                "hepatite_b_lote, hepatite_b_validade, hepatite_b_reativo," +
+                "hepatite_c_lote, hepatite_c_validade, hepatite_c_reativo," +
+                "covid_lote, covid_validade, covid_reativo," +
+                "teste_gravidez, coleta_escarro," +
+                "apresenta_queixas_teste_rapido, queixa_teste_rapido, conduta_teste_rapido, conduta_clinica," +
+                "tem_queixa_odontologica, queixa_odontologica, necessita_dentista, conduta_odontologica," +
+                "encaminhamentos_finais" +
+            ") VALUES (" +
+                "?, ?, ?, ?, ?, ?," +    // ids, datas, flags iniciais
+                "?, ?, ?, ?, ?, ?, ?," + // dados clínicos
+                "?, ?, ?, ?, ?," +       // sintomas binários
+                "?, ?," +                // outros sistemas
+                "?, ?, ?," +             // lesões
+                "?, ?, ?," +             // HIV 1/2
+                "?, ?, ?," +             // HIV 2/2
+                "?, ?, ?," +             // sífilis
+                "?, ?, ?," +             // hepatite B
+                "?, ?, ?," +             // hepatite C
+                "?, ?, ?," +             // COVID
+                "?, ?," +                // gravidez, escarro
+                "?, ?, ?, ?," +          // teste rápido
+                "?, ?, ?, ?," +          // odontologia
+                "?" +                    // encaminhamentos
+            ")";
+
+        try (Connection conn = ConexaoBanco.conectar();
+             PreparedStatement ps = conn.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS)) {
+
+            int i = 1;
+            ps.setInt(i++, atendimento.getIdAtendente());
+            ps.setInt(i++, atendimento.getIdPrisioneiro());
+            ps.setTimestamp(i++, atendimento.getDataHora());
+            ps.setDate(i++, new java.sql.Date(atendimento.getDataEntradaUnidade().getTime()));
+            ps.setBoolean(i++, atendimento.isTransferencia());
+            ps.setString(i++, atendimento.getProcedencia());
+
+            ps.setInt(i++, atendimento.getPeso());
+            ps.setFloat(i++, atendimento.getAltura());
+            ps.setFloat(i++, atendimento.getImc());
+            ps.setString(i++, atendimento.getPa());
+            ps.setFloat(i++, atendimento.getFc());
+            ps.setFloat(i++, atendimento.getSat());
+            ps.setFloat(i++, atendimento.getTemp());
+
+            ps.setBoolean(i++, atendimento.isTosse());
+            ps.setBoolean(i++, atendimento.isCoriza());
+            ps.setBoolean(i++, atendimento.isEspirros());
+            ps.setBoolean(i++, atendimento.isFebre());
+            ps.setBoolean(i++, atendimento.isCalafrios());
+
+            ps.setString(i++, atendimento.getOutrosSistemasRespiratorios());
+            if (atendimento.getDataSintomas() != null) {
+                ps.setDate(i++, new java.sql.Date(atendimento.getDataSintomas().getTime()));
+            } else {
+                ps.setNull(i++, Types.DATE);
+            }
+
+            ps.setBoolean(i++, atendimento.isApresentaLesoes());
+            ps.setString(i++, atendimento.getLocalLesoes());
+            ps.setString(i++, atendimento.getCondutaLesoesClinica());
+
+            // HIV 1/2
+            ps.setString(i++, atendimento.getHiv12Lote());
+            ps.setDate(i++, new java.sql.Date(atendimento.getHiv12Validade().getTime()));
+            ps.setBoolean(i++, Boolean.TRUE.equals(atendimento.getHiv12Reativo()));
+
+            // HIV 2/2
+            ps.setString(i++, atendimento.getHiv22Lote());
+            ps.setDate(i++, new java.sql.Date(atendimento.getHiv22Validade().getTime()));
+            ps.setBoolean(i++, Boolean.TRUE.equals(atendimento.getHiv22Reativo()));
+
+            // Sífilis
+            ps.setString(i++, atendimento.getSifilisLote());
+            ps.setDate(i++, new java.sql.Date(atendimento.getSifilisValidade().getTime()));
+            ps.setBoolean(i++, Boolean.TRUE.equals(atendimento.getSifilisReativo()));
+
+            // Hepatite B
+            ps.setString(i++, atendimento.getHepatiteBLote());
+            ps.setDate(i++, new java.sql.Date(atendimento.getHepatiteBValidade().getTime()));
+            ps.setBoolean(i++, Boolean.TRUE.equals(atendimento.getHepatiteBReativo()));
+
+            // Hepatite C
+            ps.setString(i++, atendimento.getHepatiteCLote());
+            ps.setDate(i++, new java.sql.Date(atendimento.getHepatiteCValidade().getTime()));
+            ps.setBoolean(i++, Boolean.TRUE.equals(atendimento.getHepatiteCReativo()));
+
+            // COVID
+            ps.setString(i++, atendimento.getCovidLote());
+            ps.setDate(i++, new java.sql.Date(atendimento.getCovidValidade().getTime()));
+            ps.setBoolean(i++, Boolean.TRUE.equals(atendimento.getCovidReativo()));
+
+            ps.setBoolean(i++, Boolean.TRUE.equals(atendimento.getTesteGravidez()));
+            ps.setBoolean(i++, atendimento.isColetaEscarro());
+
+            ps.setBoolean(i++, atendimento.isApresentaQueixasTesteRapido());
+            ps.setString(i++, atendimento.getQueixaTesteRapido());
+            ps.setString(i++, atendimento.getCondutaTesteRapido());
+            ps.setString(i++, atendimento.getCondutaClinica());
+
+            ps.setBoolean(i++, atendimento.isTemQueixaOdontologica());
+            ps.setString(i++, atendimento.getQueixaOdontologica());
+            ps.setBoolean(i++, atendimento.isNecessitaDentista());
+            ps.setString(i++, atendimento.getCondutaOdontologica());
+
+            ps.setString(i++, atendimento.getEncaminhamentosFinais());
+
+            // Executa
+            ps.executeUpdate();
+
+            // Recupera id gerado (opcional)
+            try (ResultSet rs = ps.getGeneratedKeys()) {
+                if (rs.next()) {
+                    atendimento.setId(rs.getInt(1));
+                }
+            }
+        }
+    }
+    
     
     public List<Atendimento> listarAtendimentosPorPrisioneiro(int idPrisioneiro) {
         List<Atendimento> atendimentos = new ArrayList<>();

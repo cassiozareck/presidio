@@ -115,12 +115,35 @@ public Prisioneiro buscarPrisioneiroPorId(int id) {
             }
         }
         
+      
     } catch (SQLException e) {
         e.printStackTrace();
         System.out.println("Erro ao buscar prisioneiro por ID");
     }
     
     return null;
+}
+
+public int getIdByNomePrisioneiro(String nome) {
+    String sql = "SELECT id FROM prisioneiro WHERE nome_completo = ?";
+    
+    try (Connection conexao = ConexaoBanco.conectar();
+         PreparedStatement ps = conexao.prepareStatement(sql)) {
+        
+        ps.setString(1, nome);
+        
+        try (ResultSet rs = ps.executeQuery()) {
+            if (rs.next()) {
+                return rs.getInt("id");                
+            }
+        }
+          
+    } catch (SQLException e) {
+        e.printStackTrace();
+        System.out.println("Erro ao buscar id do prisioneiro por Nome");
+    }
+    
+    return -1;
 }
 
 public boolean updatePrisioneiro(Prisioneiro prisioneiro) {

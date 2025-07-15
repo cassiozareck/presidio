@@ -14,6 +14,7 @@ import com.mycompany.sistema_carcerario.model.Atendimento;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import java.awt.event.ActionEvent;
 import java.sql.Date;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -76,6 +77,8 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     public void carregarAtendimento (int idAtendimento){
         Atendimento atendimentoAtual = atendimentoDao.buscarAtendimentoPorId(idAtendimento);
         
+        setarTodosCamposComoImutaveis(atendimentoAtual);
+        
         if (atendimentoAtual == null) {
             return;
         }
@@ -95,7 +98,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         tf_fc.setText(String.valueOf(atendimentoAtual.getFc()));
         tf_sat.setText(String.valueOf(atendimentoAtual.getSat()));
         tf_temp.setText(String.valueOf(atendimentoAtual.getTemp()));
-        
+               
         tf_quais_queixas.setText(atendimentoAtual.getQueixaTesteRapido());
         tf_quais_queixas_odontologicas.setText(atendimentoAtual.getQueixaOdontologica());
         //Apresenta sintomas resporatórios?
@@ -141,6 +144,11 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         tf_encaminhamentos_finais.setText(atendimentoAtual.getEncaminhamentosFinais());
         
         
+    }
+    
+    //Fazer
+    private void setarTodosCamposComoImutaveis(Atendimento atendimentoAtual){
+        tf_temp.setEditable(false);
     }
     
     private String preencherDatasDeValidade(java.util.Date data){
@@ -207,6 +215,220 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
                .format(DateTimeFormatter.ofPattern("dd/MM/yyyy"));
     }
     
+    private Atendimento coletarDatosDoFormulario(Atendimento atendimento){      
+        atendimento.setIdPrisioneiro(prisioneiroDao.getIdByNomePrisioneiro(jComboBoxDetento.getSelectedItem().toString()));
+        atendimento.setIdAtendente(atendenteDao.getIdAtendenteByName(jComboBoxResponsavel.getSelectedItem().toString()));
+        
+        atendimento.setDataHora(new java.sql.Timestamp(System.currentTimeMillis()));
+        atendimento.setDataEntradaUnidade(new java.sql.Timestamp(System.currentTimeMillis()));
+
+        if(rb_transferencia_sim.isSelected()){
+            atendimento.setIsTransferencia(true);
+        } else if (rb_transferencia_nao.isSelected()){
+            atendimento.setIsTransferencia(false);
+            atendimento.setProcedencia("Sem transfência");
+        }
+    
+        atendimento.setPeso(Integer.parseInt(tf_peso.getText()));
+        atendimento.setAltura(Float.parseFloat(tf_altura.getText()));
+        atendimento.setImc(Float.parseFloat(tf_imc.getText()));
+        
+        atendimento.setPa(tf_pa.getText());
+        atendimento.setFc(Float.parseFloat(tf_fc.getText()));
+        atendimento.setSat(Float.parseFloat(tf_sat.getText()));
+        atendimento.setTemp(Float.parseFloat(tf_temp.getText()));
+        
+        if(rb_tosse_sim.isSelected()){
+            atendimento.setTosse(true);
+        } else if (rb_tosse_nao.isSelected()){
+            atendimento.setTosse(false);
+        }
+                    
+        if(rb_coriza_sim.isSelected()){
+            atendimento.setCoriza(true);
+        } else if (rb_coriza_nao.isSelected()){
+            atendimento.setCoriza(false);
+        }
+        
+        if(rb_espirros_sim.isSelected()){
+            atendimento.setEspirros(true);
+        } else if (rb_espirros_nao.isSelected()){
+            atendimento.setEspirros(false);
+        }
+        
+        if(rb_febre_sim.isSelected()){
+            atendimento.setFebre(true);
+        } else if (rb_febre_nao.isSelected()){
+            atendimento.setFebre(false);
+        }
+        
+        if(rb_calafrios_sim.isSelected()){
+            atendimento.setCalafrios(true);
+        } else if (rb_calafrios_nao.isSelected()){
+            atendimento.setCalafrios(false);
+        }
+
+        atendimento.setOutrosSistemasRespiratorios(
+            tf_atendimento_clinico_outros.getText() != null ? tf_atendimento_clinico_outros.getText() : ""
+        );
+        
+        atendimento.setDataSintomas(converterStringParaDate(tf_inicio_simtomas.getText()));
+        
+        if(rb_apresenta_lesoes_sim.isSelected()){
+            atendimento.setApresentaLesoes(true);
+        } else if (rb_apresenta_lesoes_nao.isSelected()){
+            atendimento.setApresentaLesoes(false);
+        }
+        
+        atendimento.setLocalLesoes(
+            tf_lesoes_locais.getText() != null ? tf_lesoes_locais.getText() : "Nenhum"
+        );
+
+        atendimento.setCondutaLesoesClinica(
+            ta_atendimento_clinico_conduta.getText() != null ? ta_atendimento_clinico_conduta.getText() : ""
+        );
+        
+        atendimento.setCondutaClinica(
+            ta_atendimento_clinico_conduta.getText() != null ? ta_atendimento_clinico_conduta.getText() : ""
+        );
+        
+        atendimento.setHiv12Lote(jt_lote_hiv1_2.getText());
+        atendimento.setHiv22Lote(jt_lote_hiv2_2.getText());
+        atendimento.setSifilisLote(jt_lote_sifilis.getText());
+        atendimento.setHepatiteBLote(jt_lote_hepatite_b.getText());
+        atendimento.setHepatiteCLote(jt_lote_hepatite_c.getText());
+        atendimento.setCovidLote(jt_lote_covid.getText());
+        
+        atendimento.setHiv12Validade(converterStringParaDate(tf_validade_hiv1_2.getText()));
+        atendimento.setHiv22Validade(converterStringParaDate(tf_validade_hiv2_2.getText()));
+        atendimento.setSifilisValidade(converterStringParaDate(tf_validade_sifilis.getText()));
+        atendimento.setHepatiteBValidade(converterStringParaDate(tf_validade_hepatite_b.getText()));
+        atendimento.setHepatiteCValidade(converterStringParaDate(tf_validade_hepatite_c.getText()));
+        atendimento.setCovidValidade(converterStringParaDate(tf_validade_covid.getText()));
+        
+        if(rb_hiv1_2_reativo.isSelected()){
+            atendimento.setHiv12Reativo(true);
+        } else if (rb_hiv1_2_nao_reativo.isSelected()){
+            atendimento.setHiv12Reativo(false);
+        } else if(rb_hiv1_2_nao_realizado.isSelected()){
+            atendimento.setHiv12Reativo(null);
+        }
+        
+        if(rb_hiv2_2_reativo.isSelected()){
+            atendimento.setHiv22Reativo(true);
+        } else if (rb_hiv2_2_nao_reativo.isSelected()){
+            atendimento.setHiv22Reativo(false);
+        } else if(rb_hiv2_2_nao_realizado.isSelected()){
+            atendimento.setHiv22Reativo(null);
+        }      
+                
+        if(rb_sifilis_reativo.isSelected()){
+            atendimento.setSifilisReativo(true);
+        } else if (rb_sifilis_nao_reativo.isSelected()){
+            atendimento.setSifilisReativo(false);
+        } else if(rb_sifilis_nao_realizado.isSelected()){
+            atendimento.setSifilisReativo(null);
+        }
+                
+        if(rb_hepatite_b_reativo.isSelected()){
+            atendimento.setHepatiteBReativo(true);
+        } else if (rb_hepatite_b_nao_reativo.isSelected()){
+            atendimento.setHepatiteBReativo(false);
+        } else if(rb_hepatite_b_nao_realizado.isSelected()){
+            atendimento.setHepatiteBReativo(null);
+        }
+                
+        if(rb_hepatite_c_reativo.isSelected()){
+            atendimento.setHepatiteCReativo(true);
+        } else if (rb_hepatite_c_nao_reativo.isSelected()){
+            atendimento.setHepatiteCReativo(false);
+        } else if(rb_hepatite_c_nao_realizado.isSelected()){
+            atendimento.setHepatiteCReativo(null);
+        }
+        
+                
+        if(rb_covid_reativo.isSelected()){
+            atendimento.setCovidReativo(true);
+        } else if (rb_covid_nao_reativo.isSelected()){
+            atendimento.setCovidReativo(false);
+        } else if(rb_covid_nao_realizado.isSelected()){
+            atendimento.setCovidReativo(null);
+        }     
+        
+        //Teste de gravidez
+        if(rb_gravidez_positivo.isSelected()){
+            atendimento.setTesteGravidez(true);
+        } else if (rb_gravidez_negativo.isSelected()){
+            atendimento.setTesteGravidez(false);
+        } else if(rb_gravidez_nao_realizado.isSelected()){
+            atendimento.setTesteGravidez(null);
+        } 
+        
+        //coleta de escarro
+        if(rb_coleta_escarro_sim.isSelected()){
+            atendimento.setColetaEscarro(true);
+        } else if (rb_coleta_escarro_nao.isSelected()){
+            atendimento.setColetaEscarro(false);
+        }
+        
+        //apresenta alguma queixa teste rapido----------------------------------
+        if(rb_queixa_sim.isSelected()){
+            atendimento.setApresentaQueixasTesteRapido(true);
+            atendimento.setQueixaTesteRapido(tf_quais_queixas.getText());
+        } else if (rb_queixa_nao.isSelected()){
+            atendimento.setApresentaQueixasTesteRapido(false);
+            atendimento.setQueixaTesteRapido("Nenhuma");
+        }
+        
+        
+        atendimento.setCondutaTesteRapido(
+            tf_conduta_testes_rapidos.getText() != null ? tf_quais_queixas_odontologicas.getText() : "Sem queixas odontológicas"
+        );
+        
+        //apresenta alguma queixa odontologica----------------------------------
+        if(rb_queixa_odontologica_sim.isSelected()){
+            atendimento.setTemQueixaOdontologica(true);
+        } else if (rb_queixa_odontologica_nao.isSelected()){
+            atendimento.setTemQueixaOdontologica(false);
+        }
+        
+        atendimento.setQueixaOdontologica(
+            tf_quais_queixas_odontologicas.getText() != null ? tf_quais_queixas_odontologicas.getText() : "Sem queixas odontológicas"
+        );
+        
+        if(rb_necessita_dentista_sim.isSelected()){
+            atendimento.setNecessitaDentista(true);
+        } else if (rb_necessita_dentista_nao.isSelected()){
+            atendimento.setNecessitaDentista(false);
+        }
+        
+        
+        
+        atendimento.setCondutaOdontologica(
+            tf_conduta_odontologica.getText() != null ? tf_conduta_odontologica.getText() : "Sem queixas odontológicas"
+        );
+
+        atendimento.setEncaminhamentosFinais(
+            tf_encaminhamentos_finais.getText() != null ? tf_encaminhamentos_finais.getText() : "Sem encaminhamentos finais"
+        );
+        
+        return atendimento;
+    }  
+    
+    
+    public static java.sql.Date converterStringParaDate(String dataStr) {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        sdf.setLenient(false); // Valida datas como 32/01/2025 como inválidas
+
+        try {
+            java.util.Date dataUtil = sdf.parse(dataStr);
+            return new java.sql.Date(dataUtil.getTime());
+        } catch (ParseException e) {
+            System.out.println("Data inválida: " + dataStr);
+            return null; // ou lançar exceção, se preferir
+        }
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -1504,6 +1726,19 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     }//GEN-LAST:event_rb_covid_reativoActionPerformed
 
     private void bt_salvarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        Atendimento atendimento = new Atendimento();
+        atendimento = coletarDatosDoFormulario(atendimento);
+        
+        while(true){
+            try{
+                atendimentoDao.insertAtendimento2(atendimento);
+                break;
+            }catch(Exception e){
+                System.out.println("Erro ao salvar atendimento:");
+                System.out.println(e);
+            }    
+        }
+
         parent.showPanel("buscaPanel");
     }
     
