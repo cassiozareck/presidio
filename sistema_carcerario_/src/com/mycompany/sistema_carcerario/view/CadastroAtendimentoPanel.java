@@ -9,6 +9,7 @@ import DAL.PrisioneiroDao;
 import com.mycompany.sistema_carcerario.controller.RadioButtonController;
 import com.mycompany.sistema_carcerario.model.Atendente;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
+import java.awt.event.ActionEvent;
 import java.util.ArrayList;
 
 /**
@@ -1347,6 +1348,10 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_rb_covid_reativoActionPerformed
 
+    private void bt_salvarActionPerformed(java.awt.event.ActionEvent evt) {                                            
+        parent.showPanel("buscaPanel");
+    }
+    
     private void bt_cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bt_cancelarActionPerformed
         parent.showPanel("buscaPanel");
     }//GEN-LAST:event_bt_cancelarActionPerformed
