@@ -5,10 +5,14 @@
 package com.mycompany.sistema_carcerario.view;
 
 import DAL.AtendenteDao;
+import DAL.AtendimentoDao;
 import DAL.PrisioneiroDao;
 import com.mycompany.sistema_carcerario.controller.RadioButtonController;
+import com.mycompany.sistema_carcerario.model.Atendimento;
 import com.mycompany.sistema_carcerario.model.Prisioneiro;
 import java.util.ArrayList;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,6 +22,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
     final MainFrame parent;
     private final AtendenteDao atendenteDao = new AtendenteDao();
     private final PrisioneiroDao prisioneiroDao = new PrisioneiroDao();
+    private final AtendimentoDao atendimentoDao = new AtendimentoDao();
     
     /**
      * Creates new form ConsultarAtendimentoPanel
@@ -26,6 +31,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
         initComponents();
         this.parent = parent;
         setComboBoxDetento();
+        populateTableAtendimentos("");
     }
 
     // Popula o combobox jComboBoxDetento com nome dos detentos cadastrados.
@@ -35,7 +41,26 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
         for(Prisioneiro prisioneiro : prisioneiros){
             jComboBoxDetento.addItem(prisioneiro.getNomeCompleto());
         }
-    }   
+    }
+
+    private void populateTableAtendimentos(String filter) {
+    List<Atendimento> atendimentoList = atendimentoDao.listarAtendimentosPorPrisioneiro(1);
+
+    String nome = getIdPrisioneiroPeloNome(jComboBoxDetento.getSelectedItem().toString());
+    
+    String[] headers = {"Data", "Nome do atendente"};
+    DefaultTableModel model = new DefaultTableModel(headers, 0); 
+
+    for (Atendimento a : atendimentoList) {
+        Object[] row = {
+            a.getDataHora(),
+        };
+        model.addRow(row);
+    }
+
+    tabela_atendimentos.setModel(model);
+    
+    }
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -51,7 +76,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jComboBoxDetento = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tabela_atendimentos = new javax.swing.JTable();
         jPanel5 = new javax.swing.JPanel();
         jLabel65 = new javax.swing.JLabel();
         jButton2 = new javax.swing.JButton();
@@ -87,7 +112,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tabela_atendimentos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -98,7 +123,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tabela_atendimentos);
 
         jPanel5.setBackground(new java.awt.Color(255, 255, 204));
 
@@ -184,6 +209,6 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable tabela_atendimentos;
     // End of variables declaration//GEN-END:variables
 }
