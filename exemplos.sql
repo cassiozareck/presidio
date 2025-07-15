@@ -1,5 +1,3 @@
--- Exemplos de dados para o sistema carcerário
-
 -- Inserir atendentes
 INSERT INTO atendente (nome) VALUES
 ('Dra. Amanda Ribeiro Silva'),
@@ -158,7 +156,7 @@ INSERT INTO atendimento (
   sifilis_lote, sifilis_validade, sifilis_reativo, hepatite_b_lote, hepatite_b_validade, hepatite_b_reativo,
   hepatite_c_lote, hepatite_c_validade, hepatite_c_reativo, covid_lote, covid_validade, covid_reativo,
   teste_gravidez, coleta_escarro, apresenta_queixas_teste_rapido, queixa_teste_rapido, conduta_teste_rapido, conduta_clinica,
-  tem_queixa_odontologica, queixa_odontologica, necessita_dentista, conduta_odontologica
+  tem_queixa_odontologica, queixa_odontologica, necessita_dentista, conduta_odontologica, encaminhamentos_finais
 ) VALUES
 -- Atendimento 1: André Luiz
 (1, 1, '2025-01-24 08:45:00', '2025-01-23', false, 'Delegacia de Santo Amaro',
@@ -169,7 +167,7 @@ INSERT INTO atendimento (
   'SIF001', '2025-12-31', false, 'HEPB001', '2025-12-31', false,
   'HEPC001', '2025-12-31', false, 'COVID001', '2025-12-31', false,
   NULL, false, false, '', '', 'Avaliação clínica normal',
-  false, '', false, 'Sem queixas odontológicas'),
+  false, '', false, 'Sem queixas odontológicas', 'Sem encaminhamentos finais'),
 
 -- Atendimento 2: Bruna Karla
 (2, 2, '2025-01-24 10:30:00', '2025-01-22', true, 'Presídio Feminino de Benfica',
@@ -180,7 +178,7 @@ INSERT INTO atendimento (
   'SIF002', '2025-12-31', false, 'HEPB002', '2025-12-31', false,
   'HEPC002', '2025-12-31', false, 'COVID002', '2025-12-31', false,
   false, false, false, '', '', 'Avaliação clínica normal, encaminhamento para psiquiatra',
-  false, '', false, 'Sem queixas odontológicas'),
+  false, '', false, 'Sem queixas odontológicas', 'Sem encaminhamentos finais'),
 
 -- Atendimento 3: João Marcos
 (3, 3, '2025-01-24 13:15:00', '2025-01-20', false, 'Comarca de Uberlândia',
@@ -191,7 +189,7 @@ INSERT INTO atendimento (
   'SIF003', '2025-12-31', false, 'HEPB003', '2025-12-31', false,
   'HEPC003', '2025-12-31', false, 'COVID003', '2025-12-31', false,
   NULL, false, false, '', '', 'Avaliação clínica normal, encaminhamento para reabilitação',
-  false, '', false, 'Sem queixas odontológicas'),
+  false, '', false, 'Sem queixas odontológicas', 'Sem encaminhamentos finais'),
 
 -- Atendimento 4: Maria Fernanda
 (4, 4, '2025-01-24 14:20:00', '2025-01-21', false, 'Delegacia Central',
@@ -202,7 +200,7 @@ INSERT INTO atendimento (
   'SIF004', '2025-12-31', false, 'HEPB004', '2025-12-31', false,
   'HEPC004', '2025-12-31', false, 'COVID004', '2025-12-31', false,
   false, false, false, '', '', 'Avaliação clínica normal',
-  false, '', false, 'Sem queixas odontológicas'),
+  false, '', false, 'Sem queixas odontológicas', 'Sem encaminhamentos finais'),
 
 -- Atendimento 5: Pedro Henrique
 (5, 5, '2025-01-24 16:00:00', '2025-01-20', false, 'Delegacia Norte',
@@ -213,4 +211,28 @@ INSERT INTO atendimento (
   'SIF005', '2025-12-31', false, 'HEPB005', '2025-12-31', false,
   'HEPC005', '2025-12-31', false, 'COVID005', '2025-12-31', false,
   NULL, false, false, '', '', 'Avaliação clínica normal',
-  false, '', false, 'Sem queixas odontológicas');
+  false, '', false, 'Sem queixas odontológicas', 'Sem encaminhamentos finais');
+  
+  -- Segundo atendimento
+  -- Atendimento 2: André Luiz
+-- Inserir atendimentos
+INSERT INTO atendimento (
+  id_atendente, id_prisioneiro, data_hora, data_entrada_unidade, is_transferencia, procedencia,
+  peso, altura, imc, pa, fc, sat, temp,
+  tosse, coriza, espirros, febre, calafrios, outros_sistemas_respiratorios, data_sintomas,
+  apresenta_lesoes, local_lesoes, conduta_lesoes_clinica,
+  hiv_1_2_lote, hiv_1_2_validade, hiv_1_2_reativo, hiv_2_2_lote, hiv_2_2_validade, hiv_2_2_reativo,
+  sifilis_lote, sifilis_validade, sifilis_reativo, hepatite_b_lote, hepatite_b_validade, hepatite_b_reativo,
+  hepatite_c_lote, hepatite_c_validade, hepatite_c_reativo, covid_lote, covid_validade, covid_reativo,
+  teste_gravidez, coleta_escarro, apresenta_queixas_teste_rapido, queixa_teste_rapido, conduta_teste_rapido, conduta_clinica,
+  tem_queixa_odontologica, queixa_odontologica, necessita_dentista, conduta_odontologica, encaminhamentos_finais
+) VALUES
+(1, 1, '2025-08-24 10:45:00', '2025-08-24 ', false, 'Delegacia de Santo Amaro',
+ 75, 1.75, 24.5, '120/80', 72, 98, 36.5,
+   false, false, false, false, false, '', NULL,
+  false, 'Nenhum', 'Sem lesões',
+  'HIV001', '2025-12-31', false, 'HIV002', '2025-05-15', false,
+  'SIF001', '2025-12-31', false, 'HEPB001', '2025-05-31', false,
+  'HEPC001', '2025-12-31', false, 'COVID001', '2025-05-31', false,
+  NULL, false, false, '', '', 'Avaliação clínica normal',
+  false, '', false, 'Sem queixas odontológicas', 'Sem encaminhamentos finais');

@@ -237,6 +237,7 @@ create table atendimento (
   queixa_odontologica VARCHAR(255) NOT NULL,
   necessita_dentista BOOL NOT NULL,
   conduta_odontologica VARCHAR(255) NOT NULL,
+  encaminhamentos_finais VARCHAR(255) NOT NULL,
 
   constraint id_atendente_fk foreign key (id_atendente) references atendente(id),
   constraint id_prisioneiro_fk foreign key (id_prisioneiro) references prisioneiro(id)
