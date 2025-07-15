@@ -72,6 +72,7 @@ public class PrisioneiroDao {
                 p.setNacionalidade(rs.getString("nacionalidade"));
                 p.setEstadoCivil(rs.getString("estado_civil"));
                 p.setEscolaridade(rs.getString("escolaridade"));
+                p.setIdade(rs.getInt("idade"));
 
                 prisioneiros.add(p);
             }
