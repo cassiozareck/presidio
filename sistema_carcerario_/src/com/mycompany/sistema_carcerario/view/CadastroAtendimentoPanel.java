@@ -649,6 +649,11 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         jScrollPane4.setViewportView(tf_encaminhamentos_finais);
 
         bt_salvar.setText("Salvar");
+        bt_salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bt_salvarActionPerformed(evt);
+            }
+        });
 
         bt_cancelar.setText("Cancelar");
         bt_cancelar.addActionListener(new java.awt.event.ActionListener() {

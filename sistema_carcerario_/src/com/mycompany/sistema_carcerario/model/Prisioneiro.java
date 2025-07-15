@@ -26,9 +26,9 @@ public class Prisioneiro {
     private int quantosDependentes;
     private boolean ofertarNeeja;
     private boolean ofertarAssistenciaSocial;
-    private int possuiDeficiencia;
+    private boolean possuiDeficiencia;
     private String qualDeficiencia;
-    private int possuiAlergias;
+    private boolean possuiAlergias;
     private String quaisAlergias;
     private boolean realizouCirurgias;
     private String quaisCirurgias;
@@ -59,12 +59,12 @@ public class Prisioneiro {
     private boolean naoSabeResponderDoencasPele;
     private String observacaoHistoricoDoencasPele;
 
-    private boolean medicamentosContinuos;
+    private String medicamentosContinuos;
     private String quaisMedicamentos;
     private String tipoSanguineo;
 
     // SAÚDE MENTAL
-    private boolean vinculoCaps;
+    private String vinculoCaps;
     private String nomeMunicioCaps;
     private boolean ansiedade;
     private boolean depressao;
@@ -73,7 +73,7 @@ public class Prisioneiro {
     private boolean autismo;
     private String outraSaudeMental;
     private boolean naoSabeResponderSaudeMental;
-    private int medicamentoControlado;
+    private String medicamentoControlado;
     private String qualMedicamentoControlado;
     private boolean acompanhamentoMentalMomentoPrisao;
     private String motivoAcompanhamentoMental;
@@ -97,10 +97,10 @@ public class Prisioneiro {
     private boolean encaminharGrupoApoio;
 
     // VACINAÇÃO
-    private int vacinaCovid;
-    private int vacinaInfluenza;
-    private int vacinaTetano;
-    private int vacinaHepatite;
+    private boolean vacinaCovid;
+    private boolean vacinaInfluenza;
+    private boolean vacinaTetano;
+    private boolean vacinaHepatite;
     private boolean ofertarVacinas;
     private boolean ofertarVacinaFebreAmarela;
     private boolean ofertarVacinaHepatiteB;
@@ -289,11 +289,11 @@ public class Prisioneiro {
         this.ofertarAssistenciaSocial = ofertarAssistenciaSocial;
     }
 
-    public int getPossuiDeficiencia() {
+    public boolean isPossuiDeficiencia() {
         return possuiDeficiencia;
     }
 
-    public void setPossuiDeficiencia(int possuiDeficiencia) {
+    public void setPossuiDeficiencia(boolean possuiDeficiencia) {
         this.possuiDeficiencia = possuiDeficiencia;
     }
 
@@ -305,11 +305,11 @@ public class Prisioneiro {
         this.qualDeficiencia = qualDeficiencia;
     }
 
-    public int getPossuiAlergias() {
+    public boolean isPossuiAlergias() {
         return possuiAlergias;
     }
 
-    public void setPossuiAlergias(int possuiAlergias) {
+    public void setPossuiAlergias(boolean possuiAlergias) {
         this.possuiAlergias = possuiAlergias;
     }
 
@@ -497,11 +497,11 @@ public class Prisioneiro {
         this.observacaoHistoricoDoencasPele = observacaoHistoricoDoencasPele;
     }
 
-    public boolean isMedicamentosContinuos() {
+    public String getMedicamentosContinuos() {
         return medicamentosContinuos;
     }
 
-    public void setMedicamentosContinuos(boolean medicamentosContinuos) {
+    public void setMedicamentosContinuos(String medicamentosContinuos) {
         this.medicamentosContinuos = medicamentosContinuos;
     }
 
@@ -521,11 +521,11 @@ public class Prisioneiro {
         this.tipoSanguineo = tipoSanguineo;
     }
 
-    public boolean isVinculoCaps() {
+    public String getVinculoCaps() {
         return vinculoCaps;
     }
 
-    public void setVinculoCaps(boolean vinculoCaps) {
+    public void setVinculoCaps(String vinculoCaps) {
         this.vinculoCaps = vinculoCaps;
     }
 
@@ -593,11 +593,11 @@ public class Prisioneiro {
         this.naoSabeResponderSaudeMental = naoSabeResponderSaudeMental;
     }
 
-    public int getMedicamentoControlado() {
+    public String getMedicamentoControlado() {
         return medicamentoControlado;
     }
 
-    public void setMedicamentoControlado(int medicamentoControlado) {
+    public void setMedicamentoControlado(String medicamentoControlado) {
         this.medicamentoControlado = medicamentoControlado;
     }
 
@@ -753,35 +753,35 @@ public class Prisioneiro {
         this.encaminharGrupoApoio = encaminharGrupoApoio;
     }
 
-    public int getVacinaCovid() {
+    public boolean isVacinaCovid() {
         return vacinaCovid;
     }
 
-    public void setVacinaCovid(int vacinaCovid) {
+    public void setVacinaCovid(boolean vacinaCovid) {
         this.vacinaCovid = vacinaCovid;
     }
 
-    public int getVacinaInfluenza() {
+    public boolean isVacinaInfluenza() {
         return vacinaInfluenza;
     }
 
-    public void setVacinaInfluenza(int vacinaInfluenza) {
+    public void setVacinaInfluenza(boolean vacinaInfluenza) {
         this.vacinaInfluenza = vacinaInfluenza;
     }
 
-    public int getVacinaTetano() {
+    public boolean isVacinaTetano() {
         return vacinaTetano;
     }
 
-    public void setVacinaTetano(int vacinaTetano) {
+    public void setVacinaTetano(boolean vacinaTetano) {
         this.vacinaTetano = vacinaTetano;
     }
 
-    public int getVacinaHepatite() {
+    public boolean isVacinaHepatite() {
         return vacinaHepatite;
     }
 
-    public void setVacinaHepatite(int vacinaHepatite) {
+    public void setVacinaHepatite(boolean vacinaHepatite) {
         this.vacinaHepatite = vacinaHepatite;
     }
 
