@@ -78,8 +78,6 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
     public void carregarAtendimento (int idAtendimento){
         Atendimento atendimentoAtual = atendimentoDao.buscarAtendimentoPorId(idAtendimento);
         
-        setarTodosCamposComoImutaveis(atendimentoAtual);
-        
         if (atendimentoAtual == null) {
             return;
         }
@@ -146,12 +144,7 @@ public class CadastroAtendimentoPanel extends javax.swing.JPanel {
         
         
     }
-    
-    //Fazer
-    private void setarTodosCamposComoImutaveis(Atendimento atendimentoAtual){
-        tf_temp.setEditable(false);
-    }
-    
+        
     private String preencherDatasDeValidade(java.util.Date data){
         SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy"); // ou "yyyy-MM-dd"
     

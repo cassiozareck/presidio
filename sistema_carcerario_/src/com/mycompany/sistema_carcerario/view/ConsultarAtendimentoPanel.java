@@ -165,7 +165,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
         nome_detento.setText("Nome do detento");
 
         jButton_ver_atendimento.setFont(new java.awt.Font("Liberation Sans", 0, 18)); // NOI18N
-        jButton_ver_atendimento.setText("Ver tendimento");
+        jButton_ver_atendimento.setText("Ver atendimento");
         jButton_ver_atendimento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton_ver_atendimentoActionPerformed(evt);
