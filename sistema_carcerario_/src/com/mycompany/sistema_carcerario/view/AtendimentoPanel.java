@@ -162,7 +162,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         
         carregarDadosRadioButtons(prisioneiroAtual);
         carregarDadosTextField(prisioneiroAtual);
-        
+        carregarDadosCheckBox(prisioneiroAtual);        
     }
     
     private void carregarDadosRadioButtons(Prisioneiro prisioneiro) {
@@ -177,8 +177,14 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         
         // Condições de saúde
         rbController.selecionarRadioButtonSimNaoNSR( bg_possui_deficiencia ,prisioneiro.isPossuiDeficiencia());
+        rbController.selecionarRadioButtonSimNaoNSR( bg_possui_intolerancia, prisioneiro.isPossuiAlergias());
+        rbController.selecionarRadioButtonPorValorSimNao( bg_realizou_cirurgia ,prisioneiro.isRealizouCirurgias());
         
+        // histórico doenças infecciosas
+        rbController.selecionarRadioButtonPorValorSimNao( bg_possui_denca_de_pele ,prisioneiro.isDoencaPele());
+        //rbController.selecionarRadioButtonPorValorSimNao( bg_med_continuo ,prisioneiro.ismed);
         
+        rb_tipo_sangue_ap
         //rbController.selecionarRadioButtonPorValorSimNao( bg_ ,prisioneiro.);
         
     }
@@ -190,9 +196,40 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         //tf_idade_filhos.setText(prisioneiroAtual.get
         
         tf_possui_outro_dependente_qts.setText(String.valueOf(prisioneiro.getQuantosDependentes()));
-        System.out.println(prisioneiro.getBeneficioEspecificado());
-                
+        
+        tf_fam_rec_beneficio_quais.setText(prisioneiro.getBeneficioEspecificado());
+        tf_possui_intolerancia_quais.setText(prisioneiro.getQuaisAlergias());
+        tf_realizou_cirurgia_quais.setText(prisioneiro.getQuaisCirurgias());
+        
+        // Condições crônicas
+        tf_cond_croni_outra.setText(prisioneiro.getOutrasDoencasCronicas());
+        tf_cond_croni_quais.setText(prisioneiro.getObservacaoCondicoesCronicas());
+        
+        // histórico doenças infecciosas
+        tf_hist_doenc_outra.setText(prisioneiro.getOutrasDoencasInfecciosas());
+        tf_hist_doenc_obs.setText(prisioneiro.getObservacaoHistoricoDoencasInfecciosas());
+        tf_doenca_pele_quais.setText(prisioneiro.getQuaisDoencasPele());
+        tf_med_continuo.setText(prisioneiro.getQuaisMedicamentos());
     }
+    
+    private void carregarDadosCheckBox(Prisioneiro prisioneiro) {
+        // Condições crônicas
+        cb_cond_cron_possui_hipertensao.setSelected(prisioneiro.isHipertencao());
+        cb_cond_cron_possui_diabetes.setSelected(prisioneiro.isDiabetes());
+        cb_cond_cron_possui_HIV.setSelected(prisioneiro.isHiv());
+        cb_cond_cron_possui_autoimune.setSelected(prisioneiro.isAutoimune());
+        cb_cond_cron_nao_sabe_responder.setSelected(prisioneiro.isNaoSabeResponderCondicoesCronicas());
+                
+        // histórico doenças infecciosas
+        cb_hist_doencas_infec_sifilis.setSelected(prisioneiro.isSifilis());
+        cb_hist_doencas_infec_hpv.setSelected(prisioneiro.isHpv());
+        cb_hist_doencas_infec_tuberculose.setSelected(prisioneiro.isTuberculose());
+        cb_hist_doencas_infec_hepatite_b.setSelected(prisioneiro.isHepatiteB());
+        cb_hist_doencas_infec_hepatite_c.setSelected(prisioneiro.isHepatiteC());
+        cb_hist_doencas_infec_nao_sabe_responder.setSelected(prisioneiro.isNaoSabeResponderDoencasInfecciosas());
+    }
+    
+    
 
     private void setComboBoxResponsavel() {
         jComboBoxResponsavel.removeAllItems();
@@ -750,20 +787,20 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         rb_realizou_cirurgia_nao = new javax.swing.JRadioButton();
         rb_realizou_cirurgia_sim = new javax.swing.JRadioButton();
         jLabel23 = new javax.swing.JLabel();
-        tf_possui_intolerancia_quais2 = new javax.swing.JTextField();
+        tf_cond_croni_quais = new javax.swing.JTextField();
         jLabel24 = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jLabel26 = new javax.swing.JLabel();
         rb_doenca_pele_sim = new javax.swing.JRadioButton();
         rb_doenca_pele_nao = new javax.swing.JRadioButton();
         jLabel34 = new javax.swing.JLabel();
-        tf_possui_intolerancia_quais7 = new javax.swing.JTextField();
+        tf_cond_croni_outra = new javax.swing.JTextField();
         jLabel35 = new javax.swing.JLabel();
         tf_doenca_pele_quais = new javax.swing.JTextField();
         jLabel36 = new javax.swing.JLabel();
-        tf_possui_intolerancia_quais10 = new javax.swing.JTextField();
+        tf_hist_doenc_obs = new javax.swing.JTextField();
         jLabel38 = new javax.swing.JLabel();
-        tf_possui_intolerancia_quais11 = new javax.swing.JTextField();
+        tf_hist_doenc_outra = new javax.swing.JTextField();
         jLabel39 = new javax.swing.JLabel();
         jLabel33 = new javax.swing.JLabel();
         jLabel45 = new javax.swing.JLabel();
@@ -1373,9 +1410,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel23.setText("Realizou cirurgias:");
 
-        tf_possui_intolerancia_quais2.addActionListener(new java.awt.event.ActionListener() {
+        tf_cond_croni_quais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_possui_intolerancia_quais2ActionPerformed(evt);
+                tf_cond_croni_quaisActionPerformed(evt);
             }
         });
 
@@ -1399,9 +1436,9 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel34.setText("Obs:");
 
-        tf_possui_intolerancia_quais7.addActionListener(new java.awt.event.ActionListener() {
+        tf_cond_croni_outra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_possui_intolerancia_quais7ActionPerformed(evt);
+                tf_cond_croni_outraActionPerformed(evt);
             }
         });
 
@@ -1417,17 +1454,17 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel36.setText("Quais:");
 
-        tf_possui_intolerancia_quais10.addActionListener(new java.awt.event.ActionListener() {
+        tf_hist_doenc_obs.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_possui_intolerancia_quais10ActionPerformed(evt);
+                tf_hist_doenc_obsActionPerformed(evt);
             }
         });
 
         jLabel38.setText("Obs:");
 
-        tf_possui_intolerancia_quais11.addActionListener(new java.awt.event.ActionListener() {
+        tf_hist_doenc_outra.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_possui_intolerancia_quais11ActionPerformed(evt);
+                tf_hist_doenc_outraActionPerformed(evt);
             }
         });
 
@@ -1457,7 +1494,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
 
         jLabel37.setText("Quais:");
 
-        jLabel28.setText("Usa medicamento contínuo:");
+        jLabel28.setText("Tipo sanguíneo:");
 
         bg_tipo_sangue.add(rb_tipo_sangue_ap);
         rb_tipo_sangue_ap.setText("A+");
@@ -1549,11 +1586,11 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                         .addComponent(jLabel38)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_possui_intolerancia_quais10))
+                        .addComponent(tf_hist_doenc_obs))
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                         .addComponent(jLabel39)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tf_possui_intolerancia_quais11))
+                        .addComponent(tf_hist_doenc_outra))
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                         .addComponent(jLabel36)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1568,7 +1605,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                             .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                                 .addComponent(jLabel35)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_possui_intolerancia_quais7))
+                                .addComponent(tf_cond_croni_outra))
                             .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(cb_cond_cron_nao_sabe_responder)
@@ -1580,7 +1617,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                             .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                                 .addComponent(jLabel34)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(tf_possui_intolerancia_quais2))))
+                                .addComponent(tf_cond_croni_quais))))
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                         .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
@@ -1649,7 +1686,7 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                                     .addComponent(cb_hist_doencas_infec_hepatite_c)
                                     .addComponent(cb_hist_doencas_infec_hepatite_b)))
                             .addComponent(cb_hist_doencas_infec_nao_sabe_responder))
-                        .addGap(0, 289, Short.MAX_VALUE))
+                        .addGap(0, 360, Short.MAX_VALUE))
                     .addGroup(condicoes_de_saudeLayout.createSequentialGroup()
                         .addComponent(jLabel47)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -1701,13 +1738,13 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addComponent(cb_cond_cron_possui_autoimune)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_possui_intolerancia_quais7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_cond_croni_outra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel35))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_cond_cron_nao_sabe_responder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_possui_intolerancia_quais2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_cond_croni_quais, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel34))
                 .addGap(20, 20, 20)
                 .addComponent(jLabel25)
@@ -1723,13 +1760,13 @@ public class AtendimentoPanel extends javax.swing.JPanel {
                 .addComponent(cb_hist_doencas_infec_hepatite_c)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_possui_intolerancia_quais11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_hist_doenc_outra, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel39))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(cb_hist_doencas_infec_nao_sabe_responder)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tf_possui_intolerancia_quais10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tf_hist_doenc_obs, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel38))
                 .addGap(18, 18, 18)
                 .addGroup(condicoes_de_saudeLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -3466,25 +3503,25 @@ public class AtendimentoPanel extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_data_nascimentoActionPerformed
 
-    private void tf_possui_intolerancia_quais11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_possui_intolerancia_quais11ActionPerformed
+    private void tf_hist_doenc_outraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_hist_doenc_outraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_possui_intolerancia_quais11ActionPerformed
+    }//GEN-LAST:event_tf_hist_doenc_outraActionPerformed
 
-    private void tf_possui_intolerancia_quais10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_possui_intolerancia_quais10ActionPerformed
+    private void tf_hist_doenc_obsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_hist_doenc_obsActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_possui_intolerancia_quais10ActionPerformed
+    }//GEN-LAST:event_tf_hist_doenc_obsActionPerformed
 
     private void tf_doenca_pele_quaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_doenca_pele_quaisActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_doenca_pele_quaisActionPerformed
 
-    private void tf_possui_intolerancia_quais7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_possui_intolerancia_quais7ActionPerformed
+    private void tf_cond_croni_outraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_cond_croni_outraActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_possui_intolerancia_quais7ActionPerformed
+    }//GEN-LAST:event_tf_cond_croni_outraActionPerformed
 
-    private void tf_possui_intolerancia_quais2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_possui_intolerancia_quais2ActionPerformed
+    private void tf_cond_croni_quaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_cond_croni_quaisActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_possui_intolerancia_quais2ActionPerformed
+    }//GEN-LAST:event_tf_cond_croni_quaisActionPerformed
 
     private void tf_med_continuoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_med_continuoActionPerformed
         // TODO add your handling code here:
@@ -3938,6 +3975,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JPanel saude_da_mulher_panel;
     private javax.swing.JPanel saude_homem_panel;
     private javax.swing.JTextField tf_acompanhamento_saude_mental_no_momento_da_prisao_qual;
+    private javax.swing.JTextField tf_cond_croni_outra;
+    private javax.swing.JTextField tf_cond_croni_quais;
     private javax.swing.JTextField tf_cpf;
     private javax.swing.JTextField tf_data_nascimento;
     private javax.swing.JTextField tf_deficiencia_quais;
@@ -3947,6 +3986,8 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_fam_rec_beneficio_quais;
     private javax.swing.JTextField tf_faz_uso_de_outras;
     private javax.swing.JTextField tf_gostaria_realizar_trat_para_cessar_reduzir_uso_qual_subs;
+    private javax.swing.JTextField tf_hist_doenc_obs;
+    private javax.swing.JTextField tf_hist_doenc_outra;
     private javax.swing.JTextField tf_idade;
     private javax.swing.JTextField tf_idade_filhos;
     private javax.swing.JTextField tf_ja_realizou_trat_para_cessar_reduzir_uso_qual;
@@ -3960,10 +4001,6 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private javax.swing.JTextField tf_papanicolau_ano;
     private javax.swing.JTextField tf_poss_filhos_quantos;
     private javax.swing.JTextField tf_possui_intolerancia_quais;
-    private javax.swing.JTextField tf_possui_intolerancia_quais10;
-    private javax.swing.JTextField tf_possui_intolerancia_quais11;
-    private javax.swing.JTextField tf_possui_intolerancia_quais2;
-    private javax.swing.JTextField tf_possui_intolerancia_quais7;
     private javax.swing.JTextField tf_possui_outro_dependente_qts;
     private javax.swing.JTextField tf_possui_trasntorno_mental_outro;
     private javax.swing.JTextField tf_realizou_cirurgia_quais;

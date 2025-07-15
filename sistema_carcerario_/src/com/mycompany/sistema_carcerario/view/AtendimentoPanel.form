@@ -805,12 +805,12 @@
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel38" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tf_possui_intolerancia_quais10" max="32767" attributes="0"/>
+                          <Component id="tf_hist_doenc_obs" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel39" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="tf_possui_intolerancia_quais11" max="32767" attributes="0"/>
+                          <Component id="tf_hist_doenc_outra" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel36" min="-2" max="-2" attributes="0"/>
@@ -828,7 +828,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel35" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tf_possui_intolerancia_quais7" max="32767" attributes="0"/>
+                                  <Component id="tf_cond_croni_outra" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
@@ -843,7 +843,7 @@
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel34" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="tf_possui_intolerancia_quais2" max="32767" attributes="0"/>
+                                  <Component id="tf_cond_croni_quais" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -925,7 +925,7 @@
                               </Group>
                               <Component id="cb_hist_doencas_infec_nao_sabe_responder" alignment="0" min="-2" max="-2" attributes="0"/>
                           </Group>
-                          <EmptySpace min="0" pref="289" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="360" max="32767" attributes="0"/>
                       </Group>
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jLabel47" min="-2" max="-2" attributes="0"/>
@@ -988,14 +988,14 @@
                   <Component id="cb_cond_cron_possui_autoimune" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tf_possui_intolerancia_quais7" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_cond_croni_outra" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel35" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="cb_cond_cron_nao_sabe_responder" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tf_possui_intolerancia_quais2" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_cond_croni_quais" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel34" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
@@ -1012,14 +1012,14 @@
                   <Component id="cb_hist_doencas_infec_hepatite_c" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tf_possui_intolerancia_quais11" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_hist_doenc_outra" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel39" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="cb_hist_doencas_infec_nao_sabe_responder" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="tf_possui_intolerancia_quais10" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="tf_hist_doenc_obs" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel38" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -1173,9 +1173,9 @@
             <Property name="text" type="java.lang.String" value="Realizou cirurgias:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais2">
+        <Component class="javax.swing.JTextField" name="tf_cond_croni_quais">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_possui_intolerancia_quais2ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_cond_croni_quaisActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel24">
@@ -1224,9 +1224,9 @@
             <Property name="text" type="java.lang.String" value="Obs:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais7">
+        <Component class="javax.swing.JTextField" name="tf_cond_croni_outra">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_possui_intolerancia_quais7ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_cond_croni_outraActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel35">
@@ -1248,9 +1248,9 @@
             <Property name="text" type="java.lang.String" value="Quais:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais10">
+        <Component class="javax.swing.JTextField" name="tf_hist_doenc_obs">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_possui_intolerancia_quais10ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_hist_doenc_obsActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel38">
@@ -1258,9 +1258,9 @@
             <Property name="text" type="java.lang.String" value="Obs:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_possui_intolerancia_quais11">
+        <Component class="javax.swing.JTextField" name="tf_hist_doenc_outra">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_possui_intolerancia_quais11ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_hist_doenc_outraActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel39">
@@ -1320,7 +1320,7 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel28">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Usa medicamento cont&#xed;nuo:"/>
+            <Property name="text" type="java.lang.String" value="Tipo sangu&#xed;neo:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JRadioButton" name="rb_tipo_sangue_ap">
