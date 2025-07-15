@@ -177,6 +177,23 @@ public class RadioButtonController {
         }
     }
 
+    public void selecionarRadioButtonPorValorSimNao(ButtonGroup grupo, boolean valor) {
+        String textoDesejado = valor ? "Sim" : "Não";
+        String textoNormalizado = normalizarTexto(textoDesejado);
+
+        Enumeration<AbstractButton> botoes = grupo.getElements();
+        while (botoes.hasMoreElements()) {
+            AbstractButton botao = botoes.nextElement();
+            String textoBotao = normalizarTexto(botao.getText());
+
+            if (textoBotao.equals(textoNormalizado)) {
+                botao.setSelected(true);
+            } else {
+                botao.setSelected(false); // opcional
+            }
+        }
+    }
+
     public void selecionarRadioButtonSimNaoNSR(ButtonGroup grupo, int valor) {
         String textoDesejado;
 
@@ -209,6 +226,27 @@ public class RadioButtonController {
         }
     }
 
+    public void selecionarRadioButtonSimNaoNSR(ButtonGroup grupo, Boolean valor) {
+        String textoDesejado;
+
+        if (valor == null) {
+            textoDesejado = "Não Sabe Responder";
+        } else if (valor) {
+            textoDesejado = "Sim";
+        } else {
+            textoDesejado = "Não";
+        }
+
+        String textoNormalizado = normalizarTexto(textoDesejado);
+
+        Enumeration<AbstractButton> botoes = grupo.getElements();
+        while (botoes.hasMoreElements()) {
+            AbstractButton botao = botoes.nextElement();
+            String textoBotao = normalizarTexto(botao.getText());
+
+            botao.setSelected(textoBotao.equals(textoNormalizado));
+        }
+    }
 
     private String normalizarTexto(String texto) {
         if (texto == null) {

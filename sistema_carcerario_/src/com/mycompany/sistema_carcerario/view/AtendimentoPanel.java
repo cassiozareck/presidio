@@ -168,17 +168,15 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     private void carregarDadosRadioButtons(Prisioneiro prisioneiro) {
         rbController.selecionarRadioButtonPorValor(bg_nacionalidade, prisioneiro.getNacionalidade());
         rbController.selecionarRadioButtonPorValor(bg_escolaridade, prisioneiro.getEscolaridade());
-        //rbController.selecionarRadioButtonPorValorSimNao(bg_fam_rec_beneficio, prisioneiro.getB);
+        rbController.selecionarRadioButtonPorValorSimNao(bg_fam_rec_beneficio, prisioneiro.isBeneficioFamilia());
         
-        //rbController.selecionarRadioButtonPorValorSimNao(bg_possui_filhos, prisioneiro.get)
-                
-                //rbController.selecionarRadioButtonPorValorSimNao( bg_possuio_outro_dependente ,prisioneiro.getP);
+        rbController.selecionarRadioButtonPorValorSimNao(bg_possui_filhos, prisioneiro.isPossuiFilhos());
+        rbController.selecionarRadioButtonPorValorSimNao( bg_possuio_outro_dependente ,prisioneiro.isPossuiDependentes());
+        rbController.selecionarRadioButtonPorValorSimNao( bg_neeja ,prisioneiro.isOfertarNeeja());
+        rbController.selecionarRadioButtonPorValorSimNao( bg_conversa_assistencia_social ,prisioneiro.isOfertarAssistenciaSocial());
         
-
-        //rbController.selecionarRadioButtonPorValorSimNao( bg_neeja ,prisioneiro.get);
-        //rbController.selecionarRadioButtonPorValorSimNao( bg_conversa_assistencia_social ,prisioneiro.get);
-        
-        //rbController.selecionarRadioButtonSimNaoNSR( bg_possui_deficiencia ,prisioneiro.getPossuiDeficiencia());
+        // Condições de saúde
+        rbController.selecionarRadioButtonSimNaoNSR( bg_possui_deficiencia ,prisioneiro.isPossuiDeficiencia());
         
         
         //rbController.selecionarRadioButtonPorValorSimNao( bg_ ,prisioneiro.);
@@ -186,7 +184,12 @@ public class AtendimentoPanel extends javax.swing.JPanel {
     }
     
     private void carregarDadosTextField(Prisioneiro prisioneiro) {
+        tf_idade.setText(String.valueOf(prisioneiroAtual.getIdade()));
         tf_fam_rec_beneficio_quais.setText(prisioneiro.getBeneficioEspecificado());
+        tf_poss_filhos_quantos.setText(String.valueOf(prisioneiroAtual.getQuantosFilhos()));
+        //tf_idade_filhos.setText(prisioneiroAtual.get
+        
+        tf_possui_outro_dependente_qts.setText(String.valueOf(prisioneiro.getQuantosDependentes()));
         System.out.println(prisioneiro.getBeneficioEspecificado());
                 
     }

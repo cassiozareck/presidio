@@ -46,7 +46,7 @@ public class ConsultarAtendimentoPanel extends javax.swing.JPanel {
     private void populateTableAtendimentos(String filter) {
     List<Atendimento> atendimentoList = atendimentoDao.listarAtendimentosPorPrisioneiro(1);
 
-    String nome = getIdPrisioneiroPeloNome(jComboBoxDetento.getSelectedItem().toString());
+    //String nome = getIdPrisioneiroPeloNome(jComboBoxDetento.getSelectedItem().toString());
     
     String[] headers = {"Data", "Nome do atendente"};
     DefaultTableModel model = new DefaultTableModel(headers, 0); 
