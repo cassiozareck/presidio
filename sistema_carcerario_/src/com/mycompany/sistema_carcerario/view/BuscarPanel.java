@@ -108,7 +108,7 @@ public class BuscarPanel extends javax.swing.JPanel {
             }
         });
 
-        btn_cadastrar.setText("Cadastrar");
+        btn_cadastrar.setText("Cadastrar detento");
         btn_cadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_cadastrarActionPerformed(evt);
